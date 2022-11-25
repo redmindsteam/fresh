@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fresh.DataAccess\Fresh.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Common\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+
+</Project>
