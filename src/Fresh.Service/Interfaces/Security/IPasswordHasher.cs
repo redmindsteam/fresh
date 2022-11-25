@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fresh.Service.Interfaces.Security
+﻿namespace Fresh.Service.Interfaces.Security
 {
-    internal interface IPasswordHasher
+    public interface IPasswordHasher
     {
+        public (string PasswordHash, string Salt) Hash(string password);
+
+        public bool Verify(string password, string salt, string passwordHash);
     }
 }
