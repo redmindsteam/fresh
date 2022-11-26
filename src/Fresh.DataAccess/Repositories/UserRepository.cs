@@ -8,11 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace Fresh.DataAccess.Repositories
 {
+
     public class UserRepository : IUserRepository
     {
+        private readonly SQLiteConnection _con = new SQLiteConnection(DbConstants.CONNECTION_STRING);
+       
         public Task<bool> CreateAsync(User item)
         {
             throw new NotImplementedException();
