@@ -11,11 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Attributes\" />
     <Folder Include="Common\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Security\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
+    <PackageReference Include="Check.Password.Strength" Version="1.0.3" />
+    <PackageReference Include="Infobip.Api.Client" Version="2.1.0" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
   </ItemGroup>
 
 </Project>
