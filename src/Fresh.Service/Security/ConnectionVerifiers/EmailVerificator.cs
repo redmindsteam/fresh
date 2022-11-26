@@ -5,11 +5,11 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fresh.Service.Security
+namespace Fresh.Service.Security.ConnectionVerifiers
 {
     public class EmailVerificator
     {
-        public (int rand,string status) VerifMail(string email)
+        public (int rand, string status) VerifMail(string email)
         {
             Random rd = new Random();
             int rand_num = rd.Next(100000, 999999);
@@ -29,11 +29,11 @@ namespace Fresh.Service.Security
                 smtp.Credentials = new System.Net.NetworkCredential("fresh.uzmarket@gmail.com", "mhwwsdmpunyezllb");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
-                return (rand_num,"Success");
+                return (rand_num, "Success");
             }
             catch (Exception ex)
             {
-                return (0,ex.Message);
+                return (0, ex.Message);
             }
         }
     }
