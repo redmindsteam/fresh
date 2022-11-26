@@ -31,7 +31,6 @@ namespace Fresh.Service.Security.ConnectionVerifiers
                     new SmsDestination(to: number)
                 },
                 Text =
-                    $"Hi," +
                     $"Please verify action\n" +
                     $"YOUR CODE IS - {rand_num}\n"
                     + "DON'T LET ANYONE TO KNOW THIS CODE OTHER THAN US\n"
