@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Constants\" />
-    <Folder Include="Entities\" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
