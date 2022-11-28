@@ -5,8 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fresh.Desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent"
+        Title="MainWindow" Height="500" Width="800">
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" CornerRadius="5 0 0 5">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#3AA9AD" Offset="0"/>
+                    <GradientStop Color="#3AADA1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Canvas>
+                    <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6"/>
+                    <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6"/>
+                    <Ellipse Margin="250 450 0 0"
+                             Width="40" Height="20" Fill="#4EB1B6" />
+                    <Ellipse Margin="30 350 0 0"
+                             Width="40" Height="20" Fill="#4EB1B6" />
+                </Canvas>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Sing up" Style="{StaticResource titleText}"/>
+                    <TextBlock Text="Entr your personal info and create new account to connect us" Style="{StaticResource normalText}" 
+                               Opacity="0.8" Margin="20 30"/>
+                    <Button Content="Sing Up" Style="{StaticResource button}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border Background="#ffffff" Grid.Column="1" CornerRadius="0 15 15 0">
+            <StackPanel>
+                <TextBlock Text="Sing in to App " 
+                           Margin="0 10 0 0"
+                           Style="{StaticResource titleText}"
+                           Foreground="#3AB198" Height="50" />
+                <StackPanel Orientation="Horizontal" Margin="0 50" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource ResourceKey=buttonCircle}">
+                        
+
+                    </Button>
+
+                </StackPanel>
+
+                <Border BorderThickness="1"
+                        BorderBrush="#acb0af"
+                        CornerRadius="8"
+                        Margin="50 5" >
+
+                    <Grid Margin="7 9">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30" />
+                        <TextBlock x:Name="textEmail" Text="Email" MouseDown="textEmail_MouseDown" Style="{StaticResource textHint}"  />
+                        <TextBox x:Name="txtEmail"  TextChanged="txtEmail_TextChanged" Style="{StaticResource TextBox}" />
+                    </Grid>
+                </Border>
+
+                <Border BorderThickness="1"
+                        BorderBrush="#acb0af"
+                        CornerRadius="8"
+                        Margin="50 5 " >
+
+                    <Grid Margin="7 9">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/ImagePassword.png" Height="30"/>
+                        <TextBlock x:Name="textPassword" Text="Password" MouseDown="textPassword_MouseDown" Style="{StaticResource textHint}"/>
+                        <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_TextChanged" Style="{StaticResource TextBox}" />
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
