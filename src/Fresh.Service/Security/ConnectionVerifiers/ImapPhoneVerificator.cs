@@ -4,7 +4,7 @@ using Infobip.Api.Client.Model;
 
 namespace Fresh.Service.Security.ConnectionVerifiers
 {
-    public class PhoneVerificator
+    public class ImapPhoneVerificator
     {
         private static readonly string BASE_URL = "https://dmzzn8.api.infobip.com";
         private static readonly string API_KEY = "eb5d113070952587fe02971302cbb76a-110b25a5-5033-479f-a595-deafa591632f";
