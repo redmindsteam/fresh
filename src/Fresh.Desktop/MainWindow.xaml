@@ -50,7 +50,6 @@
 
                     </Button>
 
-                </StackPanel>
 
                 <Border BorderThickness="1"
                         BorderBrush="#acb0af"
