@@ -58,5 +58,30 @@ namespace Fresh.Desktop
                 textPassword.Visibility = Visibility.Visible;
             }
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(txtPassword.Password=="admin" && txtEmail.Text == "fresh@gmail.com")
+            {
+                MessageBox.Show("Succssesfully");
+            }
+            else
+            {
+                MessageBox.Show("Create Password or Email");
+            }
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
