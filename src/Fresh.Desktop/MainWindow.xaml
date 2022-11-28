@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fresh.Desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1200"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterOwner">
     <Grid>
+
 
     </Grid>
 </Window>
