@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Fresh.Service.Attributes
+namespace Fresh.Service.Helpers
 {
     public static class PhoneNumberAttribute
     {
