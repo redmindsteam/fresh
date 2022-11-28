@@ -93,9 +93,57 @@
             <Setter Property="Margin" Value="15 0 0 0"/>
             <Setter Property="Foreground" Value="#878787"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="0"/>
 
         </Style>
+        
+        <Style x:Key="mainbutton" TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="0 20 0 0"/>
+            <Setter Property="Background" Value="#3AB19B"/>
+            <Setter Property="Foreground" Value="#FDFEFE"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderThickness="1"
+                                BorderBrush="#49B7A3" Padding="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#22A39F"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#7FE9DE"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style x:Key="imgClose" TargetType="Image">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0 13 13 0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="RenderTransform" >
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
 
     </Application.Resources>
 </Application>
