@@ -1,2 +1,5 @@
-/.github/*			   @sodiqjonovich
-/src/Fresh.Service/*    @samandarbaxodirovich
+/.github/*                @sodiqjonovich
+/src/Fresh.DataAccess/*   @sanjarmavlonov
+/src/Fresh.Domain/*       @sanjarmavlonov
+/src/Fresh.Service/*      @samandarbaxodirovich
+/src/Fresh.Desktop/*      @shoxruxhusenov

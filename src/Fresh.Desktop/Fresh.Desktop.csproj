@@ -8,15 +8,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
+    <None Remove="ImagePassword.png" />
+    <None Remove="images %281%29.png" />
+    <None Remove="Images\32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
+    <None Remove="Снимок экрана_20221129_003757.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Fresh.Service\Fresh.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="Assets\" />
     <Folder Include="Pages\" />
-    <Folder Include="Styles\" />
     <Folder Include="Themes\" />
     <Folder Include="Windows\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ImagePassword.png" />
+    <Resource Include="32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
+    <Resource Include="images (1).png" />
+    <Resource Include="Снимок экрана_20221129_003757.png" />
   </ItemGroup>
 
 </Project>

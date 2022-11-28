@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fresh.Domain\Fresh.Domain.csproj" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\Fresh.Domain\Fresh.Domain.csproj" />
   </ItemGroup>
 
 </Project>
