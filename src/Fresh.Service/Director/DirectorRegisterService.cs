@@ -3,12 +3,7 @@ using Fresh.Domain.Entities;
 using Fresh.Service.Helpers;
 using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Fresh.Service.Director
 {
@@ -70,14 +65,41 @@ namespace Fresh.Service.Director
             }
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DirectorRegisterService directorRegisterService = new DirectorRegisterService();
+                var resault = await directorRegisterService.DeleteAsync(id);
+
+                if (resault != false)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public Task<IList<User>> GetAllAsync(int skip, int take)
+        public async Task<IList<User?>> GetAllAsync(int skip, int take)
         {
-            throw new NotImplementedException();
+            try
+            {
+                UserRepository userRepository = new UserRepository();
+                var users = await userRepository.GetAllAsync(skip, take);
+                if (users != null)
+                {
+                    return users;
+                }
+                return null;
+            }
+            catch
+            { 
+                return null;
+            }
         }
 
         public Task<User> GetByIdAsync(int id)
@@ -85,9 +107,59 @@ namespace Fresh.Service.Director
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(int id, User entity)
+        public async Task<bool> UpdateAsync(int id, User item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                PassportSeriaAttribute passportSeriaAttribute = new PassportSeriaAttribute();
+                var resaultPassportSeria = await passportSeriaAttribute.IsValid(item.PassportSeria);
+
+                PasswordAttribute passwordAttribute = new PasswordAttribute();
+                var resaultPasswordAtribute = await passwordAttribute.ValidationScore(item.PasswordHash);
+
+                PhoneNumberAttribute phoneNumberAttribute = new PhoneNumberAttribute();
+                var resaultPhoneNUmber = await phoneNumberAttribute.IsValid(item.PhoneNumber);
+
+                if (item.FullName != null)
+                {
+                    if (resaultPassportSeria != false && resaultPasswordAtribute != false && resaultPhoneNUmber != false)
+                    {
+                        PasswordHasher passwordHasher = new PasswordHasher();
+                        var resaultPasswordHasher = await passwordHasher.Hash(item.PasswordHash);
+                        if (resaultPasswordHasher.PasswordHash != null && resaultPasswordHasher.Salt != null)
+                        {
+                            UserRepository userRepository = new UserRepository();
+
+                            item.IsAdmin = false;
+                            item.PasswordHash = resaultPasswordHasher.PasswordHash;
+                            item.Salt = resaultPasswordHasher.Salt;
+
+                            var resault = await userRepository.UpdateAsync(id, item);
+                            if (resault != false)
+                            {
+                                return true;
+                            }
+                            return false;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<IList<Category>> GetAllAsync(int skip, int take)
+        public async Task<IList<Category?>> GetAllAsync(int skip, int take)
         {
             try
             {

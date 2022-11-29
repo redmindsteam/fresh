@@ -1,38 +1,83 @@
-﻿using Fresh.Domain.Entities;
+﻿using Fresh.DataAccess.Repositories;
+using Fresh.Domain.Entities;
 using Fresh.Service.Interfaces.DirectorService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fresh.Service.Director
 {
     public class DirectorCategoryService : IDirectorCategoryService
     {
-        public Task<bool> CreateAsync(Category item)
+        CategoryRepository categoryRepository = new CategoryRepository();
+        public async Task<bool> CreateAsync(Category item)
+        {
+            try
+            { 
+                var resault = await categoryRepository.CreateAsync(item);
+                if (resault != false)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            { 
+                return false;   
+            }
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            try
+            {
+                var resault = await categoryRepository.DeleteAsync(id);
+                if (resault != false)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;    
+            }
+        }
+
+        public async Task<IList<Category?>> GetAllAsync(int skip, int take)
+        {
+            try
+            {
+                var resault = await categoryRepository.GetAllAsync(skip, take);
+                if (resault != null)
+                { 
+                    return resault;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<Category> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> UpdateAsync(int id, Category entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<Category>> GetAllAsync(int skip, int take)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Category> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateAsync(int id, Category entity)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                var resault = await categoryRepository.UpdateAsync(id, entity);
+                if (resault == true)
+                { 
+                    return true;
+                }
+                return false;
+            }
+            catch
+            { 
+                return false;
+            }
         }
     }
 }
