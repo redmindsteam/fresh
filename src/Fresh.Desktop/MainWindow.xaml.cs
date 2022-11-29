@@ -1,5 +1,6 @@
 ﻿using Fresh.DataAccess.Repositories;
 using Fresh.Desktop.Windows;
+using Fresh.Service.Director;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -74,18 +75,18 @@ namespace Fresh.Desktop
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            DirectorRegisterService service = new DirectorRegisterService();
+            var response = await service.UserValidation(textEmail.Text, textPassword.Text);
+            
+            if (response.result)
+            {
+                if()
+            }
 
-            if(txtPassword.Password=="a" && txtEmail.Text == "f")
-            {
-                main.Show();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Create Password or Email");
-            }
+
+
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)

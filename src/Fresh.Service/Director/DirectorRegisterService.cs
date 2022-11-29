@@ -188,5 +188,10 @@ namespace Fresh.Service.Director
                 return ("Something went error", false);
             }
         }
+
+        public Task<User> GetByEmailOrPhoneAsync(string identifier)
+        {
+            
+        }
     }
 }
