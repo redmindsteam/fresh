@@ -15,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Fresh.Service;
+using Fresh.Service.Director;
+using Fresh.Service.Attributes;
 
 namespace Fresh.Desktop
 {
@@ -72,23 +75,30 @@ namespace Fresh.Desktop
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            if(txtPassword.Password=="a" && txtEmail.Text == "f")
+            DirectorRegisterService directorRegisterService = new DirectorRegisterService();
+            var result = await directorRegisterService.UserValidation(textEmail.Text, textPassword.Text);
+            if (result.result)
             {
-               cassa.Show();
-                this.Close();
+                if(CurrentRegistrar.Registrar.IsAdmin)
+                    MessageBox.Show("Admin page must open");
+                else
+                    cassa.Show();
             }
             else
-            {
-                MessageBox.Show("Create Password or Email");
-            }
+                cassa.Show();
+            this.Close();
+            ///result.error bir textboxga yoziladi va error chiqganini bildiradi
         }
-
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

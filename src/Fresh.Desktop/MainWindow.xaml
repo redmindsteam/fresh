@@ -44,7 +44,7 @@
                     <TextBlock Text="Fresh Market" Style="{StaticResource normalText}" 
                                Opacity="0.8" Height="57"/>
                 </StackPanel>
-                <Button Content="Email" Style="{StaticResource button}" Margin="0,392,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="108"  >
+                <Button Content="Email" Style="{StaticResource button}" Margin="0,392,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="108" Click="Button_Click_1"  >
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -78,7 +78,7 @@
                         </Grid.ColumnDefinitions>
                         <Image Source="/Images/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30" />
 
-                        <TextBlock x:Name="textEmail" Text="Email" MouseDown="textEmail_MouseDown" Style="{StaticResource textHint}"  />
+                        <TextBlock x:Name="textEmail" Text="Email or PhoneNumber" MouseDown="textEmail_MouseDown" Style="{StaticResource textHint}"  />
                         <TextBox x:Name="txtEmail"  TextChanged="txtEmail_TextChanged" Style="{StaticResource TextBox}" />
                     </Grid>
                 </Border>
