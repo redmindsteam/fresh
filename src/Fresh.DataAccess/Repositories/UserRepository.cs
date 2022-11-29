@@ -234,6 +234,49 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
+        public async Task<User> GetByPhoneNumber(string phonenumber)
+        {
+            try
+            {
+                await _con.OpenAsync();
+                string query = $"SELECT * FROM Users where PhoneNumber = $phonenumber";
+                SQLiteCommand command = new SQLiteCommand(query, _con)
+                {
+                    Parameters =
+                    {
+                        new SQLiteParameter ("phonenumber",phonenumber)
+                    }
+                };
+                var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    return new User()
+                    {
+                        Id = reader.GetInt32("Id"),
+                        FullName = reader.GetString("FullName"),
+                        Email = reader.GetString("Email"),
+                        IsAdmin = reader.GetBoolean("IsAdmin"),
+                        PasswordHash = reader.GetString("PasswordHash"),
+                        Salt = reader.GetString("Salt"),
+                        PhoneNumber = reader.GetString("PhoneNumber"),
+                        PassportSeria = reader.GetString("PassportSeria")
+
+                    };
+                }
+                else
+                    return null!;
+            }
+            catch
+            {
+
+                return null!;
+            }
+            finally
+            {
+                _con.Close();
+            }
+        }
+
         public async Task<bool> UpdateAsync(int id, User entity)
         {
             try

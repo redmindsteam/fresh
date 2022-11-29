@@ -22,5 +22,7 @@ namespace Fresh.Domain.Entities
         public string ProductionDate { get; set; }= string.Empty;
 
         public string ExpireDate { get; set; }= string.Empty;
+
+        public float Value { get; set; } 
     }
 }

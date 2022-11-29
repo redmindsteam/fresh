@@ -11,5 +11,6 @@ namespace Fresh.DataAccess.Interfaces.Repositories
     {
         Task<User> GetByEmail(string email);
         Task<User> GetByFullName(string fullname);
+        Task<User> GetByPhoneNumber(string phonenumber);
     }
 }

@@ -20,8 +20,8 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireDate)" +
-                     "VALUES($Name,$CategoryId,$Price,$Unit,$BarcodeName,$ProductionDate,$ExpireDate);";
+                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireDate,Value)" +
+                     "VALUES($Name,$CategoryId,$Price,$Unit,$BarcodeName,$ProductionDate,$ExpireDate,$Value);";
                 var command = new SQLiteCommand(query, _con)
                 {
                     Parameters =
@@ -32,7 +32,8 @@ namespace Fresh.DataAccess.Repositories
                         new SQLiteParameter("Unit", item.Unit),
                         new SQLiteParameter("BarcodeName", item.BarcodeName),
                         new SQLiteParameter("ProductionDate", item.ProductionDate),
-                        new SQLiteParameter("ExpireDate", item.ExpireDate)
+                        new SQLiteParameter("ExpireDate", item.ExpireDate),
+                        new SQLiteParameter("Value", item.Value)
                     }
                 };
 
@@ -95,7 +96,8 @@ namespace Fresh.DataAccess.Repositories
                         Unit = reader.GetString("Unit"),
                         BarcodeName = reader.GetString("BarcodeName"),
                         ProductionDate = reader.GetString("ProductionDate"),
-                        ExpireDate = reader.GetString("ExpireDate")
+                        ExpireDate = reader.GetString("ExpireDate"),
+                        Value = reader.GetFloat("Value")
 
                     };
                     products.Add(product);
@@ -130,7 +132,8 @@ namespace Fresh.DataAccess.Repositories
                         Unit = reader.GetString("Unit"),
                         BarcodeName = reader.GetString("BarcodeName"),
                         ProductionDate = reader.GetString("ProductionDate"),
-                        ExpireDate = reader.GetString("ExpireDate")
+                        ExpireDate = reader.GetString("ExpireDate"),
+                        Value = reader.GetFloat("Value")
                     };
                 }
                 else return null!;
@@ -156,6 +159,7 @@ namespace Fresh.DataAccess.Repositories
                     "Price = $Price," +
                     " Unit = $Unit, BarcodeName = $BarcodeName, ProductionDate = $ProductionDate," +
                     "ExpireDate = $ExpireDate" +
+                    "Value = $Value"+
                     $"Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
                 {
@@ -168,7 +172,8 @@ namespace Fresh.DataAccess.Repositories
                         new SQLiteParameter("Unit", entity.Unit),
                         new SQLiteParameter("BarcodeName", entity.BarcodeName),
                         new SQLiteParameter("ProductionDate", entity.ProductionDate),
-                        new SQLiteParameter("ExpireDate", entity.ExpireDate)
+                        new SQLiteParameter("ExpireDate", entity.ExpireDate),
+                        new SQLiteParameter("Value", entity.Value)
                     }
                 };
                 int result = await command.ExecuteNonQueryAsync();
