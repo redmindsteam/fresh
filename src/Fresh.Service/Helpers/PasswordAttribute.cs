@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Fresh.Service.Attributes
+namespace Fresh.Service.Helpers
 {
     public static class PasswordAttribute
     {
