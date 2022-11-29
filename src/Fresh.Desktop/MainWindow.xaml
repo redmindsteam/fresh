@@ -14,7 +14,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="/Снимок экрана_20221129_003757.png"
+        <Image Source="/Images/Снимок экрана_20221129_003757.png"
                Grid.Column="1"
                Panel.ZIndex="1"
                MouseUp="Image_MouseUp"
@@ -30,7 +30,7 @@
                     <GradientStop Color="#3AADA1" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Grid>
+            <Grid Margin="0,-4,0,0">
                 <Canvas>
                     <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6"/>
                     <Polygon Points="90,400 200,360 180,448" Fill="#4EB1B6" HorizontalAlignment="Left" Height="447" Canvas.Top="2" VerticalAlignment="Center" Width="220"/>
@@ -40,11 +40,20 @@
                              Width="40" Height="20" Fill="#4EB1B6" />
                 </Canvas>
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Sing up" Style="{StaticResource titleText}"/>
-                    <TextBlock Text="Entr your personal info and create new account to connect us" Style="{StaticResource normalText}" 
-                               Opacity="0.8" Margin="20 30"/>
-                    <Button Content="Sing Up" Style="{StaticResource button}"/>
+                    <TextBlock Text="Welcome to" Style="{StaticResource titleText}" Height="61"/>
+                    <TextBlock Text="Fresh Market" Style="{StaticResource normalText}" 
+                               Opacity="0.8" Height="57"/>
                 </StackPanel>
+                <Button Content="Email" Style="{StaticResource button}" Margin="0,392,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="108"  >
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
             </Grid>
         </Border>
         <Border Background="#ffffff" Grid.Column="1" 
@@ -67,12 +76,13 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30" />
+                        <Image Source="/Images/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30" />
+
                         <TextBlock x:Name="textEmail" Text="Email" MouseDown="textEmail_MouseDown" Style="{StaticResource textHint}"  />
                         <TextBox x:Name="txtEmail"  TextChanged="txtEmail_TextChanged" Style="{StaticResource TextBox}" />
                     </Grid>
                 </Border>
-                
+
                 <Border BorderThickness="1"
                         BorderBrush="#acb0af"
                         CornerRadius="8"
@@ -84,7 +94,8 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="/ImagePassword.png" Height="30"/>
+                        <Image Source="/Images/ImagePassword.png" Height="30" />
+
                         <TextBlock x:Name="textPassword" Text="Password" MouseDown="textPassword_MouseDown" Style="{StaticResource textHint}"/>
                         <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_TextChanged" Style="{StaticResource TextBox}" />
                     </Grid>
