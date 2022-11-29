@@ -76,7 +76,7 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<IList<User>> GetAllAsync(int skip, int take)
+        public async Task<IList<User?>> GetAllAsync(int skip, int take)
         {
             try
             {
