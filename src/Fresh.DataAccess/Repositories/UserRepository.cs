@@ -156,6 +156,49 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
+        public async Task<User> GetByFullName(string fullname)
+        {
+            try
+            {
+                await _con.OpenAsync();
+                string query = $"SELECT * FROM Users where FullName = $fullname";
+                SQLiteCommand command = new SQLiteCommand(query, _con)
+                {
+                    Parameters =
+                    {
+                        new SQLiteParameter ("fullname",fullname)
+                    }
+                };
+                var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    return new User()
+                    {
+                        Id = reader.GetInt32("Id"),
+                        FullName = reader.GetString("FullName"),
+                        Email = reader.GetString("Email"),
+                        IsAdmin = reader.GetBoolean("IsAdmin"),
+                        PasswordHash = reader.GetString("PasswordHash"),
+                        Salt = reader.GetString("Salt"),
+                        PhoneNumber = reader.GetString("PhoneNumber"),
+                        PassportSeria = reader.GetString("PassportSeria")
+
+                    };
+                }
+                else
+                    return null!;
+            }
+            catch
+            {
+
+                return null!;
+            }
+            finally
+            {
+                _con.Close();
+            }
+        }
+
         public async Task<User> GetByIdAsync(int id)
         {
             try
