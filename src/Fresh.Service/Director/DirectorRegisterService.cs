@@ -35,6 +35,12 @@ namespace Fresh.Service.Director
         {
             throw new NotImplementedException();
         }
+        /// <summary>
+        /// / Identifies user in login page
+        /// </summary>
+        /// <param name="identifier">Email or PhoneNumber</param>
+        /// <param name="password">UserInput password</param>
+        /// <returns></returns>
         public async Task<(string error,bool result)> UserValidation(string identifier, string password)
         {
             try
