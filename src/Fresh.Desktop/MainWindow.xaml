@@ -19,8 +19,7 @@
                Panel.ZIndex="1"
                MouseUp="Image_MouseUp"
                Style="{StaticResource imgClose}" Height="15" />
-        /kkkk
-
+      
 
 
 
