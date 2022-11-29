@@ -23,7 +23,6 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Pages\" />
     <Folder Include="Themes\" />
-    <Folder Include="Windows\" />
   </ItemGroup>
 
   <ItemGroup>

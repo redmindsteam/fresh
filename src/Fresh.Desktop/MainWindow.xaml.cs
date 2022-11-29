@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fresh.DataAccess.Repositories;
+using Fresh.Desktop.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace Fresh.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
+        Cassa cassa;
         public MainWindow()
         {
             InitializeComponent();
+            cassa = new Cassa();
         }
 
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -69,9 +73,13 @@ namespace Fresh.Desktop
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+
+
             if(txtPassword.Password=="admin" && txtEmail.Text == "fresh@gmail.com")
             {
-                MessageBox.Show("Succssesfully");
+               cassa.Show();
+                this.Close();
             }
             else
             {
