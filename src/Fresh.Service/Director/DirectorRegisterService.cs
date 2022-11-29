@@ -9,8 +9,6 @@ namespace Fresh.Service.Director
 {
     public class DirectorRegisterService : IDirectorRegisterService
     {
-       // private Task<IList<User>> users;
-
         public async Task<bool> CreateAsync(User item)
         {
             try
