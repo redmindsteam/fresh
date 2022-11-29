@@ -1,5 +1,6 @@
 ﻿using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
+using Fresh.Service.Attributes;
 using Fresh.Service.Helpers;
 using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Security;
@@ -27,7 +28,7 @@ namespace Fresh.Service.Director
                     if (resaultPassportSeria != false && resaultPasswordAtribute != false && resaultPhoneNUmber != false)
                     {
                         PasswordHasher passwordHasher = new PasswordHasher();
-                        var resaultPasswordHasher = await passwordHasher.Hash(item.PasswordHash);
+                        var resaultPasswordHasher = passwordHasher.Hash(item.PasswordHash);
                         if (resaultPasswordHasher.PasswordHash != null && resaultPasswordHasher.Salt != null)
                         {
                             UserRepository userRepository = new UserRepository();
@@ -125,7 +126,7 @@ namespace Fresh.Service.Director
                     if (resaultPassportSeria != false && resaultPasswordAtribute != false && resaultPhoneNUmber != false)
                     {
                         PasswordHasher passwordHasher = new PasswordHasher();
-                        var resaultPasswordHasher = await passwordHasher.Hash(item.PasswordHash);
+                        var resaultPasswordHasher = passwordHasher.Hash(item.PasswordHash);
                         if (resaultPasswordHasher.PasswordHash != null && resaultPasswordHasher.Salt != null)
                         {
                             UserRepository userRepository = new UserRepository();
@@ -159,6 +160,32 @@ namespace Fresh.Service.Director
             catch
             {
                 return false;
+            }
+        }
+        public async Task<(string error, bool result)> UserValidation(string identifier, string password)
+        {
+            try
+            {
+                UserRepository userRepository = new UserRepository();
+                Security.PasswordHasher hasher = new Security.PasswordHasher();
+                User user = await userRepository.GetByEmail(identifier);
+                if (user == null) user = await userRepository.GetByPhoneNumber(identifier);
+                if (user != null)
+                {
+                    if (hasher.Verify(password, user.Salt, user.PasswordHash))
+                    {
+                        CurrentRegistrar.Registrar = user;
+                        return (string.Empty, true);
+                    }
+                    else
+                        return ("Incorrect password", false);
+                }
+                else
+                    return ("User not found", false);
+            }
+            catch
+            {
+                return ("Something went error", false);
             }
         }
     }
