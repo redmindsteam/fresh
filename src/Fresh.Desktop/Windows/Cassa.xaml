@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fresh.Desktop.Windows"
         mc:Ignorable="d"
-        Title="Cassa" Height="450" Width="800">
+
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" Background="Gray"
+        Title="Cassa" Height="450" Width="700">
     <Grid>
         
     </Grid>

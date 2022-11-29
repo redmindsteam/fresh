@@ -74,9 +74,7 @@ namespace Fresh.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-
-
-            if(txtPassword.Password=="admin" && txtEmail.Text == "fresh@gmail.com")
+            if(txtPassword.Password=="a" && txtEmail.Text == "f")
             {
                cassa.Show();
                 this.Close();
