@@ -1,5 +1,6 @@
 ﻿using Fresh.DataAccess.Repositories;
 using Fresh.Desktop.Windows;
+using Fresh.Service.Attributes;
 using Fresh.Service.Director;
 using System;
 using System.Collections.Generic;
@@ -74,21 +75,19 @@ namespace Fresh.Desktop
                 this.DragMove();
             }
         }
-
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             DirectorRegisterService service = new DirectorRegisterService();
             var response = await service.UserValidation(textEmail.Text, textPassword.Text);
-            
             if (response.result)
             {
-                if()
+                if (CurrentUserSingelton.Instance.IsAdmin) main.Show();
+                else cassa.Show();
+                this.Close();
             }
-
-
-
+            else
+                MessageBox.Show($"{response.error}","Went wrong",MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
