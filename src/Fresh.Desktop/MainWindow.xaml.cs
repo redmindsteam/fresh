@@ -24,10 +24,12 @@ namespace Fresh.Desktop
     public partial class MainWindow : Window
     {
         Cassa cassa;
+        Main main;
         public MainWindow()
         {
             InitializeComponent();
             cassa = new Cassa();
+            main=new Main();
         }
 
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -77,7 +79,7 @@ namespace Fresh.Desktop
 
             if(txtPassword.Password=="a" && txtEmail.Text == "f")
             {
-               cassa.Show();
+                main.Show();
                 this.Close();
             }
             else

@@ -21,8 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Assets\Images\" />
-    <Folder Include="Pages\" />
-    <Folder Include="Themes\" />
   </ItemGroup>
 
   <ItemGroup>
