@@ -62,7 +62,7 @@
                 <TextBlock Text="Sing in to App "
                            Margin="0 0 0 100"
                            Style="{StaticResource titleText}"
-                           Foreground="#3AB198" Height="50" />
+                           Foreground="#3AB198" Height="50"/>
 
 
                 <Border BorderThickness="1"
