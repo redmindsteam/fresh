@@ -1,5 +1,6 @@
 ﻿using Fresh.DataAccess.Repositories;
 using Fresh.Desktop.Windows;
+using Fresh.Domain.Entities;
 using Fresh.Service.Attributes;
 using Fresh.Service.Director;
 using System;
@@ -77,16 +78,21 @@ namespace Fresh.Desktop
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            DirectorRegisterService service = new DirectorRegisterService();
-            var response = await service.UserValidation(textEmail.Text, textPassword.Text);
-            if (response.result)
-            {
-                if (CurrentUserSingelton.Instance.IsAdmin) main.Show();
-                else cassa.Show();
-                this.Close();
-            }
-            else
-                MessageBox.Show($"{response.error}","Went wrong",MessageBoxButton.OK, MessageBoxImage.Error);
+            UserRepository userRepository = new UserRepository();
+            User user = await userRepository.GetByEmail("sanjarbek@gmail.com");
+            MessageBox.Show($"{user.FullName}");
+
+
+            //DirectorRegisterService service = new DirectorRegisterService();
+            //var response = await service.UserValidation(textEmail.Text, textPassword.Text);
+            //if (response.result)
+            //{
+            //    if (CurrentUserSingelton.Instance.IsAdmin == 1) main.Show();
+            //    else cassa.Show();
+            //    this.Close();
+            //}
+            //else
+            //    MessageBox.Show($"{response.error}","Try again",MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {

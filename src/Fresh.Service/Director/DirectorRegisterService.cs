@@ -4,7 +4,7 @@ using Fresh.Service.Attributes;
 using Fresh.Service.Helpers;
 using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Security;
-
+using Fresh.Service.Tools;
 
 namespace Fresh.Service.Director
 {
@@ -167,14 +167,19 @@ namespace Fresh.Service.Director
             try
             {
                 UserRepository userRepository = new UserRepository();
-                Security.PasswordHasher hasher = new Security.PasswordHasher();
-                User user = await userRepository.GetByEmail(identifier);
-                if (user == null) user = await userRepository.GetByPhoneNumber(identifier);
+                PasswordHasher hasher = new PasswordHasher();
+                User user = new User();
+                //var isphone = await ToolBox.IsPhoneNumber(identifier);
+                //if (isphone.status)
+                //    user = await userRepository.GetByPhoneNumber(isphone.number);
+                //else
+
+                    user = await userRepository.GetByEmail(identifier);
                 if (user != null)
                 {
                     if (hasher.Verify(password, user.Salt, user.PasswordHash))
                     {
-                        CurrentRegistrar.Registrar = user;
+                        CurrentUserSingelton.Instance = user;
                         return (string.Empty, true);
                     }
                     else
@@ -187,11 +192,6 @@ namespace Fresh.Service.Director
             {
                 return ("Something went error", false);
             }
-        }
-
-        public Task<User> GetByEmailOrPhoneAsync(string identifier)
-        {
-            
         }
     }
 }
