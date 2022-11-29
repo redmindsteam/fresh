@@ -9,5 +9,6 @@ namespace Fresh.Service.Interfaces.DirectorService
 {
     public interface IDirectorCheckService : IGenericService<Check>
     {
+
     }
 }
