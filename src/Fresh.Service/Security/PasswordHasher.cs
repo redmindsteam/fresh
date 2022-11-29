@@ -5,18 +5,18 @@ namespace Fresh.Service.Security
 {
     public class PasswordHasher : IPasswordHasher
     {
-        public (string PasswordHash, string Salt) Hash(string password)
+        public async Task<(string PasswordHash, string Salt)> Hash(string password)
         {
-            string salt = GenerateSalt();
-            string hash = BCrypt.Net.BCrypt.HashPassword(password + salt);
-            return (PasswordHash: hash, Salt: salt);
+                string salt = await GenerateSalt();
+                string hash = BCrypt.Net.BCrypt.HashPassword(password + salt);
+                return (PasswordHash: hash, Salt: salt);
         }
 
-        public bool Verify(string password, string salt, string passwordHash)
+        public async Task<bool> Verify(string password, string salt, string passwordHash)
         {
             return BCrypt.Net.BCrypt.Verify(password + salt, passwordHash);
         }
-        public string GenerateSalt()
+        public async Task<string> GenerateSalt()
         {
             return Guid.NewGuid().ToString();
         }

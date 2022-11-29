@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Fresh.Service.Helpers
 {
-    public class PhoneNumberAttribute
+    public class PassportSeriaAttribute
     {
-        public async Task<bool> IsValid(string phoneNumber)
+        public async Task<bool> IsValid(string passportSeria)
         {
             try
             {
-                var resault = new Regex(@"^[+998]{4}[0-9]{9}$").IsMatch(phoneNumber);
+                var resault = new Regex(@"^[A-Z]{2}[0-9]{7}$").IsMatch(passportSeria);
                 if (resault != true)
                 {
-                    return  false;
+                    return false;
                 }
                 return true;
             }
