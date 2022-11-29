@@ -10,8 +10,8 @@
   <ItemGroup>
     <None Remove="32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
     <None Remove="ImagePassword.png" />
-    <None Remove="images %281%29.png" />
     <None Remove="Images\32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
+    <None Remove="Images\ImagePassword.png" />
     <None Remove="Снимок экрана_20221129_003757.png" />
   </ItemGroup>
 
@@ -20,10 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Folder Include="Assets\Images\" />
     <Folder Include="Pages\" />
     <Folder Include="Themes\" />
-    <Folder Include="Windows\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,10 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="ImagePassword.png" />
-    <Resource Include="32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
-    <Resource Include="images (1).png" />
-    <Resource Include="Снимок экрана_20221129_003757.png" />
+    <Resource Include="Images\32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
+    <Resource Include="Images\ImagePassword.png" />
+    <Resource Include="Images\Снимок экрана_20221129_003757.png" />
   </ItemGroup>
 
 </Project>
