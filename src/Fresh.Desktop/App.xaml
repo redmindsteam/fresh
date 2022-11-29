@@ -4,6 +4,16 @@
              xmlns:local="clr-namespace:Fresh.Desktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/LightTheme.xaml"/>
+
+                <ResourceDictionary Source="Assets/Icons/Icons.xaml"/>
+
+                <ResourceDictionary Source="Styles/MainStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
         <Style x:Key="titleText" TargetType="TextBlock">
             <Setter Property="FontSize" Value="36"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -96,7 +106,7 @@
             <Setter Property="BorderThickness" Value="0"/>
 
         </Style>
-        
+
         <Style x:Key="mainbutton" TargetType="Button">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Width" Value="200"/>
@@ -143,7 +153,7 @@
             </Style.Triggers>
 
         </Style>
-
+        </ResourceDictionary>
 
     </Application.Resources>
 </Application>
