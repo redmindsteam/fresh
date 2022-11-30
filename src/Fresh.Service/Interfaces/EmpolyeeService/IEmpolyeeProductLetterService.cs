@@ -2,7 +2,7 @@
 
 namespace Fresh.Service.Interfaces.EmpolyeeService
 {
-    public interface IEmpolyeeProductLetterService : IGenericService<ProductLetter>
+    public interface IEmpolyeeProductLetterService
     {
     }
 }
