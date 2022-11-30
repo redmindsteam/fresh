@@ -1,5 +1,7 @@
-﻿using Fresh.DataAccess.Repositories;
+﻿using Fresh.DataAccess.Interfaces.Repositories;
+using Fresh.DataAccess.Repositories;
 using Fresh.Desktop.Windows;
+using Fresh.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -77,7 +79,7 @@ namespace Fresh.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if(txtPassword.Password=="a" && txtEmail.Text == "f")
+            if (txtPassword.Password == "a" && txtEmail.Text == "f")
             {
                 main.Show();
                 this.Close();

@@ -13,7 +13,7 @@ namespace Fresh.Domain.Entities
 
         public string Email { get; set; } = string.Empty;
 
-        public bool IsAdmin { get; set; } 
+        public int IsAdmin { get; set; } 
 
         public string PasswordHash { get; set; } = string.Empty;
 
