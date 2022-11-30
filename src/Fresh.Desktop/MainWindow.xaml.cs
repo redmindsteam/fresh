@@ -64,9 +64,13 @@ namespace Fresh.Desktop
         {
             DirectorRegisterService service = new DirectorRegisterService();
             var response = await service.UserValidation(txtEmail.Text, txtPassword.Password);
-            if (response.result)
+            Errorlist.Content = response;
+            Errorlist.Visibility = Visibility.Visible;
+            EmailButton.Visibility = Visibility.Hidden;
+            Errorlists.Visibility = Visibility.Hidden;
+            if (response == string.Empty)
             {
-                if (CurrentUserSingelton.Instance.IsAdmin == 0)
+                if (CurrentUserSingelton.Instance.IsAdmin == 1)
                 {
                     Main main = new Main();
                     main.Show();
@@ -79,9 +83,8 @@ namespace Fresh.Desktop
                     this.Close();
                 }
             }
-            else
+            else if(response == "Incorrect password")
             {
-                Errorlist.Visibility=Visibility.Visible;
                 EmailButton.Visibility=Visibility.Visible;
                 Errorlists.Visibility=Visibility.Visible;
                 txtEmail.Clear();
