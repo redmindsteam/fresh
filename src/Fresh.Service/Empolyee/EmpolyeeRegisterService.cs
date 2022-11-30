@@ -32,12 +32,12 @@ namespace Fresh.Service.Empolyee
                     if (resaultPassportSeria != false && resaultPasswordAtribute != false && resaultPhoneNUmber != false)
                     {
                         PasswordHasher passwordHasher = new PasswordHasher();
-                        var resaultPasswordHasher = await passwordHasher.Hash(item.PasswordHash);
+                        var resaultPasswordHasher = passwordHasher.Hash(item.PasswordHash);
                         if (resaultPasswordHasher.PasswordHash != null && resaultPasswordHasher.Salt != null)
                         {
                             UserRepository userRepository = new UserRepository();
 
-                            item.IsAdmin = false;
+                            item.IsAdmin = 0;
                             item.PasswordHash = resaultPasswordHasher.PasswordHash;
                             item.Salt = resaultPasswordHasher.Salt;
 
@@ -130,12 +130,12 @@ namespace Fresh.Service.Empolyee
                     if (resaultPassportSeria != false && resaultPasswordAtribute != false && resaultPhoneNUmber != false)
                     {
                         PasswordHasher passwordHasher = new PasswordHasher();
-                        var resaultPasswordHasher = await passwordHasher.Hash(item.PasswordHash);
+                        var resaultPasswordHasher = passwordHasher.Hash(item.PasswordHash);
                         if (resaultPasswordHasher.PasswordHash != null && resaultPasswordHasher.Salt != null)
                         {
                             UserRepository userRepository = new UserRepository();
 
-                            item.IsAdmin = false;
+                            item.IsAdmin =0;
                             item.PasswordHash = resaultPasswordHasher.PasswordHash;
                             item.Salt = resaultPasswordHasher.Salt;
 

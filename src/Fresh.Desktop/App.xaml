@@ -50,8 +50,8 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#22A39F"/>
                     <Setter Property="Foreground" Value="DimGray"/>
-                </Trigger>
-                <Trigger Property="IsMouseCaptured" Value="True">
+                    </Trigger> 
+                    <Trigger Property="IsMouseCaptured" Value="True">
                     <Setter Property="Background" Value="#7FE9DE"/>
                     <Setter Property="Foreground" Value="DimGray"/>
                 </Trigger>
