@@ -33,7 +33,7 @@ namespace Fresh.Service.Director
                         {
                             UserRepository userRepository = new UserRepository();
 
-                            item.IsAdmin = false;
+                            item.IsAdmin = 0;
                             item.PasswordHash = resaultPasswordHasher.PasswordHash;
                             item.Salt = resaultPasswordHasher.Salt;
 
@@ -131,7 +131,7 @@ namespace Fresh.Service.Director
                         {
                             UserRepository userRepository = new UserRepository();
 
-                            item.IsAdmin = false;
+                            item.IsAdmin = 0;
                             item.PasswordHash = resaultPasswordHasher.PasswordHash;
                             item.Salt = resaultPasswordHasher.Salt;
 

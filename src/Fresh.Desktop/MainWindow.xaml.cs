@@ -1,4 +1,5 @@
-﻿using Fresh.DataAccess.Repositories;
+﻿using Fresh.DataAccess.Interfaces.Repositories;
+using Fresh.DataAccess.Repositories;
 using Fresh.Desktop.Windows;
 using Fresh.Domain.Entities;
 using Fresh.Service.Attributes;
@@ -78,9 +79,14 @@ namespace Fresh.Desktop
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+
+
+            if (txtPassword.Password == "a" && txtEmail.Text == "f")
+
             DirectorRegisterService service = new DirectorRegisterService();
             var response = await service.UserValidation(textEmail.Text, textPassword.Text);
             if (response.result)
+
             {
                 if (CurrentUserSingelton.Instance.IsAdmin == true) main.Show();
                 else cassa.Show();
