@@ -44,7 +44,7 @@
                     <TextBlock Text="Fresh Market" Style="{StaticResource normalText}" 
                                Opacity="0.8" Height="57"/>
                 </StackPanel>
-                <Button x:Name="EmailButton" Visibility="Hidden" Content="Email" Style="{StaticResource button}" Margin="0,319,0,0" RenderTransformOrigin="0.681,-0.775" HorizontalAlignment="Center" VerticalAlignment="Top" Width="152" Click="Button_Click_1" Height="40"  >
+                <Button x:Name="EmailButton" Visibility="Hidden" Content="Email" Style="{StaticResource button}" Margin="0,314,0,0" RenderTransformOrigin="0.681,-0.775" HorizontalAlignment="Center" VerticalAlignment="Top" Width="152" Click="Button_Click_1" Height="45"  >
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -54,6 +54,12 @@
                         </TransformGroup>
                     </Button.RenderTransform>
                 </Button>
+                <Label
+                    Content="Forgot Password ?" 
+                    Foreground="#E8C8F6"
+                    FontSize="14"
+                    Visibility="Hidden" x:Name="Errorlists" 
+                    Width="143" Margin="78,353,59,71"/>
             </Grid>
         </Border>
         <Border Background="#ffffff" Grid.Column="1" 
@@ -105,6 +111,10 @@
                         <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_TextChanged" Style="{StaticResource TextBox}" />
                     </Grid>
                 </Border>
+                <Label
+                    Content="Error! Email or Password" 
+                    Foreground="Red"
+                    Visibility="Hidden" x:Name="Errorlist" Width="143" Height="25"/>
                 <Button Content="Sign in"
                         Click="Button_Click" 
                         Style="{StaticResource mainbutton}"
@@ -112,7 +122,7 @@
             </StackPanel>
         </Border >
         <!--2 Oyna SmS junatish-->
-        
+
         <Border Grid.Column="1" 
                 RenderTransformOrigin="0.602,0.578" 
                 Visibility="Hidden" x:Name="EmailSMS">
@@ -130,13 +140,13 @@
                Margin="132,120,104,303"
                x:Name="error"
                Visibility="Hidden" Foreground="Red"/>
-        
+
         <Label Grid.Column="1"
                Content="Create New Password:" 
                Margin="63,160,199,267" FontWeight="Bold" 
                Visibility="Hidden"
                x:Name="CreateNew"/>
-        
+
         <Label Grid.Column="1"
                Content="Reenter new Password:" 
                Margin="63,229,199,198" FontWeight="Bold" 
@@ -182,7 +192,7 @@
                 <PasswordBox x:Name="txtUpdate" PasswordChanged="txtUpdate_TextChanged" Style="{StaticResource TextBox}" />
             </Grid>
         </Border>
-        
+
         <Border BorderThickness="1"
                         BorderBrush="#acb0af"
                         CornerRadius="8"

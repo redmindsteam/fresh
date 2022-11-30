@@ -1,6 +1,7 @@
 ﻿using Fresh.Desktop.Windows;
 using Fresh.Service.Attributes;
 using Fresh.Service.Director;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -80,8 +81,11 @@ namespace Fresh.Desktop
             }
             else
             {
-                MessageBox.Show($"{response.error}", "Try again", MessageBoxButton.OK, MessageBoxImage.Error);
+                Errorlist.Visibility=Visibility.Visible;
                 EmailButton.Visibility=Visibility.Visible;
+                Errorlists.Visibility=Visibility.Visible;
+                txtEmail.Clear();
+                txtPassword.Clear();
             }
         }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -90,7 +94,7 @@ namespace Fresh.Desktop
             txtEmail.Clear();
             txtPassword.Clear();
         }
-
+        //yondagi email button
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Border1.Visibility = Visibility.Hidden;
@@ -104,9 +108,11 @@ namespace Fresh.Desktop
             Cack_Password.Visibility = Visibility.Visible;
             UpdatePass.Visibility=Visibility.Visible;
             UpdatePass2.Visibility=Visibility.Visible;
+            Errorlist.Visibility=Visibility.Hidden;
+            Errorlists.Visibility = Visibility.Hidden;
 
         }
-
+        //upddate button password
         private void Button_email(object sender, RoutedEventArgs e)
         {
             Border1.Visibility = Visibility.Visible;
@@ -119,9 +125,14 @@ namespace Fresh.Desktop
             Cack_Password.Visibility = Visibility.Hidden;
             UpdatePass.Visibility = Visibility.Hidden;
             UpdatePass2.Visibility = Visibility.Hidden;
+            Errorlist.Visibility = Visibility.Hidden;
+            Errorlists.Visibility = Visibility.Hidden;
+            txtUpdate.Clear();
+            txtUpdate2.Clear();
+            txtChack.Clear();
         }
 
-
+         //EmailAddressAttribute yoki Phone numberga smsm yuboraydigan textBox
         private void textChack_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtChack.Focus();
@@ -129,16 +140,17 @@ namespace Fresh.Desktop
 
         private void txtChack_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtChack.Text) && txtChack.Text.Length > 6)
+            if (!string.IsNullOrEmpty(txtChack.Text) && txtChack.Text.Length > 0)
             {
                 textChack.Visibility = Visibility.Collapsed;
+              
             }
             else
             {
                 textChack.Visibility = Visibility.Visible;
             }
         }
-
+        //Password Update1 textBox
         private void txtUpdate_TextChanged(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtUpdate.Password) && txtUpdate.Password.Length > 0)
@@ -150,12 +162,12 @@ namespace Fresh.Desktop
               textUpdate.Visibility = Visibility.Visible;
             }
         }
-
         private void textUpdate_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtUpdate.Focus();
 
         }
+        //Password Update2 textBox
 
         private void textUpdate2_MouseDown(object sender, MouseButtonEventArgs e)
         {
