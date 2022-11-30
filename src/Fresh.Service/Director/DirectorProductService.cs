@@ -34,5 +34,11 @@ namespace Fresh.Service.Director
         {
             throw new NotImplementedException();
         }
+        public async Task<List<Product>> GetOrderedProductsByValue(int skip, int take)
+        {
+            DataAccess.Repositories.ProductRepository product = new DataAccess.Repositories.ProductRepository();
+            var productst = await product.GetAllAsync(skip, take);
+            return productst.OrderBy(x => x.Value).ToList();
+        }
     }
 }
