@@ -19,7 +19,7 @@
                Panel.ZIndex="1"
                MouseUp="Image_MouseUp"
                Style="{StaticResource imgClose}" Height="15" />
-      
+
 
 
 
@@ -44,7 +44,7 @@
                     <TextBlock Text="Fresh Market" Style="{StaticResource normalText}" 
                                Opacity="0.8" Height="57"/>
                 </StackPanel>
-                <Button Content="Email" Style="{StaticResource button}" Margin="0,392,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="108"  >
+                <Button x:Name="EmailButton" Visibility="Hidden" Content="Email" Style="{StaticResource button}" Margin="0,319,0,0" RenderTransformOrigin="0.681,-0.775" HorizontalAlignment="Center" VerticalAlignment="Top" Width="152" Click="Button_Click_1" Height="40"  >
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -58,7 +58,10 @@
         </Border>
         <Border Background="#ffffff" Grid.Column="1" 
                 CornerRadius="0 15 15 0" MouseDown="Border_MouseDown">
-            <StackPanel VerticalAlignment="Center">
+            <!--Uzgarish-->
+            <StackPanel VerticalAlignment="Center" 
+                        Visibility="Visible" x:Name="Border1">
+
                 <TextBlock Text="Sing in to App "
                            Margin="0 0 0 100"
                            Style="{StaticResource titleText}"
@@ -86,7 +89,9 @@
                 <Border BorderThickness="1"
                         BorderBrush="#acb0af"
                         CornerRadius="8"
-                        Margin="55 5 " >
+                        Margin="55 5 " 
+                        x:Name="PasswordBorder"
+                        Visibility="Visible">
 
                     <Grid Margin="7 9">
 
@@ -102,9 +107,103 @@
                 </Border>
                 <Button Content="Sign in"
                         Click="Button_Click" 
-                        Style="{StaticResource mainbutton}"/>
+                        Style="{StaticResource mainbutton}"
+                        Visibility="Visible" Height="53"/>
             </StackPanel>
+        </Border >
+        <!--2 Oyna SmS junatish-->
+        
+        <Border Grid.Column="1" 
+                RenderTransformOrigin="0.602,0.578" 
+                Visibility="Hidden" x:Name="EmailSMS">
+            <Button Content="Email"
+                        Click="Button_email" 
+                        Style="{StaticResource mainbutton}"
+                        Visibility="Visible" Margin="125,323,95,79" />
+        </Border>
+        <Label Grid.Column="1"
+               Content="Enter Confirmation code:" 
+               Margin="63,56,199,371" FontWeight="Bold" 
+               Visibility="Hidden" x:Name="LableCreate"/>
+        <Label Grid.Column="1"
+               Content="Error ! No More Than 6-dijits" 
+               Margin="132,120,104,303"
+               x:Name="error"
+               Visibility="Hidden" Foreground="Red"/>
+        
+        <Label Grid.Column="1"
+               Content="Create New Password:" 
+               Margin="63,160,199,267" FontWeight="Bold" 
+               Visibility="Hidden"
+               x:Name="CreateNew"/>
+        
+        <Label Grid.Column="1"
+               Content="Reenter new Password:" 
+               Margin="63,229,199,198" FontWeight="Bold" 
+               Visibility="Hidden"
+               x:Name="CreateNew2"/>
+
+        <Border BorderThickness="1"
+                        BorderBrush="#acb0af"
+                        CornerRadius="8"
+                        Margin="70,84,65,326"
+                        Grid.Column="1" Visibility="Hidden" x:Name="Cack_Password">
+
+            <Grid Margin="7 9">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Images/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30" Margin="-4,-5,4,-5" />
+
+                <TextBlock x:Name="textChack" Text="Create:" MouseDown="textChack_MouseDown" Style="{StaticResource textHint}"  />
+                <TextBox x:Name="txtChack"  TextChanged="txtChack_TextChanged" Style="{StaticResource TextBox}" />
+            </Grid>
+        </Border>
+
+        <Border BorderThickness="1"
+                        BorderBrush="#acb0af"
+                        CornerRadius="8"
+                        Margin="70,187,60,221" 
+                        x:Name="UpdatePass"
+                        Visibility="Hidden"
+                        Grid.Column="1">
+
+            <Grid Margin="7 7">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Images/ImagePassword.png" Height="30" />
+
+                <TextBlock x:Name="textUpdate" Text="Password" MouseDown="textUpdate_MouseDown" Style="{StaticResource textHint}"/>
+                <PasswordBox x:Name="txtUpdate" PasswordChanged="txtUpdate_TextChanged" Style="{StaticResource TextBox}" />
+            </Grid>
         </Border>
         
+        <Border BorderThickness="1"
+                        BorderBrush="#acb0af"
+                        CornerRadius="8"
+                        Margin="70,256,60,152" 
+                        x:Name="UpdatePass2"
+                        Visibility="Hidden"
+                        Grid.Column="1">
+
+            <Grid Margin="7 7">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Images/ImagePassword.png" Height="30" />
+
+                <TextBlock x:Name="textUpdate2" Text="Password" MouseDown="textUpdate2_MouseDown" Style="{StaticResource textHint}"/>
+                <PasswordBox x:Name="txtUpdate2" PasswordChanged="txtUpdate_TextChanged2" Style="{StaticResource TextBox}" />
+            </Grid>
+        </Border>
+
+
     </Grid>
 </Window>
