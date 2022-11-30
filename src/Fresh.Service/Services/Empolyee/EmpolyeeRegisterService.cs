@@ -1,16 +1,11 @@
 using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
-using Fresh.Service.Director;
 using Fresh.Service.Helpers;
 using Fresh.Service.Interfaces.EmpolyeeService;
 using Fresh.Service.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Fresh.Service.Services.Director;
 
-namespace Fresh.Service.Empolyee
+namespace Fresh.Service.Services.Empolyee
 {
     public class EmpolyeeRegisterService : IEmpolyeeRegisterService
     {

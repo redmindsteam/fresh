@@ -6,7 +6,7 @@ using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Security;
 using Fresh.Service.Tools;
 
-namespace Fresh.Service.Director
+namespace Fresh.Service.Services.Director
 {
     public class DirectorRegisterService : IDirectorRegisterService
     {
