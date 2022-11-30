@@ -7,7 +7,7 @@
       mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
 
-    <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+    <Border CornerRadius="5" Background="White">
         <Label Content="Home" Foreground="Black" FontSize="50" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Border>
 </Page>
