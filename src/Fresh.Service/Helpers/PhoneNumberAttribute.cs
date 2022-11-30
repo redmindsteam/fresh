@@ -13,7 +13,7 @@ namespace Fresh.Service.Helpers
         {
             try
             {
-                var resault = new Regex(@"^[+998]{4}[0-9]{9}$").IsMatch(phoneNumber);
+                var resault = new Regex(@"^([9]{2}[8][0-9]{9})$").IsMatch(phoneNumber);
                 if (resault != true)
                 {
                     return  false;
