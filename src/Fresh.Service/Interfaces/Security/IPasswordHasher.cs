@@ -2,8 +2,8 @@
 {
     public interface IPasswordHasher
     {
-        public Task<(string PasswordHash, string Salt)> Hash(string password);
+        public (string PasswordHash, string Salt) Hash(string password);
 
-        public Task<bool> Verify(string password, string salt, string passwordHash);
+        public bool Verify(string password, string salt, string passwordHash);
     }
 }

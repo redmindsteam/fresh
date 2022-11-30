@@ -2,6 +2,8 @@
 using Fresh.DataAccess.Repositories;
 using Fresh.Desktop.Windows;
 using Fresh.Domain.Entities;
+using Fresh.Service.Attributes;
+using Fresh.Service.Director;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -75,21 +77,24 @@ namespace Fresh.Desktop
                 this.DragMove();
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
+
             if (txtPassword.Password == "a" && txtEmail.Text == "f")
+
+            DirectorRegisterService service = new DirectorRegisterService();
+            var response = await service.UserValidation(textEmail.Text, textPassword.Text);
+            if (response.result)
+
             {
-                main.Show();
+                if (CurrentUserSingelton.Instance.IsAdmin == true) main.Show();
+                else cassa.Show();
                 this.Close();
             }
             else
-            {
-                MessageBox.Show("Create Password or Email");
-            }
+                MessageBox.Show($"{response.error}", "Try again", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
