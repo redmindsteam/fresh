@@ -10,7 +10,7 @@ namespace Fresh.Service.Security.ConnectionVerifiers
         private static readonly string API_KEY = "eb5d113070952587fe02971302cbb76a-110b25a5-5033-479f-a595-deafa591632f";
         private static readonly string SENDER = "InfoSMS";
 
-        public (int rand,string status) Verify(string number)
+        public (int rand, string status) Verify(string number)
         {
             Random rd = new Random();
             int rand_num = rd.Next(100000, 999999);

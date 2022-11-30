@@ -6,7 +6,7 @@ using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Security;
 using Fresh.Service.Tools;
 
-namespace Fresh.Service.Services.Director
+namespace Fresh.Service.Director
 {
     public class DirectorRegisterService : IDirectorRegisterService
     {
@@ -20,7 +20,7 @@ namespace Fresh.Service.Services.Director
                 PasswordAttribute passwordAttribute = new PasswordAttribute();
                 var resaultPasswordAtribute = await passwordAttribute.ValidationScore(item.PasswordHash);
 
-                PhoneNumberAttribute phoneNumberAttribute = new PhoneNumberAttribute(); 
+                PhoneNumberAttribute phoneNumberAttribute = new PhoneNumberAttribute();
                 var resaultPhoneNUmber = await phoneNumberAttribute.IsValid(item.PhoneNumber);
 
                 if (item.FullName != null)
@@ -50,15 +50,15 @@ namespace Fresh.Service.Services.Director
                         }
                     }
                     else
-                    { 
-                    return false;
+                    {
+                        return false;
                     }
                 }
                 else
-                { 
+                {
                     return false;
                 }
-                
+
             }
             catch
             {
@@ -98,7 +98,7 @@ namespace Fresh.Service.Services.Director
                 return null;
             }
             catch
-            { 
+            {
                 return null;
             }
         }
