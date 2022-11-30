@@ -13,10 +13,11 @@ namespace Fresh.Service.Tools
         public async static Task<(string number,bool status)> IsPhoneNumber(string trash)
         {
             var returner = string.Empty;
+            int tool = 0;
             foreach(var item in trash)
             {
-                if (new Regex(@"^([0 - 9])$").IsMatch(item.ToString()))
-                    returner += item;
+                if (int.TryParse($"{item}", out tool))
+                    returner += $"{tool}";
             }
             PhoneNumberAttribute phoneNumberAttribute = new PhoneNumberAttribute();
             if (await phoneNumberAttribute.IsValid(returner))
