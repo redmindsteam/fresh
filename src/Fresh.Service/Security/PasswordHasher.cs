@@ -1,5 +1,4 @@
 ﻿using Fresh.Service.Interfaces.Security;
-using Org.BouncyCastle.Crypto.Generators;
 
 namespace Fresh.Service.Security
 {
@@ -7,9 +6,9 @@ namespace Fresh.Service.Security
     {
         public async Task<(string PasswordHash, string Salt)> Hash(string password)
         {
-                string salt = await GenerateSalt();
-                string hash = BCrypt.Net.BCrypt.HashPassword(password + salt);
-                return (PasswordHash: hash, Salt: salt);
+            string salt = await GenerateSalt();
+            string hash = BCrypt.Net.BCrypt.HashPassword(password + salt);
+            return (PasswordHash: hash, Salt: salt);
         }
 
         public async Task<bool> Verify(string password, string salt, string passwordHash)

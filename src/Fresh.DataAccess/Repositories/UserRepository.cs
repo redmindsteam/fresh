@@ -1,14 +1,9 @@
 ﻿using Fresh.DataAccess.Interfaces.Repositories;
 using Fresh.Domain.Constants;
-using System.Data;
 using Fresh.Domain.Entities;
-using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Data.SQLite;
+using System.Text;
 
 namespace Fresh.DataAccess.Repositories
 {
@@ -16,7 +11,7 @@ namespace Fresh.DataAccess.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly SQLiteConnection _con = new SQLiteConnection(DbConstants.CONNECTION_STRING);
-       
+
         public async Task<bool> CreateAsync(User item)
         {
             try
@@ -45,9 +40,9 @@ namespace Fresh.DataAccess.Repositories
             {
                 return false;
             }
-            finally 
-            { 
-                _con.Close(); 
+            finally
+            {
+                _con.Close();
             }
         }
 
@@ -70,9 +65,9 @@ namespace Fresh.DataAccess.Repositories
 
                 return false;
             }
-            finally 
-            { 
-                _con.Close(); 
+            finally
+            {
+                _con.Close();
             }
         }
 
@@ -150,9 +145,9 @@ namespace Fresh.DataAccess.Repositories
 
                 return null!;
             }
-            finally 
-            { 
-                _con.Close(); 
+            finally
+            {
+                _con.Close();
             }
         }
 
@@ -185,9 +180,9 @@ namespace Fresh.DataAccess.Repositories
 
                 return null!;
             }
-            finally 
-            { 
-                _con.Close(); 
+            finally
+            {
+                _con.Close();
             }
         }
 
@@ -197,10 +192,10 @@ namespace Fresh.DataAccess.Repositories
             {
                 await _con.OpenAsync();
                 string query = $"update Users set " +
-                    "FullName = $FullName, Email = $Email,"  +
+                    "FullName = $FullName, Email = $Email," +
                     "IsAdmin = $IsAdmin" +
                     " PasswordHash = $PasswordHash, Salt = $Salt, PhoneNumber = $PhoneNumber," +
-                    "PassportSeria = $PassportSeria"+
+                    "PassportSeria = $PassportSeria" +
                     $"Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
                 {
@@ -227,9 +222,9 @@ namespace Fresh.DataAccess.Repositories
 
                 return false;
             }
-            finally 
-            { 
-                _con.Close(); 
+            finally
+            {
+                _con.Close();
             }
         }
     }

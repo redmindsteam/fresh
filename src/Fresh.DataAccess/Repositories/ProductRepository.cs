@@ -1,13 +1,9 @@
 ﻿using Fresh.DataAccess.Interfaces.Repositories;
 using Fresh.Domain.Constants;
 using Fresh.Domain.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Fresh.DataAccess.Repositories

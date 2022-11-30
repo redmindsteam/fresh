@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace Fresh.Service.Helpers
 {
@@ -16,7 +11,7 @@ namespace Fresh.Service.Helpers
                 var resault = new Regex(@"^[+998]{4}[0-9]{9}$").IsMatch(phoneNumber);
                 if (resault != true)
                 {
-                    return  false;
+                    return false;
                 }
                 return true;
             }
