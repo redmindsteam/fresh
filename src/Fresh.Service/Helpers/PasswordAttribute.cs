@@ -1,10 +1,8 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Fresh.Service.Helpers
+﻿namespace Fresh.Service.Helpers
 {
     public class PasswordAttribute
     {
-        public async Task<bool> ValidationScore( string password)
+        public async Task<bool> ValidationScore(string password)
         {
             try
             {
