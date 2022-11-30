@@ -1,23 +1,54 @@
-﻿using Fresh.Domain.Entities;
+﻿using Fresh.DataAccess.Repositories;
+using Fresh.Domain.Entities;
 using Fresh.Service.Interfaces.DirectorService;
 
 namespace Fresh.Service.Director
 {
     public class DirectorProductLetterService : IDirectorProductLetterService
     {
-        public Task<bool> CreateAsync(ProductLetter item)
+        ProductLetterRepository productLetterRepository = new ProductLetterRepository();
+        public async Task<bool> CreateAsync(ProductLetter item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var resault = await productLetterRepository.CreateAsync(item);
+                if (resault != false)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var resault = await productLetterRepository.DeleteAsync(id);
+            if (resault != false)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public Task<IList<ProductLetter>> GetAllAsync(int skip, int take)
+        public async Task<IList<ProductLetter>> GetAllAsync(int skip, int take)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var resault = await productLetterRepository.GetAllAsync(skip, take);
+                if (resault != null)
+                { 
+                    return resault;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public Task<ProductLetter> GetByIdAsync(int id)
@@ -25,9 +56,21 @@ namespace Fresh.Service.Director
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(int id, ProductLetter entity)
+        public async Task<bool> UpdateAsync(int id, ProductLetter entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var resault = await productLetterRepository.UpdateAsync(id, entity);
+                if (resault != false)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
