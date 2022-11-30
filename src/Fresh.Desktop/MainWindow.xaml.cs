@@ -27,7 +27,7 @@ namespace Fresh.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-     
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -97,7 +97,7 @@ namespace Fresh.Desktop
             else
             {
                 MessageBox.Show($"{response.error}", "Try again", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                EmailButton.Visibility=Visibility.Visible;
             }
         }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -105,6 +105,47 @@ namespace Fresh.Desktop
             Application.Current.Shutdown();
             txtEmail.Clear();
             txtPassword.Clear();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Border1.Visibility = Visibility.Hidden;
+            EmailSMS.Visibility = Visibility.Visible;
+            LableCreate.Visibility=Visibility.Visible;
+            UpdatePass.Visibility = Visibility.Visible;
+            EmailButton.Visibility = Visibility.Hidden;
+
+        }
+
+        private void Button_email(object sender, RoutedEventArgs e)
+        {
+            Border1.Visibility = Visibility.Visible;
+            EmailSMS.Visibility = Visibility.Hidden;
+            LableCreate.Visibility = Visibility.Hidden;
+            UpdatePass.Visibility = Visibility.Hidden;
+            EmailButton.Visibility = Visibility.Hidden;
+        }
+
+
+        private void textChack_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtChack.Focus();
+        }
+
+        private void txtChack_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtChack.Text) && txtChack.Text.Length > 0)
+            {
+                textChack.Visibility = Visibility.Collapsed;
+                if(txtChack.Text.Length >= 6)
+                {
+                    textUpdate.Text=Title + txtChack.Text;
+                }
+            }
+            else
+            {
+                textPassword.Visibility = Visibility.Visible;
+            }
         }
     }
 }
