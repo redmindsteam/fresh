@@ -60,7 +60,7 @@
                 CornerRadius="0 15 15 0" MouseDown="Border_MouseDown">
             <!--Uzgarish-->
             <StackPanel VerticalAlignment="Center" 
-                        Visibility="Hidden" x:Name="Border1">
+                        Visibility="Visible" x:Name="Border1">
 
                 <TextBlock Text="Sing in to App "
                            Margin="0 0 0 100"
@@ -134,12 +134,14 @@
         <Label Grid.Column="1"
                Content="Create New Password:" 
                Margin="63,160,199,267" FontWeight="Bold" 
-               Visibility="Hidden"/>
+               Visibility="Hidden"
+               x:Name="CreateNew"/>
         
         <Label Grid.Column="1"
                Content="Reenter new Password:" 
                Margin="63,229,199,198" FontWeight="Bold" 
-               Visibility="Hidden"/>
+               Visibility="Hidden"
+               x:Name="CreateNew2"/>
 
         <Border BorderThickness="1"
                         BorderBrush="#acb0af"

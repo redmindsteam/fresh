@@ -1,24 +1,9 @@
-﻿using Fresh.DataAccess.Interfaces.Repositories;
-using Fresh.DataAccess.Repositories;
-using Fresh.Desktop.Windows;
-using Fresh.Domain.Entities;
+﻿using Fresh.Desktop.Windows;
 using Fresh.Service.Attributes;
 using Fresh.Service.Director;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Fresh.Desktop
 {
@@ -27,11 +12,10 @@ namespace Fresh.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-       
         public MainWindow()
         {
             InitializeComponent();
-           
+
         }
 
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -114,6 +98,12 @@ namespace Fresh.Desktop
             LableCreate.Visibility=Visibility.Visible;
             UpdatePass.Visibility = Visibility.Visible;
             EmailButton.Visibility = Visibility.Hidden;
+            LableCreate.Visibility = Visibility.Visible;
+            CreateNew.Visibility=Visibility.Visible;
+            CreateNew2.Visibility=Visibility.Visible;
+            Cack_Password.Visibility = Visibility.Visible;
+            UpdatePass.Visibility=Visibility.Visible;
+            UpdatePass2.Visibility=Visibility.Visible;
 
         }
 
@@ -123,7 +113,12 @@ namespace Fresh.Desktop
             EmailSMS.Visibility = Visibility.Hidden;
             LableCreate.Visibility = Visibility.Hidden;
             UpdatePass.Visibility = Visibility.Hidden;
-            EmailButton.Visibility = Visibility.Hidden;
+            LableCreate.Visibility = Visibility.Hidden;
+            CreateNew.Visibility = Visibility.Hidden;
+            CreateNew2.Visibility = Visibility.Hidden;
+            Cack_Password.Visibility = Visibility.Hidden;
+            UpdatePass.Visibility = Visibility.Hidden;
+            UpdatePass2.Visibility = Visibility.Hidden;
         }
 
 
@@ -134,17 +129,48 @@ namespace Fresh.Desktop
 
         private void txtChack_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtChack.Text) && txtChack.Text.Length > 0)
+            if (!string.IsNullOrEmpty(txtChack.Text) && txtChack.Text.Length > 6)
             {
                 textChack.Visibility = Visibility.Collapsed;
-                if(txtChack.Text.Length >= 6)
-                {
-                    textUpdate.Text=Title + txtChack.Text;
-                }
             }
             else
             {
-                textPassword.Visibility = Visibility.Visible;
+                textChack.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtUpdate_TextChanged(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtUpdate.Password) && txtUpdate.Password.Length > 0)
+            {
+                textUpdate.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+              textUpdate.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void textUpdate_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtUpdate.Focus();
+
+        }
+
+        private void textUpdate2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtUpdate2.Focus();
+        }
+
+        private void txtUpdate_TextChanged2(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtUpdate2.Password) && txtUpdate2.Password.Length > 0)
+            {
+                textUpdate2.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textUpdate2.Visibility = Visibility.Visible;
             }
         }
     }

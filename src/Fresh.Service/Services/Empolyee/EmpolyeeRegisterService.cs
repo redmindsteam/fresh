@@ -4,13 +4,8 @@ using Fresh.Service.Director;
 using Fresh.Service.Helpers;
 using Fresh.Service.Interfaces.EmpolyeeService;
 using Fresh.Service.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fresh.Service.Empolyee
+namespace Fresh.Service.Services.Empolyee
 {
     public class EmpolyeeRegisterService : IEmpolyeeRegisterService
     {
@@ -134,7 +129,7 @@ namespace Fresh.Service.Empolyee
                         if (resaultPasswordHasher.PasswordHash != null && resaultPasswordHasher.Salt != null)
                         {
                             UserRepository userRepository = new UserRepository();
-                            item.IsAdmin =0;
+                            item.IsAdmin = 0;
                             item.PasswordHash = resaultPasswordHasher.PasswordHash;
                             item.Salt = resaultPasswordHasher.Salt;
 

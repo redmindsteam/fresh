@@ -10,7 +10,7 @@ namespace Fresh.Service.Director
         public async Task<bool> CreateAsync(Category item)
         {
             try
-            { 
+            {
                 var resault = await categoryRepository.CreateAsync(item);
                 if (resault != false)
                 {
@@ -19,8 +19,8 @@ namespace Fresh.Service.Director
                 return false;
             }
             catch
-            { 
-                return false;   
+            {
+                return false;
             }
         }
 
@@ -37,7 +37,7 @@ namespace Fresh.Service.Director
             }
             catch
             {
-                return false;    
+                return false;
             }
         }
 
@@ -47,7 +47,7 @@ namespace Fresh.Service.Director
             {
                 var resault = await categoryRepository.GetAllAsync(skip, take);
                 if (resault != null)
-                { 
+                {
                     return resault;
                 }
                 return null;
@@ -69,13 +69,13 @@ namespace Fresh.Service.Director
             {
                 var resault = await categoryRepository.UpdateAsync(id, entity);
                 if (resault == true)
-                { 
+                {
                     return true;
                 }
                 return false;
             }
             catch
-            { 
+            {
                 return false;
             }
         }
