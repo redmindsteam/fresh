@@ -2,7 +2,7 @@
 using Fresh.Domain.Entities;
 using Fresh.Service.Interfaces.DirectorService;
 
-namespace Fresh.Service.Director
+namespace Fresh.Service.Services.Director
 {
     public class DirectorCategoryService : IDirectorCategoryService
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fresh.Service.Director
+namespace Fresh.Service.Services.Director
 {
     public class DirectorFinanceService : IDirectorFinanceService
     {

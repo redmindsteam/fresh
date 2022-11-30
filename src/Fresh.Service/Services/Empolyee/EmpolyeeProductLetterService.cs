@@ -2,7 +2,7 @@
 using Fresh.Service.Interfaces.EmpolyeeService;
 
 
-namespace Fresh.Service.Empolyee
+namespace Fresh.Service.Services.Empolyee
 {
     public class EmpolyeeProductLetterService : IEmpolyeeProductLetterService
     {
