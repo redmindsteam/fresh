@@ -27,13 +27,11 @@ namespace Fresh.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        Cassa cassa;
-        Main main;
+     
         public MainWindow()
         {
             InitializeComponent();
-            cassa = new Cassa();
-            main=new Main();
+           
         }
 
         private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -83,13 +81,15 @@ namespace Fresh.Desktop
             var response = await service.UserValidation(txtEmail.Text, txtPassword.Password);
             if (response.result)
             {
-                if (CurrentUserSingelton.Instance.IsAdmin == 1)
+                if (CurrentUserSingelton.Instance.IsAdmin == 0)
                 {
+                    Main main = new Main();
                     main.Show();
                     this.Close();
                 }
                 else
                 {
+                    Cassa cassa = new Cassa();
                     cassa.Show();
                     this.Close();
                 }
