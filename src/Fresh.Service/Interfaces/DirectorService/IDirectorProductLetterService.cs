@@ -2,7 +2,7 @@
 
 namespace Fresh.Service.Interfaces.DirectorService
 {
-    public interface IDirectorProductLetterService : IGenericService<ProductLetter>
+    public interface IDirectorProductLetterService
     {
     }
 }
