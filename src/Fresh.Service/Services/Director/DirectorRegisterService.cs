@@ -162,7 +162,7 @@ namespace Fresh.Service.Director
                 return false;
             }
         }
-        public async Task<(string error, bool result)> UserValidation(string identifier, string password)
+        public async Task<string> UserValidation(string identifier, string password)
         {
             try
             {
@@ -179,17 +179,17 @@ namespace Fresh.Service.Director
                     if (hasher.Verify(password, user.Salt, user.PasswordHash))
                     {
                         CurrentUserSingelton.Instance = user;
-                        return (string.Empty, true);
+                        return string.Empty;
                     }
                     else
-                        return ("Incorrect password", false);
+                        return "Incorrect password";
                 }
                 else
-                    return ("User not found", false);
+                    return "User not found";
             }
             catch
             {
-                return ("Something went wrong", false);
+                return "Something went wrong";
             }
         }
     }
