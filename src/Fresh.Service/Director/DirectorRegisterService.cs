@@ -169,11 +169,10 @@ namespace Fresh.Service.Director
                 UserRepository userRepository = new UserRepository();
                 PasswordHasher hasher = new PasswordHasher();
                 User user = new User();
-                //var isphone = await ToolBox.IsPhoneNumber(identifier);
-                //if (isphone.status)
-                //    user = await userRepository.GetByPhoneNumber(isphone.number);
-                //else
-
+                var isphone = await ToolBox.IsPhoneNumber(identifier);
+                if (isphone.status)
+                    user = await userRepository.GetByPhoneNumber(isphone.number);
+                else
                     user = await userRepository.GetByEmail(identifier);
                 if (user != null)
                 {
@@ -190,7 +189,7 @@ namespace Fresh.Service.Director
             }
             catch
             {
-                return ("Something went error", false);
+                return ("Something went wrong", false);
             }
         }
     }
