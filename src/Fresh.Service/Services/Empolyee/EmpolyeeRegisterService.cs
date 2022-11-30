@@ -64,6 +64,11 @@ namespace Fresh.Service.Services.Empolyee
             }
         }
 
+        public Task<bool> CreateAsync(ProductLetter item)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> DeleteAsync(int id)
         {
             try
@@ -158,6 +163,21 @@ namespace Fresh.Service.Services.Empolyee
             {
                 return false;
             }
+        }
+
+        public Task<bool> UpdateAsync(int id, ProductLetter entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IList<ProductLetter>> IEmpolyeeRegisterService.GetAllAsync(int skip, int take)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ProductLetter> IEmpolyeeRegisterService.GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

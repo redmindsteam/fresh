@@ -1,8 +1,15 @@
-﻿using Fresh.Domain.Entities;
+﻿using Fresh.DataAccess.Repositories;
+using Fresh.Domain.Entities;
 
 namespace Fresh.Service.Interfaces.DirectorService
 {
-    public interface IDirectorCategoryService : IGenericService<Category>
+    public interface IDirectorCategoryService 
     {
+        public Task<bool> CreateAsync(Category item);
+        public Task<bool> DeleteAsync(int id);
+        public Task<IList<Category>> GetAllAsync(int skip, int take);
+        public Task<Category> GetByIdAsync(int id);
+        public Task<bool> UpdateAsync(int id, Category item);
+        public Task<List<Category>> GetOrderedProductsByValue(int skip, int take);
     }
 }

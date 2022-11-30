@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Empolyee\EmpolyeeRegisterService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Fresh.DataAccess\Fresh.DataAccess.csproj" />
   </ItemGroup>
 

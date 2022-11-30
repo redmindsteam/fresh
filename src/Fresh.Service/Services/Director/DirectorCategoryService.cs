@@ -63,6 +63,11 @@ namespace Fresh.Service.Director
             throw new NotImplementedException();
         }
 
+        public Task<List<Category>> GetOrderedProductsByValue(int skip, int take)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> UpdateAsync(int id, Category entity)
         {
             try
