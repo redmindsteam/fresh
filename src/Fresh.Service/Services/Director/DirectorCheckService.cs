@@ -5,29 +5,39 @@ namespace Fresh.Service.Director
 {
     public class DirectorCheckService : IDirectorCheckService
     {
-        public Task<bool> CreateAsync(Check item)
+        DirectorCheckService directorCheckService = new DirectorCheckService();
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var resault = await directorCheckService.DeleteAsync(id);
+                if (resault != false)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<IList<Check>> GetAllAsync(int skip, int take)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<Check>> GetAllAsync(int skip, int take)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Check> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateAsync(int id, Check entity)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                var resault = await directorCheckService.GetAllAsync(skip, take);
+                if (resault != null)
+                {
+                    return resault;    
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
