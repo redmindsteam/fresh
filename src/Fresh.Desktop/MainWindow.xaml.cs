@@ -95,7 +95,10 @@ namespace Fresh.Desktop
                 }
             }
             else
+            {
                 MessageBox.Show($"{response.error}", "Try again", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
         }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
