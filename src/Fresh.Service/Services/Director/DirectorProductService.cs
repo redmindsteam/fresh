@@ -1,38 +1,91 @@
-﻿using Fresh.Domain.Entities;
+﻿using Fresh.DataAccess.Repositories;
+using Fresh.Domain.Entities;
 using Fresh.Service.Interfaces.DirectorService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fresh.Service.Services.Director
+namespace Fresh.Service.Director
 {
     public class DirectorProductService : IDirectorProductService
     {
-        public Task<bool> CreateAsync(Product item)
+        ProductRepository productRepository = new ProductRepository();
+        public async Task<bool> CreateAsync(Product item)
+        {
+            try
+            {
+                if (item.Price != null)
+                {
+                    var result = await productRepository.CreateAsync(item);
+                    if (result != true)
+                    {
+                        return false;    
+                    }
+                    return true;
+                }
+                return false;
+            }
+            catch
+            { 
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            try
+            {
+                var resauklt = await productRepository.DeleteAsync(id);
+                if (resauklt != false)
+                { 
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<IList<Product>> GetAllAsync(int skip, int take)
+        {
+            try
+            {
+                var resault = await productRepository.GetAllAsync(skip, take);
+                if (resault != null)
+                {
+                    return resault;    
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public  async Task<Product> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> UpdateAsync(int id, Product item)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<Product>> GetAllAsync(int skip, int take)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Product> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateAsync(int id, Product entity)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                if (item.Price != null)
+                {
+                    var result = await productRepository.UpdateAsync(id, item);
+                    if (result != true)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public async Task<List<Product>> GetOrderedProductsByValue(int skip, int take)
         {

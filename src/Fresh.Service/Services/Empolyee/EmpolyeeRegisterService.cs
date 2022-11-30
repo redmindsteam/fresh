@@ -3,7 +3,6 @@ using Fresh.Domain.Entities;
 using Fresh.Service.Helpers;
 using Fresh.Service.Interfaces.EmpolyeeService;
 using Fresh.Service.Security;
-using Fresh.Service.Services.Director;
 
 namespace Fresh.Service.Services.Empolyee
 {
@@ -129,7 +128,7 @@ namespace Fresh.Service.Services.Empolyee
                         if (resaultPasswordHasher.PasswordHash != null && resaultPasswordHasher.Salt != null)
                         {
                             UserRepository userRepository = new UserRepository();
-                            item.IsAdmin =0;
+                            item.IsAdmin = 0;
                             item.PasswordHash = resaultPasswordHasher.PasswordHash;
                             item.Salt = resaultPasswordHasher.Salt;
 
