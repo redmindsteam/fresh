@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace Fresh.Service.Interfaces.DirectorService
 {
-    public interface IDirectorRegisterService : IGenericService<User>
+    public interface IDirectorRegisterService 
     {
         public Task<(string error, bool result)> UserValidation(string identifier, string password);
+        Task<bool> CreateAsync(User item);
+        Task<bool> UpdateAsync(int id, User entity);
+        Task<bool> DeleteAsync(int id);
+        Task<User> GetByIdAsync(int id);
+        Task<IList<User>> GetAllAsync(int skip, int take);
     }
 }
