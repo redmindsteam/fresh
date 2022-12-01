@@ -126,29 +126,29 @@
         <Border Grid.Column="1" 
                 RenderTransformOrigin="0.602,0.578" 
                 Visibility="Hidden" x:Name="EmailSMS">
-            <Button Content="Email"
+            <Button Content="Save changes"
                         Click="Button_email" 
                         Style="{StaticResource mainbutton}"
                         Visibility="Visible" Margin="125,323,95,79" />
         </Border>
         <Label Grid.Column="1"
-               Content="Enter Confirmation code:" 
+               Content="1.Enter Confirmation code:" 
                Margin="63,56,199,371" FontWeight="Bold" 
                Visibility="Hidden" x:Name="LableCreate"/>
         <Label Grid.Column="1"
-               Content="Error ! No More Than 6-dijits" 
+               Content="Error ! No More Than 6-digits" 
                Margin="132,120,104,303"
                x:Name="error"
                Visibility="Hidden" Foreground="Red"/>
 
         <Label Grid.Column="1"
-               Content="Create New Password:" 
+               Content="2.Create New Password:" 
                Margin="63,160,199,267" FontWeight="Bold" 
                Visibility="Hidden"
                x:Name="CreateNew"/>
 
         <Label Grid.Column="1"
-               Content="Reenter new Password:" 
+               Content="3.Verify new Password:" 
                Margin="63,229,199,198" FontWeight="Bold" 
                Visibility="Hidden"
                x:Name="CreateNew2"/>
@@ -189,7 +189,7 @@
                 <Image Source="/Images/ImagePassword.png" Height="30" />
 
                 <TextBlock x:Name="textUpdate" Text="Password" MouseDown="textUpdate_MouseDown" Style="{StaticResource textHint}"/>
-                <PasswordBox x:Name="txtUpdate" PasswordChanged="txtUpdate_TextChanged" Style="{StaticResource TextBox}" />
+                <PasswordBox x:Name="txtUpdate" PasswordChanged="txtUpdate_TextChanged" Style="{StaticResource TextBox}" Visibility="Hidden" />
             </Grid>
         </Border>
 
@@ -210,7 +210,7 @@
                 <Image Source="/Images/ImagePassword.png" Height="30" />
 
                 <TextBlock x:Name="textUpdate2" Text="Password" MouseDown="textUpdate2_MouseDown" Style="{StaticResource textHint}"/>
-                <PasswordBox x:Name="txtUpdate2" PasswordChanged="txtUpdate_TextChanged2" Style="{StaticResource TextBox}" />
+                <PasswordBox x:Name="txtUpdate2" PasswordChanged="txtUpdate_TextChanged2" Style="{StaticResource TextBox}" Visibility="Hidden" />
             </Grid>
         </Border>
 

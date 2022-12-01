@@ -4,6 +4,7 @@ using Fresh.Service.Attributes;
 using Fresh.Service.Helpers;
 using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Security;
+using Fresh.Service.Security.ConnectionVerifiers;
 using Fresh.Service.Tools;
 
 namespace Fresh.Service.Director
@@ -107,7 +108,6 @@ namespace Fresh.Service.Director
         {
             throw new NotImplementedException();
         }
-
         public async Task<bool> UpdateAsync(int id, User item)
         {
             try
@@ -162,7 +162,7 @@ namespace Fresh.Service.Director
                 return false;
             }
         }
-        public async Task<string> UserValidation(string identifier, string password)
+        public async Task<string> UserValidationAsync(string identifier, string password)
         {
             try
             {
@@ -171,9 +171,9 @@ namespace Fresh.Service.Director
                 User user = new User();
                 var isphone = await ToolBox.IsPhoneNumber(identifier);
                 if (isphone.status)
-                    user = await userRepository.GetByPhoneNumber(isphone.number);
+                    user = await userRepository.GetByPhoneNumberAsync(isphone.number);
                 else
-                    user = await userRepository.GetByEmail(identifier);
+                    user = await userRepository.GetByEmailAsync(identifier);
                 if (user != null)
                 {
                     if (hasher.Verify(password, user.Salt, user.PasswordHash))
@@ -190,6 +190,50 @@ namespace Fresh.Service.Director
             catch
             {
                 return "Something went wrong";
+            }
+        }
+        public async Task<string> ConfirmationProvider(string identifier)
+        {
+            var IsphoneResponse = await ToolBox.IsPhoneNumber(identifier);
+            if (IsphoneResponse.status)
+                return GSMPhoneVerificator.SendSingleMessage("+"+IsphoneResponse.number);
+            else
+                return EmailVerificator.VerifMail(identifier).rand;
+        }
+
+        public async Task<bool> UpdatePassHashByEmailAsync(string email,string password)
+        {
+            UserRepository userRepository = new UserRepository();
+            PasswordHasher hasher = new PasswordHasher();
+            var user = await userRepository.GetByEmailAsync(email);
+            var security_assets = hasher.Hash(password);
+            if(user.PasswordHash != security_assets.PasswordHash)
+            {
+                user.PasswordHash = security_assets.PasswordHash;
+                user.Salt = security_assets.Salt;
+                return await userRepository.UpdateAsync(user.Id, user);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdatePassHashByPhoneAsync(string phoneNum, string password)
+        {
+            UserRepository userRepository = new UserRepository();
+            PasswordHasher hasher = new PasswordHasher();
+            var user = await userRepository.GetByPhoneNumberAsync(phoneNum);
+            var security_assets = hasher.Hash(password);
+            if (user.PasswordHash != security_assets.PasswordHash)
+            {
+                user.PasswordHash = security_assets.PasswordHash;
+                user.Salt = security_assets.Salt;
+                return await userRepository.UpdateAsync(user.Id, user);
+            }
+            else
+            {
+                return false;
             }
         }
     }
