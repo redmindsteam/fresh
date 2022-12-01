@@ -22,8 +22,9 @@
                 <TextBox x:Name="textbox8" Visibility="Visible" Width="400" Height="25" Margin="5 5 5 5"/>
                 <TextBox x:Name="textbox9" Visibility="Visible" Width="400" Height="25" Margin="5 5 5 5"/>
                 <TextBox x:Name="textbox10" Visibility="Visible" Width="400" Height="25" Margin="5 5 5 5"/>
-                <TextBox x:Name="textbox11" Visibility="Visible" Width="150" Height="140" Margin="60 85 85 10"/>
-
+                <TextBox x:Name="textbox11" Visibility="Visible" Width="200" Height="35" Margin="200 20 5 5"/>
+                <TextBox x:Name="textbox12" Visibility="Visible" Width="150" Height="140" Margin="60 25 85 10"/>
+                
 
             </StackPanel>
         </Border>
