@@ -108,7 +108,7 @@ namespace Fresh.DataAccess.Repositories
             finally { _con.Close(); }
         }
 
-        public async Task<User> GetByEmail(string email)
+        public async Task<User> GetByEmailAsync(string email)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<User> GetByFullName(string fullname)
+        public async Task<User> GetByFullNameAsync(string fullname)
         {
             try
             {
@@ -229,7 +229,7 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<User> GetByPhoneNumber(string phonenumber)
+        public async Task<User> GetByPhoneNumberAsync(string phonenumber)
         {
             try
             {

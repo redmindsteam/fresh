@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Fresh.Service.Security.ConnectionVerifiers
 {
-    static class GSMPhoneVerificator
+    public static class GSMPhoneVerificator
     {
         private static readonly string Server = "http://my.zitasms.com";
         private static readonly string Key = "f44f20cc7cc898cf7592eb6fab631d725aa28edd";
@@ -17,7 +17,7 @@ namespace Fresh.Service.Security.ConnectionVerifiers
             USE_ALL_DEVICES = 1,
             USE_ALL_SIMS = 2
         }
-        public static int SendSingleMessage(string number, string device = "0",
+        public static string SendSingleMessage(string number, string device = "0",
             long? schedule = null, bool isMMS = false, string attachments = null, bool prioritize = false)
         {
             int randomInt = new Random().Next(100000, 999999);
@@ -35,11 +35,11 @@ namespace Fresh.Service.Security.ConnectionVerifiers
             };
 
             var gateway = GetObjects(GetResponse($"{Server}/services/send.php", values)["messages"])[0];
-            return randomInt;
+            return $"{randomInt}";
         }
 
 
-        private static Dictionary<string, object>[] GetObjects(JToken messagesJToken)
+        public static Dictionary<string, object>[] GetObjects(JToken messagesJToken)
         {
             JArray jArray = (JArray)messagesJToken;
             var messages = new Dictionary<string, object>[jArray.Count];
@@ -51,7 +51,7 @@ namespace Fresh.Service.Security.ConnectionVerifiers
             return messages;
         }
 
-        private static JToken GetResponse(string url, Dictionary<string, object> postData)
+        public static JToken GetResponse(string url, Dictionary<string, object> postData)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
             var dataString = CreateDataString(postData);
@@ -100,7 +100,7 @@ namespace Fresh.Service.Security.ConnectionVerifiers
             throw new WebException($"HTTP Error : {(int)response.StatusCode} {response.StatusCode}");
         }
 
-        private static string CreateDataString(Dictionary<string, object> data)
+        public static string CreateDataString(Dictionary<string, object> data)
         {
             StringBuilder dataString = new StringBuilder();
             bool first = true;
