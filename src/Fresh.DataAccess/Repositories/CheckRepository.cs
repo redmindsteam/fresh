@@ -70,14 +70,14 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<IList<Check>> GetAllAsync(int skip, int take)
+        public async Task<IList<Check>> GetAllLimit()
         {
             try
             {
 
                 var checks = new List<Check>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM Checks  lIMIT {take} OFFSET {skip};";
+                string query = $"SELECT * FROM Checks";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
