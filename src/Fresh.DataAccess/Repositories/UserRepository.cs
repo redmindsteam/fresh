@@ -42,7 +42,7 @@ namespace Fresh.DataAccess.Repositories
             }
             finally
             {
-                _con.Close();
+                await _con.CloseAsync();
             }
         }
 
@@ -67,7 +67,7 @@ namespace Fresh.DataAccess.Repositories
             }
             finally
             {
-                _con.Close();
+                await _con.CloseAsync();
             }
         }
 
@@ -105,7 +105,10 @@ namespace Fresh.DataAccess.Repositories
 
                 return new List<User>();
             }
-            finally { _con.Close(); }
+            finally 
+            {
+                await _con.CloseAsync();
+            }
         }
 
         public async Task<User> GetByEmailAsync(string email)
@@ -147,7 +150,7 @@ namespace Fresh.DataAccess.Repositories
             }
             finally
             {
-                _con.Close();
+                await _con.CloseAsync();
             }
         }
 
@@ -190,7 +193,7 @@ namespace Fresh.DataAccess.Repositories
             }
             finally
             {
-                _con.Close();
+                await _con.CloseAsync();
             }
         }
 
@@ -225,7 +228,7 @@ namespace Fresh.DataAccess.Repositories
             }
             finally
             {
-                _con.Close();
+                await _con.CloseAsync();
             }
         }
 
@@ -268,7 +271,7 @@ namespace Fresh.DataAccess.Repositories
             }
             finally
             {
-                _con.Close();
+                await _con.CloseAsync();
             }
         }
 
@@ -278,11 +281,11 @@ namespace Fresh.DataAccess.Repositories
             {
                 await _con.OpenAsync();
                 string query = $"update Users set " +
-                    "FullName = $FullName, Email = $Email," +
-                    "IsAdmin = $IsAdmin" +
+                    " FullName = $FullName, Email = $Email," +
+                    " IsAdmin = $IsAdmin," +
                     " PasswordHash = $PasswordHash, Salt = $Salt, PhoneNumber = $PhoneNumber," +
-                    "PassportSeria = $PassportSeria" +
-                    $"Where Id = {id}";
+                    " PassportSeria = $PassportSeria" +
+                    $" Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
                 {
                     Parameters =
@@ -310,7 +313,7 @@ namespace Fresh.DataAccess.Repositories
             }
             finally
             {
-                _con.Close();
+                await _con.CloseAsync();
             }
         }
     }
