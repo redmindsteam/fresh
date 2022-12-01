@@ -1,10 +1,14 @@
-﻿using Fresh.Desktop.Windows;
+﻿using Fresh.DataAccess.Repositories;
+using Fresh.Desktop.Windows;
+using Fresh.Domain.Entities;
 using Fresh.Service.Attributes;
 using Fresh.Service.Director;
+using Fresh.Service.Tools;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Fresh.Desktop
 {
@@ -63,10 +67,14 @@ namespace Fresh.Desktop
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             DirectorRegisterService service = new DirectorRegisterService();
-            var response = await service.UserValidation(txtEmail.Text, txtPassword.Password);
-            if (response.result)
+            var response = await service.UserValidationAsync(txtEmail.Text, txtPassword.Password);
+            Errorlist.Content = response;
+            Errorlist.Visibility = Visibility.Visible;
+            EmailButton.Visibility = Visibility.Hidden;
+            Errorlists.Visibility = Visibility.Hidden;
+            if (response == string.Empty)
             {
-                if (CurrentUserSingelton.Instance.IsAdmin == 0)
+                if (CurrentUserSingelton.Instance.IsAdmin == 1)
                 {
                     Main main = new Main();
                     main.Show();
@@ -79,13 +87,10 @@ namespace Fresh.Desktop
                     this.Close();
                 }
             }
-            else
+            else if(response == "Incorrect password")
             {
-                Errorlist.Visibility=Visibility.Visible;
                 EmailButton.Visibility=Visibility.Visible;
                 Errorlists.Visibility=Visibility.Visible;
-                txtEmail.Clear();
-                txtPassword.Clear();
             }
         }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -95,8 +100,12 @@ namespace Fresh.Desktop
             txtPassword.Clear();
         }
         //yondagi email button
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private string _rand = string.Empty;
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            DirectorRegisterService directorRegisterService = new();
+            _rand = await directorRegisterService.ConfirmationProvider(txtEmail.Text);
+            textChack.Text = $"Code sent to {txtEmail.Text}";
             Border1.Visibility = Visibility.Hidden;
             EmailSMS.Visibility = Visibility.Visible;
             LableCreate.Visibility=Visibility.Visible;
@@ -113,8 +122,22 @@ namespace Fresh.Desktop
 
         }
         //upddate button password
-        private void Button_email(object sender, RoutedEventArgs e)
+        private async void Button_email(object sender, RoutedEventArgs e)
         {
+            var IsPhone = (await ToolBox.IsPhoneNumber(txtEmail.Text)).status;
+            var result = true;
+            if(txtUpdate.Password == txtUpdate2.Password)
+            {
+                DirectorRegisterService registerService = new();
+                if(IsPhone)
+                    result = await registerService.UpdatePassHashByPhoneAsync(txtEmail.Text,txtUpdate.Password);
+                else
+                    result = await registerService.UpdatePassHashByEmailAsync(txtEmail.Text, txtUpdate.Password);
+                if (!result) MessageBox.Show("New and old passwords must be different", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
+                if (result) MessageBox.Show("Successfully saved","Info",MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("Passwords must be same", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
             Border1.Visibility = Visibility.Visible;
             EmailSMS.Visibility = Visibility.Hidden;
             LableCreate.Visibility = Visibility.Hidden;
@@ -137,14 +160,25 @@ namespace Fresh.Desktop
         {
             txtChack.Focus();
         }
-
+        
         private void txtChack_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if(_rand == txtChack.Text)
+            {
+                var bc = new BrushConverter();
+                txtUpdate.Visibility = Visibility.Visible;
+                txtUpdate2.Visibility = Visibility.Visible;
+                txtChack.Clear();
+                txtChack.Visibility = Visibility.Hidden;
+                textChack.Visibility = Visibility.Visible;
+                textChack.Text = "Succesfully confirmed";
+                textChack.Foreground = Brushes.Teal;
+            }
             if (!string.IsNullOrEmpty(txtChack.Text) && txtChack.Text.Length > 0)
             {
                 textChack.Visibility = Visibility.Collapsed;
-              
             }
+            //error.Visibility  = Visibility.Visible;
             else
             {
                 textChack.Visibility = Visibility.Visible;
@@ -153,6 +187,7 @@ namespace Fresh.Desktop
         //Password Update1 textBox
         private void txtUpdate_TextChanged(object sender, RoutedEventArgs e)
         {
+            txtUpdate.Foreground = Brushes.Teal;
             if (!string.IsNullOrEmpty(txtUpdate.Password) && txtUpdate.Password.Length > 0)
             {
                 textUpdate.Visibility = Visibility.Collapsed;
@@ -176,6 +211,10 @@ namespace Fresh.Desktop
 
         private void txtUpdate_TextChanged2(object sender, RoutedEventArgs e)
         {
+            if(txtUpdate.Password != txtUpdate2.Password)
+                txtUpdate2.Foreground = Brushes.Red;
+            else
+                txtUpdate2.Foreground= Brushes.Teal;
             if (!string.IsNullOrEmpty(txtUpdate2.Password) && txtUpdate2.Password.Length > 0)
             {
                 textUpdate2.Visibility = Visibility.Collapsed;

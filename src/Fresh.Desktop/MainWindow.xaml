@@ -44,7 +44,7 @@
                     <TextBlock Text="Fresh Market" Style="{StaticResource normalText}" 
                                Opacity="0.8" Height="57"/>
                 </StackPanel>
-                <Button x:Name="EmailButton" Visibility="Hidden" Content="Email" Style="{StaticResource button}" Margin="0,314,0,0" RenderTransformOrigin="0.681,-0.775" HorizontalAlignment="Center" VerticalAlignment="Top" Width="152" Click="Button_Click_1" Height="45"  >
+                <Button x:Name="EmailButton" Visibility="Hidden" Content="Recover!" Style="{StaticResource button}" Margin="0,314,0,0" RenderTransformOrigin="0.681,-0.775" HorizontalAlignment="Center" VerticalAlignment="Top" Width="152" Click="Button_Click_1" Height="45"  >
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -87,7 +87,7 @@
                         </Grid.ColumnDefinitions>
                         <Image Source="/Images/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30" />
 
-                        <TextBlock x:Name="textEmail" Text="Email" MouseDown="textEmail_MouseDown" Style="{StaticResource textHint}"  />
+                        <TextBlock x:Name="textEmail" Text="Email or Phone" MouseDown="textEmail_MouseDown" Style="{StaticResource textHint}"  />
                         <TextBox x:Name="txtEmail"  TextChanged="txtEmail_TextChanged" Style="{StaticResource TextBox}" />
                     </Grid>
                 </Border>
@@ -126,29 +126,29 @@
         <Border Grid.Column="1" 
                 RenderTransformOrigin="0.602,0.578" 
                 Visibility="Hidden" x:Name="EmailSMS">
-            <Button Content="Email"
+            <Button Content="Save changes"
                         Click="Button_email" 
                         Style="{StaticResource mainbutton}"
                         Visibility="Visible" Margin="125,323,95,79" />
         </Border>
         <Label Grid.Column="1"
-               Content="Enter Confirmation code:" 
+               Content="1.Enter Confirmation code:" 
                Margin="63,56,199,371" FontWeight="Bold" 
                Visibility="Hidden" x:Name="LableCreate"/>
         <Label Grid.Column="1"
-               Content="Error ! No More Than 6-dijits" 
+               Content="Error ! No More Than 6-digits" 
                Margin="132,120,104,303"
                x:Name="error"
                Visibility="Hidden" Foreground="Red"/>
 
         <Label Grid.Column="1"
-               Content="Create New Password:" 
+               Content="2.Create New Password:" 
                Margin="63,160,199,267" FontWeight="Bold" 
                Visibility="Hidden"
                x:Name="CreateNew"/>
 
         <Label Grid.Column="1"
-               Content="Reenter new Password:" 
+               Content="3.Verify new Password:" 
                Margin="63,229,199,198" FontWeight="Bold" 
                Visibility="Hidden"
                x:Name="CreateNew2"/>
@@ -189,7 +189,7 @@
                 <Image Source="/Images/ImagePassword.png" Height="30" />
 
                 <TextBlock x:Name="textUpdate" Text="Password" MouseDown="textUpdate_MouseDown" Style="{StaticResource textHint}"/>
-                <PasswordBox x:Name="txtUpdate" PasswordChanged="txtUpdate_TextChanged" Style="{StaticResource TextBox}" />
+                <PasswordBox x:Name="txtUpdate" PasswordChanged="txtUpdate_TextChanged" Style="{StaticResource TextBox}" Visibility="Hidden" />
             </Grid>
         </Border>
 
@@ -210,7 +210,7 @@
                 <Image Source="/Images/ImagePassword.png" Height="30" />
 
                 <TextBlock x:Name="textUpdate2" Text="Password" MouseDown="textUpdate2_MouseDown" Style="{StaticResource textHint}"/>
-                <PasswordBox x:Name="txtUpdate2" PasswordChanged="txtUpdate_TextChanged2" Style="{StaticResource TextBox}" />
+                <PasswordBox x:Name="txtUpdate2" PasswordChanged="txtUpdate_TextChanged2" Style="{StaticResource TextBox}" Visibility="Hidden" />
             </Grid>
         </Border>
 
