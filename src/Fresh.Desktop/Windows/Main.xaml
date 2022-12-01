@@ -29,7 +29,7 @@
                     <!-- Logo -->
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
                         <Path Data="{DynamicResource logo}" Margin="16 0 0 0" Stretch="Fill" Fill="{DynamicResource PrimaryBlueColor}" Width="25" Height="25" HorizontalAlignment="Left"/>
-                        <Label Content="Orizon" Foreground="{DynamicResource PrimaryBlueColor}" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="14 0 0 0"/>
+                        <Label Content="Fresh Market" Foreground="{DynamicResource PrimaryBlueColor}" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="14 0 0 0"/>
                     </StackPanel>
 
                     <!-- Menu -->
@@ -55,23 +55,23 @@
                     </ToggleButton>
 
                     <StackPanel Grid.Row="3">
-                        <RadioButton x:Name="rdCashier" IsChecked="True" Content="Cashiers" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource cashiers}" Click="rdCashier_Click"/>
+                        <RadioButton x:Name="rdCashiers" IsChecked="True" Content="Cashiers" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource cashiers}" Click="rdCashiers_Click"/>
                         <RadioButton x:Name="rdStatistics" Content="Statistics" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource statistics}" Click="rdStatistics_Click"/>
-                        <!--<RadioButton x:Name="rdNotes" Content="Notes" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource notes}" Click="rdNotes_Click"/>-->
-                        <!--<RadioButton x:Name="rdPayment" Content="Payment" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource payment}" Margin="0 5 0 5" Click="rdPayment_Click"/>-->
-                        <!--<RadioButton x:Name="rdTest" Content="Test" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource payment}" Margin="0 5 0 5" Click="rdTest_Click"/>-->
+                        <RadioButton x:Name="rdChecks" Content="Checks" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource checks}" Click="rdChecks_Click"/>
+                        <RadioButton x:Name="rdProducts" Content="Products" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource products}" Margin="0 5 0 5" Click="rdProducts_Click"/>
+                        <RadioButton x:Name="rdConsignmentLetters" Content="Consignment Letters" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource consignment_letters}" Margin="0 5 0 5" Click="rdConsignmentLetters_Click"/>
 
                     </StackPanel>
 
                     <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Orientation="Horizontal" Width="200" Margin="0 0 0 20">
                         <Ellipse Width="40" Height="40" Margin="10 0 0 0">
                             <Ellipse.Fill>
-                                <ImageBrush/>
+                                <ImageBrush />
                             </Ellipse.Fill>
                         </Ellipse>
                         <StackPanel Orientation="Vertical" Margin="8 0 0 0">
-                            <Label Content="Scarlett Gwen" Foreground="{DynamicResource TextPrimaryColor}" FontSize="14" FontWeight="SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
-                            <Label Content="scarlettgwen@gmail.com" Foreground="{DynamicResource PrimaryGrayColor}" FontSize="11" FontWeight="Regular" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="0 -10 0 0"/>
+                            <Label Content="Accurate and easy" Foreground="{DynamicResource TextPrimaryColor}" FontSize="14" FontWeight="SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+                            <Label Content="freshmarket.com" Foreground="{DynamicResource PrimaryGrayColor}" FontSize="11" FontWeight="Regular" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="0 -10 0 0"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

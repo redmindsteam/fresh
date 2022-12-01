@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Fresh.Desktop.Pages
 {
     /// <summary>
-    /// Interaction logic for EmailPage.xaml
+    /// Interaction logic for ProductsPage.xaml
     /// </summary>
-    public partial class EmailPage : Page
+    public partial class ProductsPage : Page
     {
-        public EmailPage()
+        public ProductsPage()
         {
             InitializeComponent();
         }
