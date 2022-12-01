@@ -25,7 +25,7 @@ namespace Fresh.Desktop.Windows
 
         private void rdNotes_Click(object sender, RoutedEventArgs e)
         {
-
+            PagesNavigation.Navigate(new System.Uri("Pages/NotesPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void rdPayment_Click(object sender, RoutedEventArgs e)
