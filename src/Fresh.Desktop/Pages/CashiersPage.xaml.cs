@@ -24,5 +24,15 @@ namespace Fresh.Desktop.Pages
         {
             InitializeComponent();
         }
+
+        private void rdAddUser_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void ButtonDelete(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
