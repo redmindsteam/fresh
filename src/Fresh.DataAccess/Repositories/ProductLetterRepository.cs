@@ -98,6 +98,39 @@ namespace Fresh.DataAccess.Repositories
             finally { _con.Close(); }
         }
 
+        public async Task<IList<ProductLetter>> GetAllLimit()
+        {
+            try
+            {
+
+                var productLetters = new List<ProductLetter>();
+                await _con.OpenAsync();
+                string query = $"SELECT * FROM ProductLetters";
+                var command = new SQLiteCommand(query, _con);
+                var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var productLetter = new ProductLetter()
+                    {
+                        Id = reader.GetInt32("Id"),
+                        ProductDescription = reader.GetString("ProductDescription"),
+                        Date = reader.GetString("Date"),
+                        UserId = reader.GetInt32("UserId")
+
+                    };
+                    productLetters.Add(productLetter);
+                }
+
+                return productLetters;
+            }
+            catch
+            {
+
+                return new List<ProductLetter>();
+            }
+            finally { _con.Close(); }
+        }
+
         public async Task<ProductLetter> GetByIdAsync(int id)
         {
             try
