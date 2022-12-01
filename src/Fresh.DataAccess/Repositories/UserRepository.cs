@@ -111,6 +111,46 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
+        public async Task<IList<User>> GetAllLimit()
+        {
+            try
+            {
+
+                var users = new List<User>();
+                await _con.OpenAsync();
+                string query = $"SELECT * FROM Users";
+                var command = new SQLiteCommand(query, _con);
+                var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var user = new User()
+                    {
+                        Id = reader.GetInt32("Id"),
+                        FullName = reader.GetString("FullName"),
+                        Email = reader.GetString("Email"),
+                        IsAdmin = reader.GetInt32("IsAdmin"),
+                        PasswordHash = reader.GetString("PasswordHash"),
+                        Salt = reader.GetString("Salt"),
+                        PhoneNumber = reader.GetString("PhoneNumber"),
+                        PassportSeria = reader.GetString("PassportSeria")
+
+                    };
+                    users.Add(user);
+                }
+
+                return users;
+            }
+            catch
+            {
+
+                return new List<User>();
+            }
+            finally
+            {
+                await _con.CloseAsync();
+            }
+        }
+
         public async Task<User> GetByEmailAsync(string email)
         {
             try
