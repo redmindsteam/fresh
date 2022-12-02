@@ -58,8 +58,10 @@
                         <RadioButton x:Name="rdCashiers" IsChecked="True" Content="Cashiers" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource cashiers}" Click="rdCashiers_Click"/>
                         <RadioButton x:Name="rdStatistics" Content="Statistics" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource statistics}" Click="rdStatistics_Click"/>
                         <RadioButton x:Name="rdChecks" Content="Checks" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource checks}" Click="rdChecks_Click"/>
-                        <RadioButton x:Name="rdProducts" Content="Products" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource products}" Margin="0 5 0 5" Click="rdProducts_Click"/>
-                        <RadioButton x:Name="rdConsignmentLetters" Content="Consignment Letters" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource consignment_letters}" Margin="0 0 0 5" Click="rdConsignmentLetters_Click"/>
+
+                        <RadioButton x:Name="rdProducts" Content="Products" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource products}"  Click="rdProducts_Click"/>
+                        <RadioButton x:Name="rdConsignmentLetters" Content="Consignment Letters" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource consignment_letters}" Click="rdConsignmentLetters_Click"/>
+
 
                     </StackPanel>
 

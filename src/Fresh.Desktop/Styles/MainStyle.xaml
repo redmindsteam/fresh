@@ -131,21 +131,43 @@
     
     <!-- Radio Button Style-->
     <Style x:Key="StatisticsRadioButtonStyle" TargetType="RadioButton">
-        <Setter Property="FontSize" Value="20" />
-        <Setter Property="VerticalAlignment" Value="Stretch"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
     </Style>
     <!-- Radio Button Style-->
     <!-- Date Picker Style-->
-    <Style x:Key="StatistcsDatePickerStyle" TargetType="DatePicker">
+    <Style x:Key="StatisticsDatePicker" TargetType="DatePicker">
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
-    
     <!-- Date Picker Style-->
+    <Style x:Key="buttonCircle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="30" BorderThickness="1"
+                                BorderBrush="#878787" Padding="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#d9d9d9"/>
+            </Trigger>
+            <Trigger Property="IsMouseCaptured" Value="True">
+                <Setter Property="Background" Value="#c4c4c4"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
 
 </ResourceDictionary>
