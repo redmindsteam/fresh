@@ -24,5 +24,23 @@ namespace Fresh.Desktop.Pages
         {
             InitializeComponent();
         }
+
+        private void DailyRadioButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            MonthYear.Visibility = Visibility.Visible;
+        }
+        private void DailyRadioButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            MonthYear.Visibility = Visibility.Collapsed;
+        }
+        private void MonthlyRadioButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            Year.Visibility = Visibility.Visible;
+        }
+        private void MonthlyRadioButton_Umchecked(object sender, RoutedEventArgs e)
+        {
+            Year.Visibility = Visibility.Collapsed;
+        }
+
     }
 }

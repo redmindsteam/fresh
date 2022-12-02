@@ -100,6 +100,40 @@ namespace Fresh.DataAccess.Repositories
             finally { _con.Close(); }
         }
 
+        public async Task<IList<Check>> GetAllLimit()
+        {
+            try
+            {
+
+                var checks = new List<Check>();
+                await _con.OpenAsync();
+                string query = $"SELECT * FROM Checks";
+                var command = new SQLiteCommand(query, _con);
+                var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var check = new Check()
+                    {
+                        Id = reader.GetInt32("Id"),
+                        CheckDescription = reader.GetString("CheckDescription"),
+                        TotalSum = reader.GetFloat("TotalSum"),
+                        UserId = reader.GetInt32("UserId"),
+                        Date = reader.GetDataTypeName("Date")
+
+                    };
+                    checks.Add(check);
+                }
+
+                return checks;
+            }
+            catch
+            {
+
+                return new List<Check>();
+            }
+            finally { _con.Close(); }
+        }
+
         public async Task<Check> GetByIdAsync(int id)
         {
             try
