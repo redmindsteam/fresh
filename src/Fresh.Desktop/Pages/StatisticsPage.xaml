@@ -10,49 +10,25 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="8*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Background="{DynamicResource SecundaryBackgroundColor}" />
+        <Grid Grid.Row="0" Background="{DynamicResource SecundaryBackgroundColor}" />
+        <Grid Grid.Row="1" Background="{DynamicResource PrimaryBackgroundColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton Grid.Column="0" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" />
+            <RadioButton Grid.Column="1" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" />
+            <RadioButton Grid.Column="2" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" />
+            <DatePicker Grid.Column="3" Style="{DynamicResource StatisticsDatePicker}"/>
+        </Grid>
         
-        <StackPanel Grid.Row="1" Background="{DynamicResource PrimaryBackgroundColor}" Orientation="Horizontal">
-            <RadioButton Content="Daily"   Click="DailyRadioButton_Clicked" Unchecked="DailyRadioButton_Unchecked" Style="{DynamicResource StatisticsRadioButtonStyle}" Margin="50 0 0 0"/>
-            <RadioButton Content="Monthly" Click="MonthlyRadioButton_Clicked" Unchecked="MonthlyRadioButton_Umchecked" Style="{DynamicResource StatisticsRadioButtonStyle}" Margin="50 0 0 0" />
-            <RadioButton Content="Yearly"  Style="{DynamicResource StatisticsRadioButtonStyle}" Margin="50 0 0 0" />
-            
-            <Grid Margin="50 0 0 0" Background="{DynamicResource PrimaryBackgroundColor}" Width="300">
-                <DatePicker Name="DateMonthYear" Visibility="Visible" Style="{DynamicResource StatistcsDatePickerStyle}" />
-
-                <DatePicker Name="Year" Visibility="Hidden" Style="{DynamicResource StatistcsDatePickerStyle}">
-                    <DatePicker.Resources>
-                        <Style TargetType="DatePickerTextBox">
-                            <Setter Property="Control.Template">
-                                <Setter.Value>
-                                    <ControlTemplate>
-                                        <TextBox x:Name="PART_TextBox"
-                                     Text="{Binding Path=SelectedDate, StringFormat = {}{0:yyyy}, 
-                                     RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </DatePicker.Resources>
-                </DatePicker>
-                
-                <DatePicker Name="MonthYear" Visibility="Hidden" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center">
-                    <DatePicker.Resources>
-                        <Style TargetType="DatePickerTextBox">
-                            <Setter Property="IsReadOnly" Value="True" />
-                            <Setter Property="Text" Value="{Binding Path=SelectedDate, StringFormat='yyyy/MM', RelativeSource={RelativeSource AncestorType=DatePicker}}"></Setter>
-                        </Style>
-                    </DatePicker.Resources>
-                </DatePicker>
-
-            </Grid>
-            
-        </StackPanel>
         <StackPanel Grid.Row="2" Background="{DynamicResource PrimaryBackgroundColor}">
             <DataGrid Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0,26,0,79" Grid.RowSpan="3">
                 <DataGrid.Columns>
@@ -63,6 +39,7 @@
 
             </DataGrid>
         </StackPanel>
+        <Grid Grid.Row="3" Background="{DynamicResource PrimaryBackgroundColor}"/>
     </Grid>
     
 </Page>

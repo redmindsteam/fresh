@@ -9,19 +9,31 @@
       Title="CashiersPage" Background="White">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1.4*" />
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
-
         </Grid.RowDefinitions>
+        
         <StackPanel Grid.Row="0" Background="#3AA9AD"/>
-        <DataGrid Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0,26,0,79" Grid.RowSpan="3">
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <!--<RadioButton x:Name="rdAddCashiers" IsChecked="True"  HorizontalAlignment="Right" Content="Add Cashier" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource AddUser}" Click="rdAddCashiers_Click"/>-->
+
+            <Button Grid.Column="1" Height="45" Width="65" Style="{DynamicResource buttonCircle}" Margin="51,6,17,7">
+                
+            </Button>
+        </Grid>
+        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0 0 0 0" Grid.RowSpan="3">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="100"/>
-                <DataGridTextColumn Header="Full Name" Binding="{Binding Full_Name}" Width="250"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="170"/>
-                <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone_Number}" Width="180"/>
-                <DataGridTextColumn Header="Passport seria" Binding="{Binding Phone_Number}" Width="100"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
+                <DataGridTextColumn Header="Full Name" Binding="{Binding Full_Name}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="0.8*"/>
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone_Number}" Width="0.8*"/>
+                <DataGridTextColumn Header="Passport seria" Binding="{Binding Phone_Number}" Width="0.8*"/>
 
             </DataGrid.Columns>
 
@@ -31,12 +43,6 @@
                         Click="ButtonUpdate" 
                         Style="{StaticResource mainbutton}"
                         Visibility="Visible" Margin="198,3,488,0" Width="NaN" RenderTransformOrigin="0.238,0.558" Height="36" VerticalAlignment="Top"/>-->
-
-            <Button Content="Delete"
-                        Click="ButtonDelete" 
-                        Style="{StaticResource mainbutton}"
-                        Visibility="Visible" Margin="345,4,339,0" Width="NaN" RenderTransformOrigin="0.238,0.558" Height="36" VerticalAlignment="Top"/>
-            <RadioButton x:Name="rdAdduser" IsChecked="True" Content="AddUser" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource AddUser}" Click="rdAddUser_Click" Margin="13,1,645,7"/>
 
         </Grid>
 
