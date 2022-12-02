@@ -75,7 +75,7 @@ namespace Fresh.Desktop
             Errorlists.Visibility = Visibility.Hidden;
             if (response == string.Empty)
             {
-                if (CurrentUserSingelton.Instance.IsAdmin == 1)
+                if (CurrentUserSingelton.Instance.IsAdmin == 0)
                 {
                     Main main = new Main();
                     main.Show();
@@ -135,25 +135,30 @@ namespace Fresh.Desktop
                 else
                     result = await registerService.UpdatePassHashByEmailAsync(txtEmail.Text, txtUpdate.Password);
                 if (!result) MessageBox.Show("New and old passwords must be different", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
-                if (result) MessageBox.Show("Successfully saved","Info",MessageBoxButton.OK, MessageBoxImage.Information);
+                if (result)
+                {
+                    MessageBox.Show("Successfully saved", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Border1.Visibility = Visibility.Visible;
+                    EmailSMS.Visibility = Visibility.Hidden;
+                    LableCreate.Visibility = Visibility.Hidden;
+                    UpdatePass.Visibility = Visibility.Hidden;
+                    LableCreate.Visibility = Visibility.Hidden;
+                    CreateNew.Visibility = Visibility.Hidden;
+                    CreateNew2.Visibility = Visibility.Hidden;
+                    Cack_Password.Visibility = Visibility.Hidden;
+                    UpdatePass.Visibility = Visibility.Hidden;
+                    UpdatePass2.Visibility = Visibility.Hidden;
+                    Errorlist.Visibility = Visibility.Hidden;
+                    Errorlists.Visibility = Visibility.Hidden;
+                    txtPassword.Clear();
+                    txtUpdate.Clear();
+                    txtUpdate2.Clear();
+                    txtChack.Clear();
+                }
             }
             else
                 MessageBox.Show("Passwords must be same", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
-            Border1.Visibility = Visibility.Visible;
-            EmailSMS.Visibility = Visibility.Hidden;
-            LableCreate.Visibility = Visibility.Hidden;
-            UpdatePass.Visibility = Visibility.Hidden;
-            LableCreate.Visibility = Visibility.Hidden;
-            CreateNew.Visibility = Visibility.Hidden;
-            CreateNew2.Visibility = Visibility.Hidden;
-            Cack_Password.Visibility = Visibility.Hidden;
-            UpdatePass.Visibility = Visibility.Hidden;
-            UpdatePass2.Visibility = Visibility.Hidden;
-            Errorlist.Visibility = Visibility.Hidden;
-            Errorlists.Visibility = Visibility.Hidden;
-            txtUpdate.Clear();
-            txtUpdate2.Clear();
-            txtChack.Clear();
+            
         }
 
          //EmailAddressAttribute yoki Phone numberga smsm yuboraydigan textBox
