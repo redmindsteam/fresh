@@ -34,5 +34,10 @@ namespace Fresh.Desktop.Pages
         {
 
         }
+
+        private void ButtonUpdate(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
