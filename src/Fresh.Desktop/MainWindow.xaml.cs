@@ -76,7 +76,7 @@ namespace Fresh.Desktop
             Errorlists.Visibility = Visibility.Hidden;
             if (response == string.Empty)
             {
-                if (CurrentUserSingelton.Instance.IsAdmin == 1)
+                if (CurrentUserSingelton.Instance.IsAdmin == 0)
                 {
                     Main main = new Main();
                     main.Show();
@@ -121,6 +121,7 @@ namespace Fresh.Desktop
             UpdatePass2.Visibility=Visibility.Visible;
             Errorlist.Visibility=Visibility.Hidden;
             Errorlists.Visibility = Visibility.Hidden;
+            txtPassword.Clear();
 
         }
         //upddate button password
