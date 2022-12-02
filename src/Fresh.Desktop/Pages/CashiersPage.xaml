@@ -17,27 +17,17 @@
         <StackPanel Grid.Row="0" Background="#3AA9AD"/>
         <DataGrid Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0,26,0,79" Grid.RowSpan="3">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="100"/>
-                <DataGridTextColumn Header="Full Name" Binding="{Binding Full_Name}" Width="250"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="170"/>
-                <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone_Number}" Width="180"/>
-                <DataGridTextColumn Header="Passport seria" Binding="{Binding Phone_Number}" Width="100"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Full Name" Binding="{Binding Full_Name}" Width="2*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone_Number}" Width="*"/>
+                <DataGridTextColumn Header="Passport seria" Binding="{Binding Phone_Number}" Width="*"/>
 
             </DataGrid.Columns>
 
         </DataGrid>
         <Grid Grid.Row="2" >
-            <Button Content="Update"
-                        Click="ButtonUpdate" 
-                        Style="{StaticResource mainbutton}"
-                        Visibility="Visible" Margin="198,3,488,0" Width="NaN" RenderTransformOrigin="0.238,0.558" Height="36" VerticalAlignment="Top"/>
-
-            <Button Content="Delete"
-                        Click="ButtonDelete" 
-                        Style="{StaticResource mainbutton}"
-                        Visibility="Visible" Margin="345,4,339,0" Width="NaN" RenderTransformOrigin="0.238,0.558" Height="36" VerticalAlignment="Top"/>
-            <RadioButton x:Name="rdAdduser" IsChecked="True" Content="AddUser" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource AddUser}" Click="rdAddUser_Click" Margin="13,1,645,7"/>
-
+            
         </Grid>
 
     </Grid>
