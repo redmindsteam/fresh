@@ -27,10 +27,10 @@
 
         </DataGrid>
         <Grid Grid.Row="2" >
-            <Button Content="Update"
+            <!--<Button Content="Update"
                         Click="ButtonUpdate" 
                         Style="{StaticResource mainbutton}"
-                        Visibility="Visible" Margin="198,3,488,0" Width="NaN" RenderTransformOrigin="0.238,0.558" Height="36" VerticalAlignment="Top"/>
+                        Visibility="Visible" Margin="198,3,488,0" Width="NaN" RenderTransformOrigin="0.238,0.558" Height="36" VerticalAlignment="Top"/>-->
 
             <Button Content="Delete"
                         Click="ButtonDelete" 
