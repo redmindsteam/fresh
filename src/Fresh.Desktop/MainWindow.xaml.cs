@@ -61,30 +61,29 @@ namespace Fresh.Desktop
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            Cassa cassa = new Cassa();
-            cassa.Show();
-            //DirectorRegisterService service = new DirectorRegisterService();
-            //var response = await service.UserValidation(txtEmail.Text, txtPassword.Password);
-            //if (response.result)
-            //{
-            //    if (CurrentUserSingelton.Instance.IsAdmin == 0)
-            //    {
-            //        Main main = new Main();
-            //        main.Show();
-            //        this.Close();
-            //    }
-            //    else
-            //    {
-            //        Cassa cassa = new Cassa();
-            //        cassa.Show();
-            //        this.Close();
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show($"{response.error}", "Try again", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    EmailButton.Visibility=Visibility.Visible;
-            //}
+
+            DirectorRegisterService service = new DirectorRegisterService();
+            var response = await service.UserValidation(txtEmail.Text, txtPassword.Password);
+            if (response.result)
+            {
+                if (CurrentUserSingelton.Instance.IsAdmin == 0)
+                {
+                    Main main = new Main();
+                    main.Show();
+                    this.Close();
+                }
+                else
+                {
+                    Cassa cassa = new Cassa();
+                    cassa.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show($"{response.error}", "Try again", MessageBoxButton.OK, MessageBoxImage.Error);
+                EmailButton.Visibility = Visibility.Visible;
+            }
         }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
