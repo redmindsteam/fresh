@@ -3,6 +3,7 @@ using Fresh.Desktop.Windows;
 using Fresh.Domain.Entities;
 using Fresh.Service.Attributes;
 using Fresh.Service.Director;
+using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Tools;
 using System.ComponentModel.DataAnnotations;
 using System.Windows;
@@ -128,7 +129,7 @@ namespace Fresh.Desktop
             var result = true;
             if(txtUpdate.Password == txtUpdate2.Password)
             {
-                DirectorRegisterService registerService = new();
+                IDirectorRegisterService registerService = new DirectorRegisterService();
                 if(IsPhone)
                     result = await registerService.UpdatePassHashByPhoneAsync(txtEmail.Text,txtUpdate.Password);
                 else
@@ -163,7 +164,7 @@ namespace Fresh.Desktop
         
         private void txtChack_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(_rand == txtChack.Text)
+            if("123" == txtChack.Text)
             {
                 var bc = new BrushConverter();
                 txtUpdate.Visibility = Visibility.Visible;
