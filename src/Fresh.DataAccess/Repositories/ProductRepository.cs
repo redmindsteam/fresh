@@ -192,7 +192,7 @@ namespace Fresh.DataAccess.Repositories
                     "Name = $Name, CategoryId = $CategoryId," +
                     "Price = $Price," +
                     " Unit = $Unit, BarcodeName = $BarcodeName, ProductionDate = $ProductionDate," +
-                    "ExpireDate = $ExpireDate" +
+                    "ExpireDate = $ExpireDate," +
                     "Value = $Value" +
                     $"Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
