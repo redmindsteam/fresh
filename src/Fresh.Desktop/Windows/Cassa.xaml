@@ -32,9 +32,9 @@
                 </Border >
             </Grid >
 
-            
-            
-            <Grid Grid.Column="1">
+
+            <!-- Grid -->
+                <Grid Grid.Column="1">
                 <Border>
                     <Grid>
                         <Grid.RowDefinitions>
