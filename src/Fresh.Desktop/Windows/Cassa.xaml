@@ -4,12 +4,95 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fresh.Desktop.Windows"
+        xmlns:l="Fresh.Desktop.App"
         mc:Ignorable="d"
 
+        Title="Main" Height="600" Width="800"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
-        AllowsTransparency="True" Background="Gray"
-        Title="Cassa" Height="450" Width="700">
-    <Grid>
-        
-    </Grid>
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" WindowState="Normal">
+
+    <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            
+            <Grid Grid.Column="0">
+                <Border CornerRadius="8 0 0 8" Background="{DynamicResource SecundaryBackgroundColor}">
+                    <StackPanel x:Name="gridCassa" Width="60" Height="60"
+                                VerticalAlignment="Top">
+                        <Button Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Content="PL">
+                        </Button>
+                    </StackPanel>
+                </Border >
+            </Grid >
+
+            
+            
+            <Grid Grid.Column="1">
+                <Border>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="1">
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                                              RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Column="0" Height="400" Width="530"
+                                              SelectionChanged="DataGrid_SelectionChanged" x:Name="cassaDataGrid" HorizontalAlignment="Left">
+                                            
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                            <DataGridTextColumn Header="Kg/L" IsReadOnly="True" Width="*" Binding="{Binding KgL}" />
+                                            <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding Price}"/>
+                                            <DataGridTextColumn Header="The Number" IsReadOnly="True" Width="*" Binding="{Binding Thunumber}"/>
+                                            <DataGridTextColumn Header="Sum" IsReadOnly="True" Width="*" Binding="{Binding Summa}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+
+
+                                    <WrapPanel Grid.Column="1" Width="210" Height="280"
+                                        HorizontalAlignment="Right" VerticalAlignment="Top">
+                                        <Button x:Name="bir" Content="1" Width="70" Height="70"/>
+                                        <Button x:Name="ikki" Content="2" Width="70" Height="70"/>
+                                        <Button x:Name="uch" Content="3" Width="70" Height="70"/>
+                                        <Button x:Name="tort" Content="4" Width="70" Height="70"/>
+                                        <Button x:Name="besh" Content="5" Width="70" Height="70"/>
+                                        <Button x:Name="olti" Content="6" Width="70" Height="70"/>
+                                        <Button x:Name="yetti" Content="7" Width="70" Height="70"/>
+                                        <Button x:Name="sakks" Content="8" Width="70" Height="70"/>
+                                        <Button x:Name="toqqiz" Content="9" Width="70" Height="70"/>
+                                        <Button x:Name="on" Content="+" Width="70" Height="70"/>
+                                        <Button x:Name="a" Content="0" Width="70" Height="70"/>
+                                        <Button x:Name="b" Content="-" Width="70" Height="70"/>
+                                    </WrapPanel>
+
+                                    
+
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid >
+
+
+
+
+        </Grid>
+    </Border>
 </Window>
