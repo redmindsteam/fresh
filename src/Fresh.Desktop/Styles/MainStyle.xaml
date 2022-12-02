@@ -128,4 +128,24 @@
         </Setter>
     </Style>
     <!-- End: VerticalMenuStyle -->
+    
+    <!-- Radio Button Style-->
+    <Style x:Key="StatisticsRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+    <!-- Radio Button Style-->
+    <!-- Date Picker Style-->
+    <Style x:Key="StatistcsDatePickerStyle" TargetType="DatePicker">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+    
+    <!-- Date Picker Style-->
+
 </ResourceDictionary>
