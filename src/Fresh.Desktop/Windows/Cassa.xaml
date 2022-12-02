@@ -7,9 +7,90 @@
         mc:Ignorable="d"
 
         WindowStartupLocation="CenterScreen" WindowStyle="None"
-        AllowsTransparency="True" Background="Gray"
-        Title="Cassa" Height="450" Width="700">
-    <Grid>
-        
-    </Grid>
+        AllowsTransparency="True" Background="Transparent"
+        Title="Cassa" Height="500" Width="900" ResizeMode="NoResize"
+        WindowState="Normal">
+    <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid>
+            <Border>
+                <Grid>
+
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    
+                    <Grid Grid.Column="0">
+                        <Border CornerRadius="8 0 0 8" Background="{DynamicResource SecundaryBackgroundColor}">
+                            <StackPanel x:Name="cassaPanel" Width="60">
+                                <Button Width="40" Height="40" Content="O" Click="Button_Click"> 
+                   
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+
+                    <Grid Grid.Column="1">
+                        <Border>
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+
+                                <Grid  Grid.Row="1">
+                                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <DataGrid CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                                              RowStyle="{DynamicResource DataGridRowStyle1}" Style="{DynamicResource DataGridStyle1}"  
+                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                            <DataGridTextColumn Header="Kg/L" IsReadOnly="True" Width="*" Binding="{Binding KgL}"/>
+                                            <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding Price}"/>
+                                            <DataGridTextColumn Header="The number" IsReadOnly="True" Width="*" Binding="{Binding Thenumber}"/>
+                                            <DataGridTextColumn Header="Money" IsReadOnly="True" Width="*" Binding="{Binding Money}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+
+
+                                    <WrapPanel Grid.Column="1" Width="210" Height="280"
+                                               HorizontalAlignment="Right" VerticalAlignment="Top">
+                                        <Button x:Name="bir" Content="1" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="ikki" Content="2" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="uch" Content="3" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="tort" Content="4" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="besh" Content="5" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="olti" Content="6" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="yetti" Content="7" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="sakkiz" Content="8" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="toqqiz" Content="9" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="nol" Content="-" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="a" Content="0" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="b" Content="+" Width="70" Height="70" FontSize="20"/>
+                                    </WrapPanel>
+
+                                </Grid>
+
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
 </Window>
