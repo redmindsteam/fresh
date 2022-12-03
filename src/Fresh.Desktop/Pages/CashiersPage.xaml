@@ -5,29 +5,40 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Fresh.Desktop.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="470" d:DesignWidth="800"
       Title="CashiersPage" Background="White">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="1.4*" />
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.3*" />
+            <RowDefinition Height="8.2*"/>
+            <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
-        
+
         <StackPanel Grid.Row="0" Background="#3AA9AD"/>
-        <Grid Grid.Row="1" >
+
+        <Grid Margin="8,20,9,0" Grid.RowSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
-            <!--<RadioButton x:Name="rdAddCashiers" IsChecked="True"  HorizontalAlignment="Right" Content="Add Cashier" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource AddUser}" Click="rdAddCashiers_Click"/>-->
 
-            <Button Grid.Column="1" Height="45" Width="65" Style="{DynamicResource buttonCircle}" Margin="51,6,17,7">
-                
+            <Button x:Name="btnAddUser" 
+                    Click="btnAddUser_Click"
+                    Grid.Column="1"
+                    Style="{DynamicResource buttonCircle}" 
+                    Height="40"
+
+                    Width="40" Margin="76,4,7,3" HorizontalAlignment="Right">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Height="21" Width="22">
+                    <Path Data="{DynamicResource AddUser}" Margin="0 0 0 0" Stretch="Fill" Fill="{DynamicResource SecundaryBackgroundColor}" 
+                          Width="22" Height="18"/>
+
+                </StackPanel>
             </Button>
         </Grid>
-        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0 0 0 0" Grid.RowSpan="3">
+        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
+                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
@@ -36,18 +47,46 @@
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone_Number}" Width="0.8*"/>
                 <DataGridTextColumn Header="Passport seria" Binding="{Binding Phone_Number}" Width="0.8*"/>
 
-
             </DataGrid.Columns>
 
         </DataGrid>
-        <Grid Grid.Row="2" >
+        <Grid Grid.Row="3" Grid.RowSpan="2"   >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnUpdate" 
+                    Click="btnAddUser_Click"
+                    Grid.Column="1"
+                    Style="{DynamicResource btnUpdate}" 
+                    Height="32"
+                    Width="110"
+                    HorizontalAlignment="Left">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Height="32" Width="85" RenderTransformOrigin="-0.61,0.512">
+                    <Path Data="{DynamicResource Update}" Margin="0 0 0 0" Stretch="Fill"
+                          Fill="{DynamicResource Colors}" 
+                          Width="22" Height="18"/>
+                    <TextBlock Text=" Update" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
+                
+            </Button>
+            <Button x:Name="btnDelete" 
+                    Click="btnAddUser_Click"
+                    Grid.Column="2"
+                    Style="{DynamicResource btnDelete}" 
+                    Height="33"
+                    Width="110"
+                    HorizontalAlignment="Left">
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Height="32" Width="85" RenderTransformOrigin="-0.61,0.512">
+                    <Path Data="{DynamicResource Delete}" Margin="0 0 0 0" Stretch="Fill"
+                          Fill="{DynamicResource Color}" 
+                          Width="22" Height="18"/>
+                    <TextBlock Text=" Delete" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
 
-            <!--<Button Content="Update"
-                        Click="ButtonUpdate" 
-                        Style="{StaticResource mainbutton}"
-                        Visibility="Visible" Margin="198,3,488,0" Width="NaN" RenderTransformOrigin="0.238,0.558" Height="36" VerticalAlignment="Top"/>-->
-
-
+            </Button>
         </Grid>
 
     </Grid>

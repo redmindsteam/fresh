@@ -48,5 +48,10 @@ namespace Fresh.Desktop.Pages
         {
 
         }
+
+        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

@@ -246,13 +246,14 @@
 
         <Style x:Key="buttonCircle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
+            
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="Margin" Value="10 0"/>
+            <Setter Property="Margin" Value="5 0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="30" BorderThickness="1"
-                                BorderBrush="#878787" Padding="15">
+                                BorderBrush="#22A39F" Padding="0">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -260,10 +261,10 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#d9d9d9"/>
+                        <Setter Property="Background" Value="#A5F1E9"/>
                 </Trigger>
                 <Trigger Property="IsMouseCaptured" Value="True">
-                    <Setter Property="Background" Value="#c4c4c4"/>
+                        <Setter Property="Background" Value="#21E1E1"/>
                 </Trigger>
             </Style.Triggers>
 
@@ -335,6 +336,61 @@
             </Style.Triggers>
 
         </Style>
+
+
+            <Style x:Key="btnUpdate" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Margin" Value="5 0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="15" BorderThickness="1"
+                                BorderBrush="#89CFFD" Padding="0">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#B8E8FC"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseCaptured" Value="True">
+                        <Setter Property="Background" Value="#7FE9DE"/>
+                    </Trigger>
+                </Style.Triggers>
+
+            </Style>
+            
+            <Style x:Key="btnDelete" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Margin" Value="5 0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="15" BorderThickness="1"
+                                BorderBrush="#89CFFD" Padding="0">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#9CB4CC"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseCaptured" Value="True">
+                        <Setter Property="Background" Value="#748DA6"/>
+                    </Trigger>
+                </Style.Triggers>
+
+            </Style>
+
+
         </ResourceDictionary>
 
     </Application.Resources>
