@@ -138,8 +138,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
     </Style>
-    <!-- Radio Button Style-->
-    
+    <!-- Radio Button Style-->    
     <!-- Date Picker Style-->
     <Style x:Key="StatisticsDatePicker" TargetType="DatePicker">
         <Setter Property="VerticalAlignment" Value="Center"/>
