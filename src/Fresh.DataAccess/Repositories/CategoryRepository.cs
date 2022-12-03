@@ -165,8 +165,8 @@ namespace Fresh.DataAccess.Repositories
             {
                 await _con.OpenAsync();
                 string query = $"update categories set " +
-                    "Name = $Name, Description = $Description " +
-                    $"Where Id = {id}";
+                    " Name = $Name, Description = $Description " +
+                    $" Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
                 {
                     Parameters =
