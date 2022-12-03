@@ -172,10 +172,10 @@ namespace Fresh.DataAccess.Repositories
             {
                 await _con.OpenAsync();
                 string query = $"update Users set " +
-                    "CheckDescription = $CheckDescription, TotalSum = $TotalSum," +
-                    "UserId = $UserId," +
+                    " CheckDescription = $CheckDescription, TotalSum = $TotalSum," +
+                    " UserId = $UserId," +
                     " Date = $Date" +
-                    $"Where Id = {id}";
+                    $" Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
                 {
                     Parameters =
