@@ -38,7 +38,7 @@
                 <ComboBox Grid.Column="1" Name="comboBoxCashiers" Loaded="comboBoxCashiers_Loaded" Height="30" Width="200"/>
 
             </Grid>
-            
+
         </Grid>
-        
+    </Grid>
 </Page>
