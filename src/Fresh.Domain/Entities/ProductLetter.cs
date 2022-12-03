@@ -9,5 +9,6 @@ namespace Fresh.Domain.Entities
         public string Date { get; set; } = string.Empty;
 
         public int UserId { get; set; }
+        public float Price { get; set; }
     }
 }
