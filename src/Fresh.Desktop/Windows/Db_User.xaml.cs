@@ -26,7 +26,7 @@ namespace Fresh.Desktop.Windows
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

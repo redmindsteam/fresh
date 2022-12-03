@@ -1,4 +1,5 @@
 ﻿using Fresh.Desktop.Windows;
+using Fresh.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Fresh.Desktop.Pages
 
         private void btnDeleteUser(object sender, RoutedEventArgs e)
         {
-
+        
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
