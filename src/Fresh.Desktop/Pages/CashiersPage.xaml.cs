@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fresh.Desktop.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,23 +26,24 @@ namespace Fresh.Desktop.Pages
             InitializeComponent();
         }
 
-        private void rdAddUser_Click(object sender, RoutedEventArgs e)
+ 
+
+        
+
+        private void btnUpdateUser_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
-        private void ButtonDelete(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonUpdate(object sender, RoutedEventArgs e)
+        private void btnDeleteUser(object sender, RoutedEventArgs e)
         {
 
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
+            Db_User user = new Db_User();
+            user.Show();
             
         }
     }

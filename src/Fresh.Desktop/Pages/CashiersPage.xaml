@@ -29,7 +29,7 @@
                     Style="{DynamicResource buttonCircle}" 
                     Height="40"
 
-                    Width="40" Margin="76,4,7,3" HorizontalAlignment="Right">
+                    Width="40" Margin="84,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Height="21" Width="22">
                     <Path Data="{DynamicResource AddUser}" Margin="0 0 0 0" Stretch="Fill" Fill="{DynamicResource SecundaryBackgroundColor}" 
                           Width="22" Height="18"/>
@@ -58,7 +58,7 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="btnUpdate" 
-                    Click="btnAddUser_Click"
+                    Click="btnUpdateUser_Click"
                     Grid.Column="1"
                     Style="{DynamicResource btnUpdate}" 
                     Height="32"
@@ -70,10 +70,10 @@
                           Width="22" Height="18"/>
                     <TextBlock Text=" Update" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                 </StackPanel>
-                
+
             </Button>
             <Button x:Name="btnDelete" 
-                    Click="btnAddUser_Click"
+                    Click="btnDeleteUser"
                     Grid.Column="2"
                     Style="{DynamicResource btnDelete}" 
                     Height="33"
