@@ -8,7 +8,7 @@ namespace Fresh.Service.ViewModels
 {
     public class StatsView
     {
-        public DateTime Date { get; set; }
+        public string Date { get; set; } = string.Empty;
         public string Income { get; set; } = string.Empty;
         public string Expenditure { get; set; } = string.Empty;
     }

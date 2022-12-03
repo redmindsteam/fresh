@@ -13,11 +13,38 @@ namespace Fresh.Service.Services.PageServices
 {
     public class StatisticPage
     {
-        public async Task<List<StatsView>> GetByCurrentDate(string dateTime)
+        public async Task<List<StatsView>> GetByCurrentDate(string status,string dateTime)
         {
             var expanditures = await GetExpanditureByDate(ParseExact(dateTime));
             var incomes = await GetIncomesBydate(dateTime);
-            List<StatsView> statsViews = expanditures.Join(incomes,
+            List<StatsView> statsViews = new List<StatsView>();
+            if (status == "Yearly")
+            {
+                statsViews = expanditures.Join(incomes,
+                x => x.Item1.Year,
+                y => y.Date.Year,
+                (x, y) => new StatsView
+                {
+                    Date = y.Date,
+                    Income = y.Income,
+                    Expenditure = x.Item2
+                }).ToList();
+            }
+            else if (status == "Monthly")
+            {
+                statsViews = expanditures.Join(incomes,
+                x => $"{x.Item1.Year}+{x.Item1.Month}",
+                y => $"{y.Date.Year}+{y.Date.Month}",
+                (x, y) => new StatsView
+                {
+                    Date = y.Date,
+                    Income = y.Income,
+                    Expenditure = x.Item2
+                }).ToList();
+            }
+            else if(status = "Daily")
+            {
+                statsViews = expanditures.Join(incomes,
                 x => x.Item1.Date,
                 y => y.Date.Date,
                 (x, y) => new StatsView
@@ -26,7 +53,10 @@ namespace Fresh.Service.Services.PageServices
                     Income = y.Income,
                     Expenditure = x.Item2
                 }).ToList();
+            }
+
             return statsViews;
+
         }
         private async Task<List<Tuple<DateTime, string>>> GetExpanditureByDate(DateTime dateTime)
         {

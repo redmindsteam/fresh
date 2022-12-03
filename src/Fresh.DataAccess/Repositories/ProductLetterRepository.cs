@@ -176,7 +176,6 @@ namespace Fresh.DataAccess.Repositories
                 {
                     Parameters =
                     {
-
                         new SQLiteParameter("ProductDescription", entity.ProductDescription),
                         new SQLiteParameter("Date", entity.Date),
                         new SQLiteParameter("UserId", entity.UserId)

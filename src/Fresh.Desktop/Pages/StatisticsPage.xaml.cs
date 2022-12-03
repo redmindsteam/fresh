@@ -31,15 +31,6 @@ namespace Fresh.Desktop.Pages
 
 
         }
-
-        private async void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(StatDataPicker.Text);
-            StatisticPage statisticPage = new StatisticPage();
-            var stats = await statisticPage.GetByCurrentDate(StatDataPicker.Text);
-            ProductsDgUi.ItemsSource = stats;
-        }
-
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -48,6 +39,26 @@ namespace Fresh.Desktop.Pages
         private void ProductsDgUi_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private async void daily_radio_Checked(object sender, RoutedEventArgs e)
+        {
+            StatisticPage statisticPage = new StatisticPage();
+            var stats = await statisticPage.GetByCurrentDate("Daily", StatDataPicker.Text);
+            ProductsDgUi.ItemsSource = stats;
+        }
+        private async void monthly_radio_Checked(object sender, RoutedEventArgs e)
+        {
+            StatisticPage statisticPage = new StatisticPage();
+            var stats = await statisticPage.GetByCurrentDate("Monthly", StatDataPicker.Text);
+            ProductsDgUi.ItemsSource = stats;
+        }
+
+        private async void yearly_radio_Checked(object sender, RoutedEventArgs e)
+        {
+            StatisticPage statisticPage = new StatisticPage();
+            var stats = await statisticPage.GetByCurrentDate("Yearly", StatDataPicker.Text);
+            ProductsDgUi.ItemsSource = stats;
         }
     }
 }

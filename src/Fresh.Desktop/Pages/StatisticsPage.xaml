@@ -23,9 +23,9 @@
                 <ColumnDefinition Width="0.8*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <RadioButton Grid.Column="0" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="RadioButton_Checked" />
-            <RadioButton Grid.Column="1" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" />
-            <RadioButton Grid.Column="2" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" />
+            <RadioButton Grid.Column="0" Name="daily_radio" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="daily_radio_Checked" />
+            <RadioButton Grid.Column="1" Name="monthly_radio" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="monthly_radio_Checked" />
+            <RadioButton Grid.Column="2" Name="yearly_radio" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="yearly_radio_Checked" />
             <DatePicker Grid.Column="3" Name="StatDataPicker" Style="{DynamicResource StatisticsDatePicker}"/>
         </Grid>
         
