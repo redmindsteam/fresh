@@ -1,4 +1,6 @@
-﻿using Fresh.Desktop.Windows;
+using Fresh.Service.Services.PageServices;
+using Fresh.Service.ViewModels;
+using Fresh.Desktop.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +26,19 @@ namespace Fresh.Desktop.Pages
         public CashiersPage()
         {
             InitializeComponent();
+            Click();
         }
 
- 
-
-        
+        private void rdAddUser_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+        public async void Click()
+        {
+            CashierPage cashiers = new CashierPage();
+            List<CashierView> CashierPages = await cashiers.GetCashierViews();
+            ProductsDgUi.ItemsSource = CashierPages;
+        }
 
         private void btnUpdateUser_Click(object sender, RoutedEventArgs e)
         {

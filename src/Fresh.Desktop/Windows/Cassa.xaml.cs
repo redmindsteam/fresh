@@ -12,7 +12,6 @@ namespace Fresh.Desktop.Windows
         {
             InitializeComponent();
             ObservableCollection<CassaData> cassaDatas = new ObservableCollection<CassaData>();
-
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
@@ -58,6 +57,11 @@ namespace Fresh.Desktop.Windows
             public string Price { get; set; }
             public string Thenumber { get; set; }
             public string Money { get; set; }
+        }
+
+        private void cassaDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

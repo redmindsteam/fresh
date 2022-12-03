@@ -65,14 +65,14 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<IList<Category?>> GetAllAsync(int skip, int take)
+        public async Task<IList<Category?>> GetAllAsync()
         {
             try
             {
 
                 var categories = new List<Category>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM categories  lIMIT {take} OFFSET {skip};";
+                string query = $"SELECT * FROM categories;";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
@@ -97,14 +97,14 @@ namespace Fresh.DataAccess.Repositories
             finally { _con.Close(); }
         }
 
-        public async Task<IList<Category>> GetAllLimit()
+        public async Task<IList<Category>> GetAllLimit(int skip, int take)
         {
             try
             {
 
                 var categories = new List<Category>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM categories";
+                string query = $"SELECT * FROM categories lIMIT {take} OFFSET {skip}";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())

@@ -54,7 +54,7 @@
 
                                     <DataGrid CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                                               RowStyle="{DynamicResource DataGridRowStyle1}" Style="{DynamicResource DataGridStyle1}"  
-                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630">
+                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" SelectionChanged="cassaDataGrid_SelectionChanged">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
                                             <DataGridTextColumn Header="Kg/L" IsReadOnly="True" Width="*" Binding="{Binding KgL}"/>

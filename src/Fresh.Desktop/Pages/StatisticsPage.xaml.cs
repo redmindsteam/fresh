@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Fresh.Domain.Entities;
+using Fresh.Service.Services.PageServices;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Fresh.Desktop.Windows.Cassa;
 
 namespace Fresh.Desktop.Pages
 {
@@ -23,6 +27,38 @@ namespace Fresh.Desktop.Pages
         public StatisticsPage()
         {
             InitializeComponent();
+            
+
+
+        }
+        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ProductsDgUi_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private async void daily_radio_Checked(object sender, RoutedEventArgs e)
+        {
+            StatisticPage statisticPage = new StatisticPage();
+            var stats = await statisticPage.GetByCurrentDate("Daily", StatDataPicker.Text);
+            ProductsDgUi.ItemsSource = stats;
+        }
+        private async void monthly_radio_Checked(object sender, RoutedEventArgs e)
+        {
+            StatisticPage statisticPage = new StatisticPage();
+            var stats = await statisticPage.GetByCurrentDate("Monthly", StatDataPicker.Text);
+            ProductsDgUi.ItemsSource = stats;
+        }
+
+        private async void yearly_radio_Checked(object sender, RoutedEventArgs e)
+        {
+            StatisticPage statisticPage = new StatisticPage();
+            var stats = await statisticPage.GetByCurrentDate("Yearly", StatDataPicker.Text);
+            ProductsDgUi.ItemsSource = stats;
         }
     }
 }

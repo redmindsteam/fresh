@@ -6,7 +6,7 @@ namespace Fresh.Service.Interfaces.DirectorService
     {
         public Task<bool> CreateAsync(User item);
         public Task<bool> DeleteAsync(int id);
-        public Task<IList<User>> GetAllAsync(int skip, int take);
+        public Task<IList<User?>> GetAllAsync();
         public Task<User> GetByIdAsync(int id);
         public Task<bool> UpdateAsync(int id, User entity);
         public Task<string> UserValidationAsync(string identifier, string password);

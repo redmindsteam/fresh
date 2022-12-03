@@ -34,11 +34,11 @@ namespace Fresh.Service.Director
             return false;
         }
 
-        public async Task<IList<ProductLetter>> GetAllAsync(int skip, int take)
+        public async Task<IList<ProductLetter>> GetAllAsync()
         {
             try
             {
-                var resault = await productLetterRepository.GetAllAsync(skip, take);
+                var resault = await productLetterRepository.GetAllAsync();
                 if (resault != null)
                 { 
                     return resault;
