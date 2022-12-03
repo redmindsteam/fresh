@@ -1,4 +1,5 @@
-﻿using Fresh.DataAccess.Repositories;
+﻿using Fresh.DataAccess.Interfaces.Repositories;
+using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
 using Fresh.Service.Attributes;
 using Fresh.Service.Helpers;
@@ -203,7 +204,7 @@ namespace Fresh.Service.Director
 
         public async Task<bool> UpdatePassHashByEmailAsync(string email,string password)
         {
-            UserRepository userRepository = new UserRepository();
+            IUserRepository userRepository = new UserRepository();
             PasswordHasher hasher = new PasswordHasher();
             var user = await userRepository.GetByEmailAsync(email);
             var security_assets = hasher.Hash(password);
@@ -211,7 +212,8 @@ namespace Fresh.Service.Director
             {
                 user.PasswordHash = security_assets.PasswordHash;
                 user.Salt = security_assets.Salt;
-                return await userRepository.UpdateAsync(user.Id, user);
+                IUserRepository userRepository2 = new UserRepository();
+                return await userRepository2.UpdateAsync(user.Id, user);
             }
             else
             {
