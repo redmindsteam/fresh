@@ -10,7 +10,7 @@
 
     <Grid Background="{DynamicResource PrimaryBackgroundColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.5*" />
             <RowDefinition Height="0.8*" />
             <RowDefinition Height="5*" />
             <RowDefinition Height="0.6*" />
@@ -40,14 +40,5 @@
             </Grid>
             
         </Grid>
-        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
-                <DataGridTextColumn Header="Income" Binding="{Binding Income}" Width="*"/>
-                <DataGridTextColumn Header="Expenditure" Binding="{Binding Expenditure}" Width="*"/>
-            </DataGrid.Columns>
-
-        </DataGrid>
-
-    </Grid>
+        
 </Page>
