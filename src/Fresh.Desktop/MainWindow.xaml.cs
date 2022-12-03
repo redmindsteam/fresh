@@ -67,6 +67,7 @@ namespace Fresh.Desktop
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+          
 
             DirectorRegisterService service = new DirectorRegisterService();
             var response = await service.UserValidationAsync(txtEmail.Text, txtPassword.Password);
@@ -76,7 +77,7 @@ namespace Fresh.Desktop
             Errorlists.Visibility = Visibility.Hidden;
             if (response == string.Empty)
             {
-                if (CurrentUserSingelton.Instance.IsAdmin == 0)
+                if (CurrentUserSingelton.Instance.IsAdmin == 1)
                 {
                     Main main = new Main();
                     main.Show();
