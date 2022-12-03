@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,12 @@ namespace Fresh.Desktop.Pages
 
         private void ButtonUpdate(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Clicked");
 
         }
     }
