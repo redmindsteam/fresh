@@ -189,12 +189,12 @@ namespace Fresh.DataAccess.Repositories
             {
                 await _con.OpenAsync();
                 string query = $"update Users set " +
-                    "Name = $Name, CategoryId = $CategoryId," +
-                    "Price = $Price," +
+                    " Name = $Name, CategoryId = $CategoryId," +
+                    " Price = $Price," +
                     " Unit = $Unit, BarcodeName = $BarcodeName, ProductionDate = $ProductionDate," +
-                    "ExpireDate = $ExpireDate" +
-                    "Value = $Value" +
-                    $"Where Id = {id}";
+                    " ExpireDate = $ExpireDate," +
+                    " Value = $Value" +
+                    $" Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
                 {
                     Parameters =
