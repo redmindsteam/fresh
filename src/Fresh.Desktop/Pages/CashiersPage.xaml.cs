@@ -1,6 +1,11 @@
+
+﻿using Fresh.Desktop.Windows;
+using Fresh.Domain.Entities;
+
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
 using Fresh.Desktop.Windows;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +52,7 @@ namespace Fresh.Desktop.Pages
 
         private void btnDeleteUser(object sender, RoutedEventArgs e)
         {
-
+        
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
