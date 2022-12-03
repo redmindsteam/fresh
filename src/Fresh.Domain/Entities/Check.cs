@@ -10,6 +10,6 @@ namespace Fresh.Domain.Entities
 
         public int UserId { get; set; }
 
-        public string Date { get; set; } = string.Empty;
+        public DateTime Date { get; set; }
     }
 }

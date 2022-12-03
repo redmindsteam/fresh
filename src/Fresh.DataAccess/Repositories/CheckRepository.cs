@@ -1,8 +1,10 @@
 ﻿using Fresh.DataAccess.Interfaces.Repositories;
 using Fresh.Domain.Constants;
 using Fresh.Domain.Entities;
+using System;
 using System.Data;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Text;
 
 namespace Fresh.DataAccess.Repositories
@@ -66,14 +68,14 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<IList<Check>> GetAllAsync(int skip, int take)
+        public async Task<IList<Check>> GetAllAsync()
         {
             try
             {
 
                 var checks = new List<Check>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM Checks  lIMIT {take} OFFSET {skip};";
+                string query = $"SELECT * FROM Checks;";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
@@ -84,9 +86,8 @@ namespace Fresh.DataAccess.Repositories
                         CheckDescription = reader.GetString("CheckDescription"),
                         TotalSum = reader.GetFloat("TotalSum"),
                         UserId = reader.GetInt32("UserId"),
-                        Date = reader.GetDataTypeName("Date")
-
-                    };
+                        Date = DateTime.ParseExact(reader.GetString("Date"), "MM/dd/yyyy", CultureInfo.InvariantCulture)
+                     };
                     checks.Add(check);
                 }
 
@@ -100,14 +101,14 @@ namespace Fresh.DataAccess.Repositories
             finally { _con.Close(); }
         }
 
-        public async Task<IList<Check>> GetAllLimit()
+        public async Task<IList<Check>> GetAllLimit(int skip, int take)
         {
             try
             {
 
                 var checks = new List<Check>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM Checks";
+                string query = $"SELECT * FROM Checks lIMIT {take} OFFSET {skip}";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
@@ -118,7 +119,7 @@ namespace Fresh.DataAccess.Repositories
                         CheckDescription = reader.GetString("CheckDescription"),
                         TotalSum = reader.GetFloat("TotalSum"),
                         UserId = reader.GetInt32("UserId"),
-                        Date = reader.GetDataTypeName("Date")
+                        Date = DateTime.ParseExact(reader.GetString("Date"), "MM/dd/yyyy", CultureInfo.InvariantCulture)
 
                     };
                     checks.Add(check);
@@ -146,11 +147,12 @@ namespace Fresh.DataAccess.Repositories
                 {
                     return new Check()
                     {
-                        Id = reader.GetInt32("Id"),
-                        CheckDescription = reader.GetString("CheckDescription"),
-                        TotalSum = reader.GetFloat("TotalSum"),
-                        UserId = reader.GetInt32("UserId"),
-                        Date = reader.GetDataTypeName("Date")
+                        Id = reader.GetInt32(0),
+                        CheckDescription = reader.GetString(1),
+                        TotalSum = reader.GetFloat(2),
+                        UserId = reader.GetInt32(3),
+                        Date = DateTime.ParseExact(reader.GetString(4), "MM/dd/yyyy", CultureInfo.InvariantCulture)
+
                     };
                 }
                 else return null!;

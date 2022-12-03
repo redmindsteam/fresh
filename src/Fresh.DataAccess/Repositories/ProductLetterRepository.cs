@@ -65,25 +65,25 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        public async Task<IList<ProductLetter>> GetAllAsync(int skip, int take)
+        public async Task<IList<ProductLetter>> GetAllAsync()
         {
             try
             {
 
                 var productLetters = new List<ProductLetter>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM ProductLetters  lIMIT {take} OFFSET {skip};";
+                string query = $"SELECT * FROM ProductLetters;";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
                 {
                     var productLetter = new ProductLetter()
                     {
-                        Id = reader.GetInt32("Id"),
-                        ProductDescription = reader.GetString("ProductDescription"),
-                        Date = reader.GetString("Date"),
-                        UserId = reader.GetInt32("UserId")
-
+                        Id = reader.GetInt32(0),
+                        ProductDescription = reader.GetString(1),
+                        Date = reader.GetString(2),
+                        UserId = reader.GetInt32(3),
+                        Price = reader.GetFloat(4)
                     };
                     productLetters.Add(productLetter);
                 }
@@ -98,14 +98,14 @@ namespace Fresh.DataAccess.Repositories
             finally { _con.Close(); }
         }
 
-        public async Task<IList<ProductLetter>> GetAllLimit()
+        public async Task<IList<ProductLetter>> GetAllLimit(int skip, int take)
         {
             try
             {
 
                 var productLetters = new List<ProductLetter>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM ProductLetters";
+                string query = $"SELECT * FROM ProductLetters lIMIT {take} OFFSET {skip}";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
@@ -115,8 +115,8 @@ namespace Fresh.DataAccess.Repositories
                         Id = reader.GetInt32("Id"),
                         ProductDescription = reader.GetString("ProductDescription"),
                         Date = reader.GetString("Date"),
-                        UserId = reader.GetInt32("UserId")
-
+                        UserId = reader.GetInt32("UserId"),
+                        Price = reader.GetFloat("Price")
                     };
                     productLetters.Add(productLetter);
                 }
