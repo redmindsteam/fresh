@@ -36,9 +36,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Select the cashier: " Style="{DynamicResource labelChecksPage}"/>
                 <ComboBox Grid.Column="1" Name="comboBoxCashiers" Loaded="comboBoxCashiers_Loaded" Height="30" Width="200"/>
-
             </Grid>
-
         </Grid>
     </Grid>
 </Page>
