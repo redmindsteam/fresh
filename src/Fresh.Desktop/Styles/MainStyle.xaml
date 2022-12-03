@@ -139,12 +139,14 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
     </Style>
     <!-- Radio Button Style-->
+    
     <!-- Date Picker Style-->
     <Style x:Key="StatisticsDatePicker" TargetType="DatePicker">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
     <!-- Date Picker Style-->
+    <!-- Button Circle -->
     <Style x:Key="buttonCircle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -169,7 +171,15 @@
         </Style.Triggers>
 
     </Style>
-    
-    
+    <!-- Button Circle -->
+ 
+    <!-- Label Style-->
+    <Style x:Key="labelChecksPage" TargetType="Label">
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Foreground" Value="{DynamicResource TextSecundaryColor}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <!-- Label Style-->
 
 </ResourceDictionary>

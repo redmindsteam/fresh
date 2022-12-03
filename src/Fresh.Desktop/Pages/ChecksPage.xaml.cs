@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fresh.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,32 @@ namespace Fresh.Desktop.Pages
     /// </summary>
     public partial class ChecksPage : Page
     {
+        public List<Student> students = Students.GetStudents();
         public ChecksPage()
         {
             InitializeComponent();
+            DataContext = this;
+        }
+        public class Student
+        {
+            public string FullName { get; set; }
+            public string Email { get; set; }
+        }
+        public class Students
+        {
+            public static List<Student> GetStudents()
+            {
+                return new List<Student>()
+                {
+                    new Student() { FullName = "ali", Email="ali.@gmail.com" },
+                    new Student() {FullName="anvar", Email="anvar.@gmail.com"}
+                };
+            }
+        }
+
+        private void comboBoxCashiers_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

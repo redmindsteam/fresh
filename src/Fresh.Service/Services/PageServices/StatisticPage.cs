@@ -42,7 +42,7 @@ namespace Fresh.Service.Services.PageServices
                     Expenditure = x.Item2
                 }).ToList();
             }
-            else if(status = "Daily")
+            else if(status == "Daily")
             {
                 statsViews = expanditures.Join(incomes,
                 x => x.Item1.Date,

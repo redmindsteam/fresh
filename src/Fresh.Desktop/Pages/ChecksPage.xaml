@@ -8,7 +8,37 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChecksPage">
 
-    <Border CornerRadius="5" Background="White">
-        <Label Content="Checks" Foreground="Black" FontSize="50" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    </Border>
+    <Grid Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.8*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="0.6*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{DynamicResource SecundaryBackgroundColor}" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="0.8*" />
+                    <ColumnDefinition  Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Select a date: " Style="{DynamicResource labelChecksPage}"/>
+                <DatePicker Grid.Column="1" Style="{DynamicResource StatisticsDatePicker}"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="0.8*" />
+                    <ColumnDefinition  Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Select the cashier: " Style="{DynamicResource labelChecksPage}"/>
+                <ComboBox Grid.Column="1" Name="comboBoxCashiers" Loaded="comboBoxCashiers_Loaded" Height="30" Width="200"/>
+
+            </Grid>
+            
+        </Grid>
+        
 </Page>
