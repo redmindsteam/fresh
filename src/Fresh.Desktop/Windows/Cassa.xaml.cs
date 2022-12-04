@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using Fresh.Desktop.Pages;
+using MaterialDesignThemes.Wpf;
+using System.Collections.ObjectModel;
 using System.Windows;
+
 
 namespace Fresh.Desktop.Windows
 {
@@ -48,7 +51,8 @@ namespace Fresh.Desktop.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            CassaChesk cassaChesk = new CassaChesk();
+            cassaChesk.Show();
         }
 
         public class CassaData
