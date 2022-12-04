@@ -15,18 +15,18 @@
             <Border>
                 <Grid>
 
-                    
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    
+
                     <Grid Grid.Column="0">
                         <Border CornerRadius="8 0 0 8" Background="{DynamicResource SecundaryBackgroundColor}">
                             <StackPanel x:Name="cassaPanel" Width="60">
-                                <Button Width="40" Height="40" Content="O" Click="Button_Click"> 
-                   
+                                <Button Width="40" Height="40" Content="O" Click="Button_Click">
+
                                 </Button>
                             </StackPanel>
                         </Border>
@@ -43,9 +43,13 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
+                                <Grid Grid.Row="0">
+                                    <Button x:Name="btnClose" Click="btn_close" Width="15" Height="15" Background="Red" HorizontalAlignment="Right" Margin="10 0 10 0"/>
+                                </Grid>
 
-                                <Grid  Grid.Row="1">
-                                    
+
+                                    <Grid  Grid.Row="1">
+
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
@@ -83,12 +87,20 @@
 
                                 </Grid>
 
+                                <Grid Grid.Row="2">
+                                    <TextBlock HorizontalAlignment="Left" Height="156" Margin="634,0,0,0" Grid.Row="2" 
+                                               TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Width="196"/>
+                                    <Button Width="120" Height="20" Content="Delete" HorizontalAlignment="Left" 
+                                            VerticalAlignment="Bottom" x:Name="btnDelete" Click="btnDelete_Click">
+                                        
+                                    </Button>
+                                </Grid>
 
                             </Grid>
                         </Border>
                     </Grid>
 
-                    
+
                 </Grid>
             </Border>
         </Grid>

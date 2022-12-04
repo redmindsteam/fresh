@@ -65,5 +65,15 @@ namespace Fresh.Desktop.Windows
         {
 
         }
+
+        private void btn_close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
