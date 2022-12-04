@@ -33,7 +33,7 @@
                     </StackPanel>
 
                     <!-- Menu -->
-                    <ToggleButton x:Name="btnMenu"  HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" Style="{StaticResource MenuIconStyle}" Margin="0 0 15 0">
+                    <ToggleButton x:Name="btnMenu"  HorizontalAlignment="Center" BorderThickness="0" Background="Transparent" VerticalAlignment="Bottom" Style="{StaticResource MenuIconStyle}" Margin="0,0,0,15">
                         <ToggleButton.Triggers>
                             <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                 <BeginStoryboard>

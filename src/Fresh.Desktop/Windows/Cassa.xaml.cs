@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Fresh.Desktop.Pages;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace Fresh.Desktop.Windows
@@ -47,7 +48,8 @@ namespace Fresh.Desktop.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            CassaConsigmentLetter cassa = new CassaConsigmentLetter();
+            cassa.Show();
         }
 
         public class CassaData
@@ -60,6 +62,16 @@ namespace Fresh.Desktop.Windows
         }
 
         private void cassaDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btn_close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
 
         }

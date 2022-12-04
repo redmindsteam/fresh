@@ -1,0 +1,38 @@
+﻿<Window x:Class="Fresh.Desktop.Pages.CassaConsigmentLetter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fresh.Desktop.Pages"
+        mc:Ignorable="d"
+        Title="CassaConsigmentLetter" Height="500" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Border CornerRadius = "6" Background = "White" >
+        <Grid >
+            <Grid.RowDefinitions >
+                <RowDefinition Height = "20" />
+                <RowDefinition />
+            </Grid.RowDefinitions >
+            <Button x:Name = "Close" Click = "Close_Click" Grid.Row = "0" HorizontalAlignment = "Right" Width = "15" Height = "15" Background = "Red" RenderTransformOrigin = "0.194,0.683" />
+            <Grid Grid.Row = "1" >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width = "294*" />
+                    <ColumnDefinition Width = "5*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions >
+                <DataGrid  Width = "350" HorizontalAlignment = "Left" >
+                    <DataGrid.Columns >
+                        <DataGridTextColumn Header = "Mahsulot" Width = "*" />
+                        <DataGridTextColumn Header = "Kg/L" Width = "*" />
+                        <DataGridTextColumn Header = "Jami" Width = "*" />
+                    </DataGrid.Columns >
+                </DataGrid >
+
+                <TextBox x:Name = "txtProduct" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,20,8,0" />
+                <TextBox x:Name = "txtKgL" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,50,8,0" />
+                <TextBox x:Name = "txtTotal" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,80,8,0" />
+                <Button x:Name = "AddBtton" Click = "AddButton_Click" Content = "Add"  Width = "80" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,120,8,0" RenderTransformOrigin = "1.201,0.873" />
+                <Button x:Name = "DeleteBtton" Click = "DeleteButton_Click" Content = "Delete"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,120,0,0" />
+            </Grid >
+        </Grid >
+    </Border >
+</Window>
