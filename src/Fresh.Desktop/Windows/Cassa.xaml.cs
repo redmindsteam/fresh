@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Fresh.Desktop.Pages;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace Fresh.Desktop.Windows
@@ -47,7 +48,8 @@ namespace Fresh.Desktop.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            CassaConsigmentLetter cassa = new CassaConsigmentLetter();
+            cassa.Show();
         }
 
         public class CassaData

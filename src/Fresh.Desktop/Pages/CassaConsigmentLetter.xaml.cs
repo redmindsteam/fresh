@@ -1,5 +1,4 @@
-﻿using Fresh.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,25 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Fresh.Desktop.Pages
 {
     /// <summary>
-    /// Interaction logic for ChecksPage.xaml
+    /// Interaction logic for CassaConsigmentLetter.xaml
     /// </summary>
-    public partial class ChecksPage : Page
+    public partial class CassaConsigmentLetter : Window
     {
-        public ChecksPage()
+        public CassaConsigmentLetter()
         {
             InitializeComponent();
-            DataContext = this;
         }
 
-        private void comboBoxCashiers_Loaded(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
