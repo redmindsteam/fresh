@@ -14,8 +14,6 @@
         <Grid>
             <Border>
                 <Grid>
-
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
@@ -48,7 +46,7 @@
                                 </Grid>
 
 
-                                    <Grid  Grid.Row="1">
+                                <Grid  Grid.Row="1">
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -71,18 +69,18 @@
 
                                     <WrapPanel Grid.Column="1" Width="210" Height="280"
                                                HorizontalAlignment="Right" VerticalAlignment="Top">
-                                        <Button x:Name="bir" Content="1" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="ikki" Content="2" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="uch" Content="3" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="tort" Content="4" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="besh" Content="5" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="olti" Content="6" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="yetti" Content="7" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="sakkiz" Content="8" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="toqqiz" Content="9" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="nol" Content="-" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="a" Content="0" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="b" Content="+" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num4" Content="4" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num5" Content="5" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num6" Content="6" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num7" Content="7" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num8" Content="8" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num9" Content="9" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num0" Content="-" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="numdelete" Content="+" Width="70" Height="70" FontSize="20"/>
                                     </WrapPanel>
 
                                 </Grid>
@@ -92,15 +90,12 @@
                                                TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Width="196"/>
                                     <Button Width="120" Height="20" Content="Delete" HorizontalAlignment="Left" 
                                             VerticalAlignment="Bottom" x:Name="btnDelete" Click="btnDelete_Click">
-                                        
+
                                     </Button>
                                 </Grid>
-
                             </Grid>
                         </Border>
                     </Grid>
-
-
                 </Grid>
             </Border>
         </Grid>
