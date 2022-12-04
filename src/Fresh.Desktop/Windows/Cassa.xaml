@@ -58,11 +58,11 @@
                                               RowStyle="{DynamicResource DataGridRowStyle1}" Style="{DynamicResource DataGridStyle1}"  
                                               Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" SelectionChanged="cassaDataGrid_SelectionChanged">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
-                                            <DataGridTextColumn Header="Kg/L" IsReadOnly="True" Width="*" Binding="{Binding KgL}"/>
-                                            <DataGridTextColumn Header="Price" IsReadOnly="True" Width="*" Binding="{Binding Price}"/>
+                                            <DataGridTextColumn x:Name="ProductName" Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                                            <DataGridTextColumn x:Name="ProductKgL" Header="Kg/L" IsReadOnly="True" Width="*" Binding="{Binding KgL}"/>
+                                            <DataGridTextColumn x:Name="ProductPrice" Header="Price" IsReadOnly="True" Width="*" Binding="{Binding Price}"/>
                                             <DataGridTextColumn Header="The number" IsReadOnly="True" Width="*" Binding="{Binding Thenumber}"/>
-                                            <DataGridTextColumn Header="Money" IsReadOnly="True" Width="*" Binding="{Binding Money}"/>
+                                            <DataGridTextColumn x:Name="totalPrice" Header="Money" IsReadOnly="True" Width="*" Binding="{Binding Money}"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
 
@@ -90,7 +90,9 @@
                                                TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Width="196"/>
                                     <Button Width="120" Height="20" Content="Delete" HorizontalAlignment="Left" 
                                             VerticalAlignment="Bottom" x:Name="btnDelete" Click="btnDelete_Click">
-
+                                    </Button>
+                                    <Button Width="120" Height="20" Content="Buy" HorizontalAlignment="Left" 
+                                            VerticalAlignment="Bottom" x:Name="btnBuy" Click="btnBuy_Click" Margin="150 0 0 0">
                                     </Button>
                                 </Grid>
                             </Grid>
