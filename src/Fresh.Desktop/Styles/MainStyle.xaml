@@ -131,8 +131,9 @@
     
     <!-- Radio Button Style-->
     <Style x:Key="StatisticsRadioButtonStyle" TargetType="RadioButton">
-        <Setter Property="FontSize" Value="18"/>
-        <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#767676"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -180,5 +181,9 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
     <!-- Label Style-->
+    
+    <!-- Search Box-->
+    
+    <!-- Search Box-->
 
 </ResourceDictionary>

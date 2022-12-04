@@ -5,7 +5,7 @@
     <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#f3f3f3"/>
     <SolidColorBrush x:Key="SecundaryBackgroundColor" Color="#3AA9AD" />
     <SolidColorBrush x:Key="Color" Color="#371B58" />
-    <SolidColorBrush x:Key="Colors" Color="#0AA1DD" />
+    <SolidColorBrush x:Key="Colors" Color="#0AA1DD" /> 
 
 
     <!-- Primary Colors -->

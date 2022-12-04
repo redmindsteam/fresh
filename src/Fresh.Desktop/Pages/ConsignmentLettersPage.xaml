@@ -10,9 +10,10 @@
       Title="ConsignmentLettersPage" Background="White">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="1.3*" />
+            <RowDefinition Height="8.2*"/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Background="#3AA9AD"/>
 
@@ -44,9 +45,9 @@
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   materialDesign:TextFieldAssist.HasClearButton="True"
                   materialDesign:TextFieldAssist.SuffixText="Search"
-                  materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource SecondaryHueMidBrush}"
+                  materialDesign:TextFieldAssist.UnderlineBrush="#673BB7"
                   materialDesign:ColorZoneAssist.Mode="Inverted"
-                  materialDesign:HintAssist.Hint="Hello"
+                  materialDesign:HintAssist.Hint="Select a cashier"
                   MinWidth="128"
                     Width="250">       
                 <ComboBoxItem>
