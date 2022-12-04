@@ -10,19 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fresh.Desktop.Pages
+namespace Fresh.Desktop.Windows
 {
     /// <summary>
-    /// Interaction logic for Check.xaml
+    /// Interaction logic for AddProducts.xaml
     /// </summary>
-    public partial class Check : Page
+    public partial class AddProducts : Window
     {
-        public Check()
+        public AddProducts()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

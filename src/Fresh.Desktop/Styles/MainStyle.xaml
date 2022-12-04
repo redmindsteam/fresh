@@ -181,9 +181,12 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
     <!-- Label Style-->
+
+    <Color x:Key="WinColor1">#31C6D4</Color>
+    <Color x:Key="WinColor2">#3D8361</Color>
+    <Color x:Key="WinColor3">#1C6758</Color>
+
     
-    <!-- Search Box-->
-    
-    <!-- Search Box-->
+
 
 </ResourceDictionary>

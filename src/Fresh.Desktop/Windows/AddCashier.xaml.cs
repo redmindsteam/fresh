@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Fresh.Desktop.Windows
 {
     /// <summary>
-    /// Interaction logic for Db_User.xaml
+    /// Interaction logic for AddCashier.xaml
     /// </summary>
-    public partial class Db_User : Window
+    public partial class AddCashier : Window
     {
-        public Db_User()
+        public AddCashier()
         {
             InitializeComponent();
         }
@@ -31,7 +31,8 @@ namespace Fresh.Desktop.Windows
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            AddProducts add = new AddProducts();
+            add.Show();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
