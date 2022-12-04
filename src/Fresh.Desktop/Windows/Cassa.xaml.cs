@@ -73,7 +73,20 @@ namespace Fresh.Desktop.Windows
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (cassaDataGrid.Items != null)
+            {
+                cassaDataGrid.ItemsSource = null;
+            }
+        }
 
+        private void btnBuy_Click(object sender, RoutedEventArgs e)
+        {
+            double price = 0;   
+            foreach (var cassaData in cassaDataGrid.Items)
+            {
+                price += double.Parse(ProductKgL.ToString()) * double.Parse(ProductPrice.ToString());
+            }
+            MessageBox.Show($"{price}");
         }
     }
 }
