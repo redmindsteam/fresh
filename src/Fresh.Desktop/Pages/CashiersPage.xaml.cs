@@ -4,7 +4,7 @@ using Fresh.Domain.Entities;
 
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
-using Fresh.Desktop.Windows;
+
 
 using System;
 using System.Collections.Generic;
@@ -57,8 +57,8 @@ namespace Fresh.Desktop.Pages
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
-            Db_User user = new Db_User();
-            user.Show();
+            AddCashier add = new AddCashier();
+            add.Show();
             
         }
     }

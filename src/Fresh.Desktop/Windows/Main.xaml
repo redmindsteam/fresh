@@ -8,7 +8,8 @@
         Title="Main" Height="650" Width="1000"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
-        ResizeMode="NoResize" WindowState="Normal">
+        ResizeMode="NoResize" WindowState="Normal"
+        MouseDown="Window_MouseDowns">
 
     <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
         <Grid>
@@ -33,7 +34,7 @@
                     </StackPanel>
 
                     <!-- Menu -->
-                    <ToggleButton x:Name="btnMenu"  HorizontalAlignment="Center" BorderThickness="0" Background="Transparent" VerticalAlignment="Bottom" Style="{StaticResource MenuIconStyle}" Margin="0,0,0,15">
+                    <ToggleButton x:Name="btnMenu"  HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" Style="{StaticResource MenuIconStyle}" Margin="0 0 15 0">
                         <ToggleButton.Triggers>
                             <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                 <BeginStoryboard>

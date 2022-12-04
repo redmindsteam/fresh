@@ -19,6 +19,7 @@
                 <ResourceDictionary Source="Themes/LightTheme.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="Assets/Icons/Icons.xaml"/>
+                <ResourceDictionary Source="/Styles/MainStyle.xaml"/>
 
                 <ResourceDictionary Source="Styles/MainStyle.xaml"/>
              
