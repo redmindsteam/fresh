@@ -25,7 +25,6 @@ namespace Fresh.Desktop.Pages
             InitializeComponent();
         }
 
-
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
