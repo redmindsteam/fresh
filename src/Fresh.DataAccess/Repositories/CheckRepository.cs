@@ -11,7 +11,7 @@ namespace Fresh.DataAccess.Repositories
 {
     public class CheckRepository : ICheckRepository
     {
-        public readonly SQLiteConnection _con = new SQLiteConnection(DbConstants.CONNECTION_STRING);
+        private readonly SQLiteConnection _con = new SQLiteConnection(DbConstants.CONNECTION_STRING);
         public async Task<bool> CreateAsync(Check item)
         {
             try

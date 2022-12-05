@@ -59,7 +59,7 @@ namespace Fresh.Desktop.Pages
             }
             if (statsViews.Count == 0)
             {
-                MessageBox.Show("There aren't any data", "Lack of data", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("There aren't any data,Try to select another DateTime", "Lack of data", MessageBoxButton.OK, MessageBoxImage.Hand);
             }
                 
             if(status == "Yearly")
