@@ -29,30 +29,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <materialDesign:PopupBox Grid.Column="1"
-  Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-  PlacementMode="BottomAndAlignCentres"
-  ToolTipService.Placement="Right"
-  ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox"
-  Opened="PopupBox_OnOpened"
-  Closed="PopupBox_OnClosed">
-                        <StackPanel>
-                            <Button
-      ToolTip="One with custom opacity"
-      Opacity="0.5">
-                                1
-                            </Button>
-                            <Button
-      ToolTip="Two">
-                                2
-                            </Button>
-                            <Button
-      ToolTip="Three">
-                                3
-                            </Button>
-                        </StackPanel>
-                    </materialDesign:PopupBox>
-                </Grid>
+                                    </Grid>
             </Grid>
         </Grid>
         <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"

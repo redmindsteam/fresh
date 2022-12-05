@@ -26,7 +26,7 @@ namespace Fresh.Desktop.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -37,6 +37,12 @@ namespace Fresh.Desktop.Windows
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Window_MouseDowns(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
         }
     }
 }

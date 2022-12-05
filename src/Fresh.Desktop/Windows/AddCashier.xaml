@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fresh.Desktop.Windows"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AddCashier" 
         Height="430" 
         Width="350"
@@ -25,9 +26,13 @@
     </Window.Resources>
 
 
-    <Border 
+    <Border Margin="20"
         CornerRadius="20" Background="#3AADA1"
         BorderThickness="3" Opacity="100" >
+        <Border.Effect>
+            <DropShadowEffect Direction="-75" ShadowDepth="2" Opacity="1"
+                              BlurRadius="35" Color="Cyan"/>
+        </Border.Effect>
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource WinColor1}" Offset="0.1"/>
@@ -44,35 +49,27 @@
                        FontWeight="Medium"
                        Margin="0 13 0 0"
                        Width="259"/>
-            <TextBox x:Name="txtUser"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="DarkGray"
-                     BorderThickness="0 0 0 2"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
+            <TextBox
+                Foreground="White"
+                Background="Transparent"
+                BorderBrush="White"
+                Height="21"
+                materialDesign:HintAssist.Hint=""
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" />
 
             <TextBlock Text="Email"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
-            <TextBox x:Name="txtEmail"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="DarkGray"
-                     BorderThickness="0 0 0 2"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
+            <TextBox
+                Foreground="White"
+                Background="Transparent"
+                BorderBrush="White"
+                Height="21"
+                materialDesign:HintAssist.Hint=""
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" />
 
             <TextBlock Text="Password"
                        Foreground="White" FontSize="12"
@@ -85,8 +82,8 @@
                      Background="Transparent"
                      Foreground="White"
                      CaretBrush="LightGray"
-                     BorderBrush="DarkGray"
-                     BorderThickness="0 0 0 2"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
                      Height="21"
                      Width="260"
                      Margin="0 6 0 0"/>
@@ -95,37 +92,28 @@
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
-            <TextBox x:Name="txtPassSeriya"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="DarkGray"
-                     BorderThickness="0 0 0 2"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
+            <TextBox
+                Foreground="White"
+                Background="Transparent"
+                BorderBrush="White"
+                Height="21"
+                materialDesign:HintAssist.Hint=""
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" />
 
             <TextBlock Text="Phone Number"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
-            <TextBox x:Name="txtPhone"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="DarkGray"
-                     BorderThickness="0 0 0 2"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
-
-
+            <TextBox
+                Foreground="White"
+                Background="Transparent"
+                BorderBrush="White"
+                Height="21"
+                materialDesign:HintAssist.Hint=""
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" />
+            
             <DockPanel  Margin="0 20 0 0">
                 <Button BorderBrush="#10A19D" Background="#46C2CB" Click="SaveButton_Click" Width="113" Margin="5" Height="25" Content="Save"/>
 

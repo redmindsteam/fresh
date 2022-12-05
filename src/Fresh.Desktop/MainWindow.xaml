@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fresh.Desktop"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent"
         Title="MainWindow" Height="450" Width="700">
@@ -14,14 +16,14 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
+        
         <Image Source="/Images/Снимок экрана_20221129_003757.png"
                Grid.Column="1"
                Panel.ZIndex="1"
                MouseUp="Image_MouseUp"
                Style="{StaticResource imgClose}" Height="15" />
 
-
-
+        
 
         <Border Grid.Column="0" CornerRadius="5 0 0 5">
             <Border.Background>
@@ -30,7 +32,8 @@
                     <GradientStop Color="#3AADA1" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Grid Margin="0,-4,0,0">
+            
+            <Grid Margin="0,0,0,0">
                 <Canvas>
                     <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6"/>
                     <Polygon Points="90,400 200,360 180,448" Fill="#4EB1B6" HorizontalAlignment="Left" Height="447" Canvas.Top="2" VerticalAlignment="Center" Width="220"/>
