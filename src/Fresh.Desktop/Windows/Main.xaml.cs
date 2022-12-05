@@ -33,9 +33,7 @@ namespace Fresh.Desktop.Windows
         }
         private void rdConsignmentLetters_Click(object sender, RoutedEventArgs e)
         {
-            Cassa cassa = new Cassa();
-            cassa.Show();
-            //PagesNavigation.Navigate(new System.Uri("Pages/ConsignmentLettersPage.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new System.Uri("Pages/ConsignmentLettersPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
