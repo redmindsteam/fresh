@@ -13,7 +13,7 @@ namespace Fresh.Desktop.Windows
         public Cassa()
         {
             InitializeComponent();
-   
+
             ObservableCollection<CassaData> cassaDatas = new ObservableCollection<CassaData>();
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
         

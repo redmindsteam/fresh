@@ -76,20 +76,20 @@
                                     </DataGrid>
 
 
-                                    <WrapPanel Grid.Column="1" Width="210" Height="280"
+                                    <WrapPanel Grid.Column="1" Width="210" Height="280" Background="White"
                                                HorizontalAlignment="Right" VerticalAlignment="Top">
-                                        <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num4" Content="4" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num5" Content="5" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num6" Content="6" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num7" Content="7" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num8" Content="8" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num9" Content="9" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num0" Content="-" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="numdelete" Content="+" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num4" Content="4" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num5" Content="5" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num6" Content="6" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num7" Content="7" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num8" Content="8" Width="70" Height="70" FontSize="20"  Background="White" Foreground="Black"/>
+                                        <Button x:Name="num9" Content="9" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num0" Content="-" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="numdelete" Content="+" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
                                     </WrapPanel>
 
                                 </Grid>
@@ -100,9 +100,7 @@
                                     <Button Width="120" Height="20" Content="Delete" HorizontalAlignment="Left" 
                                             VerticalAlignment="Top" x:Name="btnDelete" Click="btnDelete_Click" Margin="0,180,0,0">
                                     </Button>
-                                    <Button Width="120" Height="20" Content="Buy" HorizontalAlignment="Left" 
-                                            VerticalAlignment="Bottom" x:Name="btnBuy" Click="btnBuy_Click" Margin="150 0 0 0">
-                                    </Button>
+                                    <Button Width="120" Content="Buy" HorizontalAlignment="Left" x:Name="btnBuy" Click="btnBuy_Click" Margin="150,180,0,0"/>
                                 </Grid>
                             </Grid>
                         </Border>

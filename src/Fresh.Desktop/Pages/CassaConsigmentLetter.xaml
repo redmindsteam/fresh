@@ -20,12 +20,12 @@
                     <ColumnDefinition Width="7*"/>
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions >
-                <DataGrid  Width = "350" HorizontalAlignment = "Left" >
+                <DataGrid  Width = "350" HorizontalAlignment = "Left" x:Name="DataGridCassaLetter">
                     <DataGrid.Columns >
-                        <DataGridTextColumn Header = "Mahsulot" Width = "*" />
-                        <DataGridTextColumn Header = "Kg/L" Width = "*" />
-                        <DataGridTextColumn Header = "Jami" Width = "*" />
-                        <DataGridTextColumn Header = "Narxi" Width = "*" />
+                        <DataGridTextColumn Header = "Mahsulot" Width = "*" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header = "Kg/L" Width = "*" Binding="{Binding KgL}"/>
+                        <DataGridTextColumn Header = "Jami" Width = "*" Binding="{Binding Total}"/>
+                        <DataGridTextColumn Header = "Narxi" Width = "*" Binding="{Binding Price}"/>
                     </DataGrid.Columns >
                 </DataGrid >
 
