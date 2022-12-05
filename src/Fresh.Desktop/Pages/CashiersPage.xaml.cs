@@ -4,8 +4,7 @@ using Fresh.Domain.Entities;
 
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
-
-
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,9 +49,20 @@ namespace Fresh.Desktop.Pages
 
         }
 
-        private void btnDeleteUser(object sender, RoutedEventArgs e)
+        private async void btnDeleteUser(object sender, RoutedEventArgs e)
         {
-        
+            CashierView cashierView = (CashierView)ProductsDgUi.SelectedItem;
+            CashierPage cashierPage = new CashierPage();
+            var result = await cashierPage.DeleteCashier(cashierView);
+            if (result)
+            {
+                CashierPage cashiers = new CashierPage();
+                List<CashierView> CashierPages = await cashiers.GetCashierViews();
+                ProductsDgUi.ItemsSource = CashierPages;
+                MessageBox.Show("Cashier successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
