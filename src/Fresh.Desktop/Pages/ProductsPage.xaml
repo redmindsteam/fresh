@@ -38,13 +38,13 @@
             </Grid>
         </Grid>
         <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
-                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged_1">
+                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="0.8*"/>
-                <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="0.8*"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="0.8*"/>
-                <DataGridTextColumn Header="Available" Binding="{Binding Available}" Width="0.5*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Full_Name}" Width="0.8*"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding Email}" Width="0.8*"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Phone_Number}" Width="0.8*"/>
+                <DataGridTextColumn Header="Available" Binding="{Binding Phone_Number}" Width="0.5*"/>
             </DataGrid.Columns>
         </DataGrid>
         

@@ -78,7 +78,7 @@ namespace Fresh.DataAccess.Repositories
 
                 var products = new List<Product>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM Products";
+                string query = $"SELECT * FROM Products;";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
@@ -88,12 +88,13 @@ namespace Fresh.DataAccess.Repositories
                         Id = reader.GetInt32("Id"),
                         Name = reader.GetString("Name"),
                         CategoryId = reader.GetInt32("CategoryId"),
-                        Price = reader.GetFloat("Price"),
+                        Price = reader.GetInt32("Price"),
                         Unit = reader.GetString("Unit"),
                         BarcodeName = reader.GetString("BarcodeName"),
                         ProductionDate = reader.GetString("ProductionDate"),
-                        ExpireDate = reader.GetString("ExpireData"),
+                        ExpireDate = reader.GetString("ExpireDate"),
                         Value = reader.GetFloat("Value")
+
                     };
                     products.Add(product);
                 }
