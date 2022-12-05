@@ -38,10 +38,10 @@
             </Grid>
 
         </Grid>
-        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
-                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged_1">
+        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
+                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="0.8*"/>
                 <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="0.8*"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="0.8*"/>
@@ -61,7 +61,7 @@
                     Style="{DynamicResource btnUpdate}" 
                     Height="32"
                     Width="110"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left" Click="btnUpdate_Click">
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Height="32" Width="85" RenderTransformOrigin="-0.61,0.512">
                     <Path Data="{DynamicResource Update}" Margin="0 0 0 0" Stretch="Fill"
                           Fill="{DynamicResource Colors}" 

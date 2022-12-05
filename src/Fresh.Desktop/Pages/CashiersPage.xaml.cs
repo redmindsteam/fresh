@@ -44,9 +44,14 @@ namespace Fresh.Desktop.Pages
             ProductsDgUi.ItemsSource = CashierPages;
         }
 
-        private void btnUpdateUser_Click(object sender, RoutedEventArgs e)
+        private async void btnUpdateUser_Click(object sender, RoutedEventArgs e)
         {
-
+            CashierPage cashierPage = new();
+            var user =(CashierView)ProductsDgUi.SelectedItem;
+            if(await cashierPage.UpdateCashier(user.Id,user))
+                MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("There was wrong with update cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
         private async void btnDeleteUser(object sender, RoutedEventArgs e)
@@ -74,6 +79,7 @@ namespace Fresh.Desktop.Pages
 
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CashierView cashierView = (CashierView)ProductsDgUi.SelectedItem;
 
         }
     }

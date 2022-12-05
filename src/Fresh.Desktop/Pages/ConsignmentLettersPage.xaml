@@ -18,11 +18,11 @@
         <StackPanel Grid.Row="0" Background="#3AA9AD"/>
 
         <DataGrid Grid.Row="2" MouseDoubleClick="RowDouble_Clicked" Foreground="#3AA9AD"  x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
-                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" >
+                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Data Time" Binding="{Binding Data}" Width="*"/>
-                <DataGridTextColumn Header="Cashier" Binding="{Binding Email}" Width="*"/>
-                <DataGridTextColumn Header="Total Price" Binding="{Binding Prodeuct}" Width="*"/>
+                <DataGridTextColumn Header="Data Time" Binding="{Binding DateTime}" Width="*"/>
+                <DataGridTextColumn Header="Cashier" Binding="{Binding Cashier}" Width="*"/>
+                <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" Width="*"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
