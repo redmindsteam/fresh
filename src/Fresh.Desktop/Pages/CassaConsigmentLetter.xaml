@@ -24,14 +24,21 @@
                         <DataGridTextColumn Header = "Mahsulot" Width = "*" />
                         <DataGridTextColumn Header = "Kg/L" Width = "*" />
                         <DataGridTextColumn Header = "Jami" Width = "*" />
+                        <DataGridTextColumn Header = "Narxi" Width = "*" />
                     </DataGrid.Columns >
                 </DataGrid >
 
                 <TextBox x:Name = "txtProduct" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,20,8,0" />
-                <TextBox x:Name = "txtKgL" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,50,8,0" />
+                <ComboBox x:Name = "txtKgL"  Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,50,8,0" IsReadOnly="True" >
+                    <ComboBoxItem Content="Kg"/>
+                    <ComboBoxItem Content="L"/>
+                    <ComboBoxItem Content="T/N"/>
+                </ComboBox>
                 <TextBox x:Name = "txtTotal" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,80,8,0" />
-                <Button x:Name = "AddBtton" Click = "AddButton_Click" Content = "Add"  Width = "80" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,120,8,0" RenderTransformOrigin = "1.201,0.873" />
-                <Button x:Name = "DeleteBtton" Click = "DeleteButton_Click" Content = "Delete"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,120,0,0" />
+                <TextBox x:Name = "txtPrice" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,110,8,0" />
+                <Button x:Name = "AddBtton" Click = "AddButton_Click" Content = "Add"  Width = "80" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,157,8,0" RenderTransformOrigin = "1.201,0.873" />
+                <Button x:Name = "DeleteBtton" Click = "DeleteButton_Click" Content = "Delete"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,157,0,0" />
+                <Button x:Name = "AcceptBtton" Click = "Accept_Click" Content = "Accept"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,202,0,0" />
             </Grid >
         </Grid >
     </Border >
