@@ -15,7 +15,7 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = @"INSERT INTO ProductLetters(ProductDescription,Date,UserId)" +
+                string query = @"INSERT INTO ProductLetters(ProductDescription,Date,UserId) " +
                      "VALUES($ProductDescription,$Date,$UserId);";
                 var command = new SQLiteCommand(query, _con)
                 {
@@ -50,7 +50,7 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = $"DELETE FROM ProductLetters where id = {id}";
+                string query = $" DELETE FROM ProductLetters where id = {id}";
                 var command = new SQLiteCommand(query, _con);
                 var result = await command.ExecuteNonQueryAsync();
                 if (result > 0)
