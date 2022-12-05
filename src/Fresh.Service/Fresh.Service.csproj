@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="BCrypt.Net" Version="0.1.0" />
     <PackageReference Include="Check.Password.Strength" Version="1.0.3" />
     <PackageReference Include="Infobip.Api.Client" Version="2.1.0" />

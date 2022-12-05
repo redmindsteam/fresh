@@ -24,5 +24,20 @@ namespace Fresh.Desktop.Pages
         {
             InitializeComponent();
         }
+
+        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void PopupBox_OnClosed(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PopupBox_OnOpened(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

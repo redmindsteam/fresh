@@ -1,4 +1,5 @@
 ﻿using Fresh.Desktop.Pages;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -12,10 +13,12 @@ namespace Fresh.Desktop.Windows
         public Cassa()
         {
             InitializeComponent();
+
             ObservableCollection<CassaData> cassaDatas = new ObservableCollection<CassaData>();
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
+        
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
+            cassaDatas.Add(new CassaData { Name = "Asal", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
             cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
@@ -81,12 +84,25 @@ namespace Fresh.Desktop.Windows
 
         private void btnBuy_Click(object sender, RoutedEventArgs e)
         {
-            double price = 0;   
-            foreach (var cassaData in cassaDataGrid.Items)
-            {
-                price += double.Parse(ProductKgL.ToString()) * double.Parse(ProductPrice.ToString());
+            double price = 0;
+           
+            for (int i = 0; i < cassaDataGrid.Items.Count; i++)
+            { 
+                var res = (CassaData)cassaDataGrid.Items[i];
+                MessageBox.Show($"{res.Name}");
             }
+            
             MessageBox.Show($"{price}");
+        }
+
+        private void btnDelet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+           
         }
     }
 }

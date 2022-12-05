@@ -49,6 +49,7 @@
                        FontWeight="Medium"
                        Margin="0 13 0 0"
                        Width="259"/>
+
             <TextBox
                 Foreground="White"
                 Background="Transparent"
@@ -58,10 +59,25 @@
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 VerticalAlignment="Center" />
 
+            <TextBox x:Name="txtUser"
+                     FontSize="13"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="White"
+                     CaretBrush="LightGray"
+                     BorderBrush="DarkGray"
+                     BorderThickness="0 0 0 2"
+                     Height="21"
+                     Width="260"
+                     Margin="0 6 0 0" TextChanged="txtUser_TextChanged"/>
+
+
             <TextBlock Text="Email"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
+
             <TextBox
                 Foreground="White"
                 Background="Transparent"
@@ -70,6 +86,20 @@
                 materialDesign:HintAssist.Hint=""
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 VerticalAlignment="Center" />
+
+            <TextBox x:Name="txtEmail"
+                     FontSize="13"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="White"
+                     CaretBrush="LightGray"
+                     BorderBrush="DarkGray"
+                     BorderThickness="0 0 0 2"
+                     Height="21"
+                     Width="260"
+                     Margin="0 6 0 0" TextChanged="txtEmail_TextChanged"/>
+
 
             <TextBlock Text="Password"
                        Foreground="White" FontSize="12"

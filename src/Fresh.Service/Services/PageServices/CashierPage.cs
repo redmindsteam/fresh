@@ -1,6 +1,7 @@
 ﻿using Fresh.DataAccess.Interfaces.Repositories;
 using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
+using Fresh.Service.Security;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,29 @@ namespace Fresh.Service.Services.PageServices
             }
             return views.ToList();
             
+        }
+        public async Task<bool> AddCashier(CashierView cashierView)
+        {
+            PasswordHasher passwordHasher = new PasswordHasher();
+            var passwordsalt = passwordHasher.Hash(cashierView.Password);
+            User user = new User()
+            {
+                FullName = cashierView.FullName,
+                Email=cashierView.Email,
+                PasswordHash=passwordsalt.PasswordHash,
+                Salt=passwordsalt.Salt,
+                PhoneNumber=cashierView.PhoneNumber,
+                PassportSeria=cashierView.PassportSeria,
+                IsAdmin=0,
+            };
+            UserRepository userRepository = new UserRepository();
+            return await userRepository.CreateAsync(user);
+        }
+        public async Task<bool> DeleteCashier(CashierView cashierView)
+        {
+            UserRepository userRepository = new UserRepository();
+            User user = await userRepository.GetByEmailAsync(cashierView.Email);
+            return await userRepository.DeleteAsync(user.Id);
         }
     }
 }

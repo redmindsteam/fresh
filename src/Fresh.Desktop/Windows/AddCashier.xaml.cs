@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fresh.Service.Services.PageServices;
+using Fresh.Service.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,16 +31,42 @@ namespace Fresh.Desktop.Windows
             this.Close();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            AddProducts add = new AddProducts();
-            add.Show();
+            CashierView cashierView = new CashierView()
+            {
+                FullName=txtUser.Text,
+                Email=txtEmail.Text,
+                Password=txtPassword.Password,
+                PhoneNumber=txtPhone.Text,
+                PassportSeria=txtPassSeriya.Text,
+            };
+            CashierPage cashierPage = new CashierPage();
+            var result = await cashierPage.AddCashier(cashierView);
+            if (result)
+            {
+                MessageBox.Show("Cashier succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            else
+                MessageBox.Show("There was wrong with adding cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtUser_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
