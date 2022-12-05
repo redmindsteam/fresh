@@ -21,20 +21,16 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.8*"/>
             </Grid.ColumnDefinitions>
+
             <Grid Grid.Column="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                                    </Grid>
-
-                    
+                    </Grid.ColumnDefinitions>               
                 </Grid>
-
             </Grid>
         </Grid>
         <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
@@ -82,6 +78,28 @@
                     <TextBlock Text=" Delete" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
+            <Grid Grid.Column="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="0.6*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" FontSize="14" Foreground="{DynamicResource TextSecundaryColor}" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                        Add Product
+                    </TextBlock>
+                    <Button x:Name="btnAddUser" 
+                    Grid.Column="1"
+                    Style="{DynamicResource buttonCircle}" 
+                    Height="45"
+                    Width="45" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Height="21" Width="22">
+                            <Path Data="{DynamicResource AddProduct}" Margin="0 0 0 0" Stretch="Fill" Fill="{DynamicResource SecundaryBackgroundColor}" 
+                          Width="22" Height="18"/>
+
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 
