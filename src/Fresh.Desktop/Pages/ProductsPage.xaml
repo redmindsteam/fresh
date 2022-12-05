@@ -29,12 +29,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-
-                                    </Grid>
-
-                    
                 </Grid>
-
             </Grid>
         </Grid>
         <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
@@ -47,7 +42,7 @@
                 <DataGridTextColumn Header="Available" Binding="{Binding Available}" Width="0.5*"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
@@ -84,5 +79,4 @@
             </Button>
         </Grid>
     </Grid>
-
 </Page>
