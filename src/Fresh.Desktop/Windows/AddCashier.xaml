@@ -55,7 +55,7 @@
                      BorderThickness="0 0 0 2"
                      Height="21"
                      Width="260"
-                     Margin="0 6 0 0"/>
+                     Margin="0 6 0 0" TextChanged="txtUser_TextChanged"/>
 
             <TextBlock Text="Email"
                        Foreground="White" FontSize="12"
@@ -72,7 +72,7 @@
                      BorderThickness="0 0 0 2"
                      Height="21"
                      Width="260"
-                     Margin="0 6 0 0"/>
+                     Margin="0 6 0 0" TextChanged="txtEmail_TextChanged"/>
 
             <TextBlock Text="Password"
                        Foreground="White" FontSize="12"
