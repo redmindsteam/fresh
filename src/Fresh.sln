@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fresh.Desktop", "Fresh.Desktop\Fresh.Desktop.csproj", "{DA1F13E2-E8EC-4123-8A0C-AE748BE5F720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fresh.Desktop", "Fresh.Desktop\Fresh.Desktop.csproj", "{DA1F13E2-E8EC-4123-8A0C-AE748BE5F720}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fresh.Service", "Fresh.Service\Fresh.Service.csproj", "{8CA69EB1-37B4-440B-A43D-517FC0EDCB6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fresh.Service", "Fresh.Service\Fresh.Service.csproj", "{8CA69EB1-37B4-440B-A43D-517FC0EDCB6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fresh.DataAccess", "Fresh.DataAccess\Fresh.DataAccess.csproj", "{018E2910-485A-4DF6-8FC6-A0464FC2692C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fresh.DataAccess", "Fresh.DataAccess\Fresh.DataAccess.csproj", "{018E2910-485A-4DF6-8FC6-A0464FC2692C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fresh.Domain", "Fresh.Domain\Fresh.Domain.csproj", "{B34E636E-CE27-48BF-8DBF-74BC63049A12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fresh.Domain", "Fresh.Domain\Fresh.Domain.csproj", "{B34E636E-CE27-48BF-8DBF-74BC63049A12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

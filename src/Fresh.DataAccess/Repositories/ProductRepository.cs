@@ -16,7 +16,7 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireDate,Value)" +
+                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireDate,Value) " +
                      "VALUES($Name,$CategoryId,$Price,$Unit,$BarcodeName,$ProductionDate,$ExpireDate,$Value);";
                 var command = new SQLiteCommand(query, _con)
                 {
@@ -51,7 +51,7 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = $"DELETE FROM Products where id = {id}";
+                string query = $"DELETE FROM Products where id = {id} ";
                 var command = new SQLiteCommand(query, _con);
                 var result = await command.ExecuteNonQueryAsync();
                 if (result > 0)
