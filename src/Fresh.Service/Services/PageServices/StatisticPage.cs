@@ -56,6 +56,7 @@ namespace Fresh.Service.Services.PageServices
                         stats.Add(key, new StatsView());
                         stats[key].Date = exp.Item1.Year + " "
                             + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(exp.Item1.Month);
+                        stats[key].DateToOrder = exp.Item1;
                     }
                     if (stats.ContainsKey(key))
                         stats[key].Expenditure += exp.Item2;
@@ -68,6 +69,7 @@ namespace Fresh.Service.Services.PageServices
                         stats.Add(key, new StatsView());
                         stats[key].Date = ParseExact(inc.Date).Year + " "
                             + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(ParseExact(inc.Date).Month);
+                        stats[key].DateToOrder = ParseExact(inc.Date);
                     }
                     if (stats.ContainsKey(key))
                         stats[key].Income += inc.Income;
@@ -81,8 +83,8 @@ namespace Fresh.Service.Services.PageServices
                     if (!stats.ContainsKey(key))
                     {
                         stats.Add(key, new StatsView());
-                        stats[key].Date = exp.Item1.DayOfWeek + " "
-                            + key;
+                        stats[key].Date = exp.Item1.DayOfWeek + " " + key;
+                        stats[key].DateToOrder = exp.Item1;
                     }
                     if (stats.ContainsKey(key))
                         stats[key].Expenditure += exp.Item2;
@@ -93,8 +95,8 @@ namespace Fresh.Service.Services.PageServices
                     if (!stats.ContainsKey(key))
                     {
                         stats.Add(key, new StatsView());
-                        stats[key].Date = ParseExact(inc.Date).DayOfWeek + " "
-                            + key;
+                        stats[key].Date = ParseExact(inc.Date).DayOfWeek + " " + key;
+                        stats[key].DateToOrder = ParseExact(inc.Date);
                     }
                     if (stats.ContainsKey(key))
                         stats[key].Income += inc.Income;

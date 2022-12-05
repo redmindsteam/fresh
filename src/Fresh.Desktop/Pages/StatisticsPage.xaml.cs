@@ -57,7 +57,15 @@ namespace Fresh.Desktop.Pages
             {
                 statsViews.Add(st.Value);
             }
-            ProductsDgUi.ItemsSource = statsViews;
+            if (statsViews.Count == 0)
+            {
+                MessageBox.Show("There aren't any data", "Lack of data", MessageBoxButton.OK, MessageBoxImage.Hand);
+            }
+                
+            if(status == "Yearly")
+                ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x => int.Parse(x.Date));
+            else
+                ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x=>x.DateToOrder);
         }
     }
 }

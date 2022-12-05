@@ -61,5 +61,10 @@ namespace Fresh.Desktop.Pages
             add.Show();
             
         }
+
+        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
