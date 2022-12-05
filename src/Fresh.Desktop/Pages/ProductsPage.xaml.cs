@@ -35,8 +35,8 @@ namespace Fresh.Desktop.Pages
         public async void Click()
         {
             ProductPage products = new ProductPage();
-            List<ProductsView> CashierPages = await products.GetProductViews();
-            ProductsDgUi.ItemsSource = CashierPages;
+            List<ProductsView> productPages = await products.GetProductViews();
+            ProductsDgUi.ItemsSource = productPages;
         }
 
         private void PopupBox_OnClosed(object sender, RoutedEventArgs e)
@@ -52,6 +52,22 @@ namespace Fresh.Desktop.Pages
         private void ProductsDgUi_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private async void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            ProductsView products = (ProductsView)ProductsDgUi.SelectedItem;
+            ProductPage productPage = new ProductPage();
+            var result = await productPage.DeleteProduct(products);
+            if (result)
+            {
+                ProductPage products1 = new ProductPage();
+                List<ProductsView> productPages = await products1.GetProductViews();
+                ProductsDgUi.ItemsSource = productPages;
+                MessageBox.Show("Cashier successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
     }
 }

@@ -26,8 +26,14 @@ namespace Fresh.Service.Services.PageServices
                     };
                     views.Add(view);
             }
-            return views.ToList();
 
+            return views.OrderBy(x=>x.Available).ToList();
+
+        }
+        public async Task<bool> DeleteProduct(ProductsView productView)
+        {
+            ProductRepository productRepository = new ProductRepository();
+            return await productRepository.DeleteAsync(productView.Id);
         }
     }
 }
