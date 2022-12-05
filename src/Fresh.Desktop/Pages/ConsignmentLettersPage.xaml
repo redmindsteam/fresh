@@ -17,15 +17,20 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Background="#3AA9AD"/>
 
-        <DataGrid Grid.Row="2" Foreground="#3AA9AD"  x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
+        <DataGrid Grid.Row="2" MouseDoubleClick="RowDouble_Clicked" Foreground="#3AA9AD"  x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Data Time" Binding="{Binding Data}" Width="*"/>
                 <DataGridTextColumn Header="Cashier" Binding="{Binding Email}" Width="*"/>
                 <DataGridTextColumn Header="Total Price" Binding="{Binding Prodeuct}" Width="*"/>
             </DataGrid.Columns>
-
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ConsignmentLetterDescription}" />
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
+        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fresh.Desktop.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,10 @@ namespace Fresh.Desktop.Pages
 
         }
 
-       
+        private void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            ConsignmentLetterDescription consignmentLetterDescription = new ConsignmentLetterDescription();
+            consignmentLetterDescription.ShowDialog();
+        }
     }
 }
