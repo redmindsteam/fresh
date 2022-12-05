@@ -68,5 +68,20 @@ namespace Fresh.Service.Services.PageServices
             User user = await userRepository.GetByEmailAsync(cashierView.Email);
             return await userRepository.DeleteAsync(user.Id);
         }
+        public async Task<bool> UpdateCashier(int id,CashierView cashierView)
+        {
+            UserRepository userRepository = new UserRepository();
+            try
+            {
+                User user = new User() { Email = cashierView.Email
+                    ,FullName = cashierView.FullName,PassportSeria = cashierView.PassportSeria
+                    ,PhoneNumber = cashierView.PhoneNumber};
+                return await userRepository.UpdateAsync(id, user);
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

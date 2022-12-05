@@ -62,9 +62,7 @@
                     Click="btnUpdateUser_Click"
                     Grid.Column="1"
                     Style="{DynamicResource btnUpdate}" 
-                    Height="32"
-                    Width="110"
-                    HorizontalAlignment="Left">
+                    Height="32" Margin="5,14,0,14" HorizontalAlignment="Left" Width="110">
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Height="32" Width="85" RenderTransformOrigin="-0.61,0.512">
                     <Path Data="{DynamicResource Update}" Margin="0 0 0 0" Stretch="Fill"
                           Fill="{DynamicResource Colors}" 
