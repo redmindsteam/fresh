@@ -97,10 +97,7 @@
                                 <Grid Grid.Row="2">
                                     <TextBlock HorizontalAlignment="Left" Height="156" Margin="634,0,0,0" Grid.Row="2" 
                                                TextWrapping="Wrap"  VerticalAlignment="Center" Width="196"/>
-                                    <Button Width="120" Height="20" Content="Delete" HorizontalAlignment="Left" 
-                                            VerticalAlignment="Top" x:Name="btnDelete" Click="btnDelete_Click" Margin="0,180,0,0">
-                                    </Button>
-                                    <Button Width="120" Content="Buy" HorizontalAlignment="Left" x:Name="btnBuy" Click="btnBuy_Click" Margin="150,180,0,0"/>
+                                    
                                 </Grid>
                             </Grid>
                         </Border>
