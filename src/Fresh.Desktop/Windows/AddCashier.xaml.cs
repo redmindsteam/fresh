@@ -35,11 +35,11 @@ namespace Fresh.Desktop.Windows
         {
             CashierView cashierView = new CashierView()
             {
-                FullName=txtUser.Text,
-                Email=txtEmail.Text,
-                Password=txtPassword.Password,
-                PhoneNumber=txtPhone.Text,
-                PassportSeria=txtPassSeriya.Text,
+                FullName = txtUser.Text,
+                Email = txtEmail.Text,
+                Password = txtPassword.Password,
+                PhoneNumber = txtPhone.Text,
+                PassportSeria = txtPassSeriya.Text,
             };
             CashierPage cashierPage = new CashierPage();
             var result = await cashierPage.AddCashier(cashierView);
