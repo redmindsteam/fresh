@@ -40,6 +40,11 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
+        public Task CreateAsync(Check check)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> DeleteAsync(int id)
         {
             try

@@ -55,45 +55,52 @@
 
 
                                     <DataGrid CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                                              RowStyle="{DynamicResource DataGridRowStyle1}" Style="{DynamicResource DataGridStyle1}"  
-                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" SelectionChanged="cassaDataGrid_SelectionChanged">
+                                              RowStyle="{DynamicResource DataGridRowStyle1}" Style="{DynamicResource DataGridStyle1}" 
+                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" SelectionChanged="cassaDataGrid_SelectionChanged"
+                                              >
                                         <DataGrid.Columns>
                                             <DataGridTextColumn x:Name="ProductName" Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
                                             <DataGridTextColumn x:Name="ProductKgL" Header="Kg/L" IsReadOnly="True" Width="*" Binding="{Binding KgL}"/>
                                             <DataGridTextColumn x:Name="ProductPrice" Header="Price" IsReadOnly="True" Width="*" Binding="{Binding Price}"/>
                                             <DataGridTextColumn Header="The number" IsReadOnly="True" Width="*" Binding="{Binding Thenumber}"/>
                                             <DataGridTextColumn x:Name="totalPrice" Header="Money" IsReadOnly="True" Width="*" Binding="{Binding Money}"/>
+                                            <DataGridTemplateColumn>
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Width="25" x:Name="Deletebtn" Background="Red" Click="btnDelet_Click" MouseDown="Delete_MouseDown">
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
                                         </DataGrid.Columns>
                                     </DataGrid>
 
 
-                                    <WrapPanel Grid.Column="1" Width="210" Height="280"
+                                    <WrapPanel Grid.Column="1" Width="210" Height="280" Background="White"
                                                HorizontalAlignment="Right" VerticalAlignment="Top">
-                                        <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num4" Content="4" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num5" Content="5" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num6" Content="6" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num7" Content="7" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num8" Content="8" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num9" Content="9" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="num0" Content="-" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20"/>
-                                        <Button x:Name="numdelete" Content="+" Width="70" Height="70" FontSize="20"/>
+                                        <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num4" Content="4" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num5" Content="5" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num6" Content="6" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num7" Content="7" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num8" Content="8" Width="70" Height="70" FontSize="20"  Background="White" Foreground="Black"/>
+                                        <Button x:Name="num9" Content="9" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num0" Content="-" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="numdelete" Content="+" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
                                     </WrapPanel>
 
                                 </Grid>
 
                                 <Grid Grid.Row="2">
                                     <TextBlock HorizontalAlignment="Left" Height="156" Margin="634,0,0,0" Grid.Row="2" 
-                                               TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Width="196"/>
+                                               TextWrapping="Wrap"  VerticalAlignment="Center" Width="196"/>
                                     <Button Width="120" Height="20" Content="Delete" HorizontalAlignment="Left" 
-                                            VerticalAlignment="Bottom" x:Name="btnDelete" Click="btnDelete_Click">
+                                            VerticalAlignment="Top" x:Name="btnDelete" Click="btnDelete_Click" Margin="0,180,0,0">
                                     </Button>
-                                    <Button Width="120" Height="20" Content="Buy" HorizontalAlignment="Left" 
-                                            VerticalAlignment="Bottom" x:Name="btnBuy" Click="btnBuy_Click" Margin="150 0 0 0">
-                                    </Button>
+                                    <Button Width="120" Content="Buy" HorizontalAlignment="Left" x:Name="btnBuy" Click="btnBuy_Click" Margin="150,180,0,0"/>
                                 </Grid>
                             </Grid>
                         </Border>

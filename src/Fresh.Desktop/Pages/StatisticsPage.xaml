@@ -24,15 +24,18 @@
                 <ColumnDefinition Width="0.6*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <RadioButton Grid.Column="0" Name="daily_radio" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="daily_radio_Checked" />
-            <RadioButton Grid.Column="1" Name="monthly_radio" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="monthly_radio_Checked" />
-            <RadioButton Grid.Column="2" Name="yearly_radio" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="yearly_radio_Checked" />
-            <DatePicker Name="StatDataPicker" Grid.Column="3"  Width="250" Height="44" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <RadioButton Grid.Column="0" Name="daily_radio" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="daily_radio_Checked" FontWeight="Bold" Foreground="Black"/>
+            <RadioButton Grid.Column="1" Name="monthly_radio" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="monthly_radio_Checked" FontWeight="Bold" Foreground="Black" />
+            <RadioButton Grid.Column="2" Name="yearly_radio" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="yearly_radio_Checked" FontWeight="Bold" Foreground="Black" />
+            <DatePicker Name="StatDataPicker" Grid.Column="3"  Width="250" Height="42" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" FontWeight="Bold" Foreground="Black" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Margin="22,4,0,0" VerticalAlignment="Top"/>
+
         </Grid>
+
         
         <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns>
+
 
                 <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
                 <DataGridTextColumn Header="Income" Binding="{Binding Income}" Width="*"/>
@@ -43,5 +46,5 @@
         </DataGrid>
         
     </Grid>
-    
+
 </Page>

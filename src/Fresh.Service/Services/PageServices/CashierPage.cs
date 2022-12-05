@@ -62,5 +62,11 @@ namespace Fresh.Service.Services.PageServices
             UserRepository userRepository = new UserRepository();
             return await userRepository.CreateAsync(user);
         }
+        public async Task<bool> DeleteCashier(CashierView cashierView)
+        {
+            UserRepository userRepository = new UserRepository();
+            User user = await userRepository.GetByEmailAsync(cashierView.Email);
+            return await userRepository.DeleteAsync(user.Id);
+        }
     }
 }
