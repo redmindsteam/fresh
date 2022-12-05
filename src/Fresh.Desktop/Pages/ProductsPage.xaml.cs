@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fresh.Service.Services.PageServices;
+using Fresh.Service.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +25,18 @@ namespace Fresh.Desktop.Pages
         public ProductsPage()
         {
             InitializeComponent();
+            Click();
         }
-
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        public async void Click()
+        {
+            ProductPage products = new ProductPage();
+            List<ProductsView> CashierPages = await products.GetProductViews();
+            ProductsDgUi.ItemsSource = CashierPages;
         }
 
         private void PopupBox_OnClosed(object sender, RoutedEventArgs e)
@@ -36,6 +45,11 @@ namespace Fresh.Desktop.Pages
         }
 
         private void PopupBox_OnOpened(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ProductsDgUi_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
         }
