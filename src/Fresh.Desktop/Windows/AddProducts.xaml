@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:Fresh.Desktop.Windows"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        
         Title="AddProducts" 
-        Height="430" 
+        Height="500" 
         Width="350"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" 
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
+         MouseDown="Window_MouseDowns"
         >
 
     <Window.Resources >
@@ -25,7 +25,11 @@
     </Window.Resources>
     <Border 
         CornerRadius="20" Background="#3AADA1"
-        BorderThickness="3" Opacity="100" >
+        BorderThickness="3" Opacity="100" Margin="20" >
+        <Border.Effect>
+            <DropShadowEffect Direction="-75" ShadowDepth="2" Opacity="1"
+                              BlurRadius="30" Color="Cyan"/>
+        </Border.Effect>
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource WinColor1}" Offset="0.1"/>
@@ -35,25 +39,21 @@
             </LinearGradientBrush>
         </Border.BorderBrush>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="362">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="432">
 
-            <TextBlock Text="Name"
+            <TextBlock Text="Product Name"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0"
                        Width="259"/>
-            <TextBox x:Name="txtUser"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="White"
-                     BorderThickness="0 0 0 1"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
+            <TextBox
+                Foreground="White"
+                Background="Transparent"
+                BorderBrush="White"
+                Height="21"
+                materialDesign:HintAssist.Hint=""
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" />
 
             <TextBlock Text="Category"
                        Foreground="White" FontSize="12"
@@ -71,9 +71,8 @@
                     <ComboBoxItem Content="Brange"/>
                 </ComboBox>
                 <Button BorderBrush="#10A19D" Background="#46C2CB"
-                         Width="94" Height="25"
-                        Margin="5" Content="Add Catigory" FontSize="12"
-                        HorizontalAlignment="Right" Click="Button_Click_2" />
+                         Width="82"
+                        Margin="5" Content="Add Catigory" FontSize="10" Click="Button_Click_2" Height="21" />
 
             </DockPanel>
 
@@ -81,56 +80,63 @@
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
-            <PasswordBox x:Name="txtPassword"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="White"
-                     BorderThickness="0 0 0 1"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
-
-            <TextBlock Text="Passport Seriya"
+            <TextBox
+                Foreground="White"
+                Background="Transparent"
+                BorderBrush="White"
+                Height="21"
+                materialDesign:HintAssist.Hint=""
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" />
+            <TextBlock Text="Unit"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
-            <TextBox x:Name="txtPassSeriya"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="White"
-                     BorderThickness="0 0 0 2"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
+            <ComboBox
+                  materialDesign:HintAssist.Hint=" Unit"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  IsEditable="True" HorizontalAlignment="Left"
+                Background="Transparent" BorderBrush="White" Width="256" Height="26" >
+                <ComboBoxItem Content="Uziz qo'shing"/>
+                <ComboBoxItem Content="Kg"/>
+                <ComboBoxItem Content="Litr"/>
 
-            <TextBlock Text="Phone Number"
+            </ComboBox>
+
+            <TextBlock Text="Bar Code"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
-            <TextBox x:Name="txtPhone"
-                     FontSize="13"
-                     FontWeight="Medium"
-                     FontFamily="Montserrat"
-                     Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
-                     BorderBrush="White"
-                     
-                     BorderThickness="0 0 0 2"
-                     Height="21"
-                     Width="260"
-                     Margin="0 6 0 0"/>
+            <TextBox
+                Foreground="White"
+                Background="Transparent"
+                BorderBrush="White"
+                Height="21"
+                materialDesign:HintAssist.Hint=""
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" />
+            <DatePicker
+                Grid.Column="0"
+            Width="256"
+                Height="44"
+            FontSize="16"
+                Foreground="White"
+            materialDesign:HintAssist.Hint="Production date"
+            BorderBrush="White"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+            <DatePicker
+                Grid.Column="0"
+            Width="256"
+                Height="44"
+            FontSize="16"
+                Foreground="White"
+            materialDesign:HintAssist.Hint="Expire date"
+            BorderBrush="White"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
 
-            <DockPanel  Margin="0 20 0 0">
+            <DockPanel  Margin="0 25 0 0">
                 <Button BorderBrush="#10A19D" Background="#46C2CB" 
                          Width="113" Margin="5" Height="25" Content="Save" Click="Button_Click_1"/>
 
