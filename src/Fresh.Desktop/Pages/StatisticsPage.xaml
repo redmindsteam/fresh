@@ -5,41 +5,42 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Fresh.Desktop.Pages"
       mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="StatisticsPage">
+      Title="StatisticsPage" Background="White">
 
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="1.1*" />
+            <RowDefinition Height="8.2*"/>
+            <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="{DynamicResource SecundaryBackgroundColor}" />
-        <Grid Grid.Row="1" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.8*"/>
-                <ColumnDefinition Width="0.8*"/>
-                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.6*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <RadioButton Grid.Column="0" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" />
-            <RadioButton Grid.Column="1" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" />
-            <RadioButton Grid.Column="2" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" />
-            <DatePicker Grid.Column="3" Style="{DynamicResource StatisticsDatePicker}"/>
+            <RadioButton Grid.Column="0" Name="daily_radio" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="daily_radio_Checked" />
+            <RadioButton Grid.Column="1" Name="monthly_radio" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="monthly_radio_Checked" />
+            <RadioButton Grid.Column="2" Name="yearly_radio" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="yearly_radio_Checked" />
+            <DatePicker Name="StatDataPicker" Grid.Column="3"  Width="250" Height="44" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
         
-        <StackPanel Grid.Row="2" Background="{DynamicResource PrimaryBackgroundColor}">
-            <DataGrid Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0,26,0,79" Grid.RowSpan="3">
+        <StackPanel Grid.Row="2" >
+            <DataGrid x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0" SelectionChanged="ProductsDgUi_SelectionChanged" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
                     <DataGridTextColumn Header="Income" Binding="{Binding Income}" Width="*"/>
-                    <DataGridTextColumn Header="Expenditure" Binding="{Binding Email}" Width="*"/>
+                    <DataGridTextColumn Header="Expenditure" Binding="{Binding Expenditure}" Width="*"/>
                 </DataGrid.Columns>
 
             </DataGrid>
         </StackPanel>
-        <Grid Grid.Row="3" Background="{DynamicResource PrimaryBackgroundColor}"/>
+        <Grid Grid.Row="3" />
     </Grid>
     
 </Page>

@@ -87,12 +87,12 @@ namespace Fresh.Service.Director
             }
         }
 
-        public async Task<IList<User?>> GetAllAsync(int skip, int take)
+        public async Task<IList<User?>> GetAllAsync()
         {
             try
             {
                 UserRepository userRepository = new UserRepository();
-                var users = await userRepository.GetAllAsync(skip, take);
+                var users = await userRepository.GetAllAsync();
                 if (users != null)
                 {
                     return users;
@@ -208,7 +208,7 @@ namespace Fresh.Service.Director
             PasswordHasher hasher = new PasswordHasher();
             var user = await userRepository.GetByEmailAsync(email);
             var security_assets = hasher.Hash(password);
-            if(user.PasswordHash != security_assets.PasswordHash)
+            if(!hasher.Verify(password,user.Salt,user.PasswordHash))
             {
                 user.PasswordHash = security_assets.PasswordHash;
                 user.Salt = security_assets.Salt;

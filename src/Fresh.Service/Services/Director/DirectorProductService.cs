@@ -45,11 +45,11 @@ namespace Fresh.Service.Director
             }
         }
 
-        public async Task<IList<Product>> GetAllAsync(int skip, int take)
+        public async Task<IList<Product>> GetAllAsync()
         {
             try
             {
-                var resault = await productRepository.GetAllAsync(skip, take);
+                var resault = await productRepository.GetAllAsync();
                 if (resault != null)
                 {
                     return resault;    
@@ -87,10 +87,10 @@ namespace Fresh.Service.Director
                 return false;
             }
         }
-        public async Task<List<Product>> GetOrderedProductsByValue(int skip, int take)
+        public async Task<List<Product>> GetOrderedProductsByValue()
         {
             DataAccess.Repositories.ProductRepository product = new DataAccess.Repositories.ProductRepository();
-            var productst = await product.GetAllAsync(skip, take);
+            var productst = await product.GetAllAsync();
             return productst.OrderBy(x => x.Value).ToList();
         }
     }

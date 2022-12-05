@@ -10,19 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Fresh.Desktop.Pages
 {
     /// <summary>
-    /// Interaction logic for Check.xaml
+    /// Interaction logic for CassaConsigmentLetter.xaml
     /// </summary>
-    public partial class Check : Page
+    public partial class CassaConsigmentLetter : Window
     {
-        public Check()
+        public CassaConsigmentLetter()
         {
             InitializeComponent();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

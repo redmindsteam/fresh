@@ -84,12 +84,12 @@ namespace Fresh.Service.Services.Empolyee
             }
         }
 
-        public async Task<IList<User>> GetAllAsync(int skip, int take)
+        public async Task<IList<User>> GetAllAsync()
         {
             try
             {
                 UserRepository userRepository = new UserRepository();
-                var users = await userRepository.GetAllAsync(skip, take);
+                var users = await userRepository.GetAllAsync();
                 if (users != null)
                 {
                     return users;

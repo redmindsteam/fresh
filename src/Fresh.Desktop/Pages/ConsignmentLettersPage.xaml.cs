@@ -24,5 +24,10 @@ namespace Fresh.Desktop.Pages
         {
             InitializeComponent();
         }
+
+        private void DatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

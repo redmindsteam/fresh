@@ -1,0 +1,144 @@
+﻿<Window x:Class="Fresh.Desktop.Windows.AddProducts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fresh.Desktop.Windows"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        Title="AddProducts" 
+        Height="430" 
+        Width="350"
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+
+    <Window.Resources >
+        <Style TargetType="TextBox" >
+            <Setter Property="Margin" Value="10"/>
+
+        </Style>
+    </Window.Resources>
+    <Border 
+        CornerRadius="20" Background="#3AADA1"
+        BorderThickness="3" Opacity="100" >
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource WinColor1}" Offset="0.1"/>
+                <GradientStop Color="{StaticResource WinColor2}" Offset="0.95"/>
+                <GradientStop Color="{StaticResource WinColor3}" Offset="0.7"/>
+
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="362">
+
+            <TextBlock Text="Name"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0"
+                       Width="259"/>
+            <TextBox x:Name="txtUser"
+                     FontSize="13"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="White"
+                     CaretBrush="LightGray"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 6 0 0"/>
+
+            <TextBlock Text="Category"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <DockPanel>
+                <ComboBox
+                  materialDesign:HintAssist.Hint=" Category"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  IsEditable="True" HorizontalAlignment="Left"
+                Background="Transparent" BorderBrush="White" Width="145" Height="26" >
+                    <ComboBoxItem Content="Uziz qo'shing"/>
+                    <ComboBoxItem Content="Banana"/>
+                    <ComboBoxItem Content="Pear"/>
+                    <ComboBoxItem Content="Brange"/>
+                </ComboBox>
+                <Button BorderBrush="#10A19D" Background="#46C2CB"
+                         Width="94" Height="25"
+                        Margin="5" Content="Add Catigory" FontSize="12"
+                        HorizontalAlignment="Right" Click="Button_Click_2" />
+
+            </DockPanel>
+
+            <TextBlock Text="Price"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <PasswordBox x:Name="txtPassword"
+                     FontSize="13"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="White"
+                     CaretBrush="LightGray"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 6 0 0"/>
+
+            <TextBlock Text="Passport Seriya"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <TextBox x:Name="txtPassSeriya"
+                     FontSize="13"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="White"
+                     CaretBrush="LightGray"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 2"
+                     Height="21"
+                     Width="260"
+                     Margin="0 6 0 0"/>
+
+            <TextBlock Text="Phone Number"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <TextBox x:Name="txtPhone"
+                     FontSize="13"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="White"
+                     CaretBrush="LightGray"
+                     BorderBrush="White"
+                     
+                     BorderThickness="0 0 0 2"
+                     Height="21"
+                     Width="260"
+                     Margin="0 6 0 0"/>
+
+
+            <DockPanel  Margin="0 20 0 0">
+                <Button BorderBrush="#10A19D" Background="#46C2CB" 
+                         Width="113" Margin="5" Height="25" Content="Save" Click="Button_Click_1"/>
+
+                <Button BorderBrush="#10A19D" Background="#46C2CB" 
+                         Width="113" Height="25" Margin="5" Content="Cancel" Click="Button_Click" />
+            </DockPanel>
+
+        </StackPanel>
+    </Border>
+
+</Window>

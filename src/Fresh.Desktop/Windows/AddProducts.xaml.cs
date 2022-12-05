@@ -10,32 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fresh.Desktop.Pages
+namespace Fresh.Desktop.Windows
 {
     /// <summary>
-    /// Interaction logic for ProductsPage.xaml
+    /// Interaction logic for AddProducts.xaml
     /// </summary>
-    public partial class ProductsPage : Page
+    public partial class AddProducts : Window
     {
-        public ProductsPage()
+        public AddProducts()
         {
             InitializeComponent();
         }
 
-        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void PopupBox_OnClosed(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void PopupBox_OnOpened(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
         }

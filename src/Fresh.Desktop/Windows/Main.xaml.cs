@@ -1,6 +1,7 @@
 ﻿using Fresh.Desktop.Pages;
 using System;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Fresh.Desktop.Windows
 {
@@ -54,6 +55,10 @@ namespace Fresh.Desktop.Windows
                 WindowState = WindowState.Normal;
         }
 
-        
+        private void Window_MouseDowns(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
     }
 }

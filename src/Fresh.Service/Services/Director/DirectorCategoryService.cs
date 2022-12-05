@@ -41,11 +41,11 @@ namespace Fresh.Service.Director
             }
         }
 
-        public async Task<IList<Category?>> GetAllAsync(int skip, int take)
+        public async Task<IList<Category?>> GetAllAsync()
         {
             try
             {
-                var resault = await categoryRepository.GetAllAsync(skip, take);
+                var resault = await categoryRepository.GetAllAsync();
                 if (resault != null)
                 {
                     return resault;
