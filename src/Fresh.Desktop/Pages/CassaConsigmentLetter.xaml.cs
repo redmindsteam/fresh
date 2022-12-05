@@ -48,11 +48,19 @@ namespace Fresh.Desktop.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            txtProduct.Text = null;
+            txtKgL.Text = null;
+            txtTotal.Text = null;
+            txtPrice.Text = null;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
+            vievModelProductLetters.Clear();
+            txtProduct.Text = null;
+            txtKgL.Text = null;
+            txtTotal.Text = null;
+            txtPrice.Text = null;
             this.Close();
         }
 
@@ -74,6 +82,15 @@ namespace Fresh.Desktop.Pages
             MessageBox.Show($"{check.Price}");
             EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
             empolyeeProductLetterService.CreateAsync(check);
+            vievModelProductLetters.Clear();
+            txtProduct.Text = null;
+            txtKgL.Text = null;
+            txtTotal.Text = null;
+            txtPrice.Text = null;
+        }
+
+        private void NotAccept_Click(object sender, RoutedEventArgs e)
+        {
             vievModelProductLetters.Clear();
             txtProduct.Text = null;
             txtKgL.Text = null;
