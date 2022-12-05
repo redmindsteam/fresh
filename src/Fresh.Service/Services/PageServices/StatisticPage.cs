@@ -13,56 +13,99 @@ namespace Fresh.Service.Services.PageServices
 {
     public class StatisticPage
     {
-        public async Task<List<StatsView>> GetByCurrentDate(string status,string dateTime)
+        public async Task<Dictionary<string, StatsView>> GetByCurrentDate(string status,string dateTime)
         {
             var expanditures = await GetExpanditureByDate(ParseExact(dateTime));
             var incomes = await GetIncomesBydate(dateTime);
-            List<StatsView> statsViews = new List<StatsView>();
+            Dictionary<string, StatsView> stats = new Dictionary<string, StatsView>();
+            string key = string.Empty;
             if (status == "Yearly")
             {
-                statsViews = expanditures.Join(incomes,
-                x => x.Item1.Year,
-                y => ParseExact(y.Date).Year,
-                (x, y) => new StatsView
+                foreach (var exp in expanditures)
                 {
-                    Date = $"{x.Item1.Year}",
-                    Income = y.Income,
-                    Expenditure = x.Item2
-                }).ToList();
+                    key = exp.Item1.Year.ToString();
+                    if (!stats.ContainsKey(key))
+                    {
+                        stats.Add(key, new StatsView());
+                        stats[key].Date = key;
+                    }
+                    if(stats.ContainsKey(key))
+                        stats[key].Expenditure += exp.Item2;
+                }
+                foreach (var inc in incomes)
+                {
+                    key = ParseExact(inc.Date).Year.ToString();
+                    if (!stats.ContainsKey(key))
+                    {
+                        stats.Add(key, new StatsView());
+                        stats[key].Date = key;
+                    }
+                        
+                    if (stats.ContainsKey(key))
+                        stats[key].Income += inc.Income;
+                        
+                }
             }
             else if (status == "Monthly")
             {
-                statsViews = expanditures.Join(incomes,
-                x => new { x.Item1.Year, x.Item1.Month },
-                y => new {ParseExact(y.Date).Year, ParseExact(y.Date).Month},
-                (x, y) => new StatsView
+                foreach (var exp in expanditures)
                 {
-                    Date = CultureInfo.CurrentCulture.DateTimeFormat
-                        .GetMonthName(ParseExact(y.Date).Month),
-                    Income = y.Income,
-                    Expenditure = x.Item2
-                }).ToList();
+                    key = exp.Item1.ToString("MM/yyyy");
+                    if (!stats.ContainsKey(key))
+                    {
+                        stats.Add(key, new StatsView());
+                        stats[key].Date = exp.Item1.Year + " "
+                            + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(exp.Item1.Month);
+                    }
+                    if (stats.ContainsKey(key))
+                        stats[key].Expenditure += exp.Item2;
+                }
+                foreach (var inc in incomes)
+                {
+                    key = ParseExact(inc.Date).ToString("MM/yyyy");
+                    if (!stats.ContainsKey(key))
+                    {
+                        stats.Add(key, new StatsView());
+                        stats[key].Date = ParseExact(inc.Date).Year + " "
+                            + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(ParseExact(inc.Date).Month);
+                    }
+                    if (stats.ContainsKey(key))
+                        stats[key].Income += inc.Income;
+                }
             }
-            else if(status == "Daily")
+            else if (status == "Daily")
             {
-                var thday = ParseExact(incomes[0].Date);
-                statsViews = expanditures.Join(incomes,
-                x => x.Item1.Date,
-                y => thday.Date,
-                (x, y) => new StatsView
+                foreach (var exp in expanditures)
                 {
-                    Date = $"{thday.DayOfWeek} {thday.ToString("MM/dd/yyyy")}",
-                    Income = y.Income,
-                    Expenditure = x.Item2
-                }).ToList();
+                    key = exp.Item1.ToString("MM/dd/yyyy");
+                    if (!stats.ContainsKey(key))
+                    {
+                        stats.Add(key, new StatsView());
+                        stats[key].Date = exp.Item1.DayOfWeek + " "
+                            + key;
+                    }
+                    if (stats.ContainsKey(key))
+                        stats[key].Expenditure += exp.Item2;
+                }
+                foreach (var inc in incomes)
+                {
+                    key = ParseExact(inc.Date).ToString("MM/dd/yyyy");
+                    if (!stats.ContainsKey(key))
+                    {
+                        stats.Add(key, new StatsView());
+                        stats[key].Date = ParseExact(inc.Date).DayOfWeek + " "
+                            + key;
+                    }
+                    if (stats.ContainsKey(key))
+                        stats[key].Income += inc.Income;
+                }
             }
-
-            return statsViews;
+            return stats;
 
         }
-        private async Task<List<Tuple<DateTime, string>>> GetExpanditureByDate(DateTime dateTime)
+        private async Task<List<Tuple<DateTime, float>>> GetExpanditureByDate(DateTime dateTime)
         {
-            var result = new List<Tuple<DateTime, string>>();
+            var result = new List<Tuple<DateTime, float>>();
             ProductLetterRepository productLetter = new();
             IList<ProductLetter> PLInTime = (await productLetter.GetAllAsync())
             .Where(x => ParseExact(x.Date) >= dateTime).ToList();
@@ -70,8 +113,8 @@ namespace Fresh.Service.Services.PageServices
             foreach (var PL in groupedPL)
             {
                 var thisday = PL.ToList();
-                var totalsum = thisday.Sum(x => x.Price).ToString();
-                result.Add(new Tuple<DateTime, string>(ParseExact(thisday[0].Date)
+                var totalsum = thisday.Sum(x => x.Price);
+                result.Add(new Tuple<DateTime, float>(ParseExact(thisday[0].Date)
                     , totalsum));
             }
             return result;
@@ -93,14 +136,14 @@ namespace Fresh.Service.Services.PageServices
                 {
                     Date = thisDay[0].Date.ToString(),
                     Income
-                    = thisDay.Sum(x => x.TotalSum).ToString()
-                });
+                    = thisDay.Sum(x => x.TotalSum)
+                }) ;
             }
             return stats;
         }
         private DateTime ParseExact(string datetime)
         {
-            return DateTime.ParseExact(datetime, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            return DateTime.Parse(datetime);
         }
     }
 }
