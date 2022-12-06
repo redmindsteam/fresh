@@ -75,7 +75,7 @@ namespace Fresh.DataAccess.Repositories
 
                 var checks = new List<Check>();
                 await _con.OpenAsync();
-                string query = $"SELECT * FROM Checks;";
+                string query = $"SELECT * FROM Checks";
                 var command = new SQLiteCommand(query, _con);
                 var reader = await command.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
