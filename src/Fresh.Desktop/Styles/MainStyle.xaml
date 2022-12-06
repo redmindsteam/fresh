@@ -186,7 +186,7 @@
     <Color x:Key="WinColor2">#3D8361</Color>
     <Color x:Key="WinColor3">#1C6758</Color>
 
-    
 
-
+    <!--Login Page style-->
+ 
 </ResourceDictionary>
