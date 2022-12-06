@@ -24,17 +24,29 @@ namespace Fresh.Desktop.Pages
         public ConsignmentLettersPage()
         {
             InitializeComponent();
+            SetValues();
         }
 
         private void DatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+        private async void SetValues()
+        {
+            Service.Services.PageServices.ConsignmentLettersPage consignmentLettersPage = new();
+            var result = await consignmentLettersPage.GetAllCL();
+            ProductsDgUi.ItemsSource = result.OrderByDescending(x=>x.DateTime);
+        }
 
         private void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
         {
             ConsignmentLetterDescription consignmentLetterDescription = new ConsignmentLetterDescription();
             consignmentLetterDescription.ShowDialog();
+        }
+
+        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

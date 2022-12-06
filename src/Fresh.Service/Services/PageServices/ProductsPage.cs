@@ -35,5 +35,18 @@ namespace Fresh.Service.Services.PageServices
             ProductRepository productRepository = new ProductRepository();
             return await productRepository.DeleteAsync(productView.Id);
         }
+        public async Task<bool> UpdateProduct(int id,Product product)
+        {
+            try
+            {
+                ProductRepository productRepository = new();
+                return await productRepository.UpdateAsync(id, product);
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
     }
 }
