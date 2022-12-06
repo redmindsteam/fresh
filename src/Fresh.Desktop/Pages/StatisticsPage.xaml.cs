@@ -42,6 +42,7 @@ namespace Fresh.Desktop.Pages
         private void monthly_radio_Checked(object sender, RoutedEventArgs e)
         {
             SetDefaults(StatDataPicker.Text, "Monthly");
+
         }
 
         private void yearly_radio_Checked(object sender, RoutedEventArgs e)

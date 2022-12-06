@@ -39,7 +39,8 @@
                 </StackPanel>
             </Button>
         </Grid>
-        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
+        <DataGrid  Style="{DynamicResource DataGridStyle1}" Foreground="#3AA9AD"
+                   Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
@@ -51,7 +52,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Grid Grid.Row="3" Grid.RowSpan="2"   >
+        <Grid Grid.Row="3" Grid.RowSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="0.5*"/>
@@ -85,7 +86,7 @@
                     <TextBlock Text=" Delete" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            
+
         </Grid>
 
     </Grid>

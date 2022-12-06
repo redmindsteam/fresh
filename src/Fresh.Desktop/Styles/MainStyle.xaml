@@ -188,5 +188,22 @@
 
 
     <!--Login Page style-->
- 
+    <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">
+        <Setter Property="Foreground" Value="Blue"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template" Value="{DynamicResource DataGridRowControlTemplate1}"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF2626"/>
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="#FF3"/>
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                <Setter Property="Background" Value="#FF55"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>
