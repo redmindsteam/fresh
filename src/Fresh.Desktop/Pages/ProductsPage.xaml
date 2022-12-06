@@ -29,13 +29,15 @@
             <Label Grid.Column="0" Foreground="#767676" FontWeight="SemiBold" Content="Search by" FontSize="12" Style="{DynamicResource labelChecksPage}"  Height="30" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             <RadioButton x:Name="rdnSearchByName" Grid.Column="1" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Product name" Click="RBtn_Click"/>
             <RadioButton x:Name="rdnCategory" Grid.Column="2" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Category" Click="RBtn_Click" />
-            <TextBox Grid.Column="3"
+            <TextBox Grid.Column="3" Width="230"
               materialDesign:HintAssist.Hint="Type to Search..."
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-              VerticalAlignment="Center" />     
+              VerticalAlignment="Center" TextChanged="txtBoxText_Changed" />     
         </Grid>
-        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
-                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
+        <DataGrid  Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
+                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged"  ItemsSource="{Binding SongList, UpdateSourceTrigger=PropertyChanged}"
+                   RowEditEnding="GRD_RowEditEnding"
+                  PreviewKeyDown="GRD_PreviewKeyDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="0.8*"/>
@@ -102,6 +104,7 @@
                 </Grid>
             </Grid>
         </Grid>
+        <materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="78,-96,0,0" VerticalAlignment="Top"/>
     </Grid>
 
 </Page>

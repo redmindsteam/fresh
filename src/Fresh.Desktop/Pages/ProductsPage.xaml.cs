@@ -114,5 +114,14 @@ namespace Fresh.Desktop.Pages
             rb1PrevState = (_excludeRB == "rdnSearchByName" ? rb1PrevState : false);
             rb2PrevState = (_excludeRB == "rdnCategory" ? rb2PrevState : false);
         }
+
+        private void txtBoxText_Changed(object sender, TextChangedEventArgs e)
+        {
+            /*var txtBox = sender as TextBox;
+            if(txtBox.Text!="")
+            {
+                var filteredList = 
+            }*/
+        }
     }
 }
