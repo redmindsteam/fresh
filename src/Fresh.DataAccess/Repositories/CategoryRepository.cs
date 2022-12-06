@@ -159,6 +159,42 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
+        public async Task<Category> GetByName(string Name)
+        {
+            try
+            {
+                await _con.OpenAsync();
+                string query = $"select * from Categories where Name = $Name";
+                SQLiteCommand command = new SQLiteCommand(query, _con)
+                {
+                    Parameters =
+                    {
+                        new SQLiteParameter ("Name",Name)
+                    }
+                };
+                var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    return new Category()
+                    {
+                        Id = reader.GetInt32("Id"),
+                        Name = reader.GetString("Name"),
+                        Description = reader.GetString("Description")
+                    };
+                }
+                else return null!;
+            }
+            catch
+            {
+
+                return null!;
+            }
+            finally
+            {
+                _con.Close();
+            }
+        }
+
         public async Task<bool> UpdateAsync(int id, Category entity)
         {
             try

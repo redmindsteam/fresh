@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 ﻿using Fresh.Desktop.Windows;
+=======
+
+using Fresh.DataAccess.Repositories;
+using Fresh.Desktop.Windows;
+>>>>>>> bb6252f (Added Backend Updated Updated)
 using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
@@ -68,8 +74,9 @@ namespace Fresh.Desktop.Pages
                 MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
+        private async void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
+
             AddCashier add = new AddCashier();
             add.Show();
             

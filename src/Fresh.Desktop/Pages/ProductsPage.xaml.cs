@@ -1,4 +1,6 @@
-﻿using Fresh.Desktop.Windows;
+
+using Fresh.Desktop.Windows;
+﻿using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
 using System;
@@ -66,17 +68,19 @@ namespace Fresh.Desktop.Pages
                 MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
-       
-
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProducts add = new AddProducts();
             add.Show();
         }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductPage productPage = new();
+            var product = (ProductsView)ProductsDgUi.SelectedItem;
+            if (await productPage.UpdateProduct(product.Id, product))
+                MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("There was wrong with update cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
     }
 }
