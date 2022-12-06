@@ -62,8 +62,7 @@
                      BorderThickness="0 0 0 1"
                      Height="21"
                      Width="260"
-                     Margin="0 4 0 0"
-                />
+                    Margin="0 4 0 0" />
 
             <TextBlock Text="Email"
                        Foreground="White" FontSize="12"
@@ -140,9 +139,9 @@
                      Margin="0 4 0 0" />
             
             <DockPanel  Margin="0 25 0 0">
-                <Button BorderBrush="#10A19D" Background="#46C2CB" Click="SaveButton_Click" Width="113" Margin="5" Height="25" Content="Save"/>
+                <Button BorderBrush="#00838f" Background="#0097a7" Click="SaveButton_Click" Width="113" Margin="5" Height="25" Content="Save"/>
 
-                <Button BorderBrush="#10A19D" Background="#46C2CB" 
+                <Button BorderBrush="#00838f" Background="#0097a7" 
                         Click="CancelButton_Click" Width="113" Height="25" Margin="5" Content="Cancel" />
             </DockPanel>
         </StackPanel>

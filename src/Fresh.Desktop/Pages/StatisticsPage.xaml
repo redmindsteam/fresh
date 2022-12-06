@@ -34,14 +34,13 @@
         
         <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
-            <DataGrid.Columns>
+            <DataGrid.Columns >
 
-
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"  />
                 <DataGridTextColumn Header="Income" Binding="{Binding Income}" Width="*"/>
-                <DataGridTextColumn Header="Expenditure" Binding="{Binding Expenditure}" Width="*"/>
-                
+                <DataGridTextColumn Header="Expenditure" Binding="{Binding Expenditure}" Width="*" />
             </DataGrid.Columns>
+           
 
         </DataGrid>
         
