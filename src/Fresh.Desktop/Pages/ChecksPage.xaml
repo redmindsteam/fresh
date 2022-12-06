@@ -59,7 +59,7 @@
         <DataGrid Grid.Row="2" x:Name="ProductsDgUi" SelectionChanged="ProductsDgUi_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*" />
-                <DataGridTextColumn Header="Cashier" Binding="{Binding User}" Width="*" />
+                <DataGridTextColumn Header="Cashier" Binding="{Binding Caisher}" Width="*" />
                 <DataGridTextColumn Header="Summ" Binding="{Binding Summ}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

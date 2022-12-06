@@ -1,4 +1,6 @@
 ﻿using Fresh.Domain.Entities;
+using Fresh.Service.Services.PageServices;
+using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,7 @@ namespace Fresh.Desktop.Pages
         {
             InitializeComponent();
             DataContext = this;
+            Click();
         }
 
         private void comboBoxCashiers_Loaded(object sender, RoutedEventArgs e)
@@ -32,9 +35,11 @@ namespace Fresh.Desktop.Pages
 
         }
 
-        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public async void Click()
         {
-
+            CheckPage check = new CheckPage();
+            List<ChecksView> ChecksPages = await check.GetChecksViews();
+            ProductsDgUi.ItemsSource = ChecksPages;
         }
     }
 }
