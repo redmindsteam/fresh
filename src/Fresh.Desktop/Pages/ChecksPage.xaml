@@ -56,7 +56,7 @@
                 </ComboBox>
             </Grid>
         </Grid>
-        <DataGrid Grid.Row="2" x:Name="ProductsDgUi" SelectionChanged="ProductsDgUi_SelectionChanged" >
+        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="2" x:Name="ProductsDgUi" SelectionChanged="ProductsDgUi_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*" />
                 <DataGridTextColumn Header="Cashier" Binding="{Binding Caisher}" Width="*" />
@@ -70,14 +70,14 @@
                 <ColumnDefinition Width="0.2*" />
                 <ColumnDefinition Width="0.08*" />
             </Grid.ColumnDefinitions>
-            <TextBlock  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Height="20" Margin="0 0 0 0" Foreground="{DynamicResource TextSecundaryColor}"> Save to Cloud </TextBlock>
-            
-            <Button HorizontalAlignment="Right" Grid.Column="2" VerticalAlignment="Center" Background="{DynamicResource SecundaryBackgroundColor}"
+            <TextBlock  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Height="20" Margin="0 0 0 0" Foreground="{DynamicResource TextSecundaryColor}"> Save to Cloud</TextBlock>
+
+            <Button HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Top" Background="{DynamicResource SecundaryBackgroundColor}"
                 Style="{StaticResource MaterialDesignFloatingActionLightButton}"
                 
                 Command="{Binding SaveCommand}"
                 materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
-                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}" >
+                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}" Grid.ColumnSpan="2" Margin="14,1,0,0" >
                 <!-- simple example of toggling/animating pack icon with a data trigger-->
                 <materialDesign:PackIcon
                     Height="24"
@@ -92,18 +92,18 @@
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding IsSaveComplete}" Value="True">
                                     <Setter Property="Kind" Value="Check" />
-                                        <DataTrigger.EnterActions>
-                                            <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
                                                         Storyboard.TargetProperty="Opacity"
                                                         From="0"
                                                         To="1"
                                                         Duration="0:0:0.8" />
-                                                    </Storyboard>
-                                            </BeginStoryboard>
-                                        </DataTrigger.EnterActions>
-                                 </DataTrigger>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </materialDesign:PackIcon.Style>
