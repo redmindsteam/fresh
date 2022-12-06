@@ -25,10 +25,14 @@ namespace Fresh.Desktop.Pages
     /// </summary>
     public partial class ProductsPage : Page
     {
+        private bool rb1PrevState;
+        private bool rb2PrevState;
         public ProductsPage()
         {
             InitializeComponent();
             Click();
+            rb1PrevState = this.rdnSearchByName.IsChecked.Value;
+            rb2PrevState = this.rdnCategory.IsChecked.Value;
         }
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -42,15 +46,7 @@ namespace Fresh.Desktop.Pages
             ProductsDgUi.ItemsSource = productPages;
         }
 
-        private void PopupBox_OnClosed(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void PopupBox_OnOpened(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -81,6 +77,55 @@ namespace Fresh.Desktop.Pages
                 MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("There was wrong with update cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+        }
+
+        
+        private void RBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton rbtn = sender as RadioButton;
+
+            if (rbtn != null)
+            {
+                if (rbtn.IsChecked.Value == true)
+                {
+                    switch (rbtn.Name)
+                    {
+                        case "rdnSearchByName":
+                            if (rb1PrevState == true)
+                            {
+                                rbtn.IsChecked = false;
+                                rb1PrevState = false;
+                            }
+                            else
+                            {
+                                rb1PrevState = true;
+                                ResetRBPrevStates("rdnSearchByName");
+                            }
+                            break;
+                        case "rdnCategory":
+                            if (rb2PrevState == true)
+                            {
+                                rbtn.IsChecked = false;
+                                rb2PrevState = false;
+                            }
+                            else
+                            {
+                                rb2PrevState = true;
+                                ResetRBPrevStates("rdnCategory");
+                            }
+                            break;
+                        
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void ResetRBPrevStates(string _excludeRB)
+        {
+            rb1PrevState = (_excludeRB == "rdnSearchByName" ? rb1PrevState : false);
+            rb2PrevState = (_excludeRB == "rdnCategory" ? rb2PrevState : false);
         }
     }
 }
