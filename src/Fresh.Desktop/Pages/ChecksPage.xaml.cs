@@ -41,5 +41,10 @@ namespace Fresh.Desktop.Pages
             List<ChecksView> ChecksPages = await check.GetChecksViews();
             ProductsDgUi.ItemsSource = ChecksPages;
         }
+
+        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
