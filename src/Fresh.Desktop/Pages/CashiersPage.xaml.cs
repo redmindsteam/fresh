@@ -1,7 +1,5 @@
-
 ﻿using Fresh.Desktop.Windows;
 using Fresh.Domain.Entities;
-
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
 using MaterialDesignThemes.Wpf;

@@ -51,14 +51,19 @@
                        Width="259"/>
 
             <TextBox
-                x:Name="txtUser"
-                Foreground="White"
-                Background="Transparent"
-                BorderBrush="White"
-                Height="21"
-                materialDesign:HintAssist.Hint=""
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" />
+                x:Name="txtName"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                   Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0"
+                />
 
             <TextBlock Text="Email"
                        Foreground="White" FontSize="12"
@@ -67,27 +72,31 @@
 
             <TextBox
                 x:Name="txtEmail"
-                Foreground="White"
+               FontSize="14"
+                FontWeight="Medium"
+                FontFamily="Montserrat"
                 Background="Transparent"
+                Foreground="#e0f7fa"
+                CaretBrush="#80deea"
                 BorderBrush="White"
+                BorderThickness="0 0 0 1"
                 Height="21"
-                materialDesign:HintAssist.Hint=""
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" />
+                Width="260"
+                Margin="0 4 0 0" />
 
-           
+
 
             <TextBlock Text="Password"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
             <PasswordBox x:Name="txtPassword"
-                     FontSize="13"
+                     FontSize="14"
                      FontWeight="Medium"
                      FontFamily="Montserrat"
                      Background="Transparent"
-                     Foreground="White"
-                     CaretBrush="LightGray"
+                    Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
                      BorderBrush="White"
                      BorderThickness="0 0 0 1"
                      Height="21"
@@ -100,13 +109,17 @@
                        Margin="0 13 0 0" Width="259"/>
             <TextBox
                 x:Name="txtPassSeriya"
-                Foreground="White"
-                Background="Transparent"
-                BorderBrush="White"
-                Height="21"
-                materialDesign:HintAssist.Hint=""
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" />
+               FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                    Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0" />
 
             <TextBlock Text="Phone Number"
                        Foreground="White" FontSize="12"
@@ -114,15 +127,19 @@
                        Margin="0 13 0 0" Width="259"/>
             <TextBox
                 x:Name="txtPhone"
-                Foreground="White"
-                Background="Transparent"
-                BorderBrush="White"
-                Height="21"
-                materialDesign:HintAssist.Hint=""
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" />
+                FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0" />
             
-            <DockPanel  Margin="0 20 0 0">
+            <DockPanel  Margin="0 25 0 0">
                 <Button BorderBrush="#10A19D" Background="#46C2CB" Click="SaveButton_Click" Width="113" Margin="5" Height="25" Content="Save"/>
 
                 <Button BorderBrush="#10A19D" Background="#46C2CB" 

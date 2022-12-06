@@ -47,13 +47,18 @@
                        Margin="0 13 0 0"
                        Width="259"/>
             <TextBox
-                Foreground="White"
-                Background="Transparent"
-                BorderBrush="White"
-                Height="21"
-                materialDesign:HintAssist.Hint=""
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" />
+                x:Name="ProductName"
+                FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                   Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0" />
 
             <TextBlock Text="Category"
                        Foreground="White" FontSize="12"
@@ -61,10 +66,12 @@
                        Margin="0 13 0 0" Width="259"/>
             <DockPanel>
                 <ComboBox
+                   BorderBrush="White"
+                      FontSize="14"
                   materialDesign:HintAssist.Hint=" Category"
                   materialDesign:HintAssist.HintOpacity=".26"
                   IsEditable="True" HorizontalAlignment="Left"
-                Background="Transparent" BorderBrush="White" Width="145" Height="26" >
+                    Width="145" Height="26" >
                     <ComboBoxItem Content="Uziz qo'shing"/>
                     <ComboBoxItem Content="Banana"/>
                     <ComboBoxItem Content="Pear"/>
@@ -81,22 +88,28 @@
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
             <TextBox
-                Foreground="White"
-                Background="Transparent"
-                BorderBrush="White"
-                Height="21"
-                materialDesign:HintAssist.Hint=""
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" />
+                     x:Name="Price"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0" />
             <TextBlock Text="Unit"
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
             <ComboBox
-                  materialDesign:HintAssist.Hint=" Unit"
+                 BorderBrush="White"
+                 materialDesign:HintAssist.Hint=" Unit"
                   materialDesign:HintAssist.HintOpacity=".26"
                   IsEditable="True" HorizontalAlignment="Left"
-                Background="Transparent" BorderBrush="White" Width="256" Height="26" >
+                Background="Transparent"  Width="256" Height="26" >
                 <ComboBoxItem Content="Uziz qo'shing"/>
                 <ComboBoxItem Content="Kg"/>
                 <ComboBoxItem Content="Litr"/>
@@ -108,21 +121,26 @@
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
             <TextBox
-                Foreground="White"
-                Background="Transparent"
-                BorderBrush="White"
-                Height="21"
-                materialDesign:HintAssist.Hint=""
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                VerticalAlignment="Center" />
+                x:Name="BarCode"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0" />
             <DatePicker
                 Grid.Column="0"
             Width="256"
                 Height="44"
             FontSize="16"
-                Foreground="White"
+               BorderBrush="White"
             materialDesign:HintAssist.Hint="Production date"
-            BorderBrush="White"
+            
             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
             <DatePicker
@@ -130,9 +148,9 @@
             Width="256"
                 Height="44"
             FontSize="16"
-                Foreground="White"
+               BorderBrush="White"
             materialDesign:HintAssist.Hint="Expire date"
-            BorderBrush="White"
+            
             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
 

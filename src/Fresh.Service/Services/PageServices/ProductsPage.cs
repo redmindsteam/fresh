@@ -33,6 +33,7 @@ namespace Fresh.Service.Services.PageServices
         public async Task<bool> DeleteProduct(ProductsView productView)
         {
             ProductRepository productRepository = new ProductRepository();
+
             return await productRepository.DeleteAsync(productView.Id);
         }
         public async Task<bool> UpdateProduct(int id,Product product)
