@@ -35,7 +35,7 @@ namespace Fresh.Desktop.Windows
         {
             CashierView cashierView = new CashierView()
             {
-                FullName = txtUser.Text,
+                FullName = txtName.Text,
                 Email = txtEmail.Text,
                 Password = txtPassword.Password,
                 PhoneNumber = txtPhone.Text,

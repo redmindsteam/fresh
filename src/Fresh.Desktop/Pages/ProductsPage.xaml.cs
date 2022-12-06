@@ -1,4 +1,5 @@
-﻿using Fresh.Service.Services.PageServices;
+﻿using Fresh.Desktop.Windows;
+using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,14 @@ namespace Fresh.Desktop.Pages
             }
             else
                 MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+        }
+
+       
+
+        private void btnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            AddProducts add = new AddProducts();
+            add.Show();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)

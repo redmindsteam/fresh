@@ -92,11 +92,11 @@
                     <TextBlock Grid.Column="0" FontSize="14" Foreground="{DynamicResource TextSecundaryColor}" VerticalAlignment="Center" HorizontalAlignment="Right" >
                         Add Product
                     </TextBlock>
-                    <Button x:Name="btnAddUser" 
+                    <Button x:Name="btnAddProduct" 
                     Grid.Column="1"
                     Style="{DynamicResource buttonCircle}" 
                     Height="45"
-                    Width="45" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    Width="45" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnAddProduct_Click">
                         <StackPanel Grid.Column="1" Orientation="Horizontal" Height="21" Width="22">
                             <Path Data="{DynamicResource AddProduct}" Margin="0 0 0 0" Stretch="Fill" Fill="{DynamicResource SecundaryBackgroundColor}" 
                           Width="22" Height="18"/>
