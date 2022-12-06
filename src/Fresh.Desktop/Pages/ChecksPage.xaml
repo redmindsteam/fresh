@@ -56,7 +56,7 @@
                 </ComboBox>
             </Grid>
         </Grid>
-        <DataGrid Grid.Row="2" x:Name="ProductsDgUi" >
+        <DataGrid Grid.Row="2" x:Name="ProductsDgUi" SelectionChanged="ProductsDgUi_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*" />
                 <DataGridTextColumn Header="Cashier" Binding="{Binding Caisher}" Width="*" />

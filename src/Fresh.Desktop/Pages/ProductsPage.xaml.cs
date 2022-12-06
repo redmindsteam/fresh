@@ -49,11 +49,6 @@ namespace Fresh.Desktop.Pages
 
         }
 
-        private void ProductsDgUi_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             ProductsView products = (ProductsView)ProductsDgUi.SelectedItem;
@@ -68,6 +63,11 @@ namespace Fresh.Desktop.Pages
             }
             else
                 MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
