@@ -36,11 +36,22 @@ namespace Fresh.Service.Services.PageServices
 
             return await productRepository.DeleteAsync(productView.Id);
         }
-        public async Task<bool> UpdateProduct(int id,Product product)
+        public async Task<bool> UpdateProduct(int id,ProductsView productview)
         {
             try
             {
                 ProductRepository productRepository = new();
+                Product product = await productRepository.GetByIdAsync(productview.Id);
+                {
+                    product.Id = productview.Id;
+                    product.Name = productview.Name;
+                    var categoryRepository = new CategoryRepository();
+                    product.CategoryId = (await categoryRepository.GetByName(productview.Category)).Id;
+                    product.Price = productview.Price;
+                    product.Value = productview.Available;
+
+                }
+             
                 return await productRepository.UpdateAsync(id, product);
             }
             catch

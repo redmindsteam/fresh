@@ -129,7 +129,7 @@ namespace Fresh.DataAccess.Repositories
                         Unit = reader.GetString("Unit"),
                         BarcodeName = reader.GetString("BarcodeName"),
                         ProductionDate = reader.GetString("ProductionDate"),
-                        ExpireDate = reader.GetString("ExpireDate"),
+                        ExpireDate = reader.GetString("ExpireData"),
                         Value = reader.GetFloat("Value")
 
                     };
@@ -161,11 +161,11 @@ namespace Fresh.DataAccess.Repositories
                         Id = reader.GetInt32("Id"),
                         Name = reader.GetString("Name"),
                         CategoryId = reader.GetInt32("CategoryId"),
-                        Price = reader.GetInt32("Price"),
+                        Price = reader.GetFloat("Price"),
                         Unit = reader.GetString("Unit"),
                         BarcodeName = reader.GetString("BarcodeName"),
                         ProductionDate = reader.GetString("ProductionDate"),
-                        ExpireDate = reader.GetString("ExpireDate"),
+                        ExpireDate = reader.GetString("ExpireData"),
                         Value = reader.GetFloat("Value")
                     };
                 }
@@ -187,11 +187,11 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = $"update Users set " +
+                string query = $"update Products set " +
                     " Name = $Name, CategoryId = $CategoryId," +
                     " Price = $Price," +
                     " Unit = $Unit, BarcodeName = $BarcodeName, ProductionDate = $ProductionDate," +
-                    " ExpireDate = $ExpireDate," +
+                    " ExpireData = $ExpireData," +
                     " Value = $Value" +
                     $" Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
@@ -205,7 +205,7 @@ namespace Fresh.DataAccess.Repositories
                         new SQLiteParameter("Unit", entity.Unit),
                         new SQLiteParameter("BarcodeName", entity.BarcodeName),
                         new SQLiteParameter("ProductionDate", entity.ProductionDate),
-                        new SQLiteParameter("ExpireDate", entity.ExpireDate),
+                        new SQLiteParameter("ExpireData", entity.ExpireDate),
                         new SQLiteParameter("Value", entity.Value)
                     }
                 };
