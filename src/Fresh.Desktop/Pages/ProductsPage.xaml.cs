@@ -88,7 +88,7 @@ namespace Fresh.Desktop.Pages
             if (await productPage.UpdateProduct(product.Id, product))
                 MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else
-                MessageBox.Show("There was wrong with update cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("There was wrong with update product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
     }
 }
