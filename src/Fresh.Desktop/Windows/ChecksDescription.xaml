@@ -28,7 +28,7 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.1*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -54,7 +54,7 @@
                 </StackPanel>
 
             </Grid>
-            <TextBlock Grid.Row="1" Text="Fresh Market" FontSize="15" Foreground="#434344" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBlock Grid.Row="1" Text="Fresh Market" FontWeight="SemiBold" FontSize="15" Foreground="#434344" VerticalAlignment="Center" HorizontalAlignment="Center" >
                 
             </TextBlock>
             
@@ -71,6 +71,20 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Style="{DynamicResource labelChecksPage}" >Total Payment</Label>
+                <TextBox Grid.Column="1" x:Name="txtName" FontSize="14" FontWeight="Medium" FontFamily="Montserrat"
+                     Background="Transparent"  Foreground="#e0f7fa" CaretBrush="#80deea" BorderBrush="#1C6758"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="200"
+                    Margin="0 4 0 0" />
+            </Grid>
 
         </Grid>
 
