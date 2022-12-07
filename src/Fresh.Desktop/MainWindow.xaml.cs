@@ -67,8 +67,6 @@ namespace Fresh.Desktop
         }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-          
-
             DirectorRegisterService service = new DirectorRegisterService();
             var response = await service.UserValidationAsync(txtEmail.Text, txtPassword.Password);
             Errorlist.Content = response;
