@@ -21,6 +21,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Fresh.Desktop.Windows;
+
 
 namespace Fresh.Desktop.Pages
 {
@@ -91,6 +93,12 @@ namespace Fresh.Desktop.Pages
         private void hiddenHelper_Click(object sender, RoutedEventArgs e)
         {
             Click();
+        }
+
+        private void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            ChecksDescription checksDescription = new ChecksDescription();
+            checksDescription.ShowDialog();
         }
     }
 }

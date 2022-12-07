@@ -144,5 +144,15 @@ namespace Fresh.Desktop.Pages
                 var filteredList = 
             }*/
         }
+
+        private void GRD_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
+        }
+
+        private void GRD_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
