@@ -35,10 +35,12 @@ namespace Fresh.Desktop.Windows
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            ProductsPage.chack = false;
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+        {   
+            
             ICategoryRepository categoryRepository = new CategoryRepository();
             Category category = await categoryRepository.GetByName(categoryname.Text);
             Product product = new Product()
@@ -56,11 +58,15 @@ namespace Fresh.Desktop.Windows
             var result = await productsPage.AddProdact(product);
             if (result)
             {
+                ProductsPage.chack = false;
                 MessageBox.Show("Product succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
             else
+            {
                 MessageBox.Show("There was wrong with adding product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                ProductsPage.chack=true;
+            }
         }
 
         public async void func()

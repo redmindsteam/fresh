@@ -29,16 +29,14 @@ namespace Fresh.Desktop.Pages
     /// </summary>
     public partial class CashiersPage : Page
     {
+        public static bool Check;
         public CashiersPage()
         {
             InitializeComponent();
             Click();
         }
 
-        private void rdAddUser_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
+       
         public async void Click()
         {
             CashierPage cashiers = new CashierPage();
@@ -78,10 +76,13 @@ namespace Fresh.Desktop.Pages
 
         private async void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
+            if (!Check)
+            {
+                AddCashier add = new AddCashier();
+                add.Show();
+                Check = true;
+            }
 
-            AddCashier add = new AddCashier();
-            add.Show();
-            
         }
 
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)

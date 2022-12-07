@@ -104,7 +104,6 @@
                 </Grid>
             </Grid>
         </Grid>
-        <materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="78,-96,0,0" VerticalAlignment="Top"/>
     </Grid>
 
 </Page>
