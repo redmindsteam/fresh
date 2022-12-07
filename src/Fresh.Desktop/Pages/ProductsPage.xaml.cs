@@ -25,6 +25,7 @@ namespace Fresh.Desktop.Pages
     /// </summary>
     public partial class ProductsPage : Page
     {
+        public static bool chack;
         private bool rb1PrevState;
         private bool rb2PrevState;
         public ProductsPage()
@@ -70,8 +71,14 @@ namespace Fresh.Desktop.Pages
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-            AddProducts add = new AddProducts();
-            add.Show();
+            if (!chack)
+            {
+                AddProducts add = new AddProducts();
+                add.Show();
+                chack = true;
+            }
+            
+            
         }
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {

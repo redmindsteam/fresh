@@ -1,4 +1,6 @@
-﻿using Fresh.Service.Services.PageServices;
+﻿using Fresh.Desktop.Pages;
+using Fresh.Domain.Entities;
+using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -29,10 +31,12 @@ namespace Fresh.Desktop.Windows
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            CashiersPage.Check = false;
         }
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            
             CashierView cashierView = new CashierView()
             {
                 FullName = txtName.Text,
@@ -41,15 +45,21 @@ namespace Fresh.Desktop.Windows
                 PhoneNumber = txtPhone.Text,
                 PassportSeria = txtPassSeriya.Text,
             };
+            
             CashierPage cashierPage = new CashierPage();
             var result = await cashierPage.AddCashier(cashierView);
             if (result)
             {
+                CashiersPage.Check = false;
                 MessageBox.Show("Cashier succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
             else
+            {
+                CashiersPage.Check = true;
                 MessageBox.Show("There was wrong with adding cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+
+            }
 
         }
 
