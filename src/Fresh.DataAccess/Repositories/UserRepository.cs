@@ -29,7 +29,7 @@ namespace Fresh.DataAccess.Repositories
                         new SQLiteParameter("PasswordHash", item.PasswordHash),
                         new SQLiteParameter("Salt", item.Salt),
                         new SQLiteParameter("PhoneNumber", item.PhoneNumber),
-                        new SQLiteParameter("PassportSeria", item.PhoneNumber)
+                        new SQLiteParameter("PassportSeria", item.PassportSeria)
                     }
                 };
 
