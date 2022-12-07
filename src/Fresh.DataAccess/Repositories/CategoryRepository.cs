@@ -86,7 +86,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     categories.Add(category);
                 }
-
+                reader.Close();
                 return categories;
             }
             catch
@@ -118,7 +118,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     categories.Add(category);
                 }
-
+                reader.Close();
                 return categories;
             }
             catch
@@ -139,6 +139,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
+                    reader.Close();
                     return new Category()
                     {
                         Id = reader.GetInt32("Id"),
@@ -146,7 +147,11 @@ namespace Fresh.DataAccess.Repositories
                         Description = reader.GetString("Description")
                     };
                 }
-                else return null!;
+                else
+                {
+                    reader.Close();
+                    return null!;
+                }
             }
             catch
             {
@@ -175,6 +180,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
+                    reader.Close();
                     return new Category()
                     {
                         Id = reader.GetInt32("Id"),
@@ -182,7 +188,11 @@ namespace Fresh.DataAccess.Repositories
                         Description = reader.GetString("Description")
                     };
                 }
-                else return null!;
+                else
+                {
+                    reader.Close();
+                    return null!;
+                }
             }
             catch
             {

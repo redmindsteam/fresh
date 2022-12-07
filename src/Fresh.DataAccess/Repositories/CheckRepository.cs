@@ -90,7 +90,7 @@ namespace Fresh.DataAccess.Repositories
                      };
                     checks.Add(check);
                 }
-
+                reader.Close();
                 return checks;
             }
             catch
@@ -124,7 +124,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     checks.Add(check);
                 }
-
+                reader.Close();
                 return checks;
             }
             catch
@@ -145,6 +145,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
+                    reader.Close();
                     return new Check()
                     {
                         Id = reader.GetInt32(0),
@@ -155,7 +156,11 @@ namespace Fresh.DataAccess.Repositories
 
                     };
                 }
-                else return null!;
+                else 
+                {
+                    reader.Close();
+                    return null!; 
+                }
             }
             catch
             {

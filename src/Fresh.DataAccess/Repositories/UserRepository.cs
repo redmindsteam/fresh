@@ -97,7 +97,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     users.Add(user);
                 }
-
+                reader.Close();
                 return users;
             }
             catch
@@ -137,7 +137,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     users.Add(user);
                 }
-
+                reader.Close();
                 return users;
             }
             catch
@@ -170,6 +170,7 @@ namespace Fresh.DataAccess.Repositories
                     var user = new User();
                     if (await reader.ReadAsync())
                     {
+                        reader.Close();
                         user = new User()
                         {
                             Id = reader.GetInt32("Id"),
@@ -186,7 +187,10 @@ namespace Fresh.DataAccess.Repositories
                         return user;
                     }
                     else
+                    {
+                        reader.Close();
                         return null!;
+                    }
                 }
                 catch
                 {
@@ -215,6 +219,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
+                    reader.Close();
                     return new User()
                     {
                         Id = reader.GetInt32("Id"),
@@ -229,7 +234,10 @@ namespace Fresh.DataAccess.Repositories
                     };
                 }
                 else
+                {
+                    reader.Close();
                     return null!;
+                }
             }
             catch
             {
@@ -252,6 +260,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
+                    reader.Close();
                     return new User()
                     {
                         Id = reader.GetInt32("Id"),
@@ -264,7 +273,11 @@ namespace Fresh.DataAccess.Repositories
                         PassportSeria = reader.GetString("PassportSeria")
                     };
                 }
-                else return null!;
+                else
+                {
+                    reader.Close();
+                    return null!;
+                }
             }
             catch
             {
@@ -293,6 +306,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
+                    reader.Close();
                     return new User()
                     {
                         Id = reader.GetInt32("Id"),
@@ -307,7 +321,10 @@ namespace Fresh.DataAccess.Repositories
                     };
                 }
                 else
+                {
+                    reader.Close();
                     return null!;
+                }
             }
             catch
             {
