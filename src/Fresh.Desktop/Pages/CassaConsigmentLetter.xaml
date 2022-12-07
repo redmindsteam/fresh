@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CassaConsigmentLetter" Height="500" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Border CornerRadius = "6" Background = "White" >
-        <Grid >
+        <Grid Loaded="Grid_Load" ContextMenuClosing="Window_Close">
             <Grid.RowDefinitions >
                 <RowDefinition Height = "20" />
                 <RowDefinition />
@@ -20,7 +20,7 @@
                     <ColumnDefinition Width="7*"/>
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions >
-                <DataGrid  Width = "350" HorizontalAlignment = "Left" x:Name="DataGridCassaLetter">
+                <DataGrid  Width = "350" HorizontalAlignment = "Left" x:Name="DataGridCassaLetter" Loaded="DataGrid_Refresh">
                     <DataGrid.Columns >
                         <DataGridTextColumn Header = "Mahsulot" Width = "*" Binding="{Binding Name}"/>
                         <DataGridTextColumn Header = "Kg/L" Width = "*" Binding="{Binding KgL}"/>
@@ -41,6 +41,36 @@
                 <Button x:Name = "DeleteBtton" Click = "DeleteButton_Click" Content = "Delete"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,157,0,0" />
                 <Button x:Name = "AcceptBtton" Click = "Accept_Click" Content = "Accept"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,202,0,0" />
                 <Button x:Name = "NotAcceptBtton" Click = "NotAccept_Click" Content = "Not Accept"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "498,202,0,0" />
+                <Image x:Name="videoPlayer" Margin="396,388,24,58"/>
+                <ComboBox x:Name="comboBox"
+                                          Width="168"
+                                          Height="21"
+                                          Margin="396,0,0,26"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          DisplayMemberPath="Name"
+                                          ItemsSource="{Binding VideoDevices}"
+                                          SelectedItem="{Binding CurrentDevice}"
+                                          >
+
+                </ComboBox>
+                <Button Width="67"
+                Height="24"
+                Margin="380,0,0,105"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStart_Click"
+                Content="Start"
+                
+            />
+                <Button Width="67"
+                Height="24"
+                Margin="480,0,0,105"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStop_Click"
+                Content="Stop" RenderTransformOrigin="0.545,1.707"
+            />
             </Grid >
         </Grid >
     </Border >
