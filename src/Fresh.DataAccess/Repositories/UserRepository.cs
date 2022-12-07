@@ -170,6 +170,7 @@ namespace Fresh.DataAccess.Repositories
                     var user = new User();
                     if (await reader.ReadAsync())
                     {
+                        reader.Close();
                         user = new User()
                         {
                             Id = reader.GetInt32("Id"),
