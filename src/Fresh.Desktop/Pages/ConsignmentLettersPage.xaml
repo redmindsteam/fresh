@@ -26,21 +26,24 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        
+        <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click"></Button>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <DatePicker
+                Name="datePicker"
+                SelectedDateChanged="DatePicker_SelectedDatesChanged"
                 Grid.Column="0"
             Width="250"
                 Height="44"
             FontSize="16"
             materialDesign:HintAssist.Hint="Pick Date"
-            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,0,75,6" VerticalAlignment="Bottom" />
             <ComboBox
                 Grid.Column="1"
+                  Name="usersNameCombo"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   materialDesign:TextFieldAssist.HasClearButton="True"
                   materialDesign:TextFieldAssist.SuffixText="Search"
@@ -48,7 +51,7 @@
                   materialDesign:ColorZoneAssist.Mode="Inverted"
                   materialDesign:HintAssist.Hint="Select a cashier"
                   MinWidth="128"
-                    Width="250">       
+                    Width="250" SelectionChanged="usersNameCombo_SelectionChanged">       
                 <ComboBoxItem>
                     Abdulaziz
                 </ComboBoxItem>

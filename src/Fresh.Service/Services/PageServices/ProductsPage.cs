@@ -49,7 +49,6 @@ namespace Fresh.Service.Services.PageServices
                     product.CategoryId = (await categoryRepository.GetByName(productview.Category)).Id;
                     product.Price = productview.Price;
                     product.Value = productview.Available;
-
                 }
              
                 return await productRepository.UpdateAsync(id, product);
