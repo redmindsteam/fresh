@@ -1,4 +1,4 @@
-﻿<Page x:Class="Fresh.Desktop.Pages.ChecksPage"
+<Page x:Class="Fresh.Desktop.Pages.ChecksPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -79,18 +79,18 @@
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding IsSaveComplete}" Value="True">
                                     <Setter Property="Kind" Value="Check" />
-                                        <DataTrigger.EnterActions>
-                                            <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
                                                         Storyboard.TargetProperty="Opacity"
                                                         From="0"
                                                         To="1"
                                                         Duration="0:0:0.8" />
-                                                    </Storyboard>
-                                            </BeginStoryboard>
-                                        </DataTrigger.EnterActions>
-                                 </DataTrigger>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </materialDesign:PackIcon.Style>

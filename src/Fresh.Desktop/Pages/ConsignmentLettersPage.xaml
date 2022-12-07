@@ -24,11 +24,7 @@
                 <DataGridTextColumn Header="Cashier" Binding="{Binding Cashier}" Width="*"/>
                 <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" Width="*"/>
             </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding ConsignmentLetterDescription}" />
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
+
         </DataGrid>
         <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click"></Button>
         <Grid Grid.Row="1">
