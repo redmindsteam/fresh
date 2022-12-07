@@ -47,6 +47,10 @@ namespace Fresh.Desktop.Pages
         {
             CashierPage cashierPage = new();
             var user =(CashierView)ProductsDgUi.SelectedItem;
+            if(user == null) 
+            {
+                MessageBox.Show("Please select row","Error",MessageBoxButton.OK,MessageBoxImage.Hand); return;
+            }
             if(await cashierPage.UpdateCashier(user.Id,user))
                 MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else

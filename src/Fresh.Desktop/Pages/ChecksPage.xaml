@@ -23,10 +23,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <DatePicker Grid.Column="1"  Width="250" Height="44" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged" Name="datePicker" Grid.Column="1"  Width="250" Height="44" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
             <Grid Grid.Column="1">
                 <ComboBox
+                  Name="usersNameCombo"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   materialDesign:TextFieldAssist.HasClearButton="True"
                   materialDesign:TextFieldAssist.SuffixText="Search"
@@ -34,29 +35,12 @@
                   materialDesign:ColorZoneAssist.Mode="Inverted"
                   materialDesign:HintAssist.Hint="Select a cashier"
                   MinWidth="128"
-                    Width="250">
-                    <ComboBoxItem>
-                        Abdulaziz
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        Samandar
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        Sanjar
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        Jaloliddin
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        Shoxrux
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        Zulayho
-                    </ComboBoxItem>
+                    Width="250" SelectionChanged="ComboBox_SelectionChanged">
                 </ComboBox>
             </Grid>
         </Grid>
-        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
+        <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click" ></Button>
+        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="0.8*"/>
@@ -75,12 +59,12 @@
             </Grid.ColumnDefinitions>
             <TextBlock  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Height="20" Margin="0 0 0 0" Foreground="{DynamicResource TextSecundaryColor}"> Save to Cloud </TextBlock>
             
-            <Button HorizontalAlignment="Right" Grid.Column="2" VerticalAlignment="Center" Background="{DynamicResource SecundaryBackgroundColor}"
+            <Button HorizontalAlignment="Right" Grid.Column="2" Name="saveCloud" VerticalAlignment="Center" Background="{DynamicResource SecundaryBackgroundColor}"
                 Style="{StaticResource MaterialDesignFloatingActionLightButton}"
                 
                 Command="{Binding SaveCommand}"
                 materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
-                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}" >
+                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}" Click="Button_Click" >
                 <!-- simple example of toggling/animating pack icon with a data trigger-->
                 <materialDesign:PackIcon
                     Height="24"

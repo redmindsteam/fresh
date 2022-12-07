@@ -55,6 +55,10 @@ namespace Fresh.Desktop.Pages
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             ProductsView products = (ProductsView)ProductsDgUi.SelectedItem;
+            if (products == null)
+            {
+                MessageBox.Show("Please select row", "Error", MessageBoxButton.OK, MessageBoxImage.Hand); return;
+            }
             ProductPage productPage = new ProductPage();
             var result = await productPage.DeleteProduct(products);
             if (result)
@@ -77,6 +81,10 @@ namespace Fresh.Desktop.Pages
         {
             ProductPage productPage = new();
             var product = (ProductsView)ProductsDgUi.SelectedItem;
+            if (product == null)
+            {
+                MessageBox.Show("Please select row", "Error", MessageBoxButton.OK, MessageBoxImage.Hand); return;
+            }
             if (await productPage.UpdateProduct(product.Id, product))
                 MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else
