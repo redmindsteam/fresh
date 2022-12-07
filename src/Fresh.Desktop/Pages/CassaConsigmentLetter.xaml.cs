@@ -1,7 +1,6 @@
 ﻿using AForge.Video.DirectShow;
 using AForge.Video;
 using Aspose.BarCode.BarCodeRecognition;
-using Fresh.DataAccess.Repositories;
 using Fresh.Service.Services.Empolyee;
 using Fresh.Service.ViewModels;
 using System;
@@ -11,28 +10,20 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static Fresh.Desktop.Windows.Cassa;
 using Fresh.Desktop.Windows;
+using Fresh.Service.Director;
 
 namespace Fresh.Desktop.Pages
 {
-    /// <summary>
-    /// Interaction logic for CassaConsigmentLetter.xaml
-    /// </summary>
     public partial class CassaConsigmentLetter : Window
     {
         public  IList<VievModelProductLetter> vievModelProductLetters = new List<VievModelProductLetter>();
+        ObservableCollection<string> strings = new ObservableCollection<string>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -54,10 +45,23 @@ namespace Fresh.Desktop.Pages
         public CassaConsigmentLetter()
         {
             InitializeComponent();
+            Category_ComboBox();
             this.DataContext = this;
             GetVideoDevices();
             this.Closing += MainWindow_Closing;
             Video();
+        }
+
+        private async void Category_ComboBox()
+        {
+            DirectorCategoryService directorCategoryService = new DirectorCategoryService();
+            var resault = directorCategoryService.GetAllAsync();
+            foreach (var item in await resault.Item1)
+            { 
+                strings.Add(item.Name);
+
+            }
+            txtCategory.ItemsSource = strings;
         }
 
         public void Video()
@@ -304,6 +308,31 @@ namespace Fresh.Desktop.Pages
         private void Window_Close(object sender, ContextMenuEventArgs e)
         {
 
+        }
+
+        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+           
+        }
+
+        private async void ComboBoxCategory_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton ==)
+            {
+                txtCategory.IsEnabled = false;
+            }
+ 
+            
+        }
+
+        private async void txtProduct_Mouse_Down(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (txtCategory.Text != null)
+            {
+                txtProduct.IsEnabled= false;
+            }
+            
+            MessageBox.Show("txt");
         }
     }
 }
