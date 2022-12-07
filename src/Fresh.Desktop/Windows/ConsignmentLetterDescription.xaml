@@ -24,20 +24,53 @@
 
             </LinearGradientBrush>
             </Border.BorderBrush>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="362">
-            <DataGrid Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.08*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0.8*"/>
+                    
+
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
+                    <Button x:Name="btnRestore" Margin="5,0" Click="btnRestore_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
+                                <Setter Property="Content" Value="{DynamicResource maximize}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="Content" Value="{DynamicResource restore}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
+                </StackPanel>
+
+            </Grid>
+            <Border Grid.Row="1" CornerRadius="20" Background="White" BorderThickness="3" Opacity="100" >
+                <DataGrid Grid.Row="1" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
-                <DataGrid.Columns>
+                    <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="ProductName" Binding="{Binding Id}" Width="*"/>
-                    <DataGridTextColumn Header="PricePerUnit" Binding="{Binding FullName}" Width="*"/>
-                    <DataGridTextColumn Header="Quantity" Binding="{Binding Email}" Width="*"/>
-                    <DataGridTextColumn Header="TotallPrice" Binding="{Binding Email}" Width="*"/>
+                        <DataGridTextColumn Header="ProductName" Binding="{Binding Id}" Width="*"/>
+                        <DataGridTextColumn Header="PricePerUnit" Binding="{Binding FullName}" Width="*"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Email}" Width="*"/>
+                        <DataGridTextColumn Header="TotallPrice" Binding="{Binding Email}" Width="*"/>
 
-                </DataGrid.Columns>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
 
-            </DataGrid>
-        </StackPanel>
+        </Grid>
+        
     </Border>
         
 </Window>
