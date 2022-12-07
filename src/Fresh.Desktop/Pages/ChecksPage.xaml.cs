@@ -69,7 +69,7 @@ namespace Fresh.Desktop.Pages
             
         }
 
-        private async void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtonAutomationPeer peer = new ButtonAutomationPeer(hiddenHelper);
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
