@@ -152,6 +152,7 @@ namespace Fresh.Desktop.Pages
             }*/
         }
 
+<<<<<<< HEAD
 
 
         private async void GRD_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -161,6 +162,14 @@ namespace Fresh.Desktop.Pages
         }
         private async void GRD_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
 
+=======
+        private void GRD_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
+        }
+
+        private void GRD_PreviewKeyDown(object sender, KeyEventArgs e)
+>>>>>>> 405c871 (change)
         {
 
         }
