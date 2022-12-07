@@ -170,7 +170,6 @@ namespace Fresh.DataAccess.Repositories
                     var user = new User();
                     if (await reader.ReadAsync())
                     {
-                        reader.Close();
                         user = new User()
                         {
                             Id = reader.GetInt32("Id"),
@@ -219,8 +218,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    reader.Close();
-                    return new User()
+                    var resalt = new User()
                     {
                         Id = reader.GetInt32("Id"),
                         FullName = reader.GetString("FullName"),
@@ -232,6 +230,8 @@ namespace Fresh.DataAccess.Repositories
                         PassportSeria = reader.GetString("PassportSeria")
 
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
                 {
@@ -260,8 +260,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    reader.Close();
-                    return new User()
+                    var resalt = new User()
                     {
                         Id = reader.GetInt32("Id"),
                         FullName = reader.GetString("FullName"),
@@ -272,6 +271,8 @@ namespace Fresh.DataAccess.Repositories
                         PhoneNumber = reader.GetString("PhoneNumber"),
                         PassportSeria = reader.GetString("PassportSeria")
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
                 {
@@ -306,8 +307,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    reader.Close();
-                    return new User()
+                    var resalt = new User()
                     {
                         Id = reader.GetInt32("Id"),
                         FullName = reader.GetString("FullName"),
@@ -319,6 +319,8 @@ namespace Fresh.DataAccess.Repositories
                         PassportSeria = reader.GetString("PassportSeria")
 
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
                 {

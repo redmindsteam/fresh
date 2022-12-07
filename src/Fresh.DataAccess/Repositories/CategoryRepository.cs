@@ -139,13 +139,14 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    reader.Close();
-                    return new Category()
+                    var resalt = new Category()
                     {
                         Id = reader.GetInt32("Id"),
                         Name = reader.GetString("Name"),
                         Description = reader.GetString("Description")
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
                 {
@@ -180,13 +181,14 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    reader.Close();
-                    return new Category()
+                    var resalt = new Category()
                     {
                         Id = reader.GetInt32("Id"),
                         Name = reader.GetString("Name"),
                         Description = reader.GetString("Description")
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
                 {

@@ -146,8 +146,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    reader.Close();
-                    return new ProductLetter()
+                    var resalt = new ProductLetter()
                     {
                         Id = reader.GetInt32("Id"),
                         ProductDescription = reader.GetString("ProductDescription"),
@@ -155,6 +154,8 @@ namespace Fresh.DataAccess.Repositories
                         UserId = reader.GetInt32("UserId")
 
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
                 {
