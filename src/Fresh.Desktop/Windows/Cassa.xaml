@@ -11,7 +11,7 @@
         Title="Cassa" Height="500" Width="900" ResizeMode="NoResize"
         WindowState="Normal">
     <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
-        <Grid>
+        <Grid Loaded="Grid_Load" ContextMenuClosing="Window_Close">
             <Border>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -78,23 +78,51 @@
 
                                     <WrapPanel x:Name="WrapPaneltxt" Grid.Column="1" Width="210" Height="280" Background="White" MouseDown="WrapPanel_MouseDown"
                                                HorizontalAlignment="Right" VerticalAlignment="Top" >
-                                        <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num4" Content="4" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num5" Content="5" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num6" Content="6" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num7" Content="7" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num8" Content="8" Width="70" Height="70" FontSize="20"  Background="White" Foreground="Black"/>
-                                        <Button x:Name="num9" Content="9" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="num0" Content="-" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
-                                        <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
+                                        <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n1_click"/>
+                                        <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n2_click"/>
+                                        <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n3_click"/>
+                                        <Button x:Name="num4" Content="4" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n4_click"/>
+                                        <Button x:Name="num5" Content="5" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n5_click"/>
+                                        <Button x:Name="num6" Content="6" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n6_click"/>
+                                        <Button x:Name="num7" Content="7" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n7_click"/>
+                                        <Button x:Name="num8" Content="8" Width="70" Height="70" FontSize="20"  Background="White" Foreground="Black" Click="n8_click"/>
+                                        <Button x:Name="num9" Content="9" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n9_click"/>
+                                        <Button x:Name="num0" Content="-" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" />
+                                        <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n0_click"/>
                                         <Button x:Name="numdelete" Content="+" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
                                     </WrapPanel>
 
                                 </Grid>
 
                                 <Grid Grid.Row="2">
+                                    <Image x:Name="videoPlayer" Margin="10,10,434,70"/>
+                                    <ComboBox x:Name="comboBox"
+                                          Width="167"
+                                          Height="21"
+                                          Margin="41,0,0,25"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Bottom"
+                                          DisplayMemberPath="Name"
+                                          ItemsSource="{Binding VideoDevices}"
+                                          SelectedItem="{Binding CurrentDevice}">
+                                            
+                                    </ComboBox>
+                                    <Button Width="67"
+                Height="24"
+                Margin="213 0 0 25"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStart_Click"
+                Content="Start"
+            />
+                                    <Button Width="67"
+                Height="24"
+                Margin="296 0 0 25"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStop_Click"
+                Content="Stop"
+            />
                                     <TextBlock HorizontalAlignment="Left" Height="156" Margin="634,0,0,0" Grid.Row="2" 
                                                TextWrapping="Wrap"  VerticalAlignment="Center" Width="196"/>
                                     <Button Width="120" Height="20" Content="Delete" HorizontalAlignment="Left" 
