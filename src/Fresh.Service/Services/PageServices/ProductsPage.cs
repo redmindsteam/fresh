@@ -60,5 +60,10 @@ namespace Fresh.Service.Services.PageServices
             }
             
         }
+        public async Task<bool> AddProdact(Product product)
+        {
+            IProductRepository productRepository = new ProductRepository();
+            return await productRepository.CreateAsync(product);
+        }
     }
 }
