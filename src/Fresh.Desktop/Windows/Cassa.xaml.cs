@@ -24,6 +24,7 @@ namespace Fresh.Desktop.Windows
     {
         public static ObservableCollection<CassaData> cassaDatas = new ObservableCollection<CassaData>();
         public double price { get; private set; } = 0;
+        public string word { get; set; } = "";
 
         FilterInfoCollection fil;
         public ObservableCollection<FilterInfo> VideoDevices { get; set; }
@@ -38,12 +39,12 @@ namespace Fresh.Desktop.Windows
         public Cassa()
         {
             InitializeComponent();
-            Video();
-            refreshDataGridsss();
             this.DataContext = this;
             GetVideoDevices();
             this.Closing += MainWindow_Closing;
+            Video();
         }
+        
         public void Video()
         {
             StartCamera();
@@ -54,44 +55,12 @@ namespace Fresh.Desktop.Windows
             StopCamera();
         }
 
-        public void refreshDataGridsss()
-        {
-           
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Asal", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
-            cassaDatas.Add(new CassaData { Name = "Kolbasa", KgL = "Kg", Price = "20.000", Thenumber = "2", Money = "40 000" });
 
-            
-        }
 
         public async void DataGridRefresh()
         {
             cassaDataGrid.ItemsSource = cassaDatas;
+            word = "";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -140,6 +109,7 @@ namespace Fresh.Desktop.Windows
 
         private async void DataGrid_Load(object sender, RoutedEventArgs e)
         {
+            
             DataGridRefresh();
         }
 
@@ -150,145 +120,86 @@ namespace Fresh.Desktop.Windows
             DataGridRefresh();
         }
 
-        private async void WrapPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            
-        }
+
 
         private async void n1_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            for (int i = 0; i < cassaDatas.Count; i++)
-            {
-                if (cassaDatas[i].Thenumber == resault.Thenumber)
-                {
-                    cassaDatas[i].Thenumber = "1";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "1" });
             DataGridRefresh();
         }
         private async void n2_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "2";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "2" });
             DataGridRefresh();
         }
 
         private async void n3_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "3";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "3" });
             DataGridRefresh();
         }
 
         private async void n4_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "4";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "4" });
             DataGridRefresh();
         }
 
         private async void n5_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "5";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "5" });
             DataGridRefresh();
         }
 
         private async void n6_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "6";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "6" });
             DataGridRefresh();
         }
 
         private async void n7_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "7";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "7" });
             DataGridRefresh();
         }
         
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String info)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-            }
-        }
 
         private async void n8_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            
- 
-                    cassaDatas.Remove(resault);
-                
-                cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "8" });
-            
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "8" });
             DataGridRefresh();
         }
 
         private async void n9_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "9";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "9" });
             DataGridRefresh();
         }
 
         private async void n0_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
-            foreach (var item in cassaDatas)
-            {
-                if (item.Thenumber == resault.Thenumber)
-                {
-                    item.Thenumber = "0";
-                }
-            }
+            cassaDatas.Remove(resault);
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "0" });
             DataGridRefresh();
         }
 
@@ -316,7 +227,8 @@ namespace Fresh.Desktop.Windows
             try
             {
                 TimeOnly time = new();
-
+                string s = "";
+                int count = 0;
                 BitmapImage bi;
                 using (var bitmap = (Bitmap)eventArgs.Frame.Clone())
                 {
@@ -329,16 +241,22 @@ namespace Fresh.Desktop.Windows
                             time = new();
                             BarCodeResult result = reader.ReadBarCodes()[0];
                             var res = result.CodeText.ToCharArray(0, 9);
-                            string s = "";
                             foreach (char c in res)
+                            {
                                 s += c;
-                            MessageBox.Show(s);
+                            }
+                            if (count == 0)
+                            {
+                                word = s;
+                                count++;
+                            };
+                          
                             return;
                         }
                     }
                 }
 
-                bi.Freeze(); // avoid cross thread operations and prevents leaks
+                bi.Freeze(); 
                 Dispatcher.BeginInvoke(new ThreadStart(delegate { videoPlayer.Source = bi; }));
             }
             catch (Exception exc)
@@ -350,7 +268,7 @@ namespace Fresh.Desktop.Windows
 
         private Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
         {
-            // BitmapImage bitmapImage = new BitmapImage(new Uri("../Images/test.png", UriKind.Relative));
+            
 
             using (MemoryStream outStream = new MemoryStream())
             {
@@ -397,6 +315,9 @@ namespace Fresh.Desktop.Windows
             {
                 _videoSource.SignalToStop();
                 _videoSource.NewFrame -= new NewFrameEventHandler(video_NewFrame);
+                MessageBox.Show(word);
+                cassaDatas.Add(new CassaData { Name = word, KgL = "Dona", Price = "20 000", Thenumber = "1", Money = "20 000" });
+                DataGridRefresh();
             }
         }
 
