@@ -103,7 +103,8 @@
                                           VerticalAlignment="Bottom"
                                           DisplayMemberPath="Name"
                                           ItemsSource="{Binding VideoDevices}"
-                                          SelectedItem="{Binding CurrentDevice}">
+                                          SelectedItem="{Binding CurrentDevice}"
+                                          >
                                             
                                     </ComboBox>
              <Button Width="67"
@@ -113,14 +114,15 @@
                 VerticalAlignment="Bottom"
                 Click="btnStart_Click"
                 Content="Start"
+                
             />
                                     <Button Width="67"
                 Height="24"
-                Margin="296 0 0 25"
+                Margin="301,0,0,5"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Click="btnStop_Click"
-                Content="Stop"
+                Content="Stop" RenderTransformOrigin="0.545,1.707"
             />
                                     <TextBlock HorizontalAlignment="Left" Height="156" Margin="634,0,0,0" Grid.Row="2" 
                                                TextWrapping="Wrap"  VerticalAlignment="Center" Width="196"/>
