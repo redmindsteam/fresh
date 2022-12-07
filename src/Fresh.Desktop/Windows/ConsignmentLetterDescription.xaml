@@ -12,6 +12,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
+        MouseDown="Window_MouseDown"
         >
     
         
