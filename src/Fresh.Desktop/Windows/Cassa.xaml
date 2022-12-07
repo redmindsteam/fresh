@@ -76,8 +76,8 @@
                                     </DataGrid>
 
 
-                                    <WrapPanel x:Name="WrapPaneltxt" Grid.Column="1" Width="210" Height="280" Background="White" MouseDown="WrapPanel_MouseDown"
-                                               HorizontalAlignment="Right" VerticalAlignment="Top" >
+                                    <WrapPanel x:Name="WrapPaneltxt" Grid.Column="1" Width="210" Height="280" Background="White" 
+                                        HorizontalAlignment="Right" VerticalAlignment="Top" >
                                         <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n1_click"/>
                                         <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n2_click"/>
                                         <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n3_click"/>
@@ -91,7 +91,6 @@
                                         <Button x:Name="numadd" Content="0" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black" Click="n0_click"/>
                                         <Button x:Name="numdelete" Content="+" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
                                     </WrapPanel>
-
                                 </Grid>
 
                                 <Grid Grid.Row="2">
@@ -107,7 +106,7 @@
                                           SelectedItem="{Binding CurrentDevice}">
                                             
                                     </ComboBox>
-                                    <Button Width="67"
+             <Button Width="67"
                 Height="24"
                 Margin="213 0 0 25"
                 HorizontalAlignment="Left"
