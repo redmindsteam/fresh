@@ -17,7 +17,7 @@ namespace Fresh.DataAccess.Repositories
             {
                 await _con.OpenAsync();
                 string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireDate,Value)" +
-                     "VALUES($Name,$CategoryId,$Price,$Unit,$BarcodeName,$ProductionDate,$ExpireDate,$Value);";
+                     "VALUES($Name,$CategoryId,$Price,$Unit,$BarcodeName,$ProductionDate,$ExpireData,$Value);";
                 var command = new SQLiteCommand(query, _con)
                 {
                     Parameters =
@@ -28,7 +28,7 @@ namespace Fresh.DataAccess.Repositories
                         new SQLiteParameter("Unit", item.Unit),
                         new SQLiteParameter("BarcodeName", item.BarcodeName),
                         new SQLiteParameter("ProductionDate", item.ProductionDate),
-                        new SQLiteParameter("ExpireDate", item.ExpireDate),
+                        new SQLiteParameter("ExpireData", item.ExpireDate),
                         new SQLiteParameter("Value", item.Value)
                     }
                 };
