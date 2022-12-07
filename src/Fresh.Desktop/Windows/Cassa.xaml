@@ -11,7 +11,7 @@
         Title="Cassa" Height="500" Width="900" ResizeMode="NoResize"
         WindowState="Normal">
     <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
-        <Grid Loaded="Grid_Load" ContextMenuClosing="Window_Close">
+        <Grid>
             <Border>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -54,9 +54,9 @@
                                     </Grid.ColumnDefinitions>
 
 
-                                    <DataGrid Loaded="DataGrid_Load" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                                               Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding SongList, UpdateSourceTrigger=PropertyChanged}" 
-                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" 
+                                    <DataGrid CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                                              RowStyle="{DynamicResource DataGridRowStyle1}" Style="{DynamicResource DataGridStyle1}" 
+                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" SelectionChanged="cassaDataGrid_SelectionChanged"
                                               >
                                         <DataGrid.Columns>
                                             <DataGridTextColumn x:Name="ProductName" Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
@@ -67,7 +67,7 @@
                                             <DataGridTemplateColumn>
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <Button Width="25" x:Name="Deletebtn" Background="Red" Click="btnDeletd_Click" >
+                                                        <Button Width="25" x:Name="Deletebtn" Background="Red" Click="btnDelet_Click" MouseDown="Delete_MouseDown">
                                                         </Button>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>

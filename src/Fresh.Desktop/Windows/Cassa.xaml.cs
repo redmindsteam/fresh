@@ -291,7 +291,7 @@ namespace Fresh.Desktop.Windows
             }
             if (VideoDevices.Any())
             {
-                CurrentDevice = VideoDevices[1];
+                CurrentDevice = VideoDevices[0];
             }
             else
             {
