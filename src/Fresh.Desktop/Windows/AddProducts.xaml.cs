@@ -52,7 +52,7 @@ namespace Fresh.Desktop.Windows
                 BarcodeName = BarCode.Text,
                 ProductionDate = Productdate.Text,
                 ExpireDate = Expiredate.Text,
-                Value = 0
+                Value = 0,
             };
             ProductPage productsPage = new ProductPage();
             var result = await productsPage.AddProdact(product);
@@ -80,7 +80,8 @@ namespace Fresh.Desktop.Windows
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
+            CategoriyesPage categoriyesPage = new CategoriyesPage();
+            var resalt = categoriyesPage.AddCategories(categoryname.Text);
         }
 
         private void Window_MouseDowns(object sender, MouseButtonEventArgs e)
