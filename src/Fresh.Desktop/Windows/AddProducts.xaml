@@ -65,10 +65,10 @@
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
             <DockPanel>
-                <ComboBox
+                <ComboBox Margin="10 0 0 0" 
                     Name="categoryname"
                    BorderBrush="White"
-                      FontSize="14"
+                      FontSize="12"
                   materialDesign:HintAssist.Hint=" Category"
                   materialDesign:HintAssist.HintOpacity=".26"
                   IsEditable="True" HorizontalAlignment="Left"
@@ -80,7 +80,7 @@
                 </ComboBox>
                 <Button BorderBrush="#10A19D" Background="#46C2CB"
                          Width="82"
-                        Margin="5" Content="Add Catigory" FontSize="10" Click="Button_Click_2" Height="21" />
+                        Margin="22 0 0 0" Content="Add Catigory" FontSize="10" Click="Button_Click_2" Height="21" />
 
             </DockPanel>
 
@@ -105,7 +105,7 @@
                        Foreground="White" FontSize="12"
                        FontWeight="Medium"
                        Margin="0 13 0 0" Width="259"/>
-            <ComboBox
+            <ComboBox Margin="10 0 0 0 "
                  BorderBrush="White"
                 Name="Unit"
                  materialDesign:HintAssist.Hint=" Unit"
