@@ -156,8 +156,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    reader.Close();
-                    return new Product()
+                    var resalt = new Product()
                     {
                         Id = reader.GetInt32("Id"),
                         Name = reader.GetString("Name"),
@@ -169,6 +168,9 @@ namespace Fresh.DataAccess.Repositories
                         ExpireDate = reader.GetString("ExpireData"),
                         Value = reader.GetFloat("Value")
                     };
+                    reader.Close();
+                    return resalt;
+
                 }
                 else
                 {
