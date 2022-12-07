@@ -152,12 +152,15 @@ namespace Fresh.Desktop.Pages
             }*/
         }
 
-        private void GRD_PreviewKeyDown(object sender, KeyEventArgs e)
+
+
+        private async void GRD_PreviewKeyDown(object sender, KeyEventArgs e)
+
         {
 
         }
+        private async void GRD_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
 
-        private void GRD_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
 
         }

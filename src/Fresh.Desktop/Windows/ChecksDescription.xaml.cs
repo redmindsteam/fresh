@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace Fresh.Desktop.Windows
 {
     /// <summary>
-    /// Interaction logic for ConsignmentLetterDescription.xaml
+    /// Interaction logic for ChecksDescription.xaml
     /// </summary>
-    public partial class ConsignmentLetterDescription : Window
+    public partial class ChecksDescription : Window
     {
-        public ConsignmentLetterDescription()
+        public ChecksDescription()
         {
             InitializeComponent();
-        }
-
-        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -45,6 +40,11 @@ namespace Fresh.Desktop.Windows
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
