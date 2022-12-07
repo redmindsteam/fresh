@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Fresh.DataAccess.Interfaces.Repositories;
+using Fresh.DataAccess.Repositories;
+using Fresh.Desktop.Pages;
+using Fresh.Domain.Entities;
+using Fresh.Service.Services.PageServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +27,9 @@ namespace Fresh.Desktop.Windows
         public AddProducts()
         {
             InitializeComponent();
+            func();
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -29,11 +37,41 @@ namespace Fresh.Desktop.Windows
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            ICategoryRepository categoryRepository = new CategoryRepository();
+            Category category = await categoryRepository.GetByName(categoryname.Text);
+            Product product = new Product()
+            {
+                Name = ProductName.Text,
+                CategoryId = category.Id,
+                Price = float.Parse(Price.Text),
+                Unit = Unit.Text,
+                BarcodeName = BarCode.Text,
+                ProductionDate = Productdate.Text,
+                ExpireDate = Expiredate.Text,
+                Value = 0
+            };
+            ProductPage productsPage = new ProductPage();
+            var result = await productsPage.AddProdact(product);
+            if (result)
+            {
+                MessageBox.Show("Product succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            else
+                MessageBox.Show("There was wrong with adding product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
+        public async void func()
+        {
+            CategoriyesPage categoriyesPage = new CategoriyesPage();
+            var raesalt = await categoriyesPage.GetCategories();
+            foreach (var c in raesalt)
+            {
+                categoryname.Items.Add(c.Name);
+            }
+        }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
@@ -43,6 +81,21 @@ namespace Fresh.Desktop.Windows
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        private void ProductName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void categoryname_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

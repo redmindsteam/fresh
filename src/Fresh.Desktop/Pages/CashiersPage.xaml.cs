@@ -1,10 +1,8 @@
-<<<<<<< HEAD
+
 ﻿using Fresh.Desktop.Windows;
-=======
 
 using Fresh.DataAccess.Repositories;
 using Fresh.Desktop.Windows;
->>>>>>> bb6252f (Added Backend Updated Updated)
 using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
