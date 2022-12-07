@@ -54,9 +54,9 @@
                                     </Grid.ColumnDefinitions>
 
 
-                                    <DataGrid CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                                              RowStyle="{DynamicResource DataGridRowStyle1}" Style="{DynamicResource DataGridStyle1}" 
-                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" SelectionChanged="cassaDataGrid_SelectionChanged"
+                                    <DataGrid Loaded="DataGrid_Load" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                                               Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding SongList, UpdateSourceTrigger=PropertyChanged}" 
+                                              Grid.Column="0" x:Name="cassaDataGrid" Height="280" Width="630" 
                                               >
                                         <DataGrid.Columns>
                                             <DataGridTextColumn x:Name="ProductName" Header="Name" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
@@ -67,7 +67,7 @@
                                             <DataGridTemplateColumn>
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <Button Width="25" x:Name="Deletebtn" Background="Red" Click="btnDelet_Click" MouseDown="Delete_MouseDown">
+                                                        <Button Width="25" x:Name="Deletebtn" Background="Red" Click="btnDeletd_Click" >
                                                         </Button>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
@@ -76,8 +76,8 @@
                                     </DataGrid>
 
 
-                                    <WrapPanel Grid.Column="1" Width="210" Height="280" Background="White"
-                                               HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <WrapPanel x:Name="WrapPaneltxt" Grid.Column="1" Width="210" Height="280" Background="White" MouseDown="WrapPanel_MouseDown"
+                                               HorizontalAlignment="Right" VerticalAlignment="Top" >
                                         <Button x:Name="num1" Content="1" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
                                         <Button x:Name="num2" Content="2" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
                                         <Button x:Name="num3" Content="3" Width="70" Height="70" FontSize="20" Background="White" Foreground="Black"/>
