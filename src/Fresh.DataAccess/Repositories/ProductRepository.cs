@@ -16,7 +16,7 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireDate,Value)" +
+                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireData,Value)" +
                      "VALUES($Name,$CategoryId,$Price,$Unit,$BarcodeName,$ProductionDate,$ExpireData,$Value);";
                 var command = new SQLiteCommand(query, _con)
                 {
