@@ -375,8 +375,7 @@ namespace Fresh.Desktop.Windows
                     }
                     else
                     {
-                        MessageBox.Show(word);
-                        MessageBox.Show("Error - Ro'yhatdan o'tmagan");
+                      
                     }
                 }
             }
@@ -418,7 +417,20 @@ namespace Fresh.Desktop.Windows
 
         private void btnDelet_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = (CassaData)cassaDataGrid.SelectedItem;
+            
+            
+            foreach (var cassaData in cassaDatas)
+            {
+                if (item.Name == cassaData.Name)
+                {
+                    price -= double.Parse(cassaData.Money);
+                }
+            }
+            
+            cassaDatas.Remove(item);
+            txtText_Block();
+            DataGridRefresh();
         }
 
         private void Delete_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
