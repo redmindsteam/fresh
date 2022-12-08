@@ -22,5 +22,9 @@
 
     <!-- Icons Colors -->
     <SolidColorBrush x:Key="ActionIconColor" Color="#434344"/>
+    
+    <!-- Statistics Page Colours-->
+    <SolidColorBrush x:Key="clrExpenditure" Color="#F06292" />
+    <SolidColorBrush x:Key="clrIncome" Color="#ADE792" />
 
 </ResourceDictionary>
