@@ -50,7 +50,6 @@
                 <DataGridTextColumn Header="Available" Binding="{Binding Available}" Width="0.5*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click" ></Button>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
