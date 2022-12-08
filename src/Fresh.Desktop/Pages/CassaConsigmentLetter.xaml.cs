@@ -357,9 +357,9 @@ namespace Fresh.Desktop.Pages
 
         private async void AddButton(object sender, RoutedEventArgs e)
         {
+
             txtProduct.Visibility = Visibility.Visible;
             txtCategory.Visibility = Visibility.Hidden;
-
 
 
         }
