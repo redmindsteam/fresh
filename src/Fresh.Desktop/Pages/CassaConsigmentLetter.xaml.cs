@@ -359,6 +359,9 @@ namespace Fresh.Desktop.Pages
         {
             txtProduct.Visibility = Visibility.Visible;
             txtCategory.Visibility = Visibility.Hidden;
+
+
+
         }
 
         private void Window_Close(object sender, ContextMenuEventArgs e)
