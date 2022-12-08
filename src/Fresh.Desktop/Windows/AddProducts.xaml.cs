@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ZXing;
 
 namespace Fresh.Desktop.Windows
 {
@@ -78,10 +79,21 @@ namespace Fresh.Desktop.Windows
                 categoryname.Items.Add(c.Name);
             }
         }
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             CategoriyesPage categoriyesPage = new CategoriyesPage();
-            var resalt = categoriyesPage.AddCategories(categoryname.Text);
+            bool result = await categoriyesPage.AddCategories(categoryname.Text);
+            if (result)
+            {
+                ProductsPage.chack = false;
+                MessageBox.Show("Category succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("There was wrong with adding Category", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                ProductsPage.chack = true;
+            }
         }
 
         private void Window_MouseDowns(object sender, MouseButtonEventArgs e)
