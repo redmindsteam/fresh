@@ -126,6 +126,11 @@ namespace Fresh.Desktop.Pages
             ChecksDescription checksDescription = new ChecksDescription();
             checksDescription.ShowDialog();
         }
-        
+
+        private void btnSaveToCloud_Click(object sender, RoutedEventArgs e)
+        {
+            MegaApiClient client = new MegaApiClient();
+            client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
+        }
     }
 }

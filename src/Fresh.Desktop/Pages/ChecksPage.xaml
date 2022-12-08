@@ -61,7 +61,7 @@
             <TextBlock  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Height="20" Margin="0 0 0 0" Foreground="{DynamicResource TextSecundaryColor}"> Save to Cloud </TextBlock>
             
             <Button HorizontalAlignment="Right" Grid.Column="2" Name="saveCloud" VerticalAlignment="Center" Background="{DynamicResource SecundaryBackgroundColor}"
-                Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                Style="{StaticResource MaterialDesignFloatingActionLightButton}" Click="btnSaveToCloud_Click"
                 Command="{Binding SaveCommand}"
                 materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
                 materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}"  >
