@@ -167,6 +167,7 @@ namespace Fresh.Desktop.Pages
             if (rdnSearchByName.IsChecked == true)
             {
                 ProductPage products = new ProductPage();
+                prodTextbox.IsReadOnly = false;
                 List<ProductsView> productPages = await products.GetProductViews();
                 ProductsDgUi.ItemsSource = productPages.Select(x => x).Where(x => x.Name.ToLower().Contains(prodTextbox.Text.ToLower()));
             }
@@ -176,21 +177,23 @@ namespace Fresh.Desktop.Pages
                 List<ProductsView> productPages = await products.GetProductViews();
                 ProductsDgUi.ItemsSource = productPages.Select(x => x).Where(x => x.Category.ToLower().Contains(prodTextbox.Text.ToLower()));
             }
-            else
-            {
-                MessageBox.Show("Please check search type", "Exclaim", MessageBoxButton.OK, MessageBoxImage.Hand);
-            }
         }
-
         private void rdnSearchByName_Checked(object sender, RoutedEventArgs e)
         {
+            prodTextbox.IsReadOnly = false;
             Click();
         }
-
         private void rdnCategory_Checked(object sender, RoutedEventArgs e)
         {
+            prodTextbox.IsReadOnly = false;
             Click();
         }
-
+        private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(rdnSearchByName.IsChecked == true||rdnCategory.IsChecked == true)
+                prodTextbox.IsReadOnly = false;
+            else
+                prodTextbox.IsReadOnly = true;
+        }
     }
 }
