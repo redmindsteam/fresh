@@ -12,6 +12,7 @@
     <None Remove="ImagePassword.png" />
     <None Remove="Images\32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
     <None Remove="Images\ImagePassword.png" />
+    <None Remove="Images\photo.jpg" />
     <None Remove="Снимок экрана_20221129_003757.png" />
   </ItemGroup>
 
@@ -39,6 +40,7 @@
   <ItemGroup>
     <Resource Include="Images\32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" />
     <Resource Include="Images\ImagePassword.png" />
+    <Resource Include="Images\photo.jpg" />
     <Resource Include="Images\Снимок экрана_20221129_003757.png" />
   </ItemGroup>
 

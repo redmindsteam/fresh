@@ -70,5 +70,10 @@ namespace Fresh.Desktop.Windows
         {
 
         }
+
+        private void DefaultPage(object sender, RoutedEventArgs e)
+        {
+            PagesNavigation.Navigate(new System.Uri("Pages/DefaultPage.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
