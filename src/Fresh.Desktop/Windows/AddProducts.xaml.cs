@@ -41,32 +41,46 @@ namespace Fresh.Desktop.Windows
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {   
-            
-            ICategoryRepository categoryRepository = new CategoryRepository();
-            Category category = await categoryRepository.GetByName(categoryname.Text);
-            Product product = new Product()
+            if(DateTime.Parse(Productdate.Text) <= DateTime.Parse(Expiredate.Text))
             {
-                Name = ProductName.Text,
-                CategoryId = category.Id,
-                Price = float.Parse(Price.Text),
-                Unit = Unit.Text,
-                BarcodeName = BarCode.Text,
-                ProductionDate = Productdate.Text,
-                ExpireDate = Expiredate.Text,
-                Value = 0,
-            };
-            ProductPage productsPage = new ProductPage();
-            var result = await productsPage.AddProdact(product);
-            if (result)
-            {
-                ProductsPage.chack = false;
-                MessageBox.Show("Product succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                float value;
+                if(float.TryParse(Price.Text, out value))
+                {
+                    ICategoryRepository categoryRepository = new CategoryRepository();
+                    Category category = await categoryRepository.GetByName(categoryname.Text);
+                    Product product = new Product()
+                    {
+                        Name = ProductName.Text,
+                        CategoryId = category.Id,
+                        Price = float.Parse(Price.Text),
+                        Unit = Unit.Text,
+                        BarcodeName = BarCode.Text,
+                        ProductionDate = Productdate.Text,
+                        ExpireDate = Expiredate.Text,
+                        Value = 0,
+                    };
+                    ProductPage productsPage = new ProductPage();
+                    var result = await productsPage.AddProdact(product);
+                    if (result)
+                    {
+                        ProductsPage.chack = false;
+                        MessageBox.Show("Product succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was wrong with adding product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                        ProductsPage.chack = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Enter the price only numbers", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                }
             }
             else
             {
-                MessageBox.Show("There was wrong with adding product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                ProductsPage.chack=true;
+                MessageBox.Show("The Expire date before than Product data ", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
             }
         }
 
