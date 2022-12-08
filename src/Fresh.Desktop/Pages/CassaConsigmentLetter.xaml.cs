@@ -17,15 +17,19 @@ using System.Windows.Media.Imaging;
 using static Fresh.Desktop.Windows.Cassa;
 using Fresh.Desktop.Windows;
 using Fresh.Service.Director;
+using Fresh.Domain.Entities;
 
 namespace Fresh.Desktop.Pages
 {
     public partial class CassaConsigmentLetter : Window
     {
         public  IList<VievModelProductLetter> vievModelProductLetters = new List<VievModelProductLetter>();
+
         ObservableCollection<string> strings = new ObservableCollection<string>();
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+     
 
         public double price { get; private set; } = 0;
         public string word { get; private set; } = "";
@@ -64,12 +68,12 @@ namespace Fresh.Desktop.Pages
             txtCategory.ItemsSource = strings;
         }
 
-        public void Video()
+        public async void Video()
         {
             StartCamera();
         }
 
-        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StopCamera();
         }
@@ -85,16 +89,19 @@ namespace Fresh.Desktop.Pages
             vievModelProductLetter.TotalPrice = double.Parse(txtTotal.Text.ToString()) * double.Parse(txtPrice.Text.ToString());
             vievModelProductLetters.Add(vievModelProductLetter);
 
+            ObservableCollection<CassaData> cassaDatas = new ObservableCollection<CassaData>();
+            double a = double.Parse(txtTotal.Text);
 
-            ObservableCollection<VievModelProductLetter> cassaDatas = new ObservableCollection<VievModelProductLetter>();
-            cassaDatas.Add(new VievModelProductLetter { Name = txtPrice.Text, KgL = txtKgL.Text, Total = txtTotal.Text, Price = txtPrice.Text});
-            DataGridCassaLetter.ItemsSource = cassaDatas;
-
-
+            
             txtProduct.Text = null;
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
+
+            txtProduct.Visibility = Visibility.Visible;
+            txtCategory.Visibility = Visibility.Visible;
+
+            GridRefresh();
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -126,10 +133,12 @@ namespace Fresh.Desktop.Pages
                 price += view.TotalPrice;
             }
             Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
-            check.ProductDescription= checkDescription;
+            check.ProductDescription= $"{check.ProductDescription}\n\n\n{check.Price}\n\n\n{check.Date}";
             check.Date = DateTime.Now.ToString();
             check.UserId = 1;
             check.Price = (float)price;
+
+         
 
             MessageBox.Show($"{check.Price}");
             EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
@@ -220,7 +229,7 @@ namespace Fresh.Desktop.Pages
             }
         }
 
-        public void StartStopFunc()
+        public async void StartStopFunc()
         {
             if (StartStop == true)
             {
@@ -277,11 +286,46 @@ namespace Fresh.Desktop.Pages
             {
                 _videoSource.SignalToStop();
                 _videoSource.NewFrame -= new NewFrameEventHandler(video_NewFrame);
-                cassaDatas.Add(new CassaData { Name = word, KgL = "Dona", Price = "20000", Thenumber = "1", Money = "20000" });
-                
+                Products(); 
             }
         }
 
+
+        public async void Products()
+        {
+            DirectorProductService directorProductService = new DirectorProductService();
+            var resault = await directorProductService.GetAllAsync();
+            int counterProduct = 0;
+            MessageBox.Show($"{resault.Count}");
+            foreach (var product in resault)
+            {
+                if (product.BarcodeName != word)
+                {
+                    counterProduct += 1;
+                }
+            }
+            if (counterProduct == 0)
+            {
+                MessageBox.Show("1");
+                Product product = new Product();
+                product.BarcodeName = word;
+                product.Name = txtProduct.Text;
+                product.Price = float.Parse(txtPrice.Text);
+                product.Unit = txtKgL.Text;
+                product.Value = 1;
+                product.ProductionDate = "as";
+                product.ExpireDate = "sd";
+                product.CategoryId = 1;
+                DirectorProductService directorProductService1 = new DirectorProductService();
+                await directorProductService1.CreateAsync(product);
+                
+            }
+            else
+            {
+                MessageBox.Show("Ro'yhatdan o'tmagan ");
+            }
+
+        }
 
         protected async void OnPropertyChanged(string propertyName)
         {
@@ -300,39 +344,24 @@ namespace Fresh.Desktop.Pages
             StopCamera();
         }
 
-        private void DataGrid_Refresh(object sender, RoutedEventArgs e)
+        public void GridRefresh()
         {
+            DataGridCassaLetter.ItemsSource = cassaDatas;
+        }
 
+        private async void DataGrid_Refresh(object sender, RoutedEventArgs e)
+        {
+            GridRefresh();
+        }
+
+
+        private async void AddButton(object sender, RoutedEventArgs e)
+        {
+            txtProduct.Visibility = Visibility.Visible;
+            txtCategory.Visibility = Visibility.Hidden;
         }
 
         private void Window_Close(object sender, ContextMenuEventArgs e)
-        {
-
-        }
-
-        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-           
-        }
-
-        private async void ComboBoxCategory_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-         
- 
-            
-        }
-
-        private async void txtProduct_Mouse_Down(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (txtCategory.Text != null)
-            {
-                txtProduct.IsEnabled= false;
-            }
-            
-            MessageBox.Show("txt");
-        }
-
-        private void AddButton(object sender, RoutedEventArgs e)
         {
 
         }

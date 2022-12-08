@@ -100,13 +100,10 @@ namespace Fresh.Desktop.Windows
 
         private async void btnBuy_Click(object sender, RoutedEventArgs e)
         {
-            
-           
             for (int i = 0; i < cassaDataGrid.Items.Count; i++)
             {
                 price += 0;
             }
-            
             MessageBox.Show($"{price}");
         }
 
@@ -140,7 +137,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "2", Money = $"{double.Parse(resault.Price) * 2}" });
             DataGridRefresh();
         }
-
         private async void n3_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -148,7 +144,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "3", Money = $"{double.Parse(resault.Price) * 3}" });
             DataGridRefresh();
         }
-
         private async void n4_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -156,7 +151,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "4", Money = $"{double.Parse(resault.Price) * 4}" });
             DataGridRefresh();
         }
-
         private async void n5_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -164,7 +158,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "5", Money = $"{double.Parse(resault.Price) * 5}" });
             DataGridRefresh();
         }
-
         private async void n6_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -172,7 +165,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "6", Money = $"{double.Parse(resault.Price) * 6}" });
             DataGridRefresh();
         }
-
         private async void n7_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -180,9 +172,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "7", Money = $"{double.Parse(resault.Price) * 7}" });
             DataGridRefresh();
         }
-        
-        
-
         private async void n8_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -190,7 +179,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "8", Money = $"{double.Parse(resault.Price) * 8}" });
             DataGridRefresh();
         }
-
         private async void n9_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -198,7 +186,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "9", Money = $"{double.Parse(resault.Price) * 9}" });
             DataGridRefresh();
         }
-
         private async void n0_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
