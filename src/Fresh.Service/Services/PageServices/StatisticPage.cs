@@ -144,6 +144,7 @@ namespace Fresh.Service.Services.PageServices
             }
             return stats;
         }
+
         private DateTime ParseExact(string datetime)
         {
             return DateTime.Parse(datetime);
