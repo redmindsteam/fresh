@@ -65,5 +65,10 @@ namespace Fresh.Desktop.Windows
         {
 
         }
+
+        private void rdCashiers_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

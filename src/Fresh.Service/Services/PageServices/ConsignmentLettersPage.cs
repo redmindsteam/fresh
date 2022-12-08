@@ -22,10 +22,11 @@ namespace Fresh.Service.Services.PageServices
                 foreach (var one in allLetters)
                     viewModels.Add(new ConsignmentLetterView
                     {
+                        Description = one.ProductDescription,
                         Cashier = (await userRepository.GetByIdAsync(one.UserId)).FullName,
                         DateTime = DateTime.Parse(one.Date),
                         TotalPrice = one.Price
-                    });
+                    }) ;
                 return viewModels;
             }
             catch
