@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Background="Transparent"
         MouseDown="Window_MouseDown"
-        Title="CassaConsigmentLetter" Height="500" AllowsTransparency="True" ResizeMode="NoResize"
+        Title="CassaConsigmentLetter" Height="750" AllowsTransparency="True" ResizeMode="NoResize"
         Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Border CornerRadius = "20" Background="#3AADA1"
         BorderThickness="5" Opacity="100" >
@@ -37,6 +37,36 @@
                     </DataGrid.Columns >
                 </DataGrid >
 
+                <Image x:Name="videoPlayer" Margin="14,482,264,38" Height="200" Width="300" />
+                <ComboBox x:Name="comboBox"
+                                          Width="235"
+                                          Height="25"
+                                          Margin="340,538,0,0"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          DisplayMemberPath="Name"
+                                          Background="White"
+                                          ItemsSource="{Binding VideoDevices}"
+                                          SelectedItem="{Binding CurrentDevice}">
+
+                </ComboBox>
+                <Button Name="btnStart" Width="67"
+                                        Height="26"
+                                        Margin="364,607,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Click="btnStart_Click"
+                                        Content="Start"
+                                        BorderBrush="#00838f" Background="#0097a7"/>
+                <Button Name="btnStop" Width="67"
+                                            Height="26"
+                                            Margin="486,608,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            BorderBrush="#00838f" Background="#0097a7"
+                                            Click="btnStop_Click"
+                                                Content="Stop" />
+
                 <TextBox x:Name = "txtProduct" Width = "200" Height = "33" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,83,7,0" />
                 <ComboBox x:Name = "txtKgL"  Width = "200" Height = "31" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,141,6,0" IsReadOnly="True" >
                     <ComboBoxItem Content="Kg"/>
@@ -53,7 +83,7 @@
                 <Label Content="Quantty" Margin="371,169,152,275"/>
                 <Label Content="Kg/L" Margin="370,113,165,333" Background="Transparent"/>
                 <Label Content="Product" Margin="367,62,159,385"/>
-                <Label Content="Fersh" Margin="429,6,0,423" HorizontalAlignment="Left" FontWeight="Bold" FontSize="30" Width="107"/>
+                <Label Content="Fresh" Margin="429,9,0,616" HorizontalAlignment="Left" FontWeight="Bold" FontSize="30" Width="85" Height="45"/>
             </Grid >
         </Grid >
     </Border >

@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click" ></Button>
             <Label Grid.Column="0" Foreground="#767676" FontWeight="SemiBold" Content="Search by" FontSize="12" Style="{DynamicResource labelChecksPage}"  Height="30" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             <RadioButton x:Name="rdnSearchByName" Grid.Column="1" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Product name" Click="RBtn_Click" Checked="rdnSearchByName_Checked"/>
             <RadioButton x:Name="rdnCategory" Grid.Column="2" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Category" Click="RBtn_Click" Checked="rdnCategory_Checked" />
@@ -50,7 +50,6 @@
                 <DataGridTextColumn Header="Available" Binding="{Binding Available}" Width="0.5*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click" ></Button>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
