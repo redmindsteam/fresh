@@ -101,7 +101,6 @@ namespace Fresh.Desktop.Windows
             {
                 ProductsPage.chack = false;
                 MessageBox.Show("Category succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
             }
             else
             {
