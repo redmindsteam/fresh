@@ -36,8 +36,9 @@
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" TextChanged="txtBoxText_Changed" />     
         </Grid>
-        <Button Name="hiddenHelper" Visibility="Hidden" Click="hiddenHelper_Click"></Button>
-        <DataGrid  Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
+
+        <DataGrid  Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False" Style="{DynamicResource DataGridStyle1}" Foreground="{DynamicResource TextSecundaryColor}"
+
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged"  ItemsSource="{Binding SongList, UpdateSourceTrigger=PropertyChanged}"
                    RowEditEnding="GRD_RowEditEnding"
                   PreviewKeyDown="GRD_PreviewKeyDown">
