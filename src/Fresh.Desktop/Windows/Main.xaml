@@ -12,6 +12,10 @@
         MouseDown="Window_MouseDowns">
 
     <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Border.Effect>
+            <DropShadowEffect Direction="-75" ShadowDepth="2" Opacity="1"
+                              BlurRadius="35" Color="Cyan"/>
+        </Border.Effect>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>

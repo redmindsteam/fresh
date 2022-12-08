@@ -161,6 +161,12 @@ namespace Fresh.Desktop.Pages
             txtPrice.Text = null;
         }
 
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+
         private async void Grid_Load(object sender, RoutedEventArgs e)
         {
             fil = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -366,6 +372,7 @@ namespace Fresh.Desktop.Pages
 
         private void Window_Close(object sender, ContextMenuEventArgs e)
         {
+
 
         }
     }

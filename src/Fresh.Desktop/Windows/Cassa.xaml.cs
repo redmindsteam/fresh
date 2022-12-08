@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using static Fresh.Desktop.Windows.Cassa;
 
@@ -294,7 +295,7 @@ namespace Fresh.Desktop.Windows
             }
             if (VideoDevices.Any())
             {
-                CurrentDevice = VideoDevices[1];
+                CurrentDevice = VideoDevices[0];
             }
             else
             {
@@ -383,6 +384,27 @@ namespace Fresh.Desktop.Windows
         private void Window_Close(object sender, System.Windows.Controls.ContextMenuEventArgs e)
         {
             
+        }
+
+        private void cassaDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnDelet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
         }
     }
 }
