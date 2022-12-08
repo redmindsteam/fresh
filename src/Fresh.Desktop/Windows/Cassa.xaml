@@ -131,7 +131,11 @@
                                             BorderBrush="#00838f" Background="#0097a7"
                                             Click="btnStop_Click"
                                                 Content="Stop" />
+<<<<<<< SoliyevnaS
                                     <TextBlock Name="txtBlockSumm" HorizontalAlignment="Left" Height="156" Margin="215,92,0,2" 
+=======
+                                    <TextBlock x:Name="txt_Block" HorizontalAlignment="Left" Height="156" Margin="619,92,0,2" 
+>>>>>>> main
                                                TextWrapping="Wrap" Width="246" Text="0"
                                                TextAlignment="Right"  FontSize="80"
                                                Foreground="Black" Grid.Column="1"   />
@@ -150,7 +154,11 @@
                                             Content="Check" FontSize="24" HorizontalAlignment="Left" 
                                             VerticalAlignment="Top" x:Name="btnCheck"
                                              BorderBrush="Black" Background="#62B6B7"
+<<<<<<< SoliyevnaS
                                             Click="btnCheck_Click" Margin="342,186,0,0" Grid.ColumnSpan="2"/>
+=======
+                                            Click="btnCheck_Click" Margin="342,186,0,0"/>
+>>>>>>> main
                                 </Grid>
                             </Grid>
                         </Border>

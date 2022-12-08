@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
         ResizeMode="NoResize" WindowState="Normal"
-        MouseDown="Window_MouseDowns">
+        MouseDown="Window_MouseDowns" Loaded="DefaultPage">
 
     <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
         <Border.Effect>
