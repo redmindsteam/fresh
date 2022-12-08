@@ -130,6 +130,7 @@ namespace Fresh.Service.Services.PageServices
             IList<Check> checksInTime = (await checkRepository.GetAllAsync())
              .Where(x => x.Date >= date).ToList();
             var groupedChecks = checksInTime.GroupBy(x => x.Date.Date);
+
             List<StatsView> stats = new List<StatsView>();
             foreach (var check in groupedChecks)
             {
