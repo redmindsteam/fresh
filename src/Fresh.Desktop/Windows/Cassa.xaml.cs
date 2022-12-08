@@ -63,16 +63,12 @@ namespace Fresh.Desktop.Windows
             StopCamera();
         }
 
-
-
         public async void DataGridRefresh()
         {
-            
             cassaDataGrid.ItemsSource = cassaDatas.OrderBy(p => p.Name);
             word = "";
             count = 0;
             txtText_Block();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -90,12 +86,9 @@ namespace Fresh.Desktop.Windows
             public string Money { get; set; }
         }
 
-
-
         private async void btn_close(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            
+            this.Close();   
         }
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -134,6 +127,7 @@ namespace Fresh.Desktop.Windows
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        #region
         private async void n1_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -223,7 +217,7 @@ namespace Fresh.Desktop.Windows
             txtText_Block();
             DataGridRefresh();
         }
-
+        #endregion
         private void txtText_Block()
         {
            
@@ -240,9 +234,8 @@ namespace Fresh.Desktop.Windows
         }
 
         private IVideoSource _videoSource;
+
         private FilterInfo _currentDevice;
-
-
 
         private async void btnStart_Click(object sender, RoutedEventArgs e)
         {
@@ -280,7 +273,7 @@ namespace Fresh.Desktop.Windows
                             };
                             if (count == 1)
                             {
-                               
+                                count = 0;
                                 return;
                             }
                         }
@@ -299,19 +292,15 @@ namespace Fresh.Desktop.Windows
 
         private Bitmap BitmapImage2Bitmap(BitmapImage bitmapImage)
         {
-            
-
             using (MemoryStream outStream = new MemoryStream())
             {
                 BitmapEncoder enc = new BmpBitmapEncoder();
                 enc.Frames.Add(BitmapFrame.Create(bitmapImage));
                 enc.Save(outStream);
                 System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(outStream);
-
                 return new Bitmap(bitmap);
             }
         }
-
 
         private async void GetVideoDevices()
         {
@@ -358,46 +347,48 @@ namespace Fresh.Desktop.Windows
             
             foreach (var product in resault)
             {
-                if (product.BarcodeName != word)
+                if (product.BarcodeName == word)
                 {
-                    counterProduct += 1;
+                    counterProduct = 1;
                 }
             }
-            if (counterProduct == resault.Count - 1)
+            if (counterProduct == 1)
             {
                 foreach (var product in resault)
                 {
-                   
+
                     if (product.BarcodeName == word)
                     {
                         var res = DataGridCheck();
                         if (!res.Result)
                         {
                             cassaDatas.Add(new CassaData { Name = product.Name, KgL = product.Unit, Price = product.Price.ToString(), Thenumber = "1", Money = $"{product.Price * 1}" });
-                            price += product.Price * 1;
+                            price += product.Price;
+                            MessageBox.Show(word);
                             DataGridRefresh();
                             return;
                         }
-                        else if(res.Result)
+                        else if (res.Result)
                         {
                             DirectorProductService directorProduct = new DirectorProductService();
                             var r = await directorProduct.GetAllAsync();
-                            MessageBox.Show($"{cassaDatas.Count}");
+
                             foreach (var ress in cassaDatas)
                             {
                                 var solishtir = ress;
                                 foreach (var resb in r)
                                 {
                                     if (ress.Name == resb.Name)
-                                    {      
+                                    {
                                         cassaDatas.Remove(solishtir);
-                                        double k = (double.Parse(ress.Price) / double.Parse(ress.Thenumber)) + double.Parse(ress.Price);
-                                        int i = int.Parse(ress.Thenumber) + 1;
-                                        cassaDatas.Add(new CassaData { Name = ress.Name, KgL = ress.KgL, Price = ress.Price, Thenumber = i.ToString(), Money = k.ToString() });
-                                        MessageBox.Show($"{cassaDatas.Count}");
-                                        price += double.Parse(ress.Price) * (double.Parse(ress.Price) / double.Parse(ress.Thenumber));
+                                        int i = int.Parse(solishtir.Thenumber) + 1;
+                                        double k = i * double.Parse(solishtir.Price);
+                                        cassaDatas.Add(new CassaData { Name = solishtir.Name, KgL = solishtir.KgL, Price = ress.Price, Thenumber = i.ToString(), Money = k.ToString() });
+                                        price += double.Parse(solishtir.Price);
                                         txtText_Block();
+                                        MessageBox.Show(word);
                                         DataGridRefresh();
+
                                         return;
                                     }
                                 }
@@ -420,19 +411,26 @@ namespace Fresh.Desktop.Windows
 
             DirectorProductService directorProductService = new DirectorProductService();
             var resault = await directorProductService.GetAllAsync();
-            
-            foreach (var res in cassaDatas)
+            //  MessageBox.Show($"{resault.Count}");
+            //  MessageBox.Show($"{cassaDatas.Count}");
+            string words = "";
+            foreach (var b in resault)
             {
-                foreach (var resa in resault)
+                if (b.BarcodeName == word)
                 {
-
-                    if (resa.Name == res.Name)
-                    {
-                        
-                        return true;
-                    }
+                    words = b.Name;
                 }
             }
+            foreach (var res in cassaDatas)
+            {
+                if (res.Name == words)
+                {
+                    MessageBox.Show("true");
+                    return true;
+                        
+                }
+            }
+            MessageBox.Show("false");
             return false;
         }
 
@@ -500,10 +498,10 @@ namespace Fresh.Desktop.Windows
 
             string checkDescription = "";
             double pric = 0;
-            foreach (var view in vievModelProductLetters)
+            foreach (var view in cassaDatas)
             {
-                checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
-                pric += view.TotalPrice;
+                checkDescription += $"{view.Name}   {view.KgL}   {view.Price}   {double.Parse(view.Price) * double.Parse( view.Thenumber)}\n";
+                pric += double.Parse(view.Price) * double.Parse(view.Thenumber);
             }
             Check check = new Check();
             check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";
