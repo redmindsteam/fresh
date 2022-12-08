@@ -42,6 +42,8 @@ namespace Fresh.Desktop.Pages
         }
         private async void SetValues()
         {
+            if (usersNameCombo.Text == null)
+                return;
             Service.Services.PageServices.ConsignmentLettersPage consignmentLettersPage = new();
             var result = await consignmentLettersPage.GetAllCL();
             DirectorRegisterService directorRegisterService = new();
