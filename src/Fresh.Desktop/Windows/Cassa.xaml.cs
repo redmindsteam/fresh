@@ -364,7 +364,6 @@ namespace Fresh.Desktop.Windows
                         {
                             cassaDatas.Add(new CassaData { Name = product.Name, KgL = product.Unit, Price = product.Price.ToString(), Thenumber = "1", Money = $"{product.Price * 1}" });
                             price += product.Price;
-                            MessageBox.Show(word);
                             DataGridRefresh();
                             return;
                         }
@@ -378,7 +377,7 @@ namespace Fresh.Desktop.Windows
                                 var solishtir = ress;
                                 foreach (var resb in r)
                                 {
-                                    if (ress.Name == resb.Name)
+                                    if (ress.Name == resb.Name && resb.BarcodeName == word)
                                     {
                                         cassaDatas.Remove(solishtir);
                                         int i = int.Parse(solishtir.Thenumber) + 1;
@@ -386,9 +385,7 @@ namespace Fresh.Desktop.Windows
                                         cassaDatas.Add(new CassaData { Name = solishtir.Name, KgL = solishtir.KgL, Price = ress.Price, Thenumber = i.ToString(), Money = k.ToString() });
                                         price += double.Parse(solishtir.Price);
                                         txtText_Block();
-                                        MessageBox.Show(word);
                                         DataGridRefresh();
-
                                         return;
                                     }
                                 }
@@ -399,7 +396,6 @@ namespace Fresh.Desktop.Windows
             }
             else
             {
-                MessageBox.Show(word);
                 MessageBox.Show("Ro'yhatdan o'tmagan ");
             }
             DataGridRefresh();
@@ -411,8 +407,7 @@ namespace Fresh.Desktop.Windows
 
             DirectorProductService directorProductService = new DirectorProductService();
             var resault = await directorProductService.GetAllAsync();
-            //  MessageBox.Show($"{resault.Count}");
-            //  MessageBox.Show($"{cassaDatas.Count}");
+       
             string words = "";
             foreach (var b in resault)
             {
@@ -425,12 +420,10 @@ namespace Fresh.Desktop.Windows
             {
                 if (res.Name == words)
                 {
-                    MessageBox.Show("true");
-                    return true;
-                        
+                    return true;       
                 }
             }
-            MessageBox.Show("false");
+            
             return false;
         }
 
