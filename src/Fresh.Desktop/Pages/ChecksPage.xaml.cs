@@ -131,6 +131,11 @@ namespace Fresh.Desktop.Pages
         {
             MegaApiClient client = new MegaApiClient();
             client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
+            IEnumerable<INode> nodes = client.GetNodes();
+
+            INode root = nodes.Single(x => x.Type == NodeType.Root);
+            string year = datePicker.DataContext.ToString();
+            INode myFolder = client.CreateFolder($"{.Text}", root);
         }
     }
 }
