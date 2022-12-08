@@ -55,6 +55,11 @@ namespace Fresh.Desktop.Pages
             List<ChecksView> ChecksPages = await check.GetChecksViews();
             DirectorRegisterService directorRegisterService = new();
             var users = await directorRegisterService.GetAllAsync();
+            if (usersNameCombo.Text == null)
+            {
+                ProductsDgUi.ItemsSource = (await check.GetChecksViews()).OrderByDescending(x => DateTime.Parse(x.Date));
+                return;
+            }
             foreach(var user in users)
                 usersNameCombo.Items.Add(user.FullName);
             if (usersNameCombo.Text.Length == 0 && datePicker.Text.Length > 0)
