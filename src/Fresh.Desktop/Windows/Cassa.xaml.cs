@@ -2,6 +2,7 @@
 using AForge.Video.DirectShow;
 using Aspose.BarCode.BarCodeRecognition;
 using Fresh.Desktop.Pages;
+using Fresh.Service.Director;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -254,9 +255,6 @@ namespace Fresh.Desktop.Windows
                             {
                                 word = s;
                                 count++;
-                                MessageBox.Show(s);
-                                return;
-                            
                             };
                             if (count == 1)
                             {
@@ -333,10 +331,12 @@ namespace Fresh.Desktop.Windows
             {
                 _videoSource.SignalToStop();
                 _videoSource.NewFrame -= new NewFrameEventHandler(video_NewFrame);
-                cassaDatas.Add(new CassaData { Name = word, KgL = "Dona", Price = "20000", Thenumber = "1", Money = "20000" });
-                DataGridRefresh();
+                 Product();
+              
             }
         }
+
+
 
 
         protected async void OnPropertyChanged(string propertyName)
@@ -355,6 +355,43 @@ namespace Fresh.Desktop.Windows
         {
             StopCamera();
         }
+
+        public async void  Product()
+        {
+            DirectorProductService directorProductService = new DirectorProductService();
+            var resault = await directorProductService.GetAllAsync();
+            int counterProduct = 0;
+            MessageBox.Show($"{resault.Count}");
+            foreach (var product in resault)
+            {
+                if (product.BarcodeName != word)
+                {
+                    counterProduct += 1;
+                }
+            }
+            if (counterProduct == resault.Count)
+            {
+                foreach (var product in resault)
+                {
+                    if (product.BarcodeName == word)
+                    {
+                        cassaDatas.Add(new CassaData { Name = product.Name, KgL = product.Unit, Price = product.Price.ToString(), Thenumber = "1", Money = $"{product.Price * 1}" });
+                        DataGridRefresh();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error - Ro'yhatdan o'tmagan");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ro'yhatdan o'tmagan ");
+            }
+            
+        }
+
 
         private void Window_Close(object sender, System.Windows.Controls.ContextMenuEventArgs e)
         {

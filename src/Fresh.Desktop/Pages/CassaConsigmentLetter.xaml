@@ -29,9 +29,13 @@
                     </DataGrid.Columns >
                 </DataGrid >
 
-                <TextBox x:Name = "txtProduct" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,95,8,0" 
+                <Button Width="50" Height="20" Margin="513,100,25,360" Content="New" Click="AddButton">
+                    
+                </Button>
+
+                <TextBox x:Name = "txtProduct" Width = "100" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,100,108,0" 
                          MouseDown="txtProduct_Mouse_Down"/>
-                <ComboBox x:Name = "txtCategory"  Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,70,10,0" 
+                <ComboBox x:Name = "txtCategory"  Width = "200" Height = "22" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,68,10,0" 
                            MouseDown="ComboBoxCategory_MouseDown">
                 </ComboBox>
                 <ComboBox x:Name = "txtKgL"  Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,120,10,0" IsReadOnly="True" >

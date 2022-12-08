@@ -317,10 +317,7 @@ namespace Fresh.Desktop.Pages
 
         private async void ComboBoxCategory_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (e.ChangedButton ==)
-            {
-                txtCategory.IsEnabled = false;
-            }
+         
  
             
         }
@@ -333,6 +330,11 @@ namespace Fresh.Desktop.Pages
             }
             
             MessageBox.Show("txt");
+        }
+
+        private void AddButton(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
