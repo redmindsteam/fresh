@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CassaConsigmentLetter" Height="500" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Border CornerRadius = "6" Background = "White" >
-        <Grid Loaded="Grid_Load" ContextMenuClosing="Window_Close" MouseDown="Grid_MouseDown">
+        <Grid Loaded="Grid_Load" ContextMenuClosing="Window_Close" >
             <Grid.RowDefinitions >
                 <RowDefinition Height = "20" />
                 <RowDefinition />
@@ -29,10 +29,14 @@
                     </DataGrid.Columns >
                 </DataGrid >
 
-                <TextBox x:Name = "txtProduct" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,95,8,0" 
-                         MouseDown="txtProduct_Mouse_Down"/>
-                <ComboBox x:Name = "txtCategory"  Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,70,10,0" 
-                           MouseDown="ComboBoxCategory_MouseDown">
+                <Button Width="50" Height="20" Margin="513,100,25,360" Content="New" Click="AddButton">
+                    
+                </Button>
+
+                <TextBox x:Name = "txtProduct" Width = "100" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,100,108,0" 
+                         Visibility="Collapsed" />
+                <ComboBox x:Name = "txtCategory"  Width = "200" Height = "22" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,68,10,0" 
+                           >
                 </ComboBox>
                 <ComboBox x:Name = "txtKgL"  Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,120,10,0" IsReadOnly="True" >
                     <ComboBoxItem Content="Kg"/>

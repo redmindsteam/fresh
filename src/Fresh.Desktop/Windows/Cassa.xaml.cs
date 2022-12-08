@@ -2,6 +2,7 @@
 using AForge.Video.DirectShow;
 using Aspose.BarCode.BarCodeRecognition;
 using Fresh.Desktop.Pages;
+using Fresh.Service.Director;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -99,13 +100,10 @@ namespace Fresh.Desktop.Windows
 
         private async void btnBuy_Click(object sender, RoutedEventArgs e)
         {
-            
-           
             for (int i = 0; i < cassaDataGrid.Items.Count; i++)
             {
                 price += 0;
             }
-            
             MessageBox.Show($"{price}");
         }
 
@@ -139,7 +137,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "2", Money = $"{double.Parse(resault.Price) * 2}" });
             DataGridRefresh();
         }
-
         private async void n3_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -147,7 +144,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "3", Money = $"{double.Parse(resault.Price) * 3}" });
             DataGridRefresh();
         }
-
         private async void n4_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -155,7 +151,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "4", Money = $"{double.Parse(resault.Price) * 4}" });
             DataGridRefresh();
         }
-
         private async void n5_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -163,7 +158,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "5", Money = $"{double.Parse(resault.Price) * 5}" });
             DataGridRefresh();
         }
-
         private async void n6_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -171,7 +165,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "6", Money = $"{double.Parse(resault.Price) * 6}" });
             DataGridRefresh();
         }
-
         private async void n7_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -179,9 +172,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "7", Money = $"{double.Parse(resault.Price) * 7}" });
             DataGridRefresh();
         }
-        
-        
-
         private async void n8_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -189,7 +179,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "8", Money = $"{double.Parse(resault.Price) * 8}" });
             DataGridRefresh();
         }
-
         private async void n9_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -197,7 +186,6 @@ namespace Fresh.Desktop.Windows
             cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "9", Money = $"{double.Parse(resault.Price) * 9}" });
             DataGridRefresh();
         }
-
         private async void n0_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
@@ -254,9 +242,6 @@ namespace Fresh.Desktop.Windows
                             {
                                 word = s;
                                 count++;
-                                MessageBox.Show(s);
-                                return;
-                            
                             };
                             if (count == 1)
                             {
@@ -333,10 +318,12 @@ namespace Fresh.Desktop.Windows
             {
                 _videoSource.SignalToStop();
                 _videoSource.NewFrame -= new NewFrameEventHandler(video_NewFrame);
-                cassaDatas.Add(new CassaData { Name = word, KgL = "Dona", Price = "20000", Thenumber = "1", Money = "20000" });
-                DataGridRefresh();
+                 Product();
+              
             }
         }
+
+
 
 
         protected async void OnPropertyChanged(string propertyName)
@@ -355,6 +342,43 @@ namespace Fresh.Desktop.Windows
         {
             StopCamera();
         }
+
+        public async void  Product()
+        {
+            DirectorProductService directorProductService = new DirectorProductService();
+            var resault = await directorProductService.GetAllAsync();
+            int counterProduct = 0;
+            MessageBox.Show($"{resault.Count}");
+            foreach (var product in resault)
+            {
+                if (product.BarcodeName != word)
+                {
+                    counterProduct += 1;
+                }
+            }
+            if (counterProduct == resault.Count)
+            {
+                foreach (var product in resault)
+                {
+                    if (product.BarcodeName == word)
+                    {
+                        cassaDatas.Add(new CassaData { Name = product.Name, KgL = product.Unit, Price = product.Price.ToString(), Thenumber = "1", Money = $"{product.Price * 1}" });
+                        DataGridRefresh();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error - Ro'yhatdan o'tmagan");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ro'yhatdan o'tmagan ");
+            }
+            
+        }
+
 
         private void Window_Close(object sender, System.Windows.Controls.ContextMenuEventArgs e)
         {
