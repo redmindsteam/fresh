@@ -494,6 +494,10 @@ namespace Fresh.Desktop.Windows
 
         private void btnCheck_Click(object sender, RoutedEventArgs e)
         {
+
+            ChecksDescription checksDescription = new ChecksDescription();
+            checksDescription.ShowDialog();
+
             string checkDescription = "";
             double pric = 0;
             foreach (var view in vievModelProductLetters)
@@ -522,6 +526,7 @@ namespace Fresh.Desktop.Windows
             //check.Date = DateTime.Now;
             //check.UserId = 1;
             //check.TotalSum = (float)price;
+
 
         }
     }

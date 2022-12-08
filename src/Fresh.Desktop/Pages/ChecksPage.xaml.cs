@@ -23,6 +23,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Fresh.Desktop.Windows;
 using Fresh.Service.ViewModels.ViewDetails;
+using CG.Web.MegaApiClient;
 
 namespace Fresh.Desktop.Pages
 {
@@ -86,10 +87,29 @@ namespace Fresh.Desktop.Pages
             invokeProv.Invoke();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
+            MegaApiClient client = new MegaApiClient();
+            client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
+
+            IEnumerable<INode> nodes = client.GetNodes();
+
+            INode root = nodes.Single(x => x.Type == NodeType.Root);
+            INode myFolder = client.CreateFolder($"freshMarket{}", root);
+
+            INode myFileImage = client.UploadFile($"{txtImagePath.Text}", myFolder);
+            INode myFilePdf = client.UploadFile($"{txtPdfPath.Text}", myFolder);
+            INode myFileAudio = client.UploadFile($"{txtAudioPath.Text}", myFolder);
+
+
+            Uri downloadLinkImage = client.GetDownloadLink(myFileImage);
+            Uri downloadLinkPdf = client.GetDownloadLink(myFilePdf);
+            Uri downloadLinkAudio = client.GetDownloadLink(myFileAudio);
+            //Console.WriteLine(downloadLink);
+
+            client.Logout();
+            MessageBox.Show("Added successfully!");
+        }*/
 
         private void hiddenHelper_Click(object sender, RoutedEventArgs e)
         {
@@ -104,5 +124,6 @@ namespace Fresh.Desktop.Pages
             ChecksDescription checksDescription = new ChecksDescription();
             checksDescription.ShowDialog();
         }
+        
     }
 }

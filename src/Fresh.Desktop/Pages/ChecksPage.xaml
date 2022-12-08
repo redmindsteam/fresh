@@ -62,10 +62,9 @@
             
             <Button HorizontalAlignment="Right" Grid.Column="2" Name="saveCloud" VerticalAlignment="Center" Background="{DynamicResource SecundaryBackgroundColor}"
                 Style="{StaticResource MaterialDesignFloatingActionLightButton}"
-                
                 Command="{Binding SaveCommand}"
                 materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
-                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}" Click="Button_Click" >
+                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}"  >
                 <!-- simple example of toggling/animating pack icon with a data trigger-->
                 <materialDesign:PackIcon
                     Height="24"
