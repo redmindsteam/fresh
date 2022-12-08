@@ -32,6 +32,7 @@
     <PackageReference Include="Aspose.BarCode" Version="22.11.0" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.9" />
     <PackageReference Include="MaterialDesignInXamlToolkitAddOns" Version="0.0.6" />
+    <PackageReference Include="MegaApiClient" Version="1.10.3" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.116" />
     <PackageReference Include="ZXing.Net" Version="0.16.8" />
