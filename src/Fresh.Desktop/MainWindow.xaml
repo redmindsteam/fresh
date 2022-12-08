@@ -67,6 +67,10 @@
         </Border>
         <Border Background="#ffffff" Grid.Column="1" 
                 CornerRadius="0 15 15 0" MouseDown="Border_MouseDown">
+            <Border.Effect>
+                <DropShadowEffect Direction="-75" ShadowDepth="2" Opacity="1"
+                              BlurRadius="35" Color="Cyan"/>
+            </Border.Effect>
             <!--Uzgarish-->
             <StackPanel VerticalAlignment="Center" 
                         Visibility="Visible" x:Name="Border1">
@@ -101,6 +105,7 @@
                         Margin="55 5 " 
                         x:Name="PasswordBorder"
                         Visibility="Visible">
+                    
 
                     <Grid Margin="7 9">
 
@@ -129,6 +134,7 @@
         <Border Grid.Column="1" 
                 RenderTransformOrigin="0.602,0.578" 
                 Visibility="Hidden" x:Name="EmailSMS">
+            
             <Button Content="Save changes"
                         Click="Button_email" 
                         Style="{StaticResource mainbutton}"

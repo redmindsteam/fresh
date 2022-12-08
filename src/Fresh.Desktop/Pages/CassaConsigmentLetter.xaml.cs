@@ -108,5 +108,11 @@ namespace Fresh.Desktop.Pages
             txtTotal.Text = null;
             txtPrice.Text = null;
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
     }
 }

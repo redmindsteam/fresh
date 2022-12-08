@@ -11,6 +11,7 @@
       Title="ProductsPage" Background="White">
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="1.3*" />
