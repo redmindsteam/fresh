@@ -195,5 +195,10 @@ namespace Fresh.Desktop.Pages
             else
                 prodTextbox.IsReadOnly = true;
         }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            Click();
+        }
     }
 }
