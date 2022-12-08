@@ -365,5 +365,11 @@ namespace Fresh.Desktop.Windows
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
+
+        private void btnCheck_Click(object sender, RoutedEventArgs e)
+        {
+            ChecksDescription checksDescription = new ChecksDescription();
+            checksDescription.ShowDialog();
+        }
     }
 }

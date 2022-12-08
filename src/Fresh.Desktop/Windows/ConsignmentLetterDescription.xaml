@@ -31,8 +31,9 @@
             </Border.BorderBrush>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.08*"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="0.1*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -73,6 +74,32 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Style="{DynamicResource labelChecksPage}" >Total Payment</Label>
+                <TextBox
+                     x:Name="txtTotalSumm"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                     Grid.Column="1"
+                     FontSize="13"
+                     IsReadOnly="True"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="{DynamicResource TextPrimaryColor}"
+                     CaretBrush="#80deea"
+                     BorderBrush="{DynamicResource TextSecundaryColor}"
+                     BorderThickness="0 0 0 2"
+                     Height="21"
+                     Width="260"
+                      />
+
+            </Grid>
 
         </Grid>
         
