@@ -13,7 +13,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -65,8 +67,8 @@ namespace Fresh.Desktop.Windows
 
         public async void DataGridRefresh()
         {
-
-            cassaDataGrid.ItemsSource = cassaDatas;
+            
+            cassaDataGrid.ItemsSource = cassaDatas.OrderBy(p => p.Name);
             word = "";
             count = 0;
             txtText_Block();
@@ -269,6 +271,7 @@ namespace Fresh.Desktop.Windows
                             foreach (char c in res)
                             {
                                 s += c;
+                               
                             }
                             if (count == 0 && s.Length > 1)
                             {
@@ -344,11 +347,10 @@ namespace Fresh.Desktop.Windows
                 _videoSource.SignalToStop();
                 _videoSource.NewFrame -= new NewFrameEventHandler(video_NewFrame);
                 Product();
-                
             }
         }
 
-        public async void Product()
+        public async Task Product()
         {
             DirectorProductService directorProductService = new DirectorProductService();
             var resault = await directorProductService.GetAllAsync();
@@ -368,14 +370,39 @@ namespace Fresh.Desktop.Windows
                    
                     if (product.BarcodeName == word)
                     {
-                        cassaDatas.Add(new CassaData { Name = product.Name, KgL = product.Unit, Price = product.Price.ToString(), Thenumber = "1", Money = $"{product.Price * 1}" });
-                        price += product.Price * 1;
-                        DataGridRefresh();
-                        return;
-                    }
-                    else
-                    {
-                      
+                        var res = DataGridCheck();
+                        if (!res.Result)
+                        {
+                            cassaDatas.Add(new CassaData { Name = product.Name, KgL = product.Unit, Price = product.Price.ToString(), Thenumber = "1", Money = $"{product.Price * 1}" });
+                            price += product.Price * 1;
+                            DataGridRefresh();
+                            return;
+                        }
+                        else if(res.Result)
+                        {
+                            DirectorProductService directorProduct = new DirectorProductService();
+                            var r = await directorProduct.GetAllAsync();
+                            MessageBox.Show($"{cassaDatas.Count}");
+                            foreach (var ress in cassaDatas)
+                            {
+                                var solishtir = ress;
+                                foreach (var resb in r)
+                                {
+                                    if (ress.Name == resb.Name)
+                                    {      
+                                        cassaDatas.Remove(solishtir);
+                                        double k = (double.Parse(ress.Price) / double.Parse(ress.Thenumber)) + double.Parse(ress.Price);
+                                        int i = int.Parse(ress.Thenumber) + 1;
+                                        cassaDatas.Add(new CassaData { Name = ress.Name, KgL = ress.KgL, Price = ress.Price, Thenumber = i.ToString(), Money = k.ToString() });
+                                        MessageBox.Show($"{cassaDatas.Count}");
+                                        price += double.Parse(ress.Price) * (double.Parse(ress.Price) / double.Parse(ress.Thenumber));
+                                        txtText_Block();
+                                        DataGridRefresh();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -385,6 +412,28 @@ namespace Fresh.Desktop.Windows
                 MessageBox.Show("Ro'yhatdan o'tmagan ");
             }
             DataGridRefresh();
+        }
+
+        private async Task<bool> DataGridCheck()
+        {
+            var a = new ObservableCollection<CassaData>();
+
+            DirectorProductService directorProductService = new DirectorProductService();
+            var resault = await directorProductService.GetAllAsync();
+            
+            foreach (var res in cassaDatas)
+            {
+                foreach (var resa in resault)
+                {
+
+                    if (resa.Name == res.Name)
+                    {
+                        
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
 
@@ -427,7 +476,6 @@ namespace Fresh.Desktop.Windows
                     price -= double.Parse(cassaData.Money);
                 }
             }
-            
             cassaDatas.Remove(item);
             txtText_Block();
             DataGridRefresh();
