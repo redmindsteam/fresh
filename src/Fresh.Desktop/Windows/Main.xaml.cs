@@ -2,6 +2,9 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+using CG.Web.MegaApiClient;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fresh.Desktop.Windows
 {
@@ -70,10 +73,15 @@ namespace Fresh.Desktop.Windows
         {
 
         }
+        public void SaveToCloudAutomatically()
+        {
+            
+        }
 
         private void DefaultPage(object sender, RoutedEventArgs e)
         {
             PagesNavigation.Navigate(new System.Uri("Pages/DefaultPage.xaml", UriKind.RelativeOrAbsolute));
+            SaveToCloudAutomatically();
         }
     }
 }

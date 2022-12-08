@@ -24,6 +24,8 @@ using System.Windows.Shapes;
 using Fresh.Desktop.Windows;
 using Fresh.Service.ViewModels.ViewDetails;
 using CG.Web.MegaApiClient;
+using System.Data.Common;
+using Fresh.Domain.Constants;
 
 namespace Fresh.Desktop.Pages
 {
@@ -89,30 +91,6 @@ namespace Fresh.Desktop.Pages
             invokeProv.Invoke();
         }
 
-        /*private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MegaApiClient client = new MegaApiClient();
-            client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
-
-            IEnumerable<INode> nodes = client.GetNodes();
-
-            INode root = nodes.Single(x => x.Type == NodeType.Root);
-            INode myFolder = client.CreateFolder($"freshMarket{}", root);
-
-            INode myFileImage = client.UploadFile($"{txtImagePath.Text}", myFolder);
-            INode myFilePdf = client.UploadFile($"{txtPdfPath.Text}", myFolder);
-            INode myFileAudio = client.UploadFile($"{txtAudioPath.Text}", myFolder);
-
-
-            Uri downloadLinkImage = client.GetDownloadLink(myFileImage);
-            Uri downloadLinkPdf = client.GetDownloadLink(myFilePdf);
-            Uri downloadLinkAudio = client.GetDownloadLink(myFileAudio);
-            //Console.WriteLine(downloadLink);
-
-            client.Logout();
-            MessageBox.Show("Added successfully!");
-        }*/
-
         private void hiddenHelper_Click(object sender, RoutedEventArgs e)
         {
             Click();
@@ -134,8 +112,13 @@ namespace Fresh.Desktop.Pages
             IEnumerable<INode> nodes = client.GetNodes();
 
             INode root = nodes.Single(x => x.Type == NodeType.Root);
-            string year = datePicker.DataContext.ToString();
-            INode myFolder = client.CreateFolder($"{.Text}", root);
+            INode myFolder = client.CreateFolder($"{DateTime.Now.ToString("MM/yyyy")}", root);
+            
+            INode myFile = client.UploadFile(@"../../../../../database/fresh-market.db", myFolder);
+            Uri downloadLinkImage = client.GetDownloadLink(myFile);
+            
+            client.Logout();
+            MessageBox.Show("Added successfully!");
         }
     }
 }
