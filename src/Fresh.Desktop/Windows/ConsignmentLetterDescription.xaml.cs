@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fresh.Desktop.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Fresh.Desktop.Windows
         public ConsignmentLetterDescription()
         {
             InitializeComponent();
+            SetValues();
         }
 
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,6 +53,10 @@ namespace Fresh.Desktop.Windows
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+        private void SetValues()
+        {
+            ProductsDgUi.ItemsSource = ConsignmentLettersPage.consigmentLetterDetailsView;
         }
     }
 }

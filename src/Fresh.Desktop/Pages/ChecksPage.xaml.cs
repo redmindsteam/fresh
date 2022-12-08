@@ -22,7 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Fresh.Desktop.Windows;
-
+using Fresh.Service.ViewModels.ViewDetails;
 
 namespace Fresh.Desktop.Pages
 {
@@ -38,6 +38,7 @@ namespace Fresh.Desktop.Pages
             Click();
             
         }
+        public static List<CheckDetailsView> checkDetailsView = new();
 
         private void comboBoxCashiers_Loaded(object sender, RoutedEventArgs e)
         {
@@ -71,7 +72,7 @@ namespace Fresh.Desktop.Pages
             
         }
 
-        private async void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtonAutomationPeer peer = new ButtonAutomationPeer(hiddenHelper);
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
@@ -95,8 +96,11 @@ namespace Fresh.Desktop.Pages
             Click();
         }
 
-        private void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
+        private async void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
         {
+            ChecksView checksView = (ChecksView)ProductsDgUi.SelectedItem;
+            CheckPage checkPage = new();
+            checkDetailsView = await checkPage.GetCheckDetailsById(checksView.Id);
             ChecksDescription checksDescription = new ChecksDescription();
             checksDescription.ShowDialog();
         }

@@ -2,6 +2,7 @@
 using Fresh.Service.Director;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
+using Fresh.Service.ViewModels.ViewDetails;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace Fresh.Desktop.Pages
             InitializeComponent();
             SetValues();
         }
+        public static List<ConsigmentLetterViewDetails> consigmentLetterDetailsView = new();
 
         private void DatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -65,8 +67,11 @@ namespace Fresh.Desktop.Pages
                 ProductsDgUi.ItemsSource = (await consignmentLettersPage.GetAllCL()).OrderByDescending(x => x.DateTime);
         }
 
-        private void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
+        private async void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
         {
+            ConsignmentLetterView consigmentLetterView = (ConsignmentLetterView)ProductsDgUi.SelectedItem;
+            Service.Services.PageServices.ConsignmentLettersPage consPage = new();
+            consigmentLetterDetailsView = await consPage.GetConsigmentLetterDetailsById(consigmentLetterView.Id);
             ConsignmentLetterDescription consignmentLetterDescription = new ConsignmentLetterDescription();
             consignmentLetterDescription.ShowDialog();
         }
