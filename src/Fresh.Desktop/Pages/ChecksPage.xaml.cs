@@ -49,6 +49,8 @@ namespace Fresh.Desktop.Pages
         }
         public async void Click()
         {
+            if (usersNameCombo.Text == null)
+                return;
             CheckPage check = new CheckPage();
             List<ChecksView> ChecksPages = await check.GetChecksViews();
             DirectorRegisterService directorRegisterService = new();
