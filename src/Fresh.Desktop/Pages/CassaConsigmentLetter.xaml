@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fresh.Desktop.Pages"
         mc:Ignorable="d"
+
         Background="Transparent"
         MouseDown="Window_MouseDown"
         Title="CassaConsigmentLetter" Height="500" AllowsTransparency="True" ResizeMode="NoResize"
@@ -16,6 +17,7 @@
                               BlurRadius="45" Color="Cyan"/>
         </Border.Effect>
         <Grid >
+
             <Grid.RowDefinitions >
                 <RowDefinition Height = "20" />
                 <RowDefinition />
@@ -28,7 +30,11 @@
                     <ColumnDefinition Width="7*"/>
                     <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions >
+
                 <DataGrid Style="{DynamicResource dr}" Width = "339" HorizontalAlignment = "Left" x:Name="DataGridCassaLetter" Height="462" VerticalAlignment="Top" Margin="11,0,0,0">
+
+                <DataGrid  Width = "350" HorizontalAlignment = "Left" x:Name="DataGridCassaLetter" Loaded="DataGrid_Refresh">
+
                     <DataGrid.Columns >
                         <DataGridTextColumn Header = " Product" Width = "*" Binding="{Binding Name}"/>
                         <DataGridTextColumn Header = "Kg/L" Width = "*" Binding="{Binding KgL}"/>
@@ -37,12 +43,26 @@
                     </DataGrid.Columns >
                 </DataGrid >
 
+
                 <TextBox x:Name = "txtProduct" Width = "200" Height = "33" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,83,7,0" />
                 <ComboBox x:Name = "txtKgL"  Width = "200" Height = "31" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,141,6,0" IsReadOnly="True" >
+
+                <Button Width="50" Height="20" Margin="513,100,25,360" Content="New" Click="AddButton">
+                    
+                </Button>
+
+                <TextBox x:Name = "txtProduct" Width = "100" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,100,108,0" 
+                         Visibility="Collapsed" />
+                <ComboBox x:Name = "txtCategory"  Width = "200" Height = "22" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,68,10,0" 
+                           >
+                </ComboBox>
+                <ComboBox x:Name = "txtKgL"  Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,120,10,0" IsReadOnly="True" >
+
                     <ComboBoxItem Content="Kg"/>
                     <ComboBoxItem Content="L"/>
                     <ComboBoxItem Content="T/N"/>
                 </ComboBox>
+
                 <TextBox x:Name = "txtTotal" Width = "199" Height = "32" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "374,196,0,0" />
                 <TextBox x:Name = "txtPrice" Width = "198" Height = "29" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,252,5,0" />
                 <Button x:Name = "AddBtton" BorderBrush="#263159" Background="#68B984" Click = "AddButton_Click" Content = "Add"  Width = "90" Height = "26" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,324,124,0" RenderTransformOrigin = "1.201,0.873" />
@@ -54,6 +74,42 @@
                 <Label Content="Kg/L" Margin="370,113,165,333" Background="Transparent"/>
                 <Label Content="Product" Margin="367,62,159,385"/>
                 <Label Content="Fersh" Margin="429,6,0,423" HorizontalAlignment="Left" FontWeight="Bold" FontSize="30" Width="107"/>
+
+                <TextBox x:Name = "txtTotal" Width = "200" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,145,10,0" />
+                <TextBox x:Name = "txtPrice" Width = "200" Height = "27" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,170,10,0" />
+                <Button x:Name = "AddBtton" Click = "AddButton_Click" Content = "Add"  Width = "80" Height = "20" HorizontalAlignment = "Right" VerticalAlignment = "Top" Margin = "0,202,10,0" RenderTransformOrigin = "1.201,0.873" />
+                <Button x:Name = "DeleteBtton" Click = "DeleteButton_Click" Content = "Delete"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,202,0,0" />
+                <Button x:Name = "AcceptBtton" Click = "Accept_Click" Content = "Accept"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "380,240,0,0" RenderTransformOrigin="0.548,1.813" />
+                <Button x:Name = "NotAcceptBtton" Click = "NotAccept_Click" Content = "Not Accept"  Width = "80" Height = "20" HorizontalAlignment = "Left" VerticalAlignment = "Top" Margin = "498,240,0,0" />
+                <Image x:Name="videoPlayer" Margin="396,388,24,58"/>
+                <ComboBox x:Name="comboBox"
+                    Width="168"
+                    Height="21"
+                    Margin="396,0,0,26"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    DisplayMemberPath="Name"
+                    ItemsSource="{Binding VideoDevices}"
+                    SelectedItem="{Binding CurrentDevice}">
+                </ComboBox>
+                <Button Width="67"
+                Height="24"
+                Margin="380,0,0,105"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStart_Click"
+                Content="Start"
+                
+            />
+                <Button Width="67"
+                Height="24"
+                Margin="480,0,0,105"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Click="btnStop_Click"
+                Content="Stop" RenderTransformOrigin="0.545,1.707"
+            />
+
             </Grid >
         </Grid >
     </Border >

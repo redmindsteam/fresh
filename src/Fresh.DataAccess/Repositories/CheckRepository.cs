@@ -90,7 +90,7 @@ namespace Fresh.DataAccess.Repositories
                      };
                     checks.Add(check);
                 }
-
+                reader.Close();
                 return checks;
             }
             catch
@@ -124,7 +124,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     checks.Add(check);
                 }
-
+                reader.Close();
                 return checks;
             }
             catch
@@ -145,7 +145,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    return new Check()
+                    var resalt = new Check()
                     {
                         Id = reader.GetInt32(0),
                         CheckDescription = reader.GetString(1),
@@ -154,8 +154,14 @@ namespace Fresh.DataAccess.Repositories
                         Date = DateTime.ParseExact(reader.GetString(4), "MM/dd/yyyy", CultureInfo.InvariantCulture)
 
                     };
+                    reader.Close();
+                    return resalt;
                 }
-                else return null!;
+                else 
+                {
+                    reader.Close();
+                    return null!; 
+                }
             }
             catch
             {

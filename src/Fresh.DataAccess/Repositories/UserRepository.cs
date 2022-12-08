@@ -29,7 +29,7 @@ namespace Fresh.DataAccess.Repositories
                         new SQLiteParameter("PasswordHash", item.PasswordHash),
                         new SQLiteParameter("Salt", item.Salt),
                         new SQLiteParameter("PhoneNumber", item.PhoneNumber),
-                        new SQLiteParameter("PassportSeria", item.PhoneNumber)
+                        new SQLiteParameter("PassportSeria", item.PassportSeria)
                     }
                 };
 
@@ -97,7 +97,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     users.Add(user);
                 }
-
+                reader.Close();
                 return users;
             }
             catch
@@ -137,7 +137,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     users.Add(user);
                 }
-
+                reader.Close();
                 return users;
             }
             catch
@@ -186,7 +186,10 @@ namespace Fresh.DataAccess.Repositories
                         return user;
                     }
                     else
+                    {
+                        reader.Close();
                         return null!;
+                    }
                 }
                 catch
                 {
@@ -215,7 +218,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    return new User()
+                    var resalt = new User()
                     {
                         Id = reader.GetInt32("Id"),
                         FullName = reader.GetString("FullName"),
@@ -227,9 +230,14 @@ namespace Fresh.DataAccess.Repositories
                         PassportSeria = reader.GetString("PassportSeria")
 
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
+                {
+                    reader.Close();
                     return null!;
+                }
             }
             catch
             {
@@ -252,7 +260,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    return new User()
+                    var resalt = new User()
                     {
                         Id = reader.GetInt32("Id"),
                         FullName = reader.GetString("FullName"),
@@ -263,8 +271,14 @@ namespace Fresh.DataAccess.Repositories
                         PhoneNumber = reader.GetString("PhoneNumber"),
                         PassportSeria = reader.GetString("PassportSeria")
                     };
+                    reader.Close();
+                    return resalt;
                 }
-                else return null!;
+                else
+                {
+                    reader.Close();
+                    return null!;
+                }
             }
             catch
             {
@@ -293,7 +307,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    return new User()
+                    var resalt = new User()
                     {
                         Id = reader.GetInt32("Id"),
                         FullName = reader.GetString("FullName"),
@@ -305,9 +319,14 @@ namespace Fresh.DataAccess.Repositories
                         PassportSeria = reader.GetString("PassportSeria")
 
                     };
+                    reader.Close();
+                    return resalt;
                 }
                 else
+                {
+                    reader.Close();
                     return null!;
+                }
             }
             catch
             {

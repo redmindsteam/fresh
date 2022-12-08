@@ -16,7 +16,7 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireDate,Value)" +
+                string query = @"INSERT INTO Products(Name,CategoryId,Price,Unit,BarcodeName,ProductionDate,ExpireData,Value)" +
                      "VALUES($Name,$CategoryId,$Price,$Unit,$BarcodeName,$ProductionDate,$ExpireData,$Value);";
                 var command = new SQLiteCommand(query, _con)
                 {
@@ -97,7 +97,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     products.Add(product);
                 }
-
+                reader.Close();
                 return products;
             }
             catch
@@ -135,7 +135,7 @@ namespace Fresh.DataAccess.Repositories
                     };
                     products.Add(product);
                 }
-
+                reader.Close();
                 return products;
             }
             catch
@@ -156,7 +156,7 @@ namespace Fresh.DataAccess.Repositories
                 var reader = await command.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
-                    return new Product()
+                    var resalt = new Product()
                     {
                         Id = reader.GetInt32("Id"),
                         Name = reader.GetString("Name"),
@@ -168,8 +168,15 @@ namespace Fresh.DataAccess.Repositories
                         ExpireDate = reader.GetString("ExpireData"),
                         Value = reader.GetFloat("Value")
                     };
+                    reader.Close();
+                    return resalt;
+
                 }
-                else return null!;
+                else
+                {
+                    reader.Close();
+                    return null!;
+                }
             }
             catch
             {

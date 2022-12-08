@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -143,26 +145,60 @@ namespace Fresh.Desktop.Pages
             rb2PrevState = (_excludeRB == "rdnCategory" ? rb2PrevState : false);
         }
 
-        private void txtBoxText_Changed(object sender, TextChangedEventArgs e)
+        private async void txtBoxText_Changed(object sender, TextChangedEventArgs e)
         {
-            /*var txtBox = sender as TextBox;
-            if(txtBox.Text!="")
-            {
-                var filteredList = 
-            }*/
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(hiddenHelper);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
         }
 
 
-
         private async void GRD_PreviewKeyDown(object sender, KeyEventArgs e)
-
         {
 
         }
         private async void GRD_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-
         {
 
+        }
+
+        private async void hiddenHelper_Click(object sender, RoutedEventArgs e)
+        {
+            if (rdnSearchByName.IsChecked == true)
+            {
+                ProductPage products = new ProductPage();
+                prodTextbox.IsReadOnly = false;
+                List<ProductsView> productPages = await products.GetProductViews();
+                ProductsDgUi.ItemsSource = productPages.Select(x => x).Where(x => x.Name.ToLower().Contains(prodTextbox.Text.ToLower()));
+            }
+            else if (rdnCategory.IsChecked == true)
+            {
+                ProductPage products = new ProductPage();
+                List<ProductsView> productPages = await products.GetProductViews();
+                ProductsDgUi.ItemsSource = productPages.Select(x => x).Where(x => x.Category.ToLower().Contains(prodTextbox.Text.ToLower()));
+            }
+        }
+        private void rdnSearchByName_Checked(object sender, RoutedEventArgs e)
+        {
+            prodTextbox.IsReadOnly = false;
+            Click();
+        }
+        private void rdnCategory_Checked(object sender, RoutedEventArgs e)
+        {
+            prodTextbox.IsReadOnly = false;
+            Click();
+        }
+        private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(rdnSearchByName.IsChecked == true||rdnCategory.IsChecked == true)
+                prodTextbox.IsReadOnly = false;
+            else
+                prodTextbox.IsReadOnly = true;
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            Click();
         }
     }
 }

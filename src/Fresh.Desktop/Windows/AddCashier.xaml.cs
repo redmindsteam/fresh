@@ -36,29 +36,37 @@ namespace Fresh.Desktop.Windows
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            CashierView cashierView = new CashierView()
+            AddCashierPage addCashierPage = new AddCashierPage();
+            var resalt = await addCashierPage.IsValidInputs(txtPassword.Password, txtPassSeriya.Text, txtPhone.Text);
+            if (resalt.result)
             {
-                FullName = txtName.Text,
-                Email = txtEmail.Text,
-                Password = txtPassword.Password,
-                PhoneNumber = txtPhone.Text,
-                PassportSeria = txtPassSeriya.Text,
-            };
-            
-            CashierPage cashierPage = new CashierPage();
-            var result = await cashierPage.AddCashier(cashierView);
-            if (result)
-            {
-                CashiersPage.Check = false;
-                MessageBox.Show("Cashier succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                CashierView cashierView = new CashierView()
+                {
+                    FullName = txtName.Text,
+                    Email = txtEmail.Text,
+                    Password = txtPassword.Password,
+                    PhoneNumber = txtPhone.Text,
+                    PassportSeria = txtPassSeriya.Text,
+                };
+
+                CashierPage cashierPage = new CashierPage();
+                var result = await cashierPage.AddCashier(cashierView);
+                if (result)
+                {
+                    CashiersPage.Check = false;
+                    MessageBox.Show("Cashier succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                }
+                else
+                {
+                    CashiersPage.Check = true;
+                    MessageBox.Show($"There was wrong with adding cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+
+                }
             }
             else
             {
-                CashiersPage.Check = true;
-                MessageBox.Show("There was wrong with adding cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-
+                MessageBox.Show($"{resalt.status}", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
             }
 
         }
