@@ -22,7 +22,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Fresh.Desktop.Windows;
-
+using Fresh.Service.ViewModels.ViewDetails;
+using CG.Web.MegaApiClient;
+using System.Data.Common;
+using Fresh.Domain.Constants;
 
 namespace Fresh.Desktop.Pages
 {
@@ -38,6 +41,7 @@ namespace Fresh.Desktop.Pages
             Click();
             
         }
+        public static List<CheckDetailsView> checkDetailsView = new();
 
         private void comboBoxCashiers_Loaded(object sender, RoutedEventArgs e)
         {
@@ -45,6 +49,8 @@ namespace Fresh.Desktop.Pages
         }
         public async void Click()
         {
+            if (usersNameCombo.Text == null)
+                return;
             CheckPage check = new CheckPage();
             List<ChecksView> ChecksPages = await check.GetChecksViews();
             DirectorRegisterService directorRegisterService = new();
@@ -71,7 +77,7 @@ namespace Fresh.Desktop.Pages
             
         }
 
-        private async void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             ButtonAutomationPeer peer = new ButtonAutomationPeer(hiddenHelper);
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
@@ -85,20 +91,34 @@ namespace Fresh.Desktop.Pages
             invokeProv.Invoke();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void hiddenHelper_Click(object sender, RoutedEventArgs e)
         {
             Click();
         }
 
-        private void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
+        private async void RowDouble_Clicked(object sender, MouseButtonEventArgs e)
         {
+            ChecksView checksView = (ChecksView)ProductsDgUi.SelectedItem;
+            CheckPage checkPage = new();
+            checkDetailsView = await checkPage.GetCheckDetailsById(checksView.Id);
             ChecksDescription checksDescription = new ChecksDescription();
             checksDescription.ShowDialog();
+        }
+
+        private void btnSaveToCloud_Click(object sender, RoutedEventArgs e)
+        {
+            MegaApiClient client = new MegaApiClient();
+            client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
+            IEnumerable<INode> nodes = client.GetNodes();
+
+            INode root = nodes.Single(x => x.Type == NodeType.Root);
+            INode myFolder = client.CreateFolder($"{DateTime.Now.ToString("MM/yyyy")}", root);
+            
+            INode myFile = client.UploadFile(@"../../../../../database/fresh-market.db", myFolder);
+            Uri downloadLinkImage = client.GetDownloadLink(myFile);
+            
+            client.Logout();
+            MessageBox.Show("Added successfully!");
         }
     }
 }

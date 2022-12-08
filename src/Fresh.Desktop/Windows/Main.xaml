@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
         ResizeMode="NoResize" WindowState="Normal"
-        MouseDown="Window_MouseDowns">
+        MouseDown="Window_MouseDowns" Loaded="DefaultPage">
 
     <Border CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
         <Border.Effect>
@@ -64,7 +64,7 @@
                         <RadioButton x:Name="rdStatistics" Content="Statistics"  Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource statistics}" Click="rdStatistics_Click"/>
                         <RadioButton x:Name="rdChecks" Content="Checks" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource checks}" Click="rdChecks_Click"/>
                         <RadioButton x:Name="rdProducts" Content="Products" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource products}"  Click="rdProducts_Click"/>
-                        <RadioButton x:Name="rdConsignmentLetters" Content="Letters" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource consignment_letters}" Click="rdConsignmentLetters_Click"/>
+                        <RadioButton x:Name="rdConsignmentLetters" Content="Letters" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource consignment_letters}" Click="rdConsignmentLetters_Click" Checked="rdConsignmentLetters_Checked"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Orientation="Horizontal" Width="200" Margin="0 0 0 20">

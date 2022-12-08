@@ -40,17 +40,15 @@ namespace Fresh.Service.Services.PageServices
         {
             try
             {
-                ProductRepository productRepository = new();
-                Product product = await productRepository.GetByIdAsync(productview.Id);
+                ICategoryRepository categoryRepository = new CategoryRepository();
+                IProductRepository productRepository = new ProductRepository();
+                Product product = new Product()
                 {
-                    product.Id = productview.Id;
-                    product.Name = productview.Name;
-                    var categoryRepository = new CategoryRepository();
-                    product.CategoryId = (await categoryRepository.GetByName(productview.Category)).Id;
-                    product.Price = productview.Price;
-                    product.Value = productview.Available;
-                }
-             
+                    Name = productview.Name,
+                    CategoryId = (await categoryRepository.GetByName(productview.Category)).Id,
+                    Price = productview.Price,
+                    Value = productview.Available,
+                };
                 return await productRepository.UpdateAsync(id, product);
             }
             catch

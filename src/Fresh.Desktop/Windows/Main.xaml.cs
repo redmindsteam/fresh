@@ -2,6 +2,9 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+using CG.Web.MegaApiClient;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fresh.Desktop.Windows
 {
@@ -34,9 +37,7 @@ namespace Fresh.Desktop.Windows
         }
         private void rdConsignmentLetters_Click(object sender, RoutedEventArgs e)
         {
-            Cassa cassa = new Cassa();
-            cassa.Show();
-            //PagesNavigation.Navigate(new System.Uri("Pages/ConsignmentLettersPage.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new System.Uri("Pages/ConsignmentLettersPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -61,6 +62,26 @@ namespace Fresh.Desktop.Windows
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        private void rdConsignmentLetters_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void rdCashiers_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void SaveToCloudAutomatically()
+        {
+            
+        }
+
+        private void DefaultPage(object sender, RoutedEventArgs e)
+        {
+            PagesNavigation.Navigate(new System.Uri("Pages/DefaultPage.xaml", UriKind.RelativeOrAbsolute));
+            SaveToCloudAutomatically();
         }
     }
 }

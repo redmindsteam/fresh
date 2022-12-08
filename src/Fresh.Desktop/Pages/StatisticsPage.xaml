@@ -16,7 +16,9 @@
             <RowDefinition Height="8.2*"/>
             <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
+        
         <Grid Grid.Row="0" Background="{DynamicResource SecundaryBackgroundColor}" />
+        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.6*"/>
@@ -30,18 +32,29 @@
             <DatePicker Name="StatDataPicker" Grid.Column="3"  Width="250" Height="42" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" FontWeight="Bold" Foreground="Black" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Margin="22,4,0,0" VerticalAlignment="Top"/>
 
         </Grid>
-
         
         <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns >
 
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"  />
-                <DataGridTextColumn Header="Income" Binding="{Binding Income}" Width="*"/>
-                <DataGridTextColumn Header="Expenditure" Binding="{Binding Expenditure}" Width="*" />
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*" />
+                <DataGridTextColumn Header="Income" Binding="{Binding Income}" Width="*" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" 
+                                Value="{StaticResource clrIncome}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Expenditure" Binding="{Binding Expenditure}" Width="*" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Background" 
+                                Value="#FF577F" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
-           
-
         </DataGrid>
         
     </Grid>

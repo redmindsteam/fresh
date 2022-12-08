@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fresh.Desktop.Pages;
+using Fresh.Service.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,7 @@ namespace Fresh.Desktop.Windows
         public ChecksDescription()
         {
             InitializeComponent();
+            SetValues();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -51,6 +54,15 @@ namespace Fresh.Desktop.Windows
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+        private void SetValues()
+        {
+            var totalPayment = 0.0;
+            ProductsDgUi.ItemsSource = ChecksPage.checkDetailsView;
+            foreach (var one in ChecksPage.checkDetailsView)
+                totalPayment += one.TotalPrice;
+            txtName.Text = totalPayment.ToString();
+
         }
     }
 }

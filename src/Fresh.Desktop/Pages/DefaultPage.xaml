@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DefaultPage" Background="White">
 
-    <Grid>
-        
+    <Grid >
+        <Image Source="/Images/photo.jpg" Margin="80,48,79,70" />
     </Grid>
 </Page>

@@ -17,12 +17,13 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Background="#3AA9AD"/>
 
-        <DataGrid Grid.Row="2" MouseDoubleClick="RowDouble_Clicked" Foreground="#3AA9AD"  x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
+        <DataGrid Grid.Row="2" MouseDoubleClick="RowDouble_Clicked" Foreground="{DynamicResource TextSecundaryColor}" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged" >
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
                 <DataGridTextColumn Header="Data Time" Binding="{Binding DateTime}" Width="*"/>
                 <DataGridTextColumn Header="Cashier" Binding="{Binding Cashier}" Width="*"/>
-                <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" Width="*"/>
+                <DataGridTextColumn Header="Total Price" Binding="{Binding TotallPrice}" Width="*"/>
             </DataGrid.Columns>
 
         </DataGrid>
@@ -36,11 +37,11 @@
                 Name="datePicker"
                 SelectedDateChanged="DatePicker_SelectedDatesChanged"
                 Grid.Column="0"
-            Width="250"
+            Width="235"
                 Height="44"
             FontSize="16"
-            materialDesign:HintAssist.Hint="Pick Date"
-            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="75,0,75,6" VerticalAlignment="Bottom" />
+            materialDesign:HintAssist.Hint="Pick Date" HorizontalAlignment="Center"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  />
             <ComboBox
                 Grid.Column="1"
                   Name="usersNameCombo"
@@ -51,25 +52,7 @@
                   materialDesign:ColorZoneAssist.Mode="Inverted"
                   materialDesign:HintAssist.Hint="Select a cashier"
                   MinWidth="128"
-                    Width="250" SelectionChanged="usersNameCombo_SelectionChanged">       
-                <ComboBoxItem>
-                    Abdulaziz
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Samandar
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Sanjar
-                </ComboBoxItem>
-                <ComboBoxItem>
-                   Jaloliddin
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Shoxrux
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Zulayho
-                </ComboBoxItem>
+                    Width="250" SelectionChanged="usersNameCombo_SelectionChanged">
             </ComboBox>
         </Grid>
     </Grid>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fresh.Desktop.Windows"
         mc:Ignorable="d"
         Title="ChecksDescription" Height="600" 
-        Width="400"
+        Width="550"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" 
         ResizeMode="NoResize"
@@ -65,9 +65,10 @@
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="ProductName" Binding="{Binding ProductName}" Width="*"/>
-                        <DataGridTextColumn Header="Quantity" Binding="{Binding Email}" Width="*"/>
-                        <DataGridTextColumn Header="TotallPrice" Binding="{Binding Email}" Width="*"/>
-
+                        <DataGridTextColumn Header="PricePerUnit" Binding="{Binding PricePerUnit}" Width="*"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
+                        <DataGridTextColumn Header="TotalPrice" Binding="{Binding TotalPrice}" Width="*"/>
+                        
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
@@ -77,13 +78,23 @@
                     <ColumnDefinition Width="*"/>
 
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Style="{DynamicResource labelChecksPage}" >Total Payment</Label>
-                <TextBox Grid.Column="1" x:Name="txtName" FontSize="14" FontWeight="Medium" FontFamily="Montserrat"
-                     Background="Transparent"  Foreground="#e0f7fa" CaretBrush="#80deea" BorderBrush="#1C6758"
-                     BorderThickness="0 0 0 1"
+                <Label Grid.Column="0" FontWeight="SemiBold" Style="{DynamicResource labelChecksPage}" >Total Payment</Label>
+                <TextBox Name="txtName"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                     Grid.Column="1"
+                     FontSize="13"
+                     IsReadOnly="True"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="{DynamicResource TextPrimaryColor}"
+                     CaretBrush="#80deea"
+                     BorderBrush="{DynamicResource TextSecundaryColor}"
+                     BorderThickness="0 0 0 2"
                      Height="21"
-                     Width="200"
-                    Margin="0 4 0 0" />
+                     Width="280"
+                      />
             </Grid>
 
         </Grid>

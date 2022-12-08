@@ -221,7 +221,7 @@ namespace Fresh.Desktop.Windows
         private void txtText_Block()
         {
            
-            txt_Block.Text = price.ToString();
+            txtBlockSumm.Text = price.ToString();
         }
 
         private async void Grid_Load(object sender, RoutedEventArgs e)
@@ -485,6 +485,10 @@ namespace Fresh.Desktop.Windows
 
         private void btnCheck_Click(object sender, RoutedEventArgs e)
         {
+
+            ChecksDescription checksDescription = new ChecksDescription();
+            checksDescription.ShowDialog();
+
             string checkDescription = "";
             double pric = 0;
             foreach (var view in cassaDatas)
@@ -500,7 +504,7 @@ namespace Fresh.Desktop.Windows
             MessageBox.Show($"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}\n\n");
             price = 0;
             cassaDatas.Clear();
-            txt_Block.Text = null;
+            txtBlockSumm.Text = null;
             //Check check = new Check();
             //string checkDescription = "";
             //double price = 0;
@@ -513,6 +517,7 @@ namespace Fresh.Desktop.Windows
             //check.Date = DateTime.Now;
             //check.UserId = 1;
             //check.TotalSum = (float)price;
+
 
         }
     }

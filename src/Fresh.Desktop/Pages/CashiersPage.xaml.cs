@@ -1,8 +1,5 @@
 using Fresh.Desktop.Windows;
 using Fresh.DataAccess.Repositories;
-﻿using Fresh.Desktop.Windows;
-using Fresh.DataAccess.Repositories;
-using Fresh.Desktop.Windows;
 using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
@@ -88,6 +85,11 @@ namespace Fresh.Desktop.Pages
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            Click();
         }
     }
 }
