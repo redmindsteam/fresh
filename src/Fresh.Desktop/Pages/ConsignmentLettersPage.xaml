@@ -20,9 +20,10 @@
         <DataGrid Grid.Row="2" MouseDoubleClick="RowDouble_Clicked" Foreground="{DynamicResource TextSecundaryColor}" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged" >
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
                 <DataGridTextColumn Header="Data Time" Binding="{Binding DateTime}" Width="*"/>
                 <DataGridTextColumn Header="Cashier" Binding="{Binding Cashier}" Width="*"/>
-                <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" Width="*"/>
+                <DataGridTextColumn Header="Total Price" Binding="{Binding TotallPrice}" Width="*"/>
             </DataGrid.Columns>
 
         </DataGrid>
@@ -51,25 +52,7 @@
                   materialDesign:ColorZoneAssist.Mode="Inverted"
                   materialDesign:HintAssist.Hint="Select a cashier"
                   MinWidth="128"
-                    Width="250" SelectionChanged="usersNameCombo_SelectionChanged">       
-                <ComboBoxItem>
-                    Abdulaziz
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Samandar
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Sanjar
-                </ComboBoxItem>
-                <ComboBoxItem>
-                   Jaloliddin
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Shoxrux
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Zulayho
-                </ComboBoxItem>
+                    Width="250" SelectionChanged="usersNameCombo_SelectionChanged"> 
             </ComboBox>
         </Grid>
     </Grid>

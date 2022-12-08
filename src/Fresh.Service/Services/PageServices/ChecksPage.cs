@@ -2,6 +2,8 @@
 using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
 using Fresh.Service.ViewModels;
+using Fresh.Service.ViewModels.ViewDetails;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,7 @@ namespace Fresh.Service.Services.PageServices
                 User user = await userRepository.GetByIdAsync(check.UserId);
                 ChecksView view = new ChecksView()
                 {
+                    Id= check.Id,
                     Date=check.Date.ToString(),
                     Caisher= user.FullName,
                     Summ=check.TotalSum,
@@ -32,6 +35,12 @@ namespace Fresh.Service.Services.PageServices
 
             return views.ToList();
 
+        }
+        public async Task<List<CheckDetailsView>> GetCheckDetailsById(int id)
+        {
+            ICheckRepository repository = new CheckRepository();
+            var checks = await repository.GetByIdAsync(id);
+            return JsonConvert.DeserializeObject<List<CheckDetailsView>>(checks.CheckDescription);
         }
     }
 }

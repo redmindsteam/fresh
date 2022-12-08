@@ -28,14 +28,17 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Column="0" Foreground="#767676" FontWeight="SemiBold" Content="Search by" FontSize="12" Style="{DynamicResource labelChecksPage}"  Height="30" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-            <RadioButton x:Name="rdnSearchByName" Grid.Column="1" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Product name" Click="RBtn_Click"/>
-            <RadioButton x:Name="rdnCategory" Grid.Column="2" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Category" Click="RBtn_Click" />
-            <TextBox Grid.Column="3" Width="230"
-              materialDesign:HintAssist.Hint="Type to Search..."
+            <RadioButton x:Name="rdnSearchByName" Grid.Column="1" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Product name" Click="RBtn_Click" Checked="rdnSearchByName_Checked"/>
+            <RadioButton x:Name="rdnCategory" Grid.Column="2" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Category" Click="RBtn_Click" Checked="rdnCategory_Checked" />
+            <TextBox Grid.Column="3" PreviewMouseDown="TextBox_MouseDown" Width="230" IsReadOnly="True"
+              Name="prodTextbox"
+              materialDesign:HintAssist.Hint="Type to Search...and click Enter"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" TextChanged="txtBoxText_Changed" />     
         </Grid>
+
         <DataGrid  Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False" Style="{DynamicResource DataGridStyle1}" Foreground="{DynamicResource TextSecundaryColor}"
+
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged"  ItemsSource="{Binding SongList, UpdateSourceTrigger=PropertyChanged}"
                    RowEditEnding="GRD_RowEditEnding"
                   PreviewKeyDown="GRD_PreviewKeyDown">
@@ -52,8 +55,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="btnUpdate" 
                     Grid.Column="1"
@@ -85,14 +88,27 @@
             <Grid Grid.Column="3">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="0.7*" />
+                        <ColumnDefinition Width="0.7*" />
+                        <ColumnDefinition Width="0.7*" />
                         <ColumnDefinition Width="0.6*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" FontSize="14" Foreground="{DynamicResource TextSecundaryColor}" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                    <Label Grid.Column="0" Content="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="{DynamicResource TextSecundaryColor}" />
+                    <Button x:Name="btnRefresh" 
+                    Click="btnRefresh_Click"
+                    Grid.Column="1"
+                    Style="{DynamicResource buttonCircle}" 
+                    Height="45"
+                    Width="46" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Height="30" Width="31">
+                            <materialDesign:PackIcon  Width="35" Height="35" Kind="BackupRestore" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+                        </StackPanel>
+                    </Button>
+                    <TextBlock Grid.Column="2" FontSize="14" Foreground="{DynamicResource TextSecundaryColor}" VerticalAlignment="Center" HorizontalAlignment="Center" >
                         Add Product
                     </TextBlock>
                     <Button x:Name="btnAddProduct" 
-                    Grid.Column="1"
+                    Grid.Column="3"
                     Style="{DynamicResource buttonCircle}" 
                     Height="45"
                     Width="45" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnAddProduct_Click">

@@ -73,10 +73,6 @@
                   materialDesign:HintAssist.HintOpacity=".26"
                   IsEditable="True" HorizontalAlignment="Left"
                     Width="145" Height="26" SelectionChanged="categoryname_SelectionChanged" >
-                    <ComboBoxItem Content="Uziz qo'shing"/>
-                    <ComboBoxItem Content="Banana"/>
-                    <ComboBoxItem Content="Pear"/>
-                    <ComboBoxItem Content="Brange"/>
                 </ComboBox>
                 <Button BorderBrush="#10A19D" Background="#46C2CB"
                          Width="82"
@@ -112,7 +108,7 @@
                   materialDesign:HintAssist.HintOpacity=".26"
                   IsEditable="True" HorizontalAlignment="Left"
                 Background="Transparent"  Width="256" Height="26" SelectionChanged="ComboBox_SelectionChanged" >
-                <ComboBoxItem Content="Uziz qo'shing"/>
+                <ComboBoxItem Content="Dona"/>
                 <ComboBoxItem Content="Kg"/>
                 <ComboBoxItem Content="Litr"/>
 

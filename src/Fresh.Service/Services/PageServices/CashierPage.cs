@@ -23,9 +23,11 @@ namespace Fresh.Service.Services.PageServices
         {
             IList<CashierView> views = new List<CashierView>();
             IList<User> users = await GetAllCashiers();
+            RemovedUsers removedUsers = new RemovedUsers();
+            List<int> removedUsersIds = (await removedUsers.GetAllRemovedUsers()).Split(',').Select(int.Parse).ToList();
             foreach (User user in users)
             {
-                if (user.Id == 1)
+                if (user.Id == 1|| removedUsersIds.Contains(user.Id))
                 {
                     continue;
                 }
@@ -64,9 +66,8 @@ namespace Fresh.Service.Services.PageServices
         }
         public async Task<bool> DeleteCashier(CashierView cashierView)
         {
-            UserRepository userRepository = new UserRepository();
-            User user = await userRepository.GetByEmailAsync(cashierView.Email);
-            return await userRepository.DeleteAsync(user.Id);
+            RemovedUsers removedUsers = new RemovedUsers();
+            return await removedUsers.AddRemovedUsers(cashierView.Id);
         }
         public async Task<bool> UpdateCashier(int id,CashierView cashierView)
         {

@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Fresh.Desktop.Pages.StatisticsPage;
 
+
 namespace Fresh.Desktop.Pages
 {
     /// <summary>

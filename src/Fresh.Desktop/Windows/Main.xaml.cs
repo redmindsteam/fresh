@@ -60,5 +60,15 @@ namespace Fresh.Desktop.Windows
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
+
+        private void rdConsignmentLetters_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void rdCashiers_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

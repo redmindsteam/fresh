@@ -130,7 +130,6 @@ namespace Fresh.Service.Services.PageServices
             IList<Check> checksInTime = (await checkRepository.GetAllAsync())
              .Where(x => x.Date >= date).ToList();
             var groupedChecks = checksInTime.GroupBy(x => x.Date.Date);
-
             List<StatsView> stats = new List<StatsView>();
             foreach (var check in groupedChecks)
             {
@@ -144,7 +143,6 @@ namespace Fresh.Service.Services.PageServices
             }
             return stats;
         }
-
         private DateTime ParseExact(string datetime)
         {
             return DateTime.Parse(datetime);
