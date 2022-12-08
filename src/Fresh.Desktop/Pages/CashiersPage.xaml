@@ -41,7 +41,7 @@
                 </StackPanel>
             </Button>
         </Grid>
-        <DataGrid  Style="{DynamicResource DataGridStyle1}" Foreground="#3AA9AD"
+        <DataGrid  Style="{DynamicResource DataGridStyle1}" Foreground="{DynamicResource TextSecundaryColor}"
                    Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns>

@@ -2,6 +2,9 @@
 using AForge.Video.DirectShow;
 using Aspose.BarCode.BarCodeRecognition;
 using Fresh.Desktop.Pages;
+using Fresh.Domain.Entities;
+using Fresh.Service.Director;
+using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,9 +26,11 @@ namespace Fresh.Desktop.Windows
     /// </summary>
     public partial class Cassa : Window
     {
-        public static ObservableCollection<CassaData> cassaDatas = new ObservableCollection<CassaData>();
+        public  ObservableCollection<CassaData> cassaDatas = new ObservableCollection<CassaData>();
+        public IList<VievModelProductLetter> vievModelProductLetters = new List<VievModelProductLetter>();
         public double price { get; private set; } = 0;
         public string word { get; set; } = "";
+        public int count { get; private set; } = 0;
 
         FilterInfoCollection fil;
         public ObservableCollection<FilterInfo> VideoDevices { get; set; }
@@ -60,8 +65,12 @@ namespace Fresh.Desktop.Windows
 
         public async void DataGridRefresh()
         {
+
             cassaDataGrid.ItemsSource = cassaDatas;
             word = "";
+            count = 0;
+            txtText_Block();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -121,87 +130,102 @@ namespace Fresh.Desktop.Windows
             DataGridRefresh();
         }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private async void n1_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "1" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "1", Money = $"{double.Parse(resault.Price) * 1}" });
+            price +=  double.Parse(resault.Price) * 1;
+            txtText_Block();
             DataGridRefresh();
         }
         private async void n2_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "2" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "2", Money = $"{double.Parse(resault.Price) * 2}" });
+            price += double.Parse(resault.Price) * 2;
+            txtText_Block();
             DataGridRefresh();
         }
-
         private async void n3_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "3" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "3", Money = $"{double.Parse(resault.Price) * 3}" });
+            price += double.Parse(resault.Price) * 3;
+            txtText_Block();
             DataGridRefresh();
         }
-
         private async void n4_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "4" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "4", Money = $"{double.Parse(resault.Price) * 4}" });
+            price += double.Parse(resault.Price) * 4;
+            txtText_Block();
             DataGridRefresh();
         }
-
         private async void n5_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "5" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "5", Money = $"{double.Parse(resault.Price) * 5}" });
+            price += double.Parse(resault.Price) * 5;
+            txtText_Block();
             DataGridRefresh();
         }
-
         private async void n6_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "6" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "6", Money = $"{double.Parse(resault.Price) * 6}" });
+            price += double.Parse(resault.Price) * 6;
+            txtText_Block();
             DataGridRefresh();
         }
-
         private async void n7_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "7" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "7", Money = $"{double.Parse(resault.Price) * 7}" });
+            price += double.Parse(resault.Price) * 7;
+            txtText_Block();
             DataGridRefresh();
         }
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private async void n8_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "8" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "8", Money = $"{double.Parse(resault.Price) * 8}" });
+            price += double.Parse(resault.Price) * 8;
+            txtText_Block();
             DataGridRefresh();
         }
-
         private async void n9_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "9" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "9", Money = $"{double.Parse(resault.Price) * 9}" });
+            price += double.Parse(resault.Price) * 9;
+            txtText_Block();
             DataGridRefresh();
         }
-
         private async void n0_click(object sender, RoutedEventArgs e)
         {
             var resault = (CassaData)cassaDataGrid.SelectedItem;
             cassaDatas.Remove(resault);
-            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = resault.Thenumber, Money = "0" });
+            cassaDatas.Add(new CassaData { Name = resault.Name, KgL = resault.KgL, Price = resault.Price, Thenumber = "0", Money = "0" });
+            txtText_Block();
             DataGridRefresh();
+        }
+
+        private void txtText_Block()
+        {
+           
+            txt_Block.Text = price.ToString();
         }
 
         private async void Grid_Load(object sender, RoutedEventArgs e)
@@ -246,13 +270,16 @@ namespace Fresh.Desktop.Windows
                             {
                                 s += c;
                             }
-                            if (count == 0)
+                            if (count == 0 && s.Length > 1)
                             {
                                 word = s;
                                 count++;
                             };
-                          
-                            return;
+                            if (count == 1)
+                            {
+                               
+                                return;
+                            }
                         }
                     }
                 }
@@ -316,10 +343,48 @@ namespace Fresh.Desktop.Windows
             {
                 _videoSource.SignalToStop();
                 _videoSource.NewFrame -= new NewFrameEventHandler(video_NewFrame);
-                MessageBox.Show(word);
-                cassaDatas.Add(new CassaData { Name = word, KgL = "Dona", Price = "20 000", Thenumber = "1", Money = "20 000" });
-                DataGridRefresh();
+                Product();
+                
             }
+        }
+
+        public async void Product()
+        {
+            DirectorProductService directorProductService = new DirectorProductService();
+            var resault = await directorProductService.GetAllAsync();
+            int counterProduct = 0;
+            
+            foreach (var product in resault)
+            {
+                if (product.BarcodeName != word)
+                {
+                    counterProduct += 1;
+                }
+            }
+            if (counterProduct == resault.Count - 1)
+            {
+                foreach (var product in resault)
+                {
+                   
+                    if (product.BarcodeName == word)
+                    {
+                        cassaDatas.Add(new CassaData { Name = product.Name, KgL = product.Unit, Price = product.Price.ToString(), Thenumber = "1", Money = $"{product.Price * 1}" });
+                        price += product.Price * 1;
+                        DataGridRefresh();
+                        return;
+                    }
+                    else
+                    {
+                      
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(word);
+                MessageBox.Show("Ro'yhatdan o'tmagan ");
+            }
+            DataGridRefresh();
         }
 
 
@@ -352,7 +417,20 @@ namespace Fresh.Desktop.Windows
 
         private void btnDelet_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = (CassaData)cassaDataGrid.SelectedItem;
+            
+            
+            foreach (var cassaData in cassaDatas)
+            {
+                if (item.Name == cassaData.Name)
+                {
+                    price -= double.Parse(cassaData.Money);
+                }
+            }
+            
+            cassaDatas.Remove(item);
+            txtText_Block();
+            DataGridRefresh();
         }
 
         private void Delete_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -364,6 +442,39 @@ namespace Fresh.Desktop.Windows
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        private void btnCheck_Click(object sender, RoutedEventArgs e)
+        {
+            string checkDescription = "";
+            double pric = 0;
+            foreach (var view in vievModelProductLetters)
+            {
+                checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
+                pric += view.TotalPrice;
+            }
+            Check check = new Check();
+            check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";
+            check.Date = DateTime.Now;
+            check.UserId = 1;
+            check.TotalSum = (float)price;
+            MessageBox.Show($"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}\n\n");
+            price = 0;
+            cassaDatas.Clear();
+            txt_Block.Text = null;
+            //Check check = new Check();
+            //string checkDescription = "";
+            //double price = 0;
+            //foreach (var view in vievModelProductLetters)
+            //{
+            //    checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
+            //    price += view.TotalPrice;
+            //}
+            //check.CheckDescription = $"{check.CheckDescription}\n\n\n{check.Id}\n\n\n{check.Date}";
+            //check.Date = DateTime.Now;
+            //check.UserId = 1;
+            //check.TotalSum = (float)price;
+
         }
     }
 }

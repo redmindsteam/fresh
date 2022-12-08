@@ -9,31 +9,39 @@
         
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent"
-        Title="MainWindow" Height="450" Width="700">
+        Title="MainWindow" Height="550" Width="700">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Image Source="/Images/Снимок экрана_20221129_003757.png"
                Grid.Column="1"
                Panel.ZIndex="1"
                MouseUp="Image_MouseUp"
                Style="{StaticResource imgClose}" Height="15" />
 
-        
+
 
         <Border Grid.Column="0" CornerRadius="5 0 0 5">
+
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#3AA9AD" Offset="0"/>
                     <GradientStop Color="#3AADA1" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            
-            <Grid Margin="0,0,0,0">
+
+            <Grid >
+                <TextBlock Text="Sing in "
+                           x:Name="SingIn"
+                           Margin="24,27,2,456"
+                           FontSize="35"
+                           Visibility="Visible"
+                           Style="{StaticResource titleText}"
+                           Foreground="White" RenderTransformOrigin="0.475,0.922" />
                 <Canvas>
                     <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6"/>
                     <Polygon Points="90,400 200,360 180,448" Fill="#4EB1B6" HorizontalAlignment="Left" Height="447" Canvas.Top="2" VerticalAlignment="Center" Width="220"/>
@@ -47,7 +55,7 @@
                     <TextBlock Text="Fresh Market" Style="{StaticResource normalText}" 
                                Opacity="0.8" Height="57"/>
                 </StackPanel>
-                <Button x:Name="EmailButton" Visibility="Hidden" Content="Recover!" Style="{StaticResource button}" Margin="0,314,0,0" RenderTransformOrigin="0.681,-0.775" HorizontalAlignment="Center" VerticalAlignment="Top" Width="152" Click="Button_Click_1" Height="45"  >
+                <Button x:Name="EmailButton" Visibility="Hidden" Content="Recover!" Style="{StaticResource button}" Margin="0,403,0,0" RenderTransformOrigin="0.681,-0.775" HorizontalAlignment="Center" VerticalAlignment="Top" Width="162" Click="Button_Click_1" Height="44"  >
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="1"/>
@@ -62,7 +70,7 @@
                     Foreground="#E8C8F6"
                     FontSize="14"
                     Visibility="Hidden" x:Name="Errorlists" 
-                    Width="143" Margin="78,353,59,71"/>
+                    Width="143" Margin="78,452,59,67"/>
             </Grid>
         </Border>
         <Border Background="#ffffff" Grid.Column="1" 
@@ -75,11 +83,7 @@
             <StackPanel VerticalAlignment="Center" 
                         Visibility="Visible" x:Name="Border1">
 
-                <TextBlock Text="Sing in to App "
-                           Margin="0 0 0 100"
-                           Style="{StaticResource titleText}"
-                           Foreground="#3AB198" Height="50" />
-
+                <Image Source="/Images/photo.jpg" Height="220" Margin="18 0 0 15" />
 
                 <Border BorderThickness="1"
                         BorderBrush="#acb0af"
@@ -105,7 +109,7 @@
                         Margin="55 5 " 
                         x:Name="PasswordBorder"
                         Visibility="Visible">
-                    
+
 
                     <Grid Margin="7 9">
 
@@ -122,7 +126,7 @@
                 <Label
                     Content="Error! Email or Password" 
                     Foreground="Red"
-                    Visibility="Hidden" x:Name="Errorlist" Width="143" Height="25"/>
+                    Visibility="Hidden" x:Name="Errorlist" Width="144" Height="25"/>
                 <Button Content="Sign in"
                         Click="Button_Click" 
                         Style="{StaticResource mainbutton}"
@@ -134,38 +138,40 @@
         <Border Grid.Column="1" 
                 RenderTransformOrigin="0.602,0.578" 
                 Visibility="Hidden" x:Name="EmailSMS">
-            
+
             <Button Content="Save changes"
                         Click="Button_email" 
+                    FontSize="18"
                         Style="{StaticResource mainbutton}"
-                        Visibility="Visible" Margin="125,323,95,79" />
+                        Visibility="Hidden" Margin="111,385,109,102" />
         </Border>
         <Label Grid.Column="1"
                Content="1.Enter Confirmation code:" 
-               Margin="63,56,199,371" FontWeight="Bold" 
+               Margin="65,68,169,460" FontWeight="Bold" 
                Visibility="Hidden" x:Name="LableCreate"/>
+
         <Label Grid.Column="1"
                Content="Error ! No More Than 6-digits" 
-               Margin="132,120,104,303"
+               Margin="132,138,104,386"
                x:Name="error"
                Visibility="Hidden" Foreground="Red"/>
 
         <Label Grid.Column="1"
                Content="2.Create New Password:" 
-               Margin="63,160,199,267" FontWeight="Bold" 
+               Margin="66,162,196,367" FontWeight="Bold" 
                Visibility="Hidden"
                x:Name="CreateNew"/>
 
         <Label Grid.Column="1"
                Content="3.Verify new Password:" 
-               Margin="63,229,199,198" FontWeight="Bold" 
+               Margin="69,251,193,274" FontWeight="Bold" 
                Visibility="Hidden"
                x:Name="CreateNew2"/>
 
         <Border BorderThickness="1"
                         BorderBrush="#acb0af"
                         CornerRadius="8"
-                        Margin="70,84,65,326"
+                        Margin="68,96,67,410"
                         Grid.Column="1" Visibility="Hidden" x:Name="Cack_Password">
 
             <Grid Margin="7 9">
@@ -174,7 +180,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="/Images/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30" Margin="-4,-5,4,-5" />
+                <Image Source="/Images/32e1523d02c38fd6ed1e705005d816765e02077bc73c2d767080cbc0097a7339.jpg" Height="30"  />
 
                 <TextBlock x:Name="textChack" Text="Create:" MouseDown="textChack_MouseDown" Style="{StaticResource textHint}"  />
                 <TextBox x:Name="txtChack"  TextChanged="txtChack_TextChanged" Style="{StaticResource TextBox}" />
@@ -184,7 +190,7 @@
         <Border BorderThickness="1"
                         BorderBrush="#acb0af"
                         CornerRadius="8"
-                        Margin="70,187,60,221" 
+                        Margin="70,191,60,310" 
                         x:Name="UpdatePass"
                         Visibility="Hidden"
                         Grid.Column="1">
@@ -205,7 +211,7 @@
         <Border BorderThickness="1"
                         BorderBrush="#acb0af"
                         CornerRadius="8"
-                        Margin="70,256,60,152" 
+                        Margin="70,280,60,220" 
                         x:Name="UpdatePass2"
                         Visibility="Hidden"
                         Grid.Column="1">

@@ -107,6 +107,7 @@ namespace Fresh.Desktop
             DirectorRegisterService directorRegisterService = new();
             _rand = await directorRegisterService.ConfirmationProvider(txtEmail.Text);
             textChack.Text = $"Code sent to {txtEmail.Text}";
+            SingIn.Visibility = Visibility.Hidden;
             Border1.Visibility = Visibility.Hidden;
             EmailSMS.Visibility = Visibility.Visible;
             LableCreate.Visibility=Visibility.Visible;
