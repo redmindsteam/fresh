@@ -129,15 +129,13 @@ namespace Fresh.Desktop.Pages
             StatisticPage statisticPage = new StatisticPage();
             var stats = await statisticPage.GetByCurrentDate(status, datetime);
             List<StatsView> statsViews = new List<StatsView>();
-            foreach (var st in stats)
-            {
-                statsViews.Add(st.Value);
-            }
-            if (statsViews.Count == 0)
+            if (stats.Count == 0)
             {
                 MessageBox.Show("There aren't any data,Try to select another DateTime", "Lack of data", MessageBoxButton.OK, MessageBoxImage.Hand);
+                return;
             }
-                
+            else
+                foreach (var st in stats) statsViews.Add(st.Value);
             if(status == "Yearly")
                 ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x => int.Parse(x.Date));
             else
