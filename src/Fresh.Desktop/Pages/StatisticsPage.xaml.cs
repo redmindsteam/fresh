@@ -17,7 +17,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Fresh.Desktop.Windows.Cassa;
 
 namespace Fresh.Desktop.Pages
 {

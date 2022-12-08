@@ -89,5 +89,10 @@ namespace Fresh.Desktop.Pages
         {
 
         }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            Click();
+        }
     }
 }
