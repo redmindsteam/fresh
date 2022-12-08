@@ -1,0 +1,172 @@
+﻿<Window x:Class="Fresh.Desktop.Windows.AddProducts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fresh.Desktop.Windows"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="AddProducts" 
+        Height="500" 
+        Width="350"
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+         MouseDown="Window_MouseDowns"
+        >
+
+    <Window.Resources >
+        <Style TargetType="TextBox" >
+            <Setter Property="Margin" Value="10"/>
+
+        </Style>
+    </Window.Resources>
+    <Border 
+        CornerRadius="20" Background="#3AADA1"
+        BorderThickness="3" Opacity="100" Margin="20" >
+        <Border.Effect>
+            <DropShadowEffect Direction="-75" ShadowDepth="2" Opacity="1"
+                              BlurRadius="30" Color="Cyan"/>
+        </Border.Effect>
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{StaticResource WinColor1}" Offset="0.1"/>
+                <GradientStop Color="{StaticResource WinColor2}" Offset="0.95"/>
+                <GradientStop Color="{StaticResource WinColor3}" Offset="0.7"/>
+
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="432">
+
+            <TextBlock Text="Product Name"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0"
+                       Width="259"/>
+            <TextBox
+                x:Name="ProductName"
+                FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                   Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0" TextChanged="ProductName_TextChanged" />
+
+            <TextBlock Text="Category"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <DockPanel>
+                <ComboBox Margin="10 0 0 0" 
+                    Name="categoryname"
+                   BorderBrush="White"
+                      FontSize="12"
+                  materialDesign:HintAssist.Hint=" Category"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  IsEditable="True" HorizontalAlignment="Left"
+                    Width="145" Height="26" SelectionChanged="categoryname_SelectionChanged" >
+                    <ComboBoxItem Content="Uziz qo'shing"/>
+                    <ComboBoxItem Content="Banana"/>
+                    <ComboBoxItem Content="Pear"/>
+                    <ComboBoxItem Content="Brange"/>
+                </ComboBox>
+                <Button BorderBrush="#10A19D" Background="#46C2CB"
+                         Width="82"
+                        Margin="22 0 0 0" Content="Add Catigory" FontSize="10" Click="Button_Click_2" Height="21" />
+
+            </DockPanel>
+
+            <TextBlock Text="Price"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <TextBox
+                     x:Name="Price"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     />
+            <TextBlock Text="Unit"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <ComboBox Margin="10 0 0 0 "
+                 BorderBrush="White"
+                Name="Unit"
+                 materialDesign:HintAssist.Hint=" Unit"
+                  materialDesign:HintAssist.HintOpacity=".26"
+                  IsEditable="True" HorizontalAlignment="Left"
+                Background="Transparent"  Width="256" Height="26" SelectionChanged="ComboBox_SelectionChanged" >
+                <ComboBoxItem Content="Uziz qo'shing"/>
+                <ComboBoxItem Content="Kg"/>
+                <ComboBoxItem Content="Litr"/>
+
+            </ComboBox>
+
+            <TextBlock Text="Bar Code"
+                       Foreground="White" FontSize="12"
+                       FontWeight="Medium"
+                       Margin="0 13 0 0" Width="259"/>
+            <TextBox
+                x:Name="BarCode"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="#e0f7fa"
+                     CaretBrush="#80deea"
+                     BorderBrush="White"
+                     BorderThickness="0 0 0 1"
+                     Height="21"
+                     Width="260"
+                     Margin="0 4 0 0" />
+            <DatePicker
+                Name="Productdate"
+                Grid.Column="0"
+            Width="256"
+                Height="44"
+            FontSize="16"
+               BorderBrush="White"
+            materialDesign:HintAssist.Hint="Production date"
+            
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+            <DatePicker
+                Name="Expiredate"
+                Grid.Column="0"
+            Width="256"
+                Height="44"
+            FontSize="16"
+               BorderBrush="White"
+            materialDesign:HintAssist.Hint="Expire date"
+            
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+
+            <DockPanel  Margin="10 15 0 0">
+                <Button BorderBrush="#10A19D" Background="#46C2CB" 
+                         Width="113" Margin="5" Height="25" Content="Save" Click="Button_Click_1"/>
+
+                <Button BorderBrush="#10A19D" Background="#46C2CB" 
+                         Width="113" Height="25" Margin="5" Content="Cancel" Click="Button_Click" />
+            </DockPanel>
+
+        </StackPanel>
+    </Border>
+
+</Window>

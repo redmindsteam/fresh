@@ -1,0 +1,49 @@
+﻿<Page x:Class="Fresh.Desktop.Pages.StatisticsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Fresh.Desktop.Pages"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StatisticsPage" Background="White">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="1.1*" />
+            <RowDefinition Height="8.2*"/>
+            <RowDefinition Height="0.4*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{DynamicResource SecundaryBackgroundColor}" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton Grid.Column="0" Name="daily_radio" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="daily_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click"/>
+            <RadioButton Grid.Column="1" Name="monthly_radio" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="monthly_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click" />
+            <RadioButton Grid.Column="2" Name="yearly_radio" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="yearly_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click" />
+            <DatePicker Name="StatDataPicker" Grid.Column="3"  Width="250" Height="42" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" FontWeight="Bold" Foreground="Black" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Margin="22,4,0,0" VerticalAlignment="Top"/>
+
+        </Grid>
+
+        
+        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
+                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
+            <DataGrid.Columns >
+
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"  />
+                <DataGridTextColumn Header="Income" Binding="{Binding Income}" Width="*"/>
+                <DataGridTextColumn Header="Expenditure" Binding="{Binding Expenditure}" Width="*" />
+            </DataGrid.Columns>
+           
+
+        </DataGrid>
+        
+    </Grid>
+
+</Page>
