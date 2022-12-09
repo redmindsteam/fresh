@@ -132,15 +132,20 @@ namespace Fresh.Desktop.Pages
             List<StatsView> statsViews = new List<StatsView>();
             if (stats.Count == 0)
             {
-                MessageBox.Show("There aren't any data,Try to select another DateTime", "Lack of data", MessageBoxButton.OK, MessageBoxImage.Hand);
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
                 return;
             }
-            else
+            else 
+            {
                 foreach (var st in stats) statsViews.Add(st.Value);
-            if(status == "Yearly")
-                ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x => int.Parse(x.Date));
-            else
-                ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x=>x.DateToOrder);
+                ProductsDgUi.Visibility = Visibility.Visible;
+                lblInfo.Visibility = Visibility.Hidden;
+                if (status == "Yearly")
+                    ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x => int.Parse(x.Date));
+                else
+                    ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x => x.DateToOrder);
+            }
         }
         private void datePickerDepends()
         {
