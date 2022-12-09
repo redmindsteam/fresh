@@ -1,24 +1,12 @@
-﻿using Fresh.Domain.Entities;
-using Fresh.Service.Services.PageServices;
+﻿using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static Fresh.Desktop.Pages.StatisticsPage;
 
 
 namespace Fresh.Desktop.Pages
@@ -87,7 +75,7 @@ namespace Fresh.Desktop.Pages
                                 ResetRBPrevStates("yearly_radio");
                             }
                             break;
-                        
+
                         default:
                             break;
                     }
@@ -125,7 +113,7 @@ namespace Fresh.Desktop.Pages
         {
             datePickerDepends();
         }
-        private async void SetDefaults(string datetime,string status)
+        private async void SetDefaults(string datetime, string status)
         {
             StatisticPage statisticPage = new StatisticPage();
             var stats = await statisticPage.GetByCurrentDate(status, datetime);

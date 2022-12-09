@@ -30,7 +30,7 @@ namespace Fresh.Service.Director
                 var resault = await directorCheckService.GetAllAsync(skip, take);
                 if (resault != null)
                 {
-                    return resault;    
+                    return resault;
                 }
                 return null;
             }

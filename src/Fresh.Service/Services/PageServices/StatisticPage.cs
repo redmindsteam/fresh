@@ -1,19 +1,13 @@
-﻿using Fresh.DataAccess.Interfaces.Repositories;
-using Fresh.DataAccess.Repositories;
+﻿using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
 using Fresh.Service.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fresh.Service.Services.PageServices
 {
     public class StatisticPage
     {
-        public async Task<Dictionary<string, StatsView>> GetByCurrentDate(string status,string dateTime)
+        public async Task<Dictionary<string, StatsView>> GetByCurrentDate(string status, string dateTime)
         {
             var expanditures = await GetExpanditureByDate(ParseExact(dateTime));
             var incomes = await GetIncomesBydate(dateTime);
@@ -29,7 +23,7 @@ namespace Fresh.Service.Services.PageServices
                         stats.Add(key, new StatsView());
                         stats[key].Date = key;
                     }
-                    if(stats.ContainsKey(key))
+                    if (stats.ContainsKey(key))
                         stats[key].Expenditure += exp.Item2;
                 }
                 foreach (var inc in incomes)
@@ -40,10 +34,10 @@ namespace Fresh.Service.Services.PageServices
                         stats.Add(key, new StatsView());
                         stats[key].Date = key;
                     }
-                        
+
                     if (stats.ContainsKey(key))
                         stats[key].Income += inc.Income;
-                        
+
                 }
             }
             else if (status == "Monthly")
@@ -139,7 +133,7 @@ namespace Fresh.Service.Services.PageServices
                     Date = thisDay[0].Date.ToString(),
                     Income
                     = thisDay.Sum(x => x.TotalSum)
-                }) ;
+                });
             }
             return stats;
         }

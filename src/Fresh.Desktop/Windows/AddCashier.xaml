@@ -118,7 +118,7 @@
                      BorderThickness="0 0 0 1"
                      Height="21"
                      Width="260"
-                     Margin="0 4 0 0" TextChanged="txtPassSeriya_TextChanged" />
+                     Margin="0 4 0 0" />
 
             <TextBlock Text="Phone Number"
                        Foreground="White" FontSize="12"
@@ -136,7 +136,7 @@
                      BorderThickness="0 0 0 1"
                      Height="21"
                      Width="260"
-                     Margin="0 4 0 0" TextChanged="txtPhone_TextChanged" />
+                     Margin="0 4 0 0" />
             
             <DockPanel  Margin="0 25 0 0">
                 <Button BorderBrush="#00838f" Background="#0097a7" Click="SaveButton_Click" Width="113" Margin="5" Height="25" Content="Save"/>
