@@ -65,10 +65,10 @@ namespace Fresh.Desktop.Pages
                 ProductPage products1 = new ProductPage();
                 List<ProductsView> productPages = await products1.GetProductViews();
                 ProductsDgUi.ItemsSource = productPages;
-                MessageBox.Show("Cashier successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Product successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("There was wrong with delete product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
@@ -91,7 +91,7 @@ namespace Fresh.Desktop.Pages
                 MessageBox.Show("Please select row", "Error", MessageBoxButton.OK, MessageBoxImage.Hand); return;
             }
             if (await productPage.UpdateProduct(product.Id, product))
-                MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Product successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("There was wrong with update product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
