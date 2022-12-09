@@ -5,6 +5,7 @@ using Fresh.Service.Tools;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,11 @@ namespace Fresh.Desktop.Windows
         //was Abdulaziz and Sanjar's work
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (NullCaseStoper())
+            {
+                MessageBox.Show("All fields must be filled","Exclaim",MessageBoxButton.OK, MessageBoxImage.Hand);
+                return;
+            }
             AddCashierPage addCashierPage = new AddCashierPage();
             var resalt = await addCashierPage.IsValidInputs(txtEmail.Text,txtPassword.Password, txtPassSeriya.Text, txtPhone.Text);
             if (resalt.result)
@@ -96,6 +102,13 @@ namespace Fresh.Desktop.Windows
         private void txtPassSeriya_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+        private bool NullCaseStoper()
+        {
+            if(txtName.Text.Length == 0||txtEmail.Text.Length == 0||txtPassword.Password.Length == 0
+                ||txtPassSeriya.Text.Length == 0||txtPhone.Text.Length == 0)
+                return true;
+            return false;
         }
     }
 }

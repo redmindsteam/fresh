@@ -118,20 +118,24 @@ namespace Fresh.Desktop.Pages
             checksDescription.ShowDialog();
         }
 
-        private void btnSaveToCloud_Click(object sender, RoutedEventArgs e)
+        private async void btnSaveToCloud_Click(object sender, RoutedEventArgs e)
         {
-            MegaApiClient client = new MegaApiClient();
-            client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
-            IEnumerable<INode> nodes = client.GetNodes();
+            await Task.Run(() =>
+            {
+                MegaApiClient client = new MegaApiClient();
+                client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
+                IEnumerable<INode> nodes = client.GetNodes();
 
-            INode root = nodes.Single(x => x.Type == NodeType.Root);
-            INode myFolder = client.CreateFolder($"{DateTime.Now.ToString("MM/yyyy")}", root);
+                INode root = nodes.Single(x => x.Type == NodeType.Root);
+                INode myFolder = client.CreateFolder($"{DateTime.Now.ToString("MM/yyyy")}", root);
+
+                INode myFile = client.UploadFile(@"../../../../../database/fresh-market.db", myFolder);
+                Uri downloadLinkImage = client.GetDownloadLink(myFile);
+
+                client.Logout();
+                MessageBox.Show("Data saved to cloud successfully!");
+            });
             
-            INode myFile = client.UploadFile(@"../../../../../database/fresh-market.db", myFolder);
-            Uri downloadLinkImage = client.GetDownloadLink(myFile);
-            
-            client.Logout();
-            MessageBox.Show("Added successfully!");
         }
     }
 }
