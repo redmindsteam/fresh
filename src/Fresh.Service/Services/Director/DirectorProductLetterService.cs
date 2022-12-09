@@ -40,7 +40,7 @@ namespace Fresh.Service.Director
             {
                 var resault = await productLetterRepository.GetAllAsync();
                 if (resault != null)
-                { 
+                {
                     return resault;
                 }
                 return null;

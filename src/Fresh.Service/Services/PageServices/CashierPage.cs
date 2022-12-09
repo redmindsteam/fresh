@@ -3,11 +3,6 @@ using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
 using Fresh.Service.Security;
 using Fresh.Service.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fresh.Service.Services.PageServices
 {
@@ -19,7 +14,7 @@ namespace Fresh.Service.Services.PageServices
             IList<User> users = await userRepository.GetAllAsync();
             return users;
         }
-        public async  Task<List<CashierView>> GetCashierViews()
+        public async Task<List<CashierView>> GetCashierViews()
         {
             IList<CashierView> views = new List<CashierView>();
             IList<User> users = await GetAllCashiers();
@@ -27,7 +22,7 @@ namespace Fresh.Service.Services.PageServices
             List<int> removedUsersIds = (await removedUsers.GetAllRemovedUsers()).Split(',').Select(int.Parse).ToList();
             foreach (User user in users)
             {
-                if (user.Id == 1|| removedUsersIds.Contains(user.Id))
+                if (user.Id == 1 || removedUsersIds.Contains(user.Id))
                 {
                     continue;
                 }
@@ -45,7 +40,7 @@ namespace Fresh.Service.Services.PageServices
                 }
             }
             return views.ToList();
-            
+
         }
         public async Task<bool> AddCashier(CashierView cashierView)
         {
@@ -54,12 +49,12 @@ namespace Fresh.Service.Services.PageServices
             User user = new User()
             {
                 FullName = cashierView.FullName,
-                Email=cashierView.Email,
-                PasswordHash=passwordsalt.PasswordHash,
-                Salt=passwordsalt.Salt,
-                PhoneNumber=cashierView.PhoneNumber,
-                PassportSeria=cashierView.PassportSeria,
-                IsAdmin=0,
+                Email = cashierView.Email,
+                PasswordHash = passwordsalt.PasswordHash,
+                Salt = passwordsalt.Salt,
+                PhoneNumber = cashierView.PhoneNumber,
+                PassportSeria = cashierView.PassportSeria,
+                IsAdmin = 0,
             };
             UserRepository userRepository = new UserRepository();
             return await userRepository.CreateAsync(user);
@@ -69,14 +64,20 @@ namespace Fresh.Service.Services.PageServices
             RemovedUsers removedUsers = new RemovedUsers();
             return await removedUsers.AddRemovedUsers(cashierView.Id);
         }
-        public async Task<bool> UpdateCashier(int id,CashierView cashierView)
+        public async Task<bool> UpdateCashier(int id, CashierView cashierView)
         {
             UserRepository userRepository = new UserRepository();
             try
             {
-                User user = new User() { Email = cashierView.Email
-                    ,FullName = cashierView.FullName,PassportSeria = cashierView.PassportSeria
-                    ,PhoneNumber = cashierView.PhoneNumber};
+                User user = new User()
+                {
+                    Email = cashierView.Email
+                    ,
+                    FullName = cashierView.FullName,
+                    PassportSeria = cashierView.PassportSeria
+                    ,
+                    PhoneNumber = cashierView.PhoneNumber
+                };
                 return await userRepository.UpdateAsync(id, user);
             }
             catch
