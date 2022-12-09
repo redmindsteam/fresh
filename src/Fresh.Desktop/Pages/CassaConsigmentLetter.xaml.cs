@@ -114,5 +114,15 @@ namespace Fresh.Desktop.Pages
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

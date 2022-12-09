@@ -129,5 +129,11 @@ namespace Fresh.Desktop.Windows
         {
 
         }
+
+        private void Price_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(Price.Text, @"^*[0-9\.]+$") && Price.Text.Length > 0)
+                Price.Text = Price.Text.Remove(Price.Text.Length - 1);
+        }
     }
 }

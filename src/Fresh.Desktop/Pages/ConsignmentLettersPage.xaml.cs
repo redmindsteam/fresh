@@ -1,4 +1,5 @@
 ﻿using Fresh.Desktop.Windows;
+using Fresh.Domain.Entities;
 using Fresh.Service.Director;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
@@ -42,17 +43,22 @@ namespace Fresh.Desktop.Pages
         }
         private async void SetValues()
         {
-            if (usersNameCombo.Text == null)
-                return;
             Service.Services.PageServices.ConsignmentLettersPage consignmentLettersPage = new();
             var result = await consignmentLettersPage.GetAllCL();
             DirectorRegisterService directorRegisterService = new();
             var users = await directorRegisterService.GetAllAsync();
+            if (usersNameCombo.Text == null)
+            {
+                ProductsDgUi.ItemsSource = (await consignmentLettersPage.GetAllCL()).OrderByDescending(x => x.DateTime);
+                return;
+            }
+            var view = new List<string>();
             foreach (var user in users)
             {
                 if (user.IsAdmin == 0)
-                    usersNameCombo.Items.Add(user.FullName);
+                    view.Add(user.FullName);
             }
+            usersNameCombo.ItemsSource = view;
             if (usersNameCombo.Text.Length == 0 && datePicker.Text.Length > 0)
             {
                 var dateTime = DateTime.Parse(datePicker.Text);
