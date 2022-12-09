@@ -57,11 +57,8 @@ namespace Fresh.Desktop.Windows
         }
         private void SetValues()
         {
-            var totalPayment = 0.0;
             ProductsDgUi.ItemsSource = ChecksPage.checkDetailsView;
-            foreach (var one in ChecksPage.checkDetailsView)
-                totalPayment += one.TotalPrice;
-            txtName.Text = totalPayment.ToString();
+            txtName.Text = ChecksPage.checkDetailsView.Sum(x=>x.TotalPrice).ToString();
 
         }
     }

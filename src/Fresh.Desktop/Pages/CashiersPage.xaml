@@ -54,7 +54,7 @@
                 <DataGridTextColumn Header="Passport seria" Binding="{Binding PassportSeria}" Width="0.8*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Name="lblInfo" Visibility="Hidden" Content="Label for Info"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
+        <Label Name="lblInfo" Visibility="Hidden" Content="There are any data"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
         <!-- The data grid and the hidden label-->
 
         <Grid Grid.Row="3" Grid.RowSpan="2" >

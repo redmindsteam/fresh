@@ -1,6 +1,7 @@
 ﻿using Fresh.Desktop.Pages;
 using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
+using Fresh.Service.Tools;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -33,11 +34,11 @@ namespace Fresh.Desktop.Windows
             this.Close();
             CashiersPage.Check = false;
         }
-
+        //was Abdulaziz and Sanjar's work
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             AddCashierPage addCashierPage = new AddCashierPage();
-            var resalt = await addCashierPage.IsValidInputs(txtPassword.Password, txtPassSeriya.Text, txtPhone.Text);
+            var resalt = await addCashierPage.IsValidInputs(txtEmail.Text,txtPassword.Password, txtPassSeriya.Text, txtPhone.Text);
             if (resalt.result)
             {
                 CashierView cashierView = new CashierView()
@@ -45,7 +46,7 @@ namespace Fresh.Desktop.Windows
                     FullName = txtName.Text,
                     Email = txtEmail.Text,
                     Password = txtPassword.Password,
-                    PhoneNumber = txtPhone.Text,
+                    PhoneNumber = (await ToolBox.IsPhoneNumber(txtPhone.Text)).number,
                     PassportSeria = txtPassSeriya.Text,
                 };
 
@@ -60,7 +61,7 @@ namespace Fresh.Desktop.Windows
                 else
                 {
                     CashiersPage.Check = true;
-                    MessageBox.Show($"There was wrong with adding cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    MessageBox.Show($"Some infos are the same with already existed user,Please check again", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
 
                 }
             }
@@ -83,6 +84,16 @@ namespace Fresh.Desktop.Windows
         }
 
         private void txtUser_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtPassSeriya_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
