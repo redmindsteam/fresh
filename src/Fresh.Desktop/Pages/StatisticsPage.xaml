@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0" Background="{DynamicResource SecundaryBackgroundColor}" />
-        
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.6*"/>
@@ -26,11 +26,11 @@
                 <ColumnDefinition Width="0.6*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <RadioButton Grid.Column="0" Name="daily_radio" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="daily_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click"/>
-            <RadioButton Grid.Column="1" Name="monthly_radio" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="monthly_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click" />
-            <RadioButton Grid.Column="2" Name="yearly_radio" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="yearly_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click" />
-            <DatePicker Name="StatDataPicker" Grid.Column="3"  Width="250" Height="42" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" FontWeight="Bold" Foreground="Black" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Margin="22,4,0,0" VerticalAlignment="Top"/>
-
+            <RadioButton Grid.Column="0" Unchecked="daily_radio_Unchecked" Name="daily_radio" Content="Daily" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="daily_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click"/>
+            <RadioButton Grid.Column="1" Unchecked="monthly_radio_Unchecked" Name="monthly_radio" Content="Monthly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="monthly_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click" />
+            <RadioButton Grid.Column="2" Unchecked="yearly_radio_Unchecked" Name="yearly_radio" Content="Yearly" Style="{DynamicResource StatisticsRadioButtonStyle}" Checked="yearly_radio_Checked" FontWeight="Bold" Foreground="Black" Click="RBtn_Click" />
+            <DatePicker Name="StatDataPicker" SelectedDateChanged="statDataPicker_Changed" Text="Please pick date" IsEnabled="False" Grid.Column="3"  Width="250" Height="42" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" FontWeight="Bold" Foreground="Black" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Margin="22,4,0,0" VerticalAlignment="Top"/>
+            
         </Grid>
         <!-- The data grid and the hidden label-->
         <DataGrid Visibility="Visible" Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
@@ -56,7 +56,7 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Name="lblInfo" Visibility="Hidden" Content="Label for Info"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
+        <Label Name="lblInfo" Visibility="Hidden" Content="There aren't any data for this date and time"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
         <!-- The data grid and the hidden label-->
     </Grid>
 </Page>
