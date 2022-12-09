@@ -21,6 +21,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            
             <!-- Start: GridColum Left-->
             <Border CornerRadius="8 0 0 8" Background="{DynamicResource SecundaryBackgroundColor}">
                 <Grid x:Name="gridMenu" Width="60">

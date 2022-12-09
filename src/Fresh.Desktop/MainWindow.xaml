@@ -143,7 +143,7 @@
                         Click="Button_email" 
                     FontSize="18"
                         Style="{StaticResource mainbutton}"
-                        Visibility="Hidden" Margin="111,385,109,102" />
+                        Visibility="Visible" Margin="111,385,109,102" />
         </Border>
         <Label Grid.Column="1"
                Content="1.Enter Confirmation code:" 
