@@ -32,8 +32,8 @@
             <DatePicker Name="StatDataPicker" Grid.Column="3"  Width="250" Height="42" FontSize="16" materialDesign:HintAssist.Hint="Pick Date" FontWeight="Bold" Foreground="Black" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" HorizontalAlignment="Left" Margin="22,4,0,0" VerticalAlignment="Top"/>
 
         </Grid>
-        
-        <DataGrid Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
+        <!-- The data grid and the hidden label-->
+        <DataGrid Visibility="Hidden" Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns >
 
@@ -56,7 +56,11 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+        <Label Name="lblInfo" Content="Label for Info" VerticalAlignment="Center" HorizontalAlignment="Center">
+            
+        </Label>
+        <!-- The data grid and the hidden label-->
+
     </Grid>
 
 </Page>
