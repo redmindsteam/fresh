@@ -49,8 +49,6 @@ namespace Fresh.Desktop.Pages
         }
         public async void Click()
         {
-            if (usersNameCombo.Text == null)
-                return;
             CheckPage check = new CheckPage();
             List<ChecksView> ChecksPages = await check.GetChecksViews();
             DirectorRegisterService directorRegisterService = new();
@@ -60,8 +58,10 @@ namespace Fresh.Desktop.Pages
                 ProductsDgUi.ItemsSource = (await check.GetChecksViews()).OrderByDescending(x => DateTime.Parse(x.Date));
                 return;
             }
+            var view = new List<string>();
             foreach(var user in users)
-                usersNameCombo.Items.Add(user.FullName);
+                view.Add(user.FullName);
+            usersNameCombo.ItemsSource = view;
             if (usersNameCombo.Text.Length == 0 && datePicker.Text.Length > 0)
             {
                 var dateTime = DateTime.Parse(datePicker.Text);
