@@ -57,6 +57,7 @@ namespace Fresh.Desktop.Windows
         private void SetValues()
         {
             ProductsDgUi.ItemsSource = ConsignmentLettersPage.consigmentLetterDetailsView;
+            txtTotalSumm.Text = ConsignmentLettersPage.consigmentLetterDetailsView.Sum(x => x.TotallPrice).ToString();
         }
     }
 }
