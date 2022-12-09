@@ -47,6 +47,8 @@ namespace Fresh.Desktop.Pages
             var result = await consignmentLettersPage.GetAllCL();
             DirectorRegisterService directorRegisterService = new();
             var users = await directorRegisterService.GetAllAsync();
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
             if (usersNameCombo.Text == null)
             {
                 ProductsDgUi.ItemsSource = (await consignmentLettersPage.GetAllCL()).OrderByDescending(x => x.DateTime);
@@ -73,6 +75,12 @@ namespace Fresh.Desktop.Pages
                     .Where(x => x.Cashier == usersNameCombo.Text && x.DateTime.Date == DateTime.Parse(datePicker.Text).Date);
             else
                 ProductsDgUi.ItemsSource = (await consignmentLettersPage.GetAllCL()).OrderByDescending(x => x.DateTime);
+            if(ProductsDgUi.Items.Count == 0)
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+                return;
+            }
         }
 
         private async void RowDouble_Clicked(object sender, MouseButtonEventArgs e)

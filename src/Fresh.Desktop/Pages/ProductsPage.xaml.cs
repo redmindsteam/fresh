@@ -46,6 +46,8 @@ namespace Fresh.Desktop.Pages
         {
             ProductPage products = new ProductPage();
             List<ProductsView> productPages = await products.GetProductViews();
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
             ProductsDgUi.ItemsSource = productPages;
         }
 
@@ -150,6 +152,14 @@ namespace Fresh.Desktop.Pages
             ButtonAutomationPeer peer = new ButtonAutomationPeer(hiddenHelper);
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
             invokeProv.Invoke();
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
+            if (ProductsDgUi.Items.Count == 0)
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+                return;
+            }
         }
 
 
@@ -170,6 +180,7 @@ namespace Fresh.Desktop.Pages
                 prodTextbox.IsReadOnly = false;
                 List<ProductsView> productPages = await products.GetProductViews();
                 ProductsDgUi.ItemsSource = productPages.Select(x => x).Where(x => x.Name.ToLower().Contains(prodTextbox.Text.ToLower()));
+
             }
             else if (rdnCategory.IsChecked == true)
             {
