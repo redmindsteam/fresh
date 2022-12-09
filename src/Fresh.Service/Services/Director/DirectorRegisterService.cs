@@ -197,18 +197,18 @@ namespace Fresh.Service.Director
         {
             var IsphoneResponse = await ToolBox.IsPhoneNumber(identifier);
             if (IsphoneResponse.status)
-                return GSMPhoneVerificator.SendSingleMessage("+" + IsphoneResponse.number);
+                return GSMPhoneVerificator.SendSingleMessage("+"+IsphoneResponse.number);
             else
                 return EmailVerificator.VerifMail(identifier).rand;
         }
 
-        public async Task<bool> UpdatePassHashByEmailAsync(string email, string password)
+        public async Task<bool> UpdatePassHashByEmailAsync(string email,string password)
         {
             IUserRepository userRepository = new UserRepository();
             PasswordHasher hasher = new PasswordHasher();
             var user = await userRepository.GetByEmailAsync(email);
             var security_assets = hasher.Hash(password);
-            if (!hasher.Verify(password, user.Salt, user.PasswordHash))
+            if(!hasher.Verify(password,user.Salt,user.PasswordHash))
             {
                 user.PasswordHash = security_assets.PasswordHash;
                 user.Salt = security_assets.Salt;

@@ -1,9 +1,23 @@
 using Fresh.Desktop.Windows;
+using Fresh.DataAccess.Repositories;
+using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Fresh.Desktop.Pages
 {
@@ -19,23 +33,34 @@ namespace Fresh.Desktop.Pages
             Click();
         }
 
-
+       
         public async void Click()
         {
             CashierPage cashiers = new CashierPage();
-            List<CashierView> CashierPages = await cashiers.GetCashierViews();
-            ProductsDgUi.ItemsSource = CashierPages;
+            try
+            {
+                List<CashierView> CashierPages = await cashiers.GetCashierViews();
+                ProductsDgUi.ItemsSource = CashierPages;
+                lblInfo.Visibility = Visibility.Hidden;
+            }
+            catch
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+                return;
+            }
+            
         }
 
         private async void btnUpdateUser_Click(object sender, RoutedEventArgs e)
         {
             CashierPage cashierPage = new();
-            var user = (CashierView)ProductsDgUi.SelectedItem;
-            if (user == null)
+            var user =(CashierView)ProductsDgUi.SelectedItem;
+            if(user == null) 
             {
-                MessageBox.Show("Please select row", "Error", MessageBoxButton.OK, MessageBoxImage.Hand); return;
+                MessageBox.Show("Please select row","Error",MessageBoxButton.OK,MessageBoxImage.Hand); return;
             }
-            if (await cashierPage.UpdateCashier(user.Id, user))
+            if(await cashierPage.UpdateCashier(user.Id,user))
                 MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("There was wrong with update cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);

@@ -19,7 +19,7 @@
         <Border CornerRadius="20" Background="White" BorderThickness="3" Opacity="100" >
         <Border.Effect>
             <DropShadowEffect Direction="-75" ShadowDepth="2" Opacity="1"
-                              BlurRadius="45" Color="Transparent"/>
+                              BlurRadius="45" Color="Cyan"/>
         </Border.Effect>
         <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">

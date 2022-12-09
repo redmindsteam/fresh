@@ -4,6 +4,11 @@ using Fresh.Domain.Entities;
 using Fresh.Service.ViewModels;
 using Fresh.Service.ViewModels.ViewDetails;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Fresh.Service.Services.PageServices
 {
@@ -20,10 +25,10 @@ namespace Fresh.Service.Services.PageServices
                 User user = await userRepository.GetByIdAsync(check.UserId);
                 ChecksView view = new ChecksView()
                 {
-                    Id = check.Id,
-                    Date = check.Date.ToString(),
-                    Caisher = user.FullName,
-                    Summ = check.TotalSum,
+                    Id= check.Id,
+                    Date=check.Date.ToString(),
+                    Caisher= user.FullName,
+                    Summ=check.TotalSum,
                 };
                 views.Add(view);
             }
