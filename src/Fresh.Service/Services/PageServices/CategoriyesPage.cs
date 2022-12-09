@@ -1,11 +1,6 @@
 ﻿using Fresh.DataAccess.Interfaces.Repositories;
 using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fresh.Service.Services.PageServices
 {
@@ -17,7 +12,7 @@ namespace Fresh.Service.Services.PageServices
             IList<Category> categories = await categoryRepository.GetAllAsync();
             return categories.ToList();
         }
-        public async Task<bool> AddCategories(string Categoryname )
+        public async Task<bool> AddCategories(string Categoryname)
         {
             List<Category> categories = await GetCategories();
             bool resalt = categories.Any(c => c.Name == Categoryname);

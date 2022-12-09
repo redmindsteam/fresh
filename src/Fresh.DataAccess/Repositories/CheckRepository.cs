@@ -1,7 +1,6 @@
 ﻿using Fresh.DataAccess.Interfaces.Repositories;
 using Fresh.Domain.Constants;
 using Fresh.Domain.Entities;
-using System;
 using System.Data;
 using System.Data.SQLite;
 using System.Globalization;
@@ -87,7 +86,7 @@ namespace Fresh.DataAccess.Repositories
                         TotalSum = reader.GetFloat("TotalSum"),
                         UserId = reader.GetInt32("UserId"),
                         Date = DateTime.ParseExact(reader.GetString("Date"), "MM/dd/yyyy", CultureInfo.InvariantCulture)
-                     };
+                    };
                     checks.Add(check);
                 }
                 reader.Close();
@@ -157,10 +156,10 @@ namespace Fresh.DataAccess.Repositories
                     reader.Close();
                     return resalt;
                 }
-                else 
+                else
                 {
                     reader.Close();
-                    return null!; 
+                    return null!;
                 }
             }
             catch

@@ -41,13 +41,13 @@ namespace Fresh.Service.Director
             }
         }
 
-        public  (Task<IList<Category>>, string s) GetAllAsync()
+        public (Task<IList<Category>>, string s) GetAllAsync()
         {
             CategoryRepository categoryRepository = new CategoryRepository();
 
             try
             {
-                var resault =  categoryRepository.GetAllAsync();
+                var resault = categoryRepository.GetAllAsync();
                 if (resault != null)
                 {
                     return (resault, "if");

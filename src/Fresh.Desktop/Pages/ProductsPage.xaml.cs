@@ -1,24 +1,14 @@
 
 using Fresh.Desktop.Windows;
-﻿using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Fresh.Desktop.Pages
 {
@@ -49,7 +39,7 @@ namespace Fresh.Desktop.Pages
             ProductsDgUi.ItemsSource = productPages;
         }
 
-        
+
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -65,10 +55,10 @@ namespace Fresh.Desktop.Pages
                 ProductPage products1 = new ProductPage();
                 List<ProductsView> productPages = await products1.GetProductViews();
                 ProductsDgUi.ItemsSource = productPages;
-                MessageBox.Show("Product successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cashier successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("There was wrong with delete product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
@@ -79,8 +69,8 @@ namespace Fresh.Desktop.Pages
                 add.Show();
                 chack = true;
             }
-            
-            
+
+
         }
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -91,12 +81,12 @@ namespace Fresh.Desktop.Pages
                 MessageBox.Show("Please select row", "Error", MessageBoxButton.OK, MessageBoxImage.Hand); return;
             }
             if (await productPage.UpdateProduct(product.Id, product))
-                MessageBox.Show("Product successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("There was wrong with update product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
-        
+
         private void RBtn_Click(object sender, RoutedEventArgs e)
         {
             RadioButton rbtn = sender as RadioButton;
@@ -131,7 +121,7 @@ namespace Fresh.Desktop.Pages
                                 ResetRBPrevStates("rdnCategory");
                             }
                             break;
-                        
+
                         default:
                             break;
                     }
@@ -190,7 +180,7 @@ namespace Fresh.Desktop.Pages
         }
         private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(rdnSearchByName.IsChecked == true||rdnCategory.IsChecked == true)
+            if (rdnSearchByName.IsChecked == true || rdnCategory.IsChecked == true)
                 prodTextbox.IsReadOnly = false;
             else
                 prodTextbox.IsReadOnly = true;
