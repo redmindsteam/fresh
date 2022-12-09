@@ -4,19 +4,9 @@ using Fresh.Desktop.Pages;
 using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ZXing;
 
 namespace Fresh.Desktop.Windows
 {
@@ -40,11 +30,11 @@ namespace Fresh.Desktop.Windows
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
-        {   
-            if(DateTime.Parse(Productdate.Text) <= DateTime.Parse(Expiredate.Text))
+        {
+            if (DateTime.Parse(Productdate.Text) <= DateTime.Parse(Expiredate.Text))
             {
                 float value;
-                if(float.TryParse(Price.Text, out value))
+                if (float.TryParse(Price.Text, out value))
                 {
                     ICategoryRepository categoryRepository = new CategoryRepository();
                     Category category = await categoryRepository.GetByName(categoryname.Text);
