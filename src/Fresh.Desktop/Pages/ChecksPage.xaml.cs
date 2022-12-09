@@ -53,13 +53,16 @@ namespace Fresh.Desktop.Pages
             List<ChecksView> ChecksPages = await check.GetChecksViews();
             DirectorRegisterService directorRegisterService = new();
             var users = await directorRegisterService.GetAllAsync();
+
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
+            var view = new List<string>();
             if (usersNameCombo.Text == null)
             {
                 ProductsDgUi.ItemsSource = (await check.GetChecksViews()).OrderByDescending(x => DateTime.Parse(x.Date));
                 return;
             }
-            var view = new List<string>();
-            foreach(var user in users)
+            foreach (var user in users)
                 view.Add(user.FullName);
             usersNameCombo.ItemsSource = view;
             if (usersNameCombo.Text.Length == 0 && datePicker.Text.Length > 0)
@@ -76,6 +79,11 @@ namespace Fresh.Desktop.Pages
                     .Where(x => x.Caisher == usersNameCombo.Text && DateTime.Parse(x.Date).Date == DateTime.Parse(datePicker.Text).Date);
             else
                 ProductsDgUi.ItemsSource = (await check.GetChecksViews()).OrderByDescending(x=>DateTime.Parse(x.Date));
+            if(ProductsDgUi.Items.Count == 0)
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+            }
         }
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
