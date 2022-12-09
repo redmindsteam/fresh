@@ -4,6 +4,7 @@ using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -37,7 +38,7 @@ namespace Fresh.Desktop.Pages
             rb2PrevState = this.monthly_radio.IsChecked.Value;
             rb3PrevState = this.yearly_radio.IsChecked.Value;
 
-            SetDefaultDate();
+            SetDefaultDate("Daily");
         }
 
         private void RBtn_Click(object sender, RoutedEventArgs e)
@@ -101,28 +102,28 @@ namespace Fresh.Desktop.Pages
             rb3PrevState = (_excludeRB == "yearly_radio" ? rb3PrevState : false);
         }
 
-        private void SetDefaultDate()
+        private void SetDefaultDate(string currentRadio)
         {
-            SetDefaults(DateTime.Now.AddMonths(-36).ToString("MM/dd/yyyy"), "Daily");
-            StatDataPicker.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            SetDefaults("01/01/1990", currentRadio);
         }
 
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            datePickerDepends();
         }
         private void daily_radio_Checked(object sender, RoutedEventArgs e)
         {
-            SetDefaults(StatDataPicker.Text,"Daily");
+            datePickerDepends();
         }
         private void monthly_radio_Checked(object sender, RoutedEventArgs e)
         {
-            SetDefaults(StatDataPicker.Text, "Monthly");
+            datePickerDepends();
 
         }
 
         private void yearly_radio_Checked(object sender, RoutedEventArgs e)
         {
-            SetDefaults(StatDataPicker.Text, "Yearly");
+            datePickerDepends();
         }
         private async void SetDefaults(string datetime,string status)
         {
@@ -140,6 +141,52 @@ namespace Fresh.Desktop.Pages
                 ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x => int.Parse(x.Date));
             else
                 ProductsDgUi.ItemsSource = statsViews.OrderByDescending(x=>x.DateToOrder);
+        }
+        private void datePickerDepends()
+        {
+            if (daily_radio.IsChecked == true || monthly_radio.IsChecked == true || yearly_radio.IsChecked == true)
+            {
+                StatDataPicker.IsEnabled = true;
+                try
+                {
+                    DateTime.Parse(StatDataPicker.Text);
+                    if (daily_radio.IsChecked == true)
+                        SetDefaults(StatDataPicker.Text, "Daily");
+                    else if (monthly_radio.IsChecked == true)
+                        SetDefaults(StatDataPicker.Text, "Monthly");
+                    else
+                        SetDefaults(StatDataPicker.Text, "Yearly");
+                }
+                catch
+                {
+                    StatDataPicker.Text = string.Empty;
+                    if (daily_radio.IsChecked == true)
+                        SetDefaultDate("Daily");
+                    else if (monthly_radio.IsChecked == true)
+                        SetDefaultDate("Monthly");
+                    else
+                        SetDefaultDate("Yearly");
+                }
+            }
+            else StatDataPicker.IsEnabled = false;
+        }
+        private void daily_radio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            datePickerDepends();
+        }
+        private void monthly_radio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            datePickerDepends();
+        }
+
+        private void yearly_radio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            datePickerDepends();
+        }
+
+        private void statDataPicker_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            datePickerDepends();
         }
     }
 }
