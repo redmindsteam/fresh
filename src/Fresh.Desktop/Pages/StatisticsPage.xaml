@@ -33,7 +33,7 @@
 
         </Grid>
         <!-- The data grid and the hidden label-->
-        <DataGrid Visibility="Hidden" Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
+        <DataGrid Visibility="Visible" Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns >
 
@@ -56,11 +56,7 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Name="lblInfo" Content="Label for Info" VerticalAlignment="Center" HorizontalAlignment="Center">
-            
-        </Label>
+        <Label Name="lblInfo" Visibility="Hidden" Content="Label for Info"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
         <!-- The data grid and the hidden label-->
-
     </Grid>
-
 </Page>

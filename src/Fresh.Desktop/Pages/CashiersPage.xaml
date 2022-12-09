@@ -41,19 +41,22 @@
                 </StackPanel>
             </Button>
         </Grid>
-        <DataGrid  Style="{DynamicResource DataGridStyle1}" Foreground="{DynamicResource TextSecundaryColor}"
-                   Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False"
-                  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
+        
+        <!-- The data grid and the hidden label-->
+        <DataGrid  x:Name="ProductsDgUi" Visibility="Visible" Style="{DynamicResource DataGridStyle1}" Foreground="{DynamicResource TextSecundaryColor}"
+                   Grid.Row="2" Background="White"  AutoGenerateColumns="False" IsReadOnly="False"
+                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="0.3*"/>
                 <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="*"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="0.8*"/>
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Width="0.8*"/>
                 <DataGridTextColumn Header="Passport seria" Binding="{Binding PassportSeria}" Width="0.8*"/>
-
             </DataGrid.Columns>
-
         </DataGrid>
+        <Label Name="lblInfo" Visibility="Hidden" Content="Label for Info"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
+        <!-- The data grid and the hidden label-->
+
         <Grid Grid.Row="3" Grid.RowSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
