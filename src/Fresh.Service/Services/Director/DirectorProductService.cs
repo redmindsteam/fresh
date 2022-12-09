@@ -16,14 +16,14 @@ namespace Fresh.Service.Director
                     var result = await productRepository.CreateAsync(item);
                     if (result != true)
                     {
-                        return false;    
+                        return false;
                     }
                     return true;
                 }
                 return false;
             }
             catch
-            { 
+            {
                 return false;
             }
         }
@@ -34,7 +34,7 @@ namespace Fresh.Service.Director
             {
                 var resauklt = await productRepository.DeleteAsync(id);
                 if (resauklt != false)
-                { 
+                {
                     return true;
                 }
                 return false;
@@ -52,7 +52,7 @@ namespace Fresh.Service.Director
                 var resault = await productRepository.GetAllAsync();
                 if (resault != null)
                 {
-                    return resault;    
+                    return resault;
                 }
                 return null;
             }
@@ -62,7 +62,7 @@ namespace Fresh.Service.Director
             }
         }
 
-        public  async Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -93,5 +93,16 @@ namespace Fresh.Service.Director
             var productst = await product.GetAllAsync();
             return productst.OrderBy(x => x.Value).ToList();
         }
+
+        //public async Task<bool> UpdateProduct(IList<Product> entity)
+        //{
+        //    ProductRepository products = new ProductRepository();
+        //    var ress = await products.UpdateProduct(entity);
+        //    if (ress == false)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
     }
 }

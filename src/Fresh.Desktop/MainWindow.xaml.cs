@@ -1,11 +1,8 @@
-﻿using Fresh.DataAccess.Repositories;
-using Fresh.Desktop.Windows;
-using Fresh.Domain.Entities;
+﻿using Fresh.Desktop.Windows;
 using Fresh.Service.Attributes;
 using Fresh.Service.Director;
 using Fresh.Service.Interfaces.DirectorService;
 using Fresh.Service.Tools;
-using System.ComponentModel.DataAnnotations;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -88,10 +85,10 @@ namespace Fresh.Desktop
                     this.Close();
                 }
             }
-            else if(response == "Incorrect password")
+            else if (response == "Incorrect password")
             {
-                EmailButton.Visibility=Visibility.Visible;
-                Errorlists.Visibility=Visibility.Visible;
+                EmailButton.Visibility = Visibility.Visible;
+                Errorlists.Visibility = Visibility.Visible;
             }
         }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -110,16 +107,16 @@ namespace Fresh.Desktop
             SingIn.Visibility = Visibility.Hidden;
             Border1.Visibility = Visibility.Hidden;
             EmailSMS.Visibility = Visibility.Visible;
-            LableCreate.Visibility=Visibility.Visible;
+            LableCreate.Visibility = Visibility.Visible;
             UpdatePass.Visibility = Visibility.Visible;
             EmailButton.Visibility = Visibility.Hidden;
             LableCreate.Visibility = Visibility.Visible;
-            CreateNew.Visibility=Visibility.Visible;
-            CreateNew2.Visibility=Visibility.Visible;
+            CreateNew.Visibility = Visibility.Visible;
+            CreateNew2.Visibility = Visibility.Visible;
             Cack_Password.Visibility = Visibility.Visible;
-            UpdatePass.Visibility=Visibility.Visible;
-            UpdatePass2.Visibility=Visibility.Visible;
-            Errorlist.Visibility=Visibility.Hidden;
+            UpdatePass.Visibility = Visibility.Visible;
+            UpdatePass2.Visibility = Visibility.Visible;
+            Errorlist.Visibility = Visibility.Hidden;
             Errorlists.Visibility = Visibility.Hidden;
             txtPassword.Clear();
 
@@ -129,11 +126,11 @@ namespace Fresh.Desktop
         {
             var IsPhone = (await ToolBox.IsPhoneNumber(txtEmail.Text)).status;
             var result = true;
-            if(txtUpdate.Password == txtUpdate2.Password)
+            if (txtUpdate.Password == txtUpdate2.Password)
             {
                 IDirectorRegisterService registerService = new DirectorRegisterService();
-                if(IsPhone)
-                    result = await registerService.UpdatePassHashByPhoneAsync(txtEmail.Text,txtUpdate.Password);
+                if (IsPhone)
+                    result = await registerService.UpdatePassHashByPhoneAsync(txtEmail.Text, txtUpdate.Password);
                 else
                     result = await registerService.UpdatePassHashByEmailAsync(txtEmail.Text, txtUpdate.Password);
                 if (!result) MessageBox.Show("New and old passwords must be different", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
@@ -160,18 +157,18 @@ namespace Fresh.Desktop
             }
             else
                 MessageBox.Show("Passwords must be same", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
-            
+
         }
 
-         //EmailAddressAttribute yoki Phone numberga smsm yuboraydigan textBox
+        //EmailAddressAttribute yoki Phone numberga smsm yuboraydigan textBox
         private void textChack_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtChack.Focus();
         }
-        
+
         private void txtChack_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if("123" == txtChack.Text)
+            if ("123" == txtChack.Text)
             {
                 var bc = new BrushConverter();
                 txtUpdate.Visibility = Visibility.Visible;
@@ -202,7 +199,7 @@ namespace Fresh.Desktop
             }
             else
             {
-              textUpdate.Visibility = Visibility.Visible;
+                textUpdate.Visibility = Visibility.Visible;
             }
         }
         private void textUpdate_MouseDown(object sender, MouseButtonEventArgs e)
@@ -219,10 +216,10 @@ namespace Fresh.Desktop
 
         private void txtUpdate_TextChanged2(object sender, RoutedEventArgs e)
         {
-            if(txtUpdate.Password != txtUpdate2.Password)
+            if (txtUpdate.Password != txtUpdate2.Password)
                 txtUpdate2.Foreground = Brushes.Red;
             else
-                txtUpdate2.Foreground= Brushes.Teal;
+                txtUpdate2.Foreground = Brushes.Teal;
             if (!string.IsNullOrEmpty(txtUpdate2.Password) && txtUpdate2.Password.Length > 0)
             {
                 textUpdate2.Visibility = Visibility.Collapsed;
