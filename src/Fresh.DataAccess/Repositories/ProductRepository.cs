@@ -243,7 +243,7 @@ namespace Fresh.DataAccess.Repositories
                 {
                     _con.Open();
                     string query = $"update Products set " +
-                        $" Value = Value + $Value " +
+                        $" Value = Value + $Value, Price = $Price " +
                         $" Where Name = $Name";
                     SQLiteCommand command = new SQLiteCommand(query, _con)
                     {
@@ -251,7 +251,8 @@ namespace Fresh.DataAccess.Repositories
                     {
 
                         new SQLiteParameter("Value", product.Value),
-                        new SQLiteParameter("Name", product.Name)
+                        new SQLiteParameter("Name", product.Name),
+                        new SQLiteParameter("Price", product.Price)
                     }
                     };
                     resault =  command.ExecuteNonQuery();

@@ -2,7 +2,9 @@
 using AForge.Video.DirectShow;
 using Aspose.BarCode.BarCodeRecognition;
 using Fresh.Domain.Entities;
+using Fresh.Service.Attributes;
 using Fresh.Service.Director;
+using Fresh.Service.Services.Empolyee;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -487,12 +489,8 @@ namespace Fresh.Desktop.Windows
                 DragMove();
         }
 
-        private void btnCheck_Click(object sender, RoutedEventArgs e)
+        private async void btnCheck_Click(object sender, RoutedEventArgs e)
         {
-
-            ChecksDescription checksDescription = new ChecksDescription();
-            checksDescription.ShowDialog();
-
             string checkDescription = "";
             double pric = 0;
             foreach (var view in cassaDatas)
@@ -500,28 +498,18 @@ namespace Fresh.Desktop.Windows
                 checkDescription += $"{view.Name}   {view.KgL}   {view.Price}   {double.Parse(view.Price) * double.Parse(view.Thenumber)}\n";
                 pric += double.Parse(view.Price) * double.Parse(view.Thenumber);
             }
-            //Check check = new Check();
-            //check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";
-            //check.Date = DateTime.Now;
-            //check.UserId = 1;
-            //check.TotalSum = (float)price;
-            //MessageBox.Show($"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}\n\n");
-            //price = 0;
-            //cassaDatas.Clear();
-            //txtBlockSumm.Text = null;
-            //Check check = new Check();
-            //string checkDescription = "";
-            //double price = 0;
-            //foreach (var view in vievModelProductLetters)
-            //{
-            //    checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
-            //    price += view.TotalPrice;
-            //}
-            //check.CheckDescription = $"{check.CheckDescription}\n\n\n{check.Id}\n\n\n{check.Date}";
-            //check.Date = DateTime.Now;
-            //check.UserId = 1;
-            //check.TotalSum = (float)price;
+            Check check = new Check();
+            check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";
+            check.Date = DateTime.Now;
+            check.UserId = GlobalVariable.Id;
+            check.TotalSum = (float)pric;
+            MessageBox.Show($"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}\n\n");
+            pric = 0;
+            cassaDatas.Clear();
+            txtBlockSumm.Text = null;
 
+            DirectorCheckService empolyeeProductLetterService = new DirectorCheckService();
+            var resault = await empolyeeProductLetterService.CreateAsync(check);
 
         }
     }
