@@ -25,9 +25,9 @@ namespace Fresh.Desktop.Windows
 
         private async void Category_ComboBox()
         {
-            DirectorCategoryService directorCategoryService = new DirectorCategoryService();
+            DirectorProductService directorCategoryService = new DirectorProductService();
             var resault = directorCategoryService.GetAllAsync();
-            foreach (var item in await resault.Item1)
+            foreach (var item in await resault)
             {
                 strings.Add(item.Name);
 
@@ -42,22 +42,29 @@ namespace Fresh.Desktop.Windows
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show($"{txtPrice.Text}");
+            if (txtProduct.Text.Length > 0 && txtPrice.Text.Length > 0 && txtTotal.Text.Length > 0 && txtKgL.Text.Length > 0)
+            {
+                VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
+                vievModelProductLetter.Name = txtProduct.Text;
+                vievModelProductLetter.KgL = txtKgL.Text;
+                vievModelProductLetter.Total = txtTotal.Text;
+                vievModelProductLetter.Price = txtPrice.Text;
+                vievModelProductLetter.TotalPrice = double.Parse(txtTotal.Text.ToString()) * double.Parse(txtPrice.Text.ToString());
+                vievModelProductLetters.Add(vievModelProductLetter);
 
-            VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
-            vievModelProductLetter.Name = txtProduct.Text;
-            vievModelProductLetter.KgL = txtKgL.Text;
-            vievModelProductLetter.Total = txtTotal.Text;
-            vievModelProductLetter.Price = txtPrice.Text;
-            vievModelProductLetter.TotalPrice = double.Parse(txtTotal.Text.ToString()) * double.Parse(txtPrice.Text.ToString());
-            vievModelProductLetters.Add(vievModelProductLetter);
+                cassaData.Add(new VievModelProductLetter { Name = txtProduct.Text, KgL = txtKgL.Text, Total = txtTotal.Text, Price = txtPrice.Text });
+                GridRefresh();
 
-            cassaData.Add(new VievModelProductLetter { Name = txtProduct.Text, KgL = txtKgL.Text, Total = txtTotal.Text, Price = txtPrice.Text });
-            GridRefresh();
-
-            txtProduct.Text = null;
-            txtKgL.Text = null;
-            txtTotal.Text = null;
-            txtPrice.Text = null;
+                txtProduct.Text = null;
+                txtKgL.Text = null;
+                txtTotal.Text = null;
+                txtPrice.Text = null;
+            }
+            else
+            {
+                MessageBox.Show("Ma'luot to'liq kiritilmagan");
+            }
         }
 
 
@@ -87,36 +94,44 @@ namespace Fresh.Desktop.Windows
 
         private async void Accept_Click(object sender, RoutedEventArgs e)
         {
-            string checkDescription = "";
-            double price = 0;
-            Product product = new Product();
-            foreach (var view in vievModelProductLetters)
+
+            if (cassaData.Count > 0)
             {
-                double price2 = double.Parse(view.Price) * double.Parse(view.Total);
-                checkDescription += $"{view.Name}        {view.Total} {view.KgL}      {price2}\n";
-                product.Value = float.Parse(view.Total);
-                product.Name = view.Name;
-                products.Add(product);
-                price += price2;
+                string checkDescription = "";
+                double price = 0;
+                Product product = new Product();
+                foreach (var view in vievModelProductLetters)
+                {
+                    double price2 = double.Parse(view.Price) * double.Parse(view.Total);
+                    checkDescription += $"{view.Name}        {view.Total} {view.KgL}      {price2}\n";
+                    product.Value = float.Parse(view.Total);
+                    product.Name = view.Name;
+                    products.Add(product);
+                    price += price2;
+                }
+
+
+                DirectorProductService directorProductService = new DirectorProductService();
+                var resa = directorProductService.UpdateProduct(products);
+
+                Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
+                check.ProductDescription = checkDescription;
+                check.Date = DateTime.Now.ToString();
+                check.UserId = 1;
+                check.Price = (float)price;
+                checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: Alisher";
+
+                MessageBox.Show($"{checkDescription}");
+                EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
+                empolyeeProductLetterService.CreateAsync(check);
+                vievModelProductLetters.Clear();
+                txtProduct.Text = null;
+                txtKgL.Text = null;
+                txtTotal.Text = null;
+                txtPrice.Text = null;
+                cassaData.Clear();
+                GridRefresh();
             }
-
-            Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
-            check.ProductDescription = checkDescription;
-            check.Date = DateTime.Now.ToString();
-            check.UserId = 1;
-            check.Price = (float)price;
-            checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: Alisher";
-
-            MessageBox.Show($"{checkDescription}");
-            EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
-            empolyeeProductLetterService.CreateAsync(check);
-            vievModelProductLetters.Clear();
-            txtProduct.Text = null;
-            txtKgL.Text = null;
-            txtTotal.Text = null;
-            txtPrice.Text = null;
-            cassaData.Clear();
-            GridRefresh();
         }
 
         private async void NotAccept_Click(object sender, RoutedEventArgs e)

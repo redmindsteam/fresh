@@ -232,41 +232,44 @@ namespace Fresh.DataAccess.Repositories
             }
         }
 
-        //public async Task<bool> UpdateProduct(IList<Product> entity)
-        //{
-        //    try
-        //    {
-        //        int resault = 0;
-        //        await _con.OpenAsync();
-        //        foreach (Product product in entity)
-        //        {       
-        //            string query = $"update Products set " +
-        //                $" Value = $Value" +
-        //                $" Where Name = {product.Name}";
-        //            SQLiteCommand command = new SQLiteCommand(query, _con)
-        //            {
-        //                Parameters =
-        //            {
+        public  (bool, string) UpdateProduct(IList<Product> entity)
+        {
+            try
+            {
+                int resault = 0;
+                
+                foreach (Product product in entity)
+                
+                {
+                    _con.Open();
+                    string query = $"update Products set " +
+                        $" Value = Value + $Value " +
+                        $" Where Name = $Name";
+                    SQLiteCommand command = new SQLiteCommand(query, _con)
+                    {
+                        Parameters =
+                    {
 
-        //                new SQLiteParameter("Value", product.Value),
-        //                new SQLiteParameter("Name", product.Name)
-        //            }
-        //            };
-        //            resault = await command.ExecuteNonQueryAsync();
-        //        }
-        //        if (resault == 0)
-        //            return false;
-        //        else
-        //            return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        _con.Close();
-        //    }
-        //}
+                        new SQLiteParameter("Value", product.Value),
+                        new SQLiteParameter("Name", product.Name)
+                    }
+                    };
+                    resault =  command.ExecuteNonQuery();
+                    _con.Close();
+                }
+                if (resault == 0)
+                    return (false, "if");
+                else
+                    return (true, "not if");
+            }
+            catch
+            {
+                return (false, "catch");
+            }
+            finally
+            {
+                _con.Close();
+            }
+        }
     }
 }

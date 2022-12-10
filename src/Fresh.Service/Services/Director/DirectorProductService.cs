@@ -94,15 +94,15 @@ namespace Fresh.Service.Director
             return productst.OrderBy(x => x.Value).ToList();
         }
 
-        //public async Task<bool> UpdateProduct(IList<Product> entity)
-        //{
-        //    ProductRepository products = new ProductRepository();
-        //    var ress = await products.UpdateProduct(entity);
-        //    if (ress == false)
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        public (bool, string) UpdateProduct(IList<Product> entity)
+        {
+            ProductRepository products = new ProductRepository();
+            var ress = products.UpdateProduct(entity);
+            if (ress.Item1 == false)
+            {
+                return (ress.Item1, ress.Item2);
+            }
+            return (true, "Didector not if");
+        }
     }
 }
