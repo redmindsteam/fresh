@@ -43,6 +43,7 @@ namespace Fresh.Desktop.Windows
         public Cassa()
         {
             InitializeComponent();
+            btnCheck.IsEnabled = false;
             this.DataContext = this;
             GetVideoDevices();
             this.Closing += MainWindow_Closing;
@@ -77,15 +78,19 @@ namespace Fresh.Desktop.Windows
 
         private async void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (cassaDataGrid.Items != null)
-            {
-                cassaDataGrid.ItemsSource = null;
-            }
+            cassaDatas.Clear();
+            DataGridRefresh();
+            price = 0;
+            txtText_Block();
+
         }
 
         private async void btnBuy_Click(object sender, RoutedEventArgs e)
         {
-
+            if (cassaDatas.Count > 0)
+            {
+                btnCheck.IsEnabled = true;
+            }
         }
 
 
@@ -495,15 +500,15 @@ namespace Fresh.Desktop.Windows
                 checkDescription += $"{view.Name}   {view.KgL}   {view.Price}   {double.Parse(view.Price) * double.Parse(view.Thenumber)}\n";
                 pric += double.Parse(view.Price) * double.Parse(view.Thenumber);
             }
-            Check check = new Check();
-            check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";
-            check.Date = DateTime.Now;
-            check.UserId = 1;
-            check.TotalSum = (float)price;
-            MessageBox.Show($"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}\n\n");
-            price = 0;
-            cassaDatas.Clear();
-            txtBlockSumm.Text = null;
+            //Check check = new Check();
+            //check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";
+            //check.Date = DateTime.Now;
+            //check.UserId = 1;
+            //check.TotalSum = (float)price;
+            //MessageBox.Show($"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}\n\n");
+            //price = 0;
+            //cassaDatas.Clear();
+            //txtBlockSumm.Text = null;
             //Check check = new Check();
             //string checkDescription = "";
             //double price = 0;

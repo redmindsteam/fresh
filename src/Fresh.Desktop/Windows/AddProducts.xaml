@@ -130,7 +130,7 @@
                      BorderThickness="0 0 0 1"
                      Height="21"
                      Width="260"
-                     Margin="0 4 0 0" />
+                     Margin="0 4 0 0" TextChanged="Barcode_TextChanged"/>
             <DatePicker
                 Name="Productdate"
                 Grid.Column="0"

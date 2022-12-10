@@ -1,4 +1,5 @@
 ﻿using Fresh.Domain.Entities;
+using Fresh.Service.Attributes;
 using Fresh.Service.Director;
 using Fresh.Service.Services.Empolyee;
 using Fresh.Service.ViewModels;
@@ -42,8 +43,9 @@ namespace Fresh.Desktop.Windows
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"{txtPrice.Text}");
-            if (txtProduct.Text.Length > 0 && txtPrice.Text.Length > 0 && txtTotal.Text.Length > 0 && txtKgL.Text.Length > 0)
+           
+            if (txtProduct.Text.Length > 0 && txtPrice.Text.Length > 0 && txtTotal.Text.Length > 0 && txtKgL.Text.Length > 0 &&
+                double.Parse(txtTotal.Text) > 0 && double.Parse(txtPrice.Text) > 0)
             {
                 VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
                 vievModelProductLetter.Name = txtProduct.Text;
@@ -106,6 +108,7 @@ namespace Fresh.Desktop.Windows
                     checkDescription += $"{view.Name}        {view.Total} {view.KgL}      {price2}\n";
                     product.Value = float.Parse(view.Total);
                     product.Name = view.Name;
+                    product.Price = float.Parse(view.Price);
                     products.Add(product);
                     price += price2;
                 }
@@ -114,12 +117,14 @@ namespace Fresh.Desktop.Windows
                 DirectorProductService directorProductService = new DirectorProductService();
                 var resa = directorProductService.UpdateProduct(products);
 
+                CurrentUserSingelton current = new CurrentUserSingelton();
+
                 Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
                 check.ProductDescription = checkDescription;
                 check.Date = DateTime.Now.ToString();
-                check.UserId = 1;
+                check.UserId = GlobalVariable.Id;
                 check.Price = (float)price;
-                checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: Alisher";
+                checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: {GlobalVariable.Name}";
 
                 MessageBox.Show($"{checkDescription}");
                 EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
