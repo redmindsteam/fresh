@@ -1,6 +1,8 @@
-﻿namespace Fresh.Service.Interfaces.DirectorService
+﻿using Fresh.Domain.Entities;
+
+namespace Fresh.Service.Interfaces.DirectorService
 {
     public interface IDirectorFinanceService
-    {
+    { 
     }
 }

@@ -1,7 +1,18 @@
 ﻿using Fresh.Desktop.Pages;
+using Fresh.Service.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Fresh.Desktop.Windows
 {
@@ -46,11 +57,8 @@ namespace Fresh.Desktop.Windows
         }
         private void SetValues()
         {
-            var totalPayment = 0.0;
             ProductsDgUi.ItemsSource = ChecksPage.checkDetailsView;
-            foreach (var one in ChecksPage.checkDetailsView)
-                totalPayment += one.TotalPrice;
-            txtName.Text = totalPayment.ToString();
+            txtName.Text = ChecksPage.checkDetailsView.Sum(x=>x.TotalPrice).ToString();
 
         }
     }

@@ -56,7 +56,7 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Name="lblInfo" Visibility="Hidden" Content="There aren't any data for this date and time"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
+        <Label Name="lblInfo" Visibility="Hidden" Content="No information was found"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
         <!-- The data grid and the hidden label-->
     </Grid>
 </Page>

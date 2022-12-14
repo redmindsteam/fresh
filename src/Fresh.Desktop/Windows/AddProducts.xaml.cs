@@ -4,9 +4,19 @@ using Fresh.Desktop.Pages;
 using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using ZXing;
 
 namespace Fresh.Desktop.Windows
 {
@@ -28,13 +38,16 @@ namespace Fresh.Desktop.Windows
             this.Close();
             ProductsPage.chack = false;
         }
-
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (DateTime.Parse(Productdate.Text) <= DateTime.Parse(Expiredate.Text))
+            if (NullCaseChecker())
+            {
+                return;
+            }
+            if(DateTime.Parse(Productdate.Text) <= DateTime.Parse(Expiredate.Text))
             {
                 float value;
-                if (float.TryParse(Price.Text, out value))
+                if(float.TryParse(Price.Text, out value))
                 {
                     ICategoryRepository categoryRepository = new CategoryRepository();
                     Category category = await categoryRepository.GetByName(categoryname.Text);
@@ -79,9 +92,7 @@ namespace Fresh.Desktop.Windows
             CategoriyesPage categoriyesPage = new CategoriyesPage();
             var raesalt = await categoriyesPage.GetCategories();
             foreach (var c in raesalt)
-            {
                 categoryname.Items.Add(c.Name);
-            }
         }
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -90,6 +101,7 @@ namespace Fresh.Desktop.Windows
             if (result)
             {
                 ProductsPage.chack = false;
+                categoryname.Items.Add(categoryname.Text);
                 MessageBox.Show("Category succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
@@ -124,6 +136,16 @@ namespace Fresh.Desktop.Windows
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(Price.Text, @"^*[0-9\.]+$") && Price.Text.Length > 0)
                 Price.Text = Price.Text.Remove(Price.Text.Length - 1);
+        }
+        private bool NullCaseChecker()
+        {
+            if(ProductName.Text.Length == 0 ||categoryname.Text.Length == 0||Price.Text.Length == 0||Unit.Text.Length == 0
+                ||BarCode.Text.Length == 0||Productdate.Text.Length == 0||Expiredate.Text.Length == 0)
+            {
+                MessageBox.Show("All branches must be filled");
+                return true;
+            }
+            return false;
         }
     }
 }

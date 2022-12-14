@@ -92,7 +92,7 @@
                      CaretBrush="#80deea"
                      BorderBrush="{DynamicResource TextSecundaryColor}"
                      BorderThickness="0 0 0 2"
-                     Height="22"
+                     Height="21"
                      Width="280"
                       />
             </Grid>

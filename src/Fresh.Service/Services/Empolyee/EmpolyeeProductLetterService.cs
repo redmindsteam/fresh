@@ -1,4 +1,5 @@
-﻿using Fresh.DataAccess.Repositories;
+﻿using Fresh.DataAccess.Interfaces.Repositories;
+using Fresh.DataAccess.Repositories;
 using Fresh.Domain.Entities;
 using Fresh.Service.Interfaces.EmpolyeeService;
 
@@ -14,7 +15,7 @@ namespace Fresh.Service.Services.Empolyee
             {
                 var resault = await productLetterRepository.CreateAsync(item);
             }
-            catch
+            catch 
             {
                 return;
             }

@@ -51,6 +51,7 @@
                 <DataGridTextColumn Header="Available" Binding="{Binding Available}" Width="0.5*"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Label Name="lblInfo" Visibility="Hidden" Content="No information was found"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
         <!-- The data grid and the hidden label-->
 
         <Grid Grid.Row="3">

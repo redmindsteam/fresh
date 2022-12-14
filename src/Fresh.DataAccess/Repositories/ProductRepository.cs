@@ -112,6 +112,7 @@ namespace Fresh.DataAccess.Repositories
         {
             try
             {
+
                 var products = new List<Product>();
                 await _con.OpenAsync();
                 string query = $"SELECT * FROM Products lIMIT {take} OFFSET {skip}";
@@ -231,42 +232,5 @@ namespace Fresh.DataAccess.Repositories
                 _con.Close();
             }
         }
-
-        //public async Task<bool> UpdateProduct(IList<Product> entity)
-        //{
-        //    try
-        //    {
-        //        int resault = 0;
-        //        await _con.OpenAsync();
-        //        foreach (Product product in entity)
-        //        {       
-        //            string query = $"update Products set " +
-        //                $" Value = $Value" +
-        //                $" Where Name = {product.Name}";
-        //            SQLiteCommand command = new SQLiteCommand(query, _con)
-        //            {
-        //                Parameters =
-        //            {
-
-        //                new SQLiteParameter("Value", product.Value),
-        //                new SQLiteParameter("Name", product.Name)
-        //            }
-        //            };
-        //            resault = await command.ExecuteNonQueryAsync();
-        //        }
-        //        if (resault == 0)
-        //            return false;
-        //        else
-        //            return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        _con.Close();
-        //    }
-        //}
     }
 }

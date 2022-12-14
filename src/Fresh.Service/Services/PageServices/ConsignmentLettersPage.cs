@@ -1,7 +1,14 @@
-﻿using Fresh.DataAccess.Repositories;
+﻿using Fresh.DataAccess.Interfaces.Repositories;
+using Fresh.DataAccess.Repositories;
+using Fresh.Domain.Entities;
 using Fresh.Service.ViewModels;
 using Fresh.Service.ViewModels.ViewDetails;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Fresh.Service.Services.PageServices
 {
@@ -18,11 +25,11 @@ namespace Fresh.Service.Services.PageServices
                 foreach (var one in allLetters)
                     viewModels.Add(new ConsignmentLetterView
                     {
-                        Id = one.Id,
+                        Id= one.Id,
                         Cashier = (await userRepository.GetByIdAsync(one.UserId)).FullName,
                         DateTime = DateTime.Parse(one.Date),
                         TotallPrice = one.Price,
-                    });
+                    }) ;
                 return viewModels;
             }
             catch

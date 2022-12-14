@@ -1,48 +1,39 @@
-﻿using Fresh.Domain.Entities;
-using Fresh.Service.Director;
+﻿using Fresh.DataAccess.Repositories;
 using Fresh.Service.Services.Empolyee;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using static Fresh.Desktop.Windows.Cassa;
 
-namespace Fresh.Desktop.Windows
+namespace Fresh.Desktop.Pages
 {
-    public partial class AddProductLetter : Window
+    /// <summary>
+    /// Interaction logic for CassaConsigmentLetter.xaml
+    /// </summary>
+    public partial class CassaConsigmentLetter : Window
     {
-        private IList<VievModelProductLetter> vievModelProductLetters = new List<VievModelProductLetter>();
-        private ObservableCollection<VievModelProductLetter> cassaData = new ObservableCollection<VievModelProductLetter>();
-        private IList<Product> products = new List<Product>();
+        public  IList<VievModelProductLetter> vievModelProductLetters = new List<VievModelProductLetter>();
+      
 
-        ObservableCollection<string> strings = new ObservableCollection<string>();
-        public AddProductLetter()
+        public CassaConsigmentLetter()
         {
             InitializeComponent();
-            Category_ComboBox();
-        }
-
-        private async void Category_ComboBox()
-        {
-            DirectorCategoryService directorCategoryService = new DirectorCategoryService();
-            var resault = directorCategoryService.GetAllAsync();
-            foreach (var item in await resault.Item1)
-            {
-                strings.Add(item.Name);
-
-            }
-            txtProduct.ItemsSource = strings;
-        }
-
-        private void GridRefresh()
-        {
-            DataGridCassaLetter.ItemsSource = cassaData;
         }
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
             VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
             vievModelProductLetter.Name = txtProduct.Text;
             vievModelProductLetter.KgL = txtKgL.Text;
@@ -51,8 +42,11 @@ namespace Fresh.Desktop.Windows
             vievModelProductLetter.TotalPrice = double.Parse(txtTotal.Text.ToString()) * double.Parse(txtPrice.Text.ToString());
             vievModelProductLetters.Add(vievModelProductLetter);
 
-            cassaData.Add(new VievModelProductLetter { Name = txtProduct.Text, KgL = txtKgL.Text, Total = txtTotal.Text, Price = txtPrice.Text });
-            GridRefresh();
+
+            ObservableCollection<VievModelProductLetter> cassaDatas = new ObservableCollection<VievModelProductLetter>();
+            cassaDatas.Add(new VievModelProductLetter { Name = txtPrice.Text, KgL = txtKgL.Text, Total = txtTotal.Text, Price = txtPrice.Text});
+            DataGridCassaLetter.ItemsSource = cassaDatas;
+
 
             txtProduct.Text = null;
             txtKgL.Text = null;
@@ -60,16 +54,12 @@ namespace Fresh.Desktop.Windows
             txtPrice.Text = null;
         }
 
-
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var res = (VievModelProductLetter)DataGridCassaLetter.SelectedItem;
-            cassaData.Remove(res);
             txtProduct.Text = null;
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
-            GridRefresh();
         }
 
         private async void Close_Click(object sender, RoutedEventArgs e)
@@ -79,9 +69,7 @@ namespace Fresh.Desktop.Windows
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
-            cassaData.Clear();
-            Cassa cassa = new Cassa();
-            cassa.Show();
+            DataGridCassaLetter.ItemsSource = null;
             this.Close();
         }
 
@@ -89,25 +77,18 @@ namespace Fresh.Desktop.Windows
         {
             string checkDescription = "";
             double price = 0;
-            Product product = new Product();
             foreach (var view in vievModelProductLetters)
             {
-                double price2 = double.Parse(view.Price) * double.Parse(view.Total);
-                checkDescription += $"{view.Name}        {view.Total} {view.KgL}      {price2}\n";
-                product.Value = float.Parse(view.Total);
-                product.Name = view.Name;
-                products.Add(product);
-                price += price2;
+                checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
+                price += view.TotalPrice;
             }
-
             Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
-            check.ProductDescription = checkDescription;
+            check.ProductDescription= checkDescription;
             check.Date = DateTime.Now.ToString();
             check.UserId = 1;
             check.Price = (float)price;
-            checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: Alisher";
 
-            MessageBox.Show($"{checkDescription}");
+            MessageBox.Show($"{check.Price}");
             EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
             empolyeeProductLetterService.CreateAsync(check);
             vievModelProductLetters.Clear();
@@ -115,36 +96,33 @@ namespace Fresh.Desktop.Windows
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
-            cassaData.Clear();
-            GridRefresh();
+            DataGridCassaLetter.ItemsSource = null;
         }
 
         private async void NotAccept_Click(object sender, RoutedEventArgs e)
         {
-            cassaData.Clear();
+            DataGridCassaLetter.ItemsSource = null;
             vievModelProductLetters.Clear();
             txtProduct.Text = null;
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
-            GridRefresh();
         }
 
-        private async void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
 
-        private async void NewProduct_Click(object sender, RoutedEventArgs e)
+        private void btnStop_Click(object sender, RoutedEventArgs e)
         {
-            AddProducts addProducts = new AddProducts();
-            addProducts.Show();
+
         }
 
-        private async void Refresh_Click(object sender, RoutedEventArgs e)
+        private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            Category_ComboBox();
+
         }
     }
 }

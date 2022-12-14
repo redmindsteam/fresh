@@ -14,20 +14,20 @@ namespace Fresh.Service.Services.PageServices
             IList<Product> products = await repository.GetAllAsync();
             foreach (Product product in products)
             {
-                ICategoryRepository categoryRepository = new CategoryRepository();
-                Category categorie = await categoryRepository.GetByIdAsync(product.CategoryId);
-                ProductsView view = new ProductsView()
-                {
-                    Id = product.Id,
-                    Name = product.Name,
-                    Category = categorie.Name,
-                    Price = product.Price,
-                    Available = product.Value,
-                };
-                views.Add(view);
+                    ICategoryRepository categoryRepository = new CategoryRepository();
+                    Category categorie = await categoryRepository.GetByIdAsync(product.CategoryId);
+                    ProductsView view = new ProductsView()
+                    {
+                        Id = product.Id,
+                        Name=product.Name,
+                        Category= categorie.Name,
+                        Price=product.Price,
+                        Available=product.Value,
+                    };
+                    views.Add(view);
             }
 
-            return views.OrderBy(x => x.Available).ToList();
+            return views.OrderBy(x=>x.Available).ToList();
 
         }
         public async Task<bool> DeleteProduct(ProductsView productView)
@@ -36,7 +36,7 @@ namespace Fresh.Service.Services.PageServices
 
             return await productRepository.DeleteAsync(productView.Id);
         }
-        public async Task<bool> UpdateProduct(int id, ProductsView productview)
+        public async Task<bool> UpdateProduct(int id,ProductsView productview)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Fresh.Service.Services.PageServices
             {
                 return false;
             }
-
+            
         }
         public async Task<bool> AddProdact(Product product)
         {
