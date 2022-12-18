@@ -16,10 +16,10 @@ In the admin page the user can add, delete, or update cashiers info. See the sta
 
 ## Cashiers Page
 In the Cashiers Page the cashier can use the barcode reader and get info about a certain product's price. The Cashier can set the totall number of products.In the Letters page tha cashiers will be able to confirm a consignment note if one is available. While adding products the summ will always be automatically calculated and in the end a check of the purchase can be printed. 
-![image](https://user-images.githubusercontent.com/108386704/208295758-3d7df1d1-89b3-4049-9caf-3a9dfb9dd2da.png)
+![image](https://user-images.githubusercontent.com/108386704/208297574-17c84497-35d8-487e-ad11-49706a548583.png)
 
 # Built With 
-C#, .Net6, wpf, ADO.NET, PosrtgreSql, MaterialDesign, SMTP protocol, MegaApiClient, Aspose.Barcode, Infobip.Api.Client
+C#, .NET 6.0 , WPF, ADO.NET, PosrtgreSql, MaterialDesign, SMTP protocol, MegaApiClient, Aspose.Barcode, Infobip.Api.Client
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
