@@ -232,8 +232,6 @@ namespace Fresh.DataAccess.Repositories
                 _con.Close();
             }
         }
-<<<<<<< HEAD
-=======
 
         public  (bool, string) UpdateProduct(IList<Product> entity)
         {
@@ -246,16 +244,16 @@ namespace Fresh.DataAccess.Repositories
                 {
                     _con.Open();
                     string query = $"update Products set " +
-                        $" Value = Value + $Value, Price = $Price " +
+                        $" Value = Value + $Value " +
                         $" Where Name = $Name";
                     SQLiteCommand command = new SQLiteCommand(query, _con)
                     {
                         Parameters =
-                        {
-                            new SQLiteParameter("Value", product.Value),
-                            new SQLiteParameter("Name", product.Name),
-                            new SQLiteParameter("Price", product.Price)
-                        }
+                    {
+
+                        new SQLiteParameter("Value", product.Value),
+                        new SQLiteParameter("Name", product.Name)
+                    }
                     };
                     resault =  command.ExecuteNonQuery();
                     _con.Close();
@@ -274,6 +272,5 @@ namespace Fresh.DataAccess.Repositories
                 _con.Close();
             }
         }
->>>>>>> 2e199bd (Update)
     }
 }

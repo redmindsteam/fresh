@@ -120,15 +120,9 @@ namespace Fresh.Desktop.Pages
 
         private async void btnSaveToCloud_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
             await Task.Run(() =>
             {
                 MegaApiClient client = new MegaApiClient();
-=======
-            MegaApiClient client = new MegaApiClient();
-            try
-            {
->>>>>>> fa13b26 (Update Cassa)
                 client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
                 IEnumerable<INode> nodes = client.GetNodes();
 
@@ -138,21 +132,10 @@ namespace Fresh.Desktop.Pages
                 INode myFile = client.UploadFile(@"../../../../../database/fresh-market.db", myFolder);
                 Uri downloadLinkImage = client.GetDownloadLink(myFile);
 
-<<<<<<< HEAD
                 client.Logout();
                 MessageBox.Show("Data saved to cloud successfully!");
             });
             
-=======
-                MessageBox.Show("Added successfully!");
-                client.Logout();
-
-            }
-            catch
-            {
-                MessageBox.Show("Something went wrong. Check your internet connection.");
-            }
->>>>>>> fa13b26 (Update Cassa)
         }
     }
 }

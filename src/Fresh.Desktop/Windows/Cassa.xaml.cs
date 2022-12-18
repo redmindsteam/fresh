@@ -499,13 +499,8 @@ namespace Fresh.Desktop.Windows
             double pric = 0;
             foreach (var view in vievModelProductLetters)
             {
-<<<<<<< HEAD
-                checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
-                pric += view.TotalPrice;
-=======
                 checkDescription += $"{view.Name} -  {view.Thenumber} {view.KgL} -   {view.Price}  -  {double.Parse(view.Price) * double.Parse(view.Thenumber)}\n";
                 pric += double.Parse(view.Price) * double.Parse(view.Thenumber);
->>>>>>> fa13b26 (Update Cassa)
             }
             Check check = new Check();
             check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";

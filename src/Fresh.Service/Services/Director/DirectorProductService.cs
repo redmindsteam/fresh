@@ -93,8 +93,6 @@ namespace Fresh.Service.Director
             var productst = await product.GetAllAsync();
             return productst.OrderBy(x => x.Value).ToList();
         }
-<<<<<<< HEAD
-=======
 
         public (bool, string) UpdateProduct(IList<Product> entity)
         {
@@ -106,6 +104,5 @@ namespace Fresh.Service.Director
             }
             return (true, "Didector not if");
         }
->>>>>>> 2e199bd (Update)
     }
 }
