@@ -19,7 +19,7 @@ In the Cashiers Page the cashier can use the barcode reader and get info about a
 ![image](https://user-images.githubusercontent.com/108386704/208295758-3d7df1d1-89b3-4049-9caf-3a9dfb9dd2da.png)
 
 # Built With 
-C#, .Net6, wpf, ADO.NET, PosrtgreSql, MaterialDesign, SMTP protocol, MegaApiClient, Aspose.Barcode, Infobip.Api.Client
+C#, .Net 6.0, wpf, ADO.NET, PosrtgreSql, MaterialDesign, SMTP protocol, MegaApiClient, Aspose.Barcode, Infobip.Api.Client
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
