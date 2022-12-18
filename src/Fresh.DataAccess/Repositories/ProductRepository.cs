@@ -251,12 +251,11 @@ namespace Fresh.DataAccess.Repositories
                     SQLiteCommand command = new SQLiteCommand(query, _con)
                     {
                         Parameters =
-                    {
-
-                        new SQLiteParameter("Value", product.Value),
-                        new SQLiteParameter("Name", product.Name),
-                        new SQLiteParameter("Price", product.Price)
-                    }
+                        {
+                            new SQLiteParameter("Value", product.Value),
+                            new SQLiteParameter("Name", product.Name),
+                            new SQLiteParameter("Price", product.Price)
+                        }
                     };
                     resault =  command.ExecuteNonQuery();
                     _con.Close();

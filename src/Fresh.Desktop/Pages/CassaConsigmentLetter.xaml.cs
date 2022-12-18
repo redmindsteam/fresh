@@ -118,16 +118,27 @@ namespace Fresh.Desktop.Pages
                 DirectorProductService directorProductService = new DirectorProductService();
                 var resa = directorProductService.UpdateProduct(products);
 
+<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
+=======
+                
+
+>>>>>>> fa13b26 (Update Cassa):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
                 Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
                 check.ProductDescription = checkDescription;
                 check.Date = DateTime.Now.ToString();
                 check.UserId = 1;
                 check.Price = (float)price;
+<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
                 checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: Alisher";
+=======
+               
+                checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: {GlobalVariable.Name}";
+>>>>>>> fa13b26 (Update Cassa):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
 
                 MessageBox.Show($"{checkDescription}");
                 EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
-                empolyeeProductLetterService.CreateAsync(check);
+                var res =  await empolyeeProductLetterService.CreateAsync(check);
+                MessageBox.Show($"{res}");
                 vievModelProductLetters.Clear();
                 txtProduct.Text = null;
                 txtKgL.Text = null;

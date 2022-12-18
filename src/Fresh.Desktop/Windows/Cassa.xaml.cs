@@ -499,19 +499,23 @@ namespace Fresh.Desktop.Windows
             double pric = 0;
             foreach (var view in vievModelProductLetters)
             {
+<<<<<<< HEAD
                 checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
                 pric += view.TotalPrice;
+=======
+                checkDescription += $"{view.Name} -  {view.Thenumber} {view.KgL} -   {view.Price}  -  {double.Parse(view.Price) * double.Parse(view.Thenumber)}\n";
+                pric += double.Parse(view.Price) * double.Parse(view.Thenumber);
+>>>>>>> fa13b26 (Update Cassa)
             }
             Check check = new Check();
             check.CheckDescription = $"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}";
             check.Date = DateTime.Now;
             check.UserId = GlobalVariable.Id;
             check.TotalSum = (float)pric;
-            MessageBox.Show($"{checkDescription}\n\n\n{check.TotalSum}\n\n\n{check.Date}\n\n");
+            MessageBox.Show($"{checkDescription}\n\nTotal Sum {check.TotalSum}\n\nSana: {check.Date}\n\nSotuvchi: {GlobalVariable.Name}");
             pric = 0;
             cassaDatas.Clear();
             txtBlockSumm.Text = null;
-
             DirectorCheckService empolyeeProductLetterService = new DirectorCheckService();
             var resault = await empolyeeProductLetterService.CreateAsync(check);
 
