@@ -30,10 +30,32 @@ namespace Fresh.Desktop.Pages
         public CassaConsigmentLetter()
         {
             InitializeComponent();
+<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
+=======
+            Category_ComboBox();
+        }
+
+        private async void Category_ComboBox()
+        {
+            DirectorProductService directorCategoryService = new DirectorProductService();
+            var resault = directorCategoryService.GetAllAsync();
+            foreach (var item in await resault)
+            {
+                strings.Add(item.Name);
+
+            }
+            txtProduct.ItemsSource = strings;
+        }
+
+        private void GridRefresh()
+        {
+            DataGridCassaLetter.ItemsSource = cassaData;
+>>>>>>> 2e199bd (Update):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
         }
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
             VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
             vievModelProductLetter.Name = txtProduct.Text;
             vievModelProductLetter.KgL = txtKgL.Text;
@@ -52,6 +74,31 @@ namespace Fresh.Desktop.Pages
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
+=======
+            MessageBox.Show($"{txtPrice.Text}");
+            if (txtProduct.Text.Length > 0 && txtPrice.Text.Length > 0 && txtTotal.Text.Length > 0 && txtKgL.Text.Length > 0)
+            {
+                VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
+                vievModelProductLetter.Name = txtProduct.Text;
+                vievModelProductLetter.KgL = txtKgL.Text;
+                vievModelProductLetter.Total = txtTotal.Text;
+                vievModelProductLetter.Price = txtPrice.Text;
+                vievModelProductLetter.TotalPrice = double.Parse(txtTotal.Text.ToString()) * double.Parse(txtPrice.Text.ToString());
+                vievModelProductLetters.Add(vievModelProductLetter);
+
+                cassaData.Add(new VievModelProductLetter { Name = txtProduct.Text, KgL = txtKgL.Text, Total = txtTotal.Text, Price = txtPrice.Text });
+                GridRefresh();
+
+                txtProduct.Text = null;
+                txtKgL.Text = null;
+                txtTotal.Text = null;
+                txtPrice.Text = null;
+            }
+            else
+            {
+                MessageBox.Show("Ma'luot to'liq kiritilmagan");
+            }
+>>>>>>> 2e199bd (Update):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -75,6 +122,7 @@ namespace Fresh.Desktop.Pages
 
         private async void Accept_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
             string checkDescription = "";
             double price = 0;
             foreach (var view in vievModelProductLetters)
@@ -97,6 +145,46 @@ namespace Fresh.Desktop.Pages
             txtTotal.Text = null;
             txtPrice.Text = null;
             DataGridCassaLetter.ItemsSource = null;
+=======
+
+            if (cassaData.Count > 0)
+            {
+                string checkDescription = "";
+                double price = 0;
+                Product product = new Product();
+                foreach (var view in vievModelProductLetters)
+                {
+                    double price2 = double.Parse(view.Price) * double.Parse(view.Total);
+                    checkDescription += $"{view.Name}        {view.Total} {view.KgL}      {price2}\n";
+                    product.Value = float.Parse(view.Total);
+                    product.Name = view.Name;
+                    products.Add(product);
+                    price += price2;
+                }
+
+
+                DirectorProductService directorProductService = new DirectorProductService();
+                var resa = directorProductService.UpdateProduct(products);
+
+                Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
+                check.ProductDescription = checkDescription;
+                check.Date = DateTime.Now.ToString();
+                check.UserId = 1;
+                check.Price = (float)price;
+                checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: Alisher";
+
+                MessageBox.Show($"{checkDescription}");
+                EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
+                empolyeeProductLetterService.CreateAsync(check);
+                vievModelProductLetters.Clear();
+                txtProduct.Text = null;
+                txtKgL.Text = null;
+                txtTotal.Text = null;
+                txtPrice.Text = null;
+                cassaData.Clear();
+                GridRefresh();
+            }
+>>>>>>> 2e199bd (Update):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
         }
 
         private async void NotAccept_Click(object sender, RoutedEventArgs e)
