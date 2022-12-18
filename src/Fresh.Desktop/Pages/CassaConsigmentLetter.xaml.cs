@@ -30,8 +30,6 @@ namespace Fresh.Desktop.Pages
         public CassaConsigmentLetter()
         {
             InitializeComponent();
-<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
-=======
             Category_ComboBox();
         }
 
@@ -50,31 +48,10 @@ namespace Fresh.Desktop.Pages
         private void GridRefresh()
         {
             DataGridCassaLetter.ItemsSource = cassaData;
->>>>>>> 2e199bd (Update):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
         }
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
-            VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
-            vievModelProductLetter.Name = txtProduct.Text;
-            vievModelProductLetter.KgL = txtKgL.Text;
-            vievModelProductLetter.Total = txtTotal.Text;
-            vievModelProductLetter.Price = txtPrice.Text;
-            vievModelProductLetter.TotalPrice = double.Parse(txtTotal.Text.ToString()) * double.Parse(txtPrice.Text.ToString());
-            vievModelProductLetters.Add(vievModelProductLetter);
-
-
-            ObservableCollection<VievModelProductLetter> cassaDatas = new ObservableCollection<VievModelProductLetter>();
-            cassaDatas.Add(new VievModelProductLetter { Name = txtPrice.Text, KgL = txtKgL.Text, Total = txtTotal.Text, Price = txtPrice.Text});
-            DataGridCassaLetter.ItemsSource = cassaDatas;
-
-
-            txtProduct.Text = null;
-            txtKgL.Text = null;
-            txtTotal.Text = null;
-            txtPrice.Text = null;
-=======
             MessageBox.Show($"{txtPrice.Text}");
             if (txtProduct.Text.Length > 0 && txtPrice.Text.Length > 0 && txtTotal.Text.Length > 0 && txtKgL.Text.Length > 0)
             {
@@ -98,7 +75,6 @@ namespace Fresh.Desktop.Pages
             {
                 MessageBox.Show("Ma'luot to'liq kiritilmagan");
             }
->>>>>>> 2e199bd (Update):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -122,30 +98,6 @@ namespace Fresh.Desktop.Pages
 
         private async void Accept_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
-            string checkDescription = "";
-            double price = 0;
-            foreach (var view in vievModelProductLetters)
-            {
-                checkDescription += $"{view.Name}   {view.KgL}   {view.Total}   {view.Price}\n";
-                price += view.TotalPrice;
-            }
-            Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
-            check.ProductDescription= checkDescription;
-            check.Date = DateTime.Now.ToString();
-            check.UserId = 1;
-            check.Price = (float)price;
-
-            MessageBox.Show($"{check.Price}");
-            EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
-            empolyeeProductLetterService.CreateAsync(check);
-            vievModelProductLetters.Clear();
-            txtProduct.Text = null;
-            txtKgL.Text = null;
-            txtTotal.Text = null;
-            txtPrice.Text = null;
-            DataGridCassaLetter.ItemsSource = null;
-=======
 
             if (cassaData.Count > 0)
             {
@@ -184,7 +136,6 @@ namespace Fresh.Desktop.Pages
                 cassaData.Clear();
                 GridRefresh();
             }
->>>>>>> 2e199bd (Update):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
         }
 
         private async void NotAccept_Click(object sender, RoutedEventArgs e)

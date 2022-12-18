@@ -1,5 +1,4 @@
-﻿using Fresh.DataAccess.Repositories;
-using Fresh.Desktop.Windows;
+﻿using Fresh.Desktop.Windows;
 using Fresh.Domain.Entities;
 using Fresh.Service.Attributes;
 using Fresh.Service.Director;
@@ -83,6 +82,20 @@ namespace Fresh.Desktop
                 }
                 else
                 {
+                    UserRepository user = new UserRepository();
+                    var res = await user.GetAllAsync();
+
+                    
+
+                    foreach (var use in res)
+                    {
+                        if (txtEmail.Text == use.Email)
+                        {
+                            GlobalVariable.Name = use.FullName;
+                            GlobalVariable.Id = use.Id;
+                        }
+                    }
+
                     Cassa cassa = new Cassa();
                     cassa.Show();
                     this.Close();

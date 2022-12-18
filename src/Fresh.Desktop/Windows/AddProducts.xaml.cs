@@ -40,51 +40,60 @@ namespace Fresh.Desktop.Windows
         }
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (NullCaseChecker())
+
+
+
+            if (ProductName.Text.Length > 0 && Price.Text.Length > 0 && double.Parse(Price.Text) > 0 && Unit.Text.Length > 0
+                && BarCode.Text.Length > 0 && Productdate.Text != null && Expiredate.Text != null && categoryname.Text.Length > 0)
             {
-                return;
-            }
-            if(DateTime.Parse(Productdate.Text) <= DateTime.Parse(Expiredate.Text))
-            {
-                float value;
-                if(float.TryParse(Price.Text, out value))
+                if (DateTime.Parse(Productdate.Text) <= DateTime.Parse(Expiredate.Text))
                 {
-                    ICategoryRepository categoryRepository = new CategoryRepository();
-                    Category category = await categoryRepository.GetByName(categoryname.Text);
-                    Product product = new Product()
+                    float value;
+                    if (float.TryParse(Price.Text, out value))
                     {
-                        Name = ProductName.Text,
-                        CategoryId = category.Id,
-                        Price = float.Parse(Price.Text),
-                        Unit = Unit.Text,
-                        BarcodeName = BarCode.Text,
-                        ProductionDate = Productdate.Text,
-                        ExpireDate = Expiredate.Text,
-                        Value = 0,
-                    };
-                    ProductPage productsPage = new ProductPage();
-                    var result = await productsPage.AddProdact(product);
-                    if (result)
-                    {
-                        ProductsPage.chack = false;
-                        MessageBox.Show("Product succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
+                        ICategoryRepository categoryRepository = new CategoryRepository();
+                        Category category = await categoryRepository.GetByName(categoryname.Text);
+                        Product product = new Product()
+                        {
+                            Name = ProductName.Text,
+                            CategoryId = category.Id,
+                            Price = float.Parse(Price.Text),
+                            Unit = Unit.Text,
+                            BarcodeName = BarCode.Text,
+                            ProductionDate = Productdate.Text,
+                            ExpireDate = Expiredate.Text,
+                            Value = 0,
+                        };
+                        ProductPage productsPage = new ProductPage();
+                        var result = await productsPage.AddProdact(product);
+                        if (result)
+                        {
+                            ProductsPage.chack = false;
+                            MessageBox.Show("Product succesfully created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was wrong with adding product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                            ProductsPage.chack = true;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("There was wrong with adding product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
-                        ProductsPage.chack = true;
+                        MessageBox.Show("Enter the price only numbers", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Enter the price only numbers", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    MessageBox.Show("The Expire date before than Product data ", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
                 }
             }
             else
             {
-                MessageBox.Show("The Expire date before than Product data ", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show($"Fill all of the fields needed.");
             }
+
+           
         }
 
         public async void func()
@@ -137,15 +146,11 @@ namespace Fresh.Desktop.Windows
             if (!System.Text.RegularExpressions.Regex.IsMatch(Price.Text, @"^*[0-9\.]+$") && Price.Text.Length > 0)
                 Price.Text = Price.Text.Remove(Price.Text.Length - 1);
         }
-        private bool NullCaseChecker()
+
+        private void Barcode_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(ProductName.Text.Length == 0 ||categoryname.Text.Length == 0||Price.Text.Length == 0||Unit.Text.Length == 0
-                ||BarCode.Text.Length == 0||Productdate.Text.Length == 0||Expiredate.Text.Length == 0)
-            {
-                MessageBox.Show("All branches must be filled");
-                return true;
-            }
-            return false;
+            if (!System.Text.RegularExpressions.Regex.IsMatch(BarCode.Text, @"^*[0-9\.]+$") && BarCode.Text.Length > 0)
+                BarCode.Text = BarCode.Text.Remove(BarCode.Text.Length - 1);
         }
     }
 }
