@@ -6,5 +6,7 @@ namespace Fresh.Service.Interfaces.DirectorService
     {
         public Task<bool> DeleteAsync(int id);
         public Task<IList<Check>> GetAllAsync(int skip, int take);
+
+        public Task<bool> CreateAsync(Check check);
     }
 }

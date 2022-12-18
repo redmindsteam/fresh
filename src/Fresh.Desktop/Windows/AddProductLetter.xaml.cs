@@ -1,33 +1,24 @@
-﻿using Fresh.DataAccess.Repositories;
+﻿using Fresh.Domain.Entities;
+using Fresh.Service.Attributes;
+using Fresh.Service.Director;
 using Fresh.Service.Services.Empolyee;
 using Fresh.Service.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static Fresh.Desktop.Windows.Cassa;
 
-namespace Fresh.Desktop.Pages
+namespace Fresh.Desktop.Windows
 {
-    /// <summary>
-    /// Interaction logic for CassaConsigmentLetter.xaml
-    /// </summary>
-    public partial class CassaConsigmentLetter : Window
+    public partial class AddProductLetter : Window
     {
-        public  IList<VievModelProductLetter> vievModelProductLetters = new List<VievModelProductLetter>();
-      
+        private IList<VievModelProductLetter> vievModelProductLetters = new List<VievModelProductLetter>();
+        private ObservableCollection<VievModelProductLetter> cassaData = new ObservableCollection<VievModelProductLetter>();
+        private IList<Product> products = new List<Product>();
 
-        public CassaConsigmentLetter()
+        ObservableCollection<string> strings = new ObservableCollection<string>();
+        public AddProductLetter()
         {
             InitializeComponent();
             Category_ComboBox();
@@ -52,8 +43,9 @@ namespace Fresh.Desktop.Pages
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"{txtPrice.Text}");
-            if (txtProduct.Text.Length > 0 && txtPrice.Text.Length > 0 && txtTotal.Text.Length > 0 && txtKgL.Text.Length > 0)
+           
+            if (txtProduct.Text.Length > 0 && txtPrice.Text.Length > 0 && txtTotal.Text.Length > 0 && txtKgL.Text.Length > 0 &&
+                double.Parse(txtTotal.Text) > 0 && double.Parse(txtPrice.Text) > 0)
             {
                 VievModelProductLetter vievModelProductLetter = new VievModelProductLetter();
                 vievModelProductLetter.Name = txtProduct.Text;
@@ -77,12 +69,16 @@ namespace Fresh.Desktop.Pages
             }
         }
 
+
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            var res = (VievModelProductLetter)DataGridCassaLetter.SelectedItem;
+            cassaData.Remove(res);
             txtProduct.Text = null;
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
+            GridRefresh();
         }
 
         private async void Close_Click(object sender, RoutedEventArgs e)
@@ -92,7 +88,9 @@ namespace Fresh.Desktop.Pages
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
-            DataGridCassaLetter.ItemsSource = null;
+            cassaData.Clear();
+            Cassa cassa = new Cassa();
+            cassa.Show();
             this.Close();
         }
 
@@ -110,6 +108,7 @@ namespace Fresh.Desktop.Pages
                     checkDescription += $"{view.Name}        {view.Total} {view.KgL}      {price2}\n";
                     product.Value = float.Parse(view.Total);
                     product.Name = view.Name;
+                    product.Price = float.Parse(view.Price);
                     products.Add(product);
                     price += price2;
                 }
@@ -118,22 +117,15 @@ namespace Fresh.Desktop.Pages
                 DirectorProductService directorProductService = new DirectorProductService();
                 var resa = directorProductService.UpdateProduct(products);
 
-<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
-=======
                 
 
->>>>>>> fa13b26 (Update Cassa):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
                 Fresh.Domain.Entities.ProductLetter check = new Fresh.Domain.Entities.ProductLetter();
                 check.ProductDescription = checkDescription;
                 check.Date = DateTime.Now.ToString();
-                check.UserId = 1;
+                check.UserId = GlobalVariable.Id;
                 check.Price = (float)price;
-<<<<<<< HEAD:src/Fresh.Desktop/Pages/CassaConsigmentLetter.xaml.cs
-                checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: Alisher";
-=======
                
                 checkDescription += $"\nTime: {check.Date}\n\n Total Money: {price}\n\n Vendor: {GlobalVariable.Name}";
->>>>>>> fa13b26 (Update Cassa):src/Fresh.Desktop/Windows/AddProductLetter.xaml.cs
 
                 MessageBox.Show($"{checkDescription}");
                 EmpolyeeProductLetterService empolyeeProductLetterService = new EmpolyeeProductLetterService();
@@ -151,28 +143,30 @@ namespace Fresh.Desktop.Pages
 
         private async void NotAccept_Click(object sender, RoutedEventArgs e)
         {
-            DataGridCassaLetter.ItemsSource = null;
+            cassaData.Clear();
             vievModelProductLetters.Clear();
             txtProduct.Text = null;
             txtKgL.Text = null;
             txtTotal.Text = null;
             txtPrice.Text = null;
+            GridRefresh();
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
 
-        private void btnStop_Click(object sender, RoutedEventArgs e)
+        private async void NewProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            AddProducts addProducts = new AddProducts();
+            addProducts.Show();
         }
 
-        private void btnStart_Click(object sender, RoutedEventArgs e)
+        private async void Refresh_Click(object sender, RoutedEventArgs e)
         {
-
+            Category_ComboBox();
         }
     }
 }
