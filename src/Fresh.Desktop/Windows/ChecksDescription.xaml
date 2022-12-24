@@ -13,14 +13,12 @@
         Background="Transparent"
         AllowsTransparency="True"
         MouseDown="Window_MouseDown" >
-
     <Border CornerRadius="20" Background="White" BorderThickness="3" Opacity="100" >
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource WinColor1}" Offset="0.1"/>
                 <GradientStop Color="{StaticResource WinColor3}" Offset="0.7"/>
                 <GradientStop Color="{StaticResource WinColor1}"/>
-
             </LinearGradientBrush>
         </Border.BorderBrush>
         <Grid>
@@ -35,7 +33,6 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="0.8*"/>
                 </Grid.ColumnDefinitions>
-
                 <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
                     <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
                     <Button x:Name="btnRestore" Margin="5,0" Click="btnRestore_Click">
@@ -52,23 +49,17 @@
                     </Button>
                     <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
                 </StackPanel>
-
             </Grid>
             <TextBlock Grid.Row="1" Text="Fresh Market" FontWeight="SemiBold" FontSize="15" Foreground="#434344" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                
             </TextBlock>
-            
-            
             <Border Grid.Row="2" CornerRadius="20" Background="White" BorderThickness="3" Opacity="100" >
                 <DataGrid Grid.Row="1" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
                     <DataGrid.Columns>
-
                         <DataGridTextColumn Header="ProductName" Binding="{Binding ProductName}" Width="*"/>
                         <DataGridTextColumn Header="PricePerUnit" Binding="{Binding PricePerUnit}" Width="*"/>
                         <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
                         <DataGridTextColumn Header="TotalPrice" Binding="{Binding TotalPrice}" Width="*"/>
-                        
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
@@ -76,7 +67,6 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.6*"/>
                     <ColumnDefinition Width="*"/>
-
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" FontWeight="SemiBold" Style="{DynamicResource labelChecksPage}" >Total Payment</Label>
                 <TextBox Name="txtName"
@@ -96,8 +86,6 @@
                      Width="280"
                       />
             </Grid>
-
         </Grid>
-
     </Border>
 </Window>
