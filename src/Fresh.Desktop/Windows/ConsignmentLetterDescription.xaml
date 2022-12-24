@@ -14,8 +14,6 @@
         AllowsTransparency="True"
         MouseDown="Window_MouseDown"
         >
-    
-        
         <Border CornerRadius="20" Background="White" BorderThickness="3" Opacity="100" >
         <Border.Effect>
             <DropShadowEffect Direction="-75" ShadowDepth="2" Opacity="1"
@@ -26,7 +24,6 @@
                     <GradientStop Color="{StaticResource WinColor1}" Offset="0.1"/>
                     <GradientStop Color="{StaticResource WinColor3}" Offset="0.7"/>
                     <GradientStop Color="{StaticResource WinColor1}"/>
-
             </LinearGradientBrush>
             </Border.BorderBrush>
         <Grid>
@@ -38,10 +35,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="0.8*"/>
-                    
-
                 </Grid.ColumnDefinitions>
-
                 <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
                     <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
                     <Button x:Name="btnRestore" Margin="5,0" Click="btnRestore_Click">
@@ -58,24 +52,18 @@
                     </Button>
                     <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
                 </StackPanel>
-
             </Grid>
             <Border Grid.Row="1" CornerRadius="20" Background="White" BorderThickness="3" Opacity="100" >
                 <DataGrid Grid.Row="1" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
                     <DataGrid.Columns>
-
                         <DataGridTextColumn Header="ProductName" Binding="{Binding ProductName}" Width="*"/>
                         <DataGridTextColumn Header="PricePerUnit" Binding="{Binding PricePerUnit}" Width="*"/>
                         <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*"/>
                         <DataGridTextColumn Header="TotallPrice" Binding="{Binding TotallPrice}" Width="*"/>
-
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
-
         </Grid>
-        
     </Border>
-        
 </Window>
