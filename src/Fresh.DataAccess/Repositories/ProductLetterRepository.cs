@@ -15,15 +15,16 @@ namespace Fresh.DataAccess.Repositories
             try
             {
                 await _con.OpenAsync();
-                string query = @"INSERT INTO ProductLetters(ProductDescription,Date,UserId)" +
-                     "VALUES($ProductDescription,$Date,$UserId);";
+                string query = @"INSERT INTO ProductLetters(ProductDescription,Date,UserId,Price)" +
+                     "VALUES($ProductDescription,$Date,$UserId,$Price);";
                 var command = new SQLiteCommand(query, _con)
                 {
                     Parameters =
                     {
                         new SQLiteParameter("ProductDescription", item.ProductDescription),
                         new SQLiteParameter("Date", item.Date),
-                        new SQLiteParameter("UserId", item.UserId)
+                        new SQLiteParameter("UserId", item.UserId),
+                        new SQLiteParameter("Price", item.Price)
                     }
                 };
 
@@ -181,7 +182,7 @@ namespace Fresh.DataAccess.Repositories
                 await _con.OpenAsync();
                 string query = $"update ProductLetters set " +
                     " ProductDescription = $ProductDescription, Date = $Date," +
-                    " UserId = $UserId " +
+                    " UserId = $UserId, Price = $Price " +
                     $" Where Id = {id}";
                 SQLiteCommand command = new SQLiteCommand(query, _con)
                 {

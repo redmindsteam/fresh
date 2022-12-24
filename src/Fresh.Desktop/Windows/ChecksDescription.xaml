@@ -68,12 +68,23 @@
                     <ColumnDefinition Width="0.6*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Style="{DynamicResource labelChecksPage}" >Total Payment</Label>
-                <TextBlock Grid.Column="1" x:Name="txtName" FontSize="14" FontWeight="Medium" FontFamily="Montserrat"
-                     Background="Transparent"  Foreground="#e0f7fa" 
+                <Label Grid.Column="0" FontWeight="SemiBold" Style="{DynamicResource labelChecksPage}" >Total Payment</Label>
+                <TextBox Name="txtName"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                     Grid.Column="1"
+                     FontSize="13"
+                     IsReadOnly="True"
+                     FontWeight="Medium"
+                     FontFamily="Montserrat"
+                     Background="Transparent"
+                     Foreground="{DynamicResource TextPrimaryColor}"
+                     CaretBrush="#80deea"
+                     BorderBrush="{DynamicResource TextSecundaryColor}"
+                     BorderThickness="0 0 0 2"
                      Height="21"
-                     Width="200"
-                    Margin="0 4 0 0" />
+                     Width="280"
+                      />
             </Grid>
         </Grid>
     </Border>

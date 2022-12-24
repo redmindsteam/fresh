@@ -1,8 +1,5 @@
 using Fresh.Desktop.Windows;
 using Fresh.DataAccess.Repositories;
-﻿using Fresh.Desktop.Windows;
-using Fresh.DataAccess.Repositories;
-using Fresh.Desktop.Windows;
 using Fresh.Domain.Entities;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
@@ -40,8 +37,19 @@ namespace Fresh.Desktop.Pages
         public async void Click()
         {
             CashierPage cashiers = new CashierPage();
-            List<CashierView> CashierPages = await cashiers.GetCashierViews();
-            ProductsDgUi.ItemsSource = CashierPages;
+            try
+            {
+                List<CashierView> CashierPages = await cashiers.GetCashierViews();
+                ProductsDgUi.ItemsSource = CashierPages;
+                lblInfo.Visibility = Visibility.Hidden;
+            }
+            catch
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+                return;
+            }
+            
         }
 
         private async void btnUpdateUser_Click(object sender, RoutedEventArgs e)

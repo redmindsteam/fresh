@@ -98,7 +98,11 @@
                                 </Grid>
 
                                 <Grid Grid.Row="2">
-                                    <Image x:Name="videoPlayer" Margin="18,20,631,60" />
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="202*"/>
+                                        <ColumnDefinition Width="243*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image x:Name="videoPlayer" Margin="18,20,145,60" />
                                     <ComboBox x:Name="comboBox"
                                           Width="235"
                                           Height="25"
@@ -111,7 +115,7 @@
                                           SelectedItem="{Binding CurrentDevice}">
 
                                     </ComboBox>
-                                    <Button Width="67"
+                                    <Button Name="btnStart" Width="67"
                                         Height="26"
                                         Margin="41,0,0,11"
                                         HorizontalAlignment="Left"
@@ -119,7 +123,7 @@
                                         Click="btnStart_Click"
                                         Content="Start"
                                         BorderBrush="#00838f" Background="#0097a7"/>
-                                    <Button Width="67"
+                                    <Button Name="btnStop" Width="67"
                                             Height="26"
                                             Margin="154,0,0,10"
                                             HorizontalAlignment="Left"
@@ -127,26 +131,26 @@
                                             BorderBrush="#00838f" Background="#0097a7"
                                             Click="btnStop_Click"
                                                 Content="Stop" />
-                                    <TextBlock x:Name="txt_Block" HorizontalAlignment="Left" Height="156" Margin="619,92,0,2" 
+                                    <TextBlock Name="txtBlockSumm" HorizontalAlignment="Left" Height="156" Margin="215,92,0,2" 
                                                TextWrapping="Wrap" Width="246" Text="0"
                                                TextAlignment="Right"  FontSize="80"
-                                               Foreground="Black"   />
+                                               Foreground="Black" Grid.Column="1"   />
                                     <Button Width="90" Height="32"
                                             Content="Delete" HorizontalAlignment="Left" 
                                             VerticalAlignment="Top" x:Name="btnDelete"
                                              BorderBrush="#263159" Background="#68B984"
-                                            Click="btnDelete_Click" Margin="653,11,0,0">
+                                            Click="btnDelete_Click" Margin="249,11,0,0" Grid.Column="1">
                                     </Button>
                                     <Button Width="90" Height="32" Content="Buy"
                                             HorizontalAlignment="Left" x:Name="btnBuy" 
                                             BorderBrush="#263159" Background="#68B984"
-                                            Click="btnBuy_Click" Margin="767,11,0,207"/>
+                                            Click="btnBuy_Click" Margin="363,11,0,207" Grid.Column="1"/>
 
                                     <Button Width="228" Height="50"
-                                            Content="Chack" FontSize="24" HorizontalAlignment="Left" 
-                                            VerticalAlignment="Top" x:Name="btnChack"
+                                            Content="Check" FontSize="24" HorizontalAlignment="Left" 
+                                            VerticalAlignment="Top" x:Name="btnCheck"
                                              BorderBrush="Black" Background="#62B6B7"
-                                            Click="btnCheck_Click" Margin="342,186,0,0"/>
+                                            Click="btnCheck_Click" Margin="342,186,0,0" Grid.ColumnSpan="2"/>
                                 </Grid>
                             </Grid>
                         </Border>

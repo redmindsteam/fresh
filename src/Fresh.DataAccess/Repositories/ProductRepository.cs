@@ -232,5 +232,45 @@ namespace Fresh.DataAccess.Repositories
                 _con.Close();
             }
         }
+
+        public  (bool, string) UpdateProduct(IList<Product> entity)
+        {
+            try
+            {
+                int resault = 0;
+                
+                foreach (Product product in entity)
+                
+                {
+                    _con.Open();
+                    string query = $"update Products set " +
+                        $" Value = Value + $Value " +
+                        $" Where Name = $Name";
+                    SQLiteCommand command = new SQLiteCommand(query, _con)
+                    {
+                        Parameters =
+                    {
+
+                        new SQLiteParameter("Value", product.Value),
+                        new SQLiteParameter("Name", product.Name)
+                    }
+                    };
+                    resault =  command.ExecuteNonQuery();
+                    _con.Close();
+                }
+                if (resault == 0)
+                    return (false, "if");
+                else
+                    return (true, "not if");
+            }
+            catch
+            {
+                return (false, "catch");
+            }
+            finally
+            {
+                _con.Close();
+            }
+        }
     }
 }

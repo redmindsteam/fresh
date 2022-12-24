@@ -39,7 +39,10 @@
                 </ComboBox>
             </Grid>
         </Grid>
+        
         <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click" ></Button>
+        
+        <!-- The data grid and the hidden label-->
         <DataGrid Grid.Row="2" MouseDoubleClick="RowDouble_Clicked" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="True"
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged">
             <DataGrid.Columns>
@@ -47,10 +50,11 @@
                 <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="0.8*"/>
                 <DataGridTextColumn Header="Cashier" Binding="{Binding Caisher}" Width="*"/>
                 <DataGridTextColumn Header="Total Sum" Binding="{Binding Summ}" Width="0.8*"/>
- 
             </DataGrid.Columns>
-
         </DataGrid>
+        <Label Name="lblInfo" Visibility="Hidden" Content="No information was found"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
+        <!-- The data grid and the hidden label-->
+
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -61,11 +65,10 @@
             <TextBlock  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80" Height="20" Margin="0 0 0 0" Foreground="{DynamicResource TextSecundaryColor}"> Save to Cloud </TextBlock>
             
             <Button HorizontalAlignment="Right" Grid.Column="2" Name="saveCloud" VerticalAlignment="Center" Background="{DynamicResource SecundaryBackgroundColor}"
-                Style="{StaticResource MaterialDesignFloatingActionLightButton}"
-                
+                Style="{StaticResource MaterialDesignFloatingActionLightButton}" Click="btnSaveToCloud_Click"
                 Command="{Binding SaveCommand}"
                 materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
-                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}" Click="Button_Click" >
+                materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}"  >
                 <!-- simple example of toggling/animating pack icon with a data trigger-->
                 <materialDesign:PackIcon
                     Height="24"

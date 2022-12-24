@@ -4,8 +4,8 @@ namespace Fresh.Service.Attributes
 {
     public sealed class CurrentUserSingelton
     {
-        private CurrentUserSingelton() { }
-        private static User _currentUser = null;
+        public CurrentUserSingelton() { }
+        public static User _currentUser = null;
 
         public static User Instance
         {

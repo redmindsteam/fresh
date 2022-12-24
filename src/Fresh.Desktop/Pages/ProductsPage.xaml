@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            <Button Visibility="Hidden" Name="hiddenHelper" Click="hiddenHelper_Click" ></Button>
             <Label Grid.Column="0" Foreground="#767676" FontWeight="SemiBold" Content="Search by" FontSize="12" Style="{DynamicResource labelChecksPage}"  Height="30" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             <RadioButton x:Name="rdnSearchByName" Grid.Column="1" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Product name" Click="RBtn_Click" Checked="rdnSearchByName_Checked"/>
             <RadioButton x:Name="rdnCategory" Grid.Column="2" Style="{DynamicResource StatisticsRadioButtonStyle}" Content="Category" Click="RBtn_Click" Checked="rdnCategory_Checked" />
@@ -36,7 +36,8 @@
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               VerticalAlignment="Center" TextChanged="txtBoxText_Changed" />     
         </Grid>
-
+        
+        <!-- The data grid and the hidden label-->
         <DataGrid  Grid.Row="2" Background="White" x:Name="ProductsDgUi" AutoGenerateColumns="False" IsReadOnly="False" Style="{DynamicResource DataGridStyle1}" Foreground="{DynamicResource TextSecundaryColor}"
 
                   RenderTransformOrigin="0.5,0.5" Margin="0,0,0,3" SelectionChanged="ProductsDgUi_SelectionChanged"  ItemsSource="{Binding SongList, UpdateSourceTrigger=PropertyChanged}"
@@ -50,13 +51,16 @@
                 <DataGridTextColumn Header="Available" Binding="{Binding Available}" Width="0.5*"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+        <Label Name="lblInfo" Visibility="Hidden" Content="No information was found"  Grid.Row="2" Style="{DynamicResource labelChecksPage}" />
+        <!-- The data grid and the hidden label-->
+
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1.1*"/>
+                <ColumnDefinition Width="0.1*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="btnUpdate" 
                     Grid.Column="1"

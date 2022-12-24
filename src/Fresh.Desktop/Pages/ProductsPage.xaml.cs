@@ -46,6 +46,8 @@ namespace Fresh.Desktop.Pages
         {
             ProductPage products = new ProductPage();
             List<ProductsView> productPages = await products.GetProductViews();
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
             ProductsDgUi.ItemsSource = productPages;
         }
 
@@ -65,10 +67,10 @@ namespace Fresh.Desktop.Pages
                 ProductPage products1 = new ProductPage();
                 List<ProductsView> productPages = await products1.GetProductViews();
                 ProductsDgUi.ItemsSource = productPages;
-                MessageBox.Show("Cashier successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Product successfully deleted", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("There was wrong with delete cashier", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("There was wrong with delete product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
@@ -91,7 +93,7 @@ namespace Fresh.Desktop.Pages
                 MessageBox.Show("Please select row", "Error", MessageBoxButton.OK, MessageBoxImage.Hand); return;
             }
             if (await productPage.UpdateProduct(product.Id, product))
-                MessageBox.Show("Cashier successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Product successfully updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("There was wrong with update product", "Error", MessageBoxButton.OK, MessageBoxImage.Hand);
         }
@@ -150,6 +152,14 @@ namespace Fresh.Desktop.Pages
             ButtonAutomationPeer peer = new ButtonAutomationPeer(hiddenHelper);
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
             invokeProv.Invoke();
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
+            if (ProductsDgUi.Items.Count == 0)
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+                return;
+            }
         }
 
 
@@ -170,6 +180,7 @@ namespace Fresh.Desktop.Pages
                 prodTextbox.IsReadOnly = false;
                 List<ProductsView> productPages = await products.GetProductViews();
                 ProductsDgUi.ItemsSource = productPages.Select(x => x).Where(x => x.Name.ToLower().Contains(prodTextbox.Text.ToLower()));
+
             }
             else if (rdnCategory.IsChecked == true)
             {

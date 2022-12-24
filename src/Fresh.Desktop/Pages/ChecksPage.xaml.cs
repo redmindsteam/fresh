@@ -23,6 +23,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Fresh.Desktop.Windows;
 using Fresh.Service.ViewModels.ViewDetails;
+using CG.Web.MegaApiClient;
+using System.Data.Common;
+using Fresh.Domain.Constants;
 
 namespace Fresh.Desktop.Pages
 {
@@ -50,8 +53,18 @@ namespace Fresh.Desktop.Pages
             List<ChecksView> ChecksPages = await check.GetChecksViews();
             DirectorRegisterService directorRegisterService = new();
             var users = await directorRegisterService.GetAllAsync();
-            foreach(var user in users)
-                usersNameCombo.Items.Add(user.FullName);
+
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
+            var view = new List<string>();
+            if (usersNameCombo.Text == null)
+            {
+                ProductsDgUi.ItemsSource = (await check.GetChecksViews()).OrderByDescending(x => DateTime.Parse(x.Date));
+                return;
+            }
+            foreach (var user in users)
+                view.Add(user.FullName);
+            usersNameCombo.ItemsSource = view;
             if (usersNameCombo.Text.Length == 0 && datePicker.Text.Length > 0)
             {
                 var dateTime = DateTime.Parse(datePicker.Text);
@@ -66,6 +79,11 @@ namespace Fresh.Desktop.Pages
                     .Where(x => x.Caisher == usersNameCombo.Text && DateTime.Parse(x.Date).Date == DateTime.Parse(datePicker.Text).Date);
             else
                 ProductsDgUi.ItemsSource = (await check.GetChecksViews()).OrderByDescending(x=>DateTime.Parse(x.Date));
+            if(ProductsDgUi.Items.Count == 0)
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+            }
         }
         private void ProductsDgUi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -86,11 +104,6 @@ namespace Fresh.Desktop.Pages
             invokeProv.Invoke();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void hiddenHelper_Click(object sender, RoutedEventArgs e)
         {
             Click();
@@ -103,6 +116,26 @@ namespace Fresh.Desktop.Pages
             checkDetailsView = await checkPage.GetCheckDetailsById(checksView.Id);
             ChecksDescription checksDescription = new ChecksDescription();
             checksDescription.ShowDialog();
+        }
+
+        private async void btnSaveToCloud_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                MegaApiClient client = new MegaApiClient();
+                client.Login("saparbaevazulaykho18@gmail.com", "GoodLuck18041388");
+                IEnumerable<INode> nodes = client.GetNodes();
+
+                INode root = nodes.Single(x => x.Type == NodeType.Root);
+                INode myFolder = client.CreateFolder($"{DateTime.Now.ToString("MM/yyyy")}", root);
+
+                INode myFile = client.UploadFile(@"../../../../../database/fresh-market.db", myFolder);
+                Uri downloadLinkImage = client.GetDownloadLink(myFile);
+
+                client.Logout();
+                MessageBox.Show("Data saved to cloud successfully!");
+            });
+            
         }
     }
 }

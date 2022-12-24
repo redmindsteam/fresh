@@ -1,4 +1,5 @@
 ﻿using Fresh.Desktop.Windows;
+using Fresh.Domain.Entities;
 using Fresh.Service.Director;
 using Fresh.Service.Services.PageServices;
 using Fresh.Service.ViewModels;
@@ -46,11 +47,20 @@ namespace Fresh.Desktop.Pages
             var result = await consignmentLettersPage.GetAllCL();
             DirectorRegisterService directorRegisterService = new();
             var users = await directorRegisterService.GetAllAsync();
+            ProductsDgUi.Visibility = Visibility.Visible;
+            lblInfo.Visibility = Visibility.Hidden;
+            if (usersNameCombo.Text == null)
+            {
+                ProductsDgUi.ItemsSource = (await consignmentLettersPage.GetAllCL()).OrderByDescending(x => x.DateTime);
+                return;
+            }
+            var view = new List<string>();
             foreach (var user in users)
             {
                 if (user.IsAdmin == 0)
-                    usersNameCombo.Items.Add(user.FullName);
+                    view.Add(user.FullName);
             }
+            usersNameCombo.ItemsSource = view;
             if (usersNameCombo.Text.Length == 0 && datePicker.Text.Length > 0)
             {
                 var dateTime = DateTime.Parse(datePicker.Text);
@@ -65,6 +75,12 @@ namespace Fresh.Desktop.Pages
                     .Where(x => x.Cashier == usersNameCombo.Text && x.DateTime.Date == DateTime.Parse(datePicker.Text).Date);
             else
                 ProductsDgUi.ItemsSource = (await consignmentLettersPage.GetAllCL()).OrderByDescending(x => x.DateTime);
+            if(ProductsDgUi.Items.Count == 0)
+            {
+                ProductsDgUi.Visibility = Visibility.Hidden;
+                lblInfo.Visibility = Visibility.Visible;
+                return;
+            }
         }
 
         private async void RowDouble_Clicked(object sender, MouseButtonEventArgs e)

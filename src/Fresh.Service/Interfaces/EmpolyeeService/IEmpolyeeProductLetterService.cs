@@ -4,6 +4,6 @@ namespace Fresh.Service.Interfaces.EmpolyeeService
 {
     public interface IEmpolyeeProductLetterService
     {
-        public void CreateAsync(ProductLetter item);
+        public Task<bool> CreateAsync(ProductLetter item);
     }
 }
